@@ -1,32 +1,75 @@
-cmake_minimum_required(VERSION 3.30...4.0)
+cmake_minimum_required(VERSION 3.30)
 project(pr3d VERSION 0.0.1
         DESCRIPTION "Pixel Retro 3D Game Framework"
         LANGUAGES C)
 set(CMAKE_C_STANDARD 23)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+add_library(${CMAKE_PROJECT_NAME})
+target_include_directories(${CMAKE_PROJECT_NAME} 
+    PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include/${CMAKE_PROJECT_NAME}>
+    PRIVATE 
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src>
+        $<INSTALL_INTERFACE:include/${CMAKE_PROJECT_NAME}>
+
+)
+
+target_sources(${CMAKE_PROJECT_NAME}
+    PRIVATE ${CMAKE_SOURCE_DIR}/src/window.c
+            ${CMAKE_SOURCE_DIR}/src/input.c
+            ${CMAKE_SOURCE_DIR}/extern/glad.c
+)
+
 # Compiler flags for extra warnings/errors
-set(C_FLAGS "-pedantic -Wall -Wextra -Werror")
+set(C_FLAGS -pedantic -Wall -Wextra -Werror)
+target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE ${C_FLAGS})
 
-add_executable(${CMAKE_PROJECT_NAME})
-target_sources(
-    ${CMAKE_PROJECT_NAME} PRIVATE main.c
-                                  window.c
-                                  input.c
+include(GNUInstallDirs)
+set_target_properties(
+    ${CMAKE_PROJECT_NAME} PROPERTIES
+                          VERSION ${PROJECT_VERSION}
+                          PUBLIC_HEADER ${CMAKE_SOURCE_DIR}/include/window.h
+                                        ${CMAKE_SOURCE_DIR}/include/input.h
+                                        ${CMAKE_SOURCE_DIR}/include/common_macros.h
+                          LIBRARY_OUTPUT_DIRECTORY ${CMAKE_INSTALL_LIBDIR}/${CMAKE_PROJECT_NAME}
 )
 
-# Libraries, if local to the project need add_subdirectory
+# Link external libraries, if local to the project need add_subdirectory
 find_package(glfw3 REQUIRED) # Generates imported target glfw
+target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC glfw)
 
-# Libs stored local to project
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/glad/include)
-add_library(
-    glad 
-    ${CMAKE_CURRENT_SOURCE_DIR}/glad/src/glad.c
+# Install the includes and lib files, export targets needed for find_package()
+install(
+    TARGETS ${CMAKE_PROJECT_NAME} 
+    EXPORT ${CMAKE_PROJECT_NAME}-targets
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/${CMAKE_PROJECT_NAME}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${CMAKE_PROJECT_NAME}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/${CMAKE_PROJECT_NAME}
 )
 
-# Add compiler flags only to this project, libs in subdirectories with
-# CMakeLists files can be added right after the main project name
-set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES COMPILE_FLAGS ${C_FLAGS})
+install(
+	EXPORT ${CMAKE_PROJECT_NAME}-targets
+	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${CMAKE_PROJECT_NAME}
+)
 
-# Link external libraries
-target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE glfw glad)
+# Install the CMakeConfig file for using find_package()
+# Include CMakePackageConfigHelpers for generating config files
+include(CMakePackageConfigHelpers)
+
+# Configure the package config file
+configure_package_config_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/${CMAKE_PROJECT_NAME}Config.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}Config.cmake"
+    INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${CMAKE_PROJECT_NAME}"
+    NO_SET_AND_CHECK_MACRO
+    NO_CHECK_REQUIRED_COMPONENTS_MACRO
+)
+
+# Install the Config.cmake file
+install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}Config.cmake"
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${CMAKE_PROJECT_NAME}"
+)

@@ -1,10 +1,10 @@
 #ifndef PR3D_WINDOW_H
 #define PR3D_WINDOW_H
 
+#include <glad/glad.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "glad/glad.h"
 #include <GLFW/glfw3.h>
 
 #include "input.h"
@@ -19,6 +19,6 @@ extern GLFWwindow *PR3D_WINDOW;
  */
 GLFWwindow *pr3d_create_window(int width, int height, char *name);
 
-void destroy_window();
+void pr3d_destroy_window();
 
 #endif

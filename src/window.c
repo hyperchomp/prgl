@@ -43,7 +43,7 @@ GLFWwindow *pr3d_create_window(int width, int height, char *name)
     return PR3D_WINDOW;
 }
 
-void destroy_window()
+void pr3d_destroy_window()
 {
     glfwDestroyWindow(PR3D_WINDOW);
     glfwTerminate();
