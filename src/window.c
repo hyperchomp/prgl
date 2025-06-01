@@ -9,7 +9,7 @@ static int BASE_HEIGHT = 180;
 
 GLFWwindow *PR3D_WINDOW = NULL;
 
-GLFWwindow *pr3d_create_window(enum PixelScale res_scale_type, char *name)
+GLFWwindow *pr3d_create_window(enum PR3DPixelScale res_scale_type, char *name)
 {
     if (PR3D_WINDOW != NULL)
     {

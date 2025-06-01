@@ -15,7 +15,7 @@ extern GLFWwindow *PR3D_WINDOW;
 /**
  * Determines the base resolution and thus how large pixels will appear.
  */
-enum PixelScale
+enum PR3DPixelScale
 {
     STANDARD,
     STANDARD_2X
@@ -26,7 +26,7 @@ enum PixelScale
  * allow the creation of more than one window.
  * Make sure to destroy it with destroy_window()
  */
-GLFWwindow *pr3d_create_window(enum PixelScale res_scale_type, char *name);
+GLFWwindow *pr3d_create_window(enum PR3DPixelScale res_scale_type, char *name);
 
 void pr3d_destroy_window();
 
