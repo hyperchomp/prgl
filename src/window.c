@@ -9,7 +9,7 @@ static int BASE_HEIGHT = 180;
 
 GLFWwindow *PR3D_WINDOW = NULL;
 
-GLFWwindow *pr3d_create_window(enum ResolutionScale res_scale_type, char *name)
+GLFWwindow *pr3d_create_window(enum PixelScale res_scale_type, char *name)
 {
     if (PR3D_WINDOW != NULL)
     {
@@ -26,9 +26,11 @@ GLFWwindow *pr3d_create_window(enum ResolutionScale res_scale_type, char *name)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+    // PixelScale determines resolution, higher resolution = smaller pixels
+    // so 2x should set to 320x180 and STANDARD should be doubled
     int width = BASE_WIDTH;
     int height = BASE_HEIGHT;
-    if (res_scale_type == STANDARD_2X)
+    if (res_scale_type == STANDARD)
     {
         width *= 2;
         height *= 2;

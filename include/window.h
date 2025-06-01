@@ -13,10 +13,9 @@
 extern GLFWwindow *PR3D_WINDOW;
 
 /**
- * Resolution is scaled up from a 16:9 resolution similar in
- * size to what 90s consoles would display. STANDARD is 320 x 180
+ * Determines the base resolution and thus how large pixels will appear.
  */
-enum ResolutionScale
+enum PixelScale
 {
     STANDARD,
     STANDARD_2X
@@ -27,7 +26,7 @@ enum ResolutionScale
  * allow the creation of more than one window.
  * Make sure to destroy it with destroy_window()
  */
-GLFWwindow *pr3d_create_window(enum ResolutionScale res_scale_type, char *name);
+GLFWwindow *pr3d_create_window(enum PixelScale res_scale_type, char *name);
 
 void pr3d_destroy_window();
 
