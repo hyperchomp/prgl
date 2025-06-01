@@ -3,9 +3,13 @@
 static void
 framebuffer_size_callback(GLFWwindow *window, int width, int height);
 
+// Base resolution to ensure pixel perfect scaling for most 16:9 resolutions
+static int BASE_WIDTH = 320;
+static int BASE_HEIGHT = 180;
+
 GLFWwindow *PR3D_WINDOW = NULL;
 
-GLFWwindow *pr3d_create_window(int width, int height, char *name)
+GLFWwindow *pr3d_create_window(enum ResolutionScale res_scale_type, char *name)
 {
     if (PR3D_WINDOW != NULL)
     {
@@ -21,6 +25,14 @@ GLFWwindow *pr3d_create_window(int width, int height, char *name)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+    int width = BASE_WIDTH;
+    int height = BASE_HEIGHT;
+    if (res_scale_type == STANDARD_2X)
+    {
+        width *= 2;
+        height *= 2;
+    }
 
     PR3D_WINDOW = glfwCreateWindow(width, height, name, NULL, NULL);
     if (PR3D_WINDOW == NULL)
