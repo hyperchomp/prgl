@@ -13,8 +13,6 @@ target_include_directories(${CMAKE_PROJECT_NAME}
         $<INSTALL_INTERFACE:include/${CMAKE_PROJECT_NAME}>
     PRIVATE 
         $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src>
-        $<INSTALL_INTERFACE:include/${CMAKE_PROJECT_NAME}>
-
 )
 
 target_sources(${CMAKE_PROJECT_NAME}
@@ -39,7 +37,7 @@ set_target_properties(
 
 # Link external libraries, if local to the project need add_subdirectory
 find_package(glfw3 REQUIRED) # Generates imported target glfw
-target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC glfw)
+target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE glfw)
 
 # Install the includes and lib files, export targets needed for find_package()
 install(
