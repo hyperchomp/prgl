@@ -1,3 +1,5 @@
 build-debug/
 build-release/
-glad/
+.cache/
+compile_commands.json
+
