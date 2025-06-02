@@ -11,11 +11,14 @@ target_include_directories(${CMAKE_PROJECT_NAME}
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include/${CMAKE_PROJECT_NAME}>
+    PRIVATE
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
 )
 
 target_sources(${CMAKE_PROJECT_NAME}
     PRIVATE ${CMAKE_SOURCE_DIR}/src/window.c
             ${CMAKE_SOURCE_DIR}/src/input.c
+            ${CMAKE_SOURCE_DIR}/src/game.c
             ${CMAKE_SOURCE_DIR}/extern/glad.c
 )
 
@@ -24,12 +27,16 @@ set(C_FLAGS -pedantic -Wall -Wextra -Werror)
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE ${C_FLAGS})
 
 include(GNUInstallDirs)
+set(
+    PR3D_PUBLIC_HEADERS "${CMAKE_SOURCE_DIR}/include/window.h"
+                        "${CMAKE_SOURCE_DIR}/include/input.h"
+                        "${CMAKE_SOURCE_DIR}/include/game.h"
+                        "${CMAKE_SOURCE_DIR}/include/common_macros.h"
+)
 set_target_properties(
     ${CMAKE_PROJECT_NAME} PROPERTIES
                           VERSION ${PROJECT_VERSION}
-                          PUBLIC_HEADER ${CMAKE_SOURCE_DIR}/include/window.h
-                                        ${CMAKE_SOURCE_DIR}/include/input.h
-                                        ${CMAKE_SOURCE_DIR}/include/common_macros.h
+                          PUBLIC_HEADER "${PR3D_PUBLIC_HEADERS}"                                        
                           LIBRARY_OUTPUT_DIRECTORY ${CMAKE_INSTALL_LIBDIR}/${CMAKE_PROJECT_NAME}
 )
 

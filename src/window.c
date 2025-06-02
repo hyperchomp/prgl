@@ -1,4 +1,5 @@
 #include "window.h"
+#include "window_internal.h"
 
 static void
 framebuffer_size_callback(GLFWwindow *window, int width, int height);
@@ -57,11 +58,13 @@ GLFWwindow *pr3d_create_window(enum PR3DPixelScale res_scale_type, char *name)
     return PR3D_WINDOW;
 }
 
-void pr3d_destroy_window()
+void pr3d_destroy_window(void)
 {
     glfwDestroyWindow(PR3D_WINDOW);
     glfwTerminate();
 }
+
+void pr3d_close_game(void) { glfwSetWindowShouldClose(PR3D_WINDOW, true); }
 
 /**
  * Called by GLFW when resizing the window
