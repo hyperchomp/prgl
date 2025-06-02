@@ -1,14 +1,7 @@
 #ifndef PR3D_WINDOW_H
 #define PR3D_WINDOW_H
 
-#include <glad/glad.h>
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include <GLFW/glfw3.h>
-
-#include "input.h"
-#include "common_macros.h"
 
 extern GLFWwindow *PR3D_WINDOW;
 

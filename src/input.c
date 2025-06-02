@@ -1,4 +1,6 @@
 #include "input.h"
+#include "window.h"
+#include <GLFW/glfw3.h>
 
 bool pr3d_key_pressed(int key)
 {

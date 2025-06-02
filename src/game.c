@@ -1,5 +1,7 @@
 #include "game.h"
+#include "window.h"
 #include "window_internal.h"
+#include <GLFW/glfw3.h>
 
 static double last_update_start = 0;
 static double dt = 0;

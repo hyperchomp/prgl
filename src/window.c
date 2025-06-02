@@ -1,5 +1,9 @@
+#include <glad/glad.h>
 #include "window.h"
 #include "window_internal.h"
+#include "common_macros.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 static void
 framebuffer_size_callback(GLFWwindow *window, int width, int height);

@@ -1,9 +1,6 @@
 #ifndef PR3D_GAME_H
 #define PR3D_GAME_H
 
-#include "window.h"
-#include <GLFW/glfw3.h>
-
 /**
  * Runs the main loop of the game.
  *
