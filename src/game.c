@@ -7,7 +7,7 @@ static double last_update_start = 0;
 static double dt = 0;
 
 void pr3d_run_game(
-    void (*pr3d_update)(double delta_time), void (*pr3d_draw)(void)
+    void (*pr3d_update)(double delta_time), void (*pr3d_render)(void)
 )
 {
     while (!glfwWindowShouldClose(PR3D_WINDOW))
@@ -16,7 +16,7 @@ void pr3d_run_game(
         last_update_start = glfwGetTime();
 
         (*pr3d_update)(dt);
-        (*pr3d_draw)();
+        (*pr3d_render)();
 
         glfwPollEvents();
         glfwSwapBuffers(PR3D_WINDOW);

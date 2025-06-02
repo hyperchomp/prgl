@@ -5,10 +5,10 @@
  * Runs the main loop of the game.
  *
  * @param[in] pr3d_update The update callback function, must accept a delta time
- * @param[in] pr3d_draw Draw callback function used for rendering
+ * @param[in] pr3d_render Render callback function
  */
 void pr3d_run_game(
-    void (*pr3d_update)(double delta_time), void (*pr3d_draw)(void)
+    void (*pr3d_update)(double delta_time), void (*pr3d_render)(void)
 );
 
 /**
