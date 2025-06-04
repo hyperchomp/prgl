@@ -1,23 +1,25 @@
 # Pixel Retro 3D Game Framework (pr3d)
 
-**NOTE: At the current moment pr3d is in very early development. Breaking changes will happen regularly.**
+**\*pr3d is in very early development. Breaking changes will happen regularly.**
 
-pr3d is a code driven framework for making 3D games in the style of 90s retro consoles like the PS1, but without the limitations of the hardware and with support for scaling to modern resolutions in mind from the start. Rather than tweaking modern engines to work for retro style games wouldn't it be nice to have an engine that is set up from the ground up to natively render in a similar fashion? Imagine having minimal to no configuration needed to display chunky, pixelated 3D graphics. Imagine having the techniques needed built into the engine instead of needing to write shaders on top of it.
+pr3d is a code driven framework for making 3D games in the style of 90s retro consoles like the PS1, built from the ground up to natively render clean, chunky pixelated 3D graphics to modern displays.
 
-pr3d is about making it as simple as possible to get a retro 3D game project off the ground so you can get straight to coding the gameplay.
-
-pr3d is built on top of the [GLFW library](https://github.com/glfw/glfw)
+pr3d is about making it as simple as possible to get a retro style 3D game project off the ground so you can get straight to coding the gameplay.
 
 pr3d is licensed under the [zlib License](https://zlib.net/zlib_license.html)
 
-## Foundations
+## Goals
 
-pr3d aims to provide a retro 3D style by providing these foundations:
+pr3d aims to provide these features:
 
-* Simple fullscreen scaling from preset base resolutions similar to 90s retro games, but supporting modern 16:9 aspect ratios
+* Pixel perfect fullscreen scaling from preset base resolutions similar to 90s retro games, but supporting modern 16:9 aspect ratios
 * Native vertex wobble
 * Affine texture mapping
 * Flat and Gouraud shading
+* Keyboard and controller support
+* 
+
+This list will be updated with time, right now the focus is on getting basic features in before thinking too far ahead. As more features are fully or at least mostly completed I will add a features section when it makes sense.
 
 ## Dependencies
 
@@ -37,7 +39,7 @@ make
 sudo make install
 ```
 
-If your OS defaults to something like `/usr/local/` and you want to instead install to the system directory **at your own risk** you may add the cmake flag `-DCMAKE_INSTALL_PREFIX=/usr`. You probably don't have to use clang, but I do so there it is.
+If your Linux distribution defaults to something like `/usr/local/` and you want to instead install to the system directory **at your own risk** you may add the cmake flag `-DCMAKE_INSTALL_PREFIX=/usr`. You probably don't have to use clang, but I do so there it is.
 
 After running the above if you need to rebuild and haven't cleaned or deleted the build directory you can simply do the following from within the build directory:
 
@@ -45,6 +47,12 @@ After running the above if you need to rebuild and haven't cleaned or deleted th
 cmake ..
 make
 sudo make install
+```
+
+After this simply include any necessary pr3d modules into your project. They are in a subfolder structure so you should include them like so:
+
+```
+#include <pr3d/window.h>
 ```
 
 ## Contributing
