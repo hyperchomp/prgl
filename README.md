@@ -57,6 +57,6 @@ After this simply include any necessary pr3d modules into your project. They are
 
 ## Contributing
 
-As of right now I'm not looking for contributors to the project. It is in very early development and is a passion project of mine, as such I will be the sole contributor as of this time. It is possible in the future if things go well I may consider opening up contributions to the main branch, but as of now I have no plan to.
+As of right now I'm not looking for contributors to the project. It is is a passion project of mine, and I would like to maintain control over it. If I ever decide to take contributions I will update this section accordingly.
 
 pr3d is open source under the zlib license and as such you are more than welcome to fork the project and use it for your own devilry as you see fit under the minimal stipulations of the license.
