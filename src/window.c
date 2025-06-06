@@ -31,6 +31,10 @@ GLFWwindow *pr3d_create_window(enum PR3DPixelScale res_scale_type, char *name)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+#ifdef __APPLE__
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+#endif
+
     // PixelScale determines resolution, higher resolution = smaller pixels
     // so 2x should set to 320x180 and STANDARD should be doubled
     int width = BASE_WIDTH;
@@ -48,7 +52,9 @@ GLFWwindow *pr3d_create_window(enum PR3DPixelScale res_scale_type, char *name)
         glfwTerminate();
         exit(EXIT_FAILURE);
     }
+
     glfwMakeContextCurrent(PR3D_WINDOW);
+    glfwSetFramebufferSizeCallback(PR3D_WINDOW, framebuffer_size_callback);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
@@ -56,9 +62,6 @@ GLFWwindow *pr3d_create_window(enum PR3DPixelScale res_scale_type, char *name)
         glfwTerminate();
         exit(EXIT_FAILURE);
     }
-
-    glViewport(0, 0, width, height);
-    glfwSetFramebufferSizeCallback(PR3D_WINDOW, framebuffer_size_callback);
     return PR3D_WINDOW;
 }
 

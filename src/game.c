@@ -18,8 +18,8 @@ void pr3d_run_game(
         (*pr3d_update)(dt);
         (*pr3d_render)();
 
-        glfwPollEvents();
         glfwSwapBuffers(PR3D_WINDOW);
+        glfwPollEvents();
     }
 
     pr3d_destroy_window();
