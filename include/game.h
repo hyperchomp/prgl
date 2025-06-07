@@ -2,12 +2,18 @@
 #define PR3D_GAME_H
 
 /**
- * Runs the main loop of the game.
+ * Runs the main loop of the game. This should be called first in any game.
  *
+ * Callbacks are called in the same order as the arguments.
+ *
+ * @param[in] title Title of the game, this will be used as the window header
+ * @param[in] pr3d_init Initialize callback function, runs before the main game
+ * loop starts.
  * @param[in] pr3d_update The update callback function, must accept a delta time
  * @param[in] pr3d_render Render callback function
  */
 void pr3d_run_game(
+    char *title, void (*pr3d_init)(void),
     void (*pr3d_update)(double delta_time), void (*pr3d_render)(void)
 );
 

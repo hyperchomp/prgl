@@ -1,8 +1,8 @@
 #include "input.h"
-#include "window.h"
+#include "screen_internal.h"
 #include <GLFW/glfw3.h>
 
 bool pr3d_key_pressed(int key)
 {
-    return glfwGetKey(PR3D_WINDOW, key) == GLFW_PRESS;
+    return glfwGetKey(pr3d_screen_data()->window, key) == GLFW_PRESS;
 }

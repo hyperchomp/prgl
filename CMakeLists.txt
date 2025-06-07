@@ -16,7 +16,7 @@ target_include_directories(${CMAKE_PROJECT_NAME}
 )
 
 target_sources(${CMAKE_PROJECT_NAME}
-    PRIVATE ${CMAKE_SOURCE_DIR}/src/window.c
+    PRIVATE ${CMAKE_SOURCE_DIR}/src/screen.c
             ${CMAKE_SOURCE_DIR}/src/input.c
             ${CMAKE_SOURCE_DIR}/src/game.c
             ${CMAKE_SOURCE_DIR}/src/render.c
@@ -29,7 +29,7 @@ target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE ${C_FLAGS})
 
 include(GNUInstallDirs)
 set(
-    PR3D_PUBLIC_HEADERS "${CMAKE_SOURCE_DIR}/include/window.h"
+    PR3D_PUBLIC_HEADERS "${CMAKE_SOURCE_DIR}/include/screen.h"
                         "${CMAKE_SOURCE_DIR}/include/input.h"
                         "${CMAKE_SOURCE_DIR}/include/game.h"
                         "${CMAKE_SOURCE_DIR}/include/render.h"
