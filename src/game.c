@@ -15,7 +15,7 @@ void pr3d_run_game(
 
     pr3d_init();
 
-    struct PR3DScreen screen = *pr3d_screen_data();
+    struct PR3DScreen screen = *pr3d_screen();
     while (!glfwWindowShouldClose(screen.window))
     {
         dt = glfwGetTime() - last_update_start;

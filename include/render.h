@@ -15,6 +15,12 @@ struct PR3DMesh
     unsigned int shader_program;
 };
 
+enum PR3DShader
+{
+    PR3D_SHADER_BASIC,
+    PR3D_SHADER_COUNT
+};
+
 /**
  * Clears the screen using the given color.
  *
@@ -47,4 +53,11 @@ void pr3d_render_mesh(struct PR3DMesh *mesh);
  * Cleans up the GL objects associated with the mesh and then frees it.
  */
 void pr3d_delete_mesh(struct PR3DMesh *mesh);
+
+/**
+ * Gets the shader program for the given shader type.
+ *
+ * @return The shader program ID for the shader type
+ */
+unsigned int pr3d_shader(enum PR3DShader type);
 #endif

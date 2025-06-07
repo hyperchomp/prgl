@@ -22,6 +22,6 @@ void pr3d_create_window(char *name);
 
 void pr3d_destroy_window(void);
 
-struct PR3DScreen *pr3d_screen_data(void);
+struct PR3DScreen *pr3d_screen(void);
 
 #endif

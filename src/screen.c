@@ -9,13 +9,13 @@
 static void
 framebuffer_size_callback(GLFWwindow *window, int width, int height);
 
-struct PR3DScreen *pr3d_screen_data();
+struct PR3DScreen *pr3d_screen(void);
 
-static struct PR3DScreen pr3d_screen;
+static struct PR3DScreen pr3d_screen_data;
 
 void pr3d_create_window(char *name)
 {
-    if (pr3d_screen.window)
+    if (pr3d_screen_data.window)
     {
         fprintf(
             stderr, "new_window: Failed to create GLFW window because a window "
@@ -64,36 +64,36 @@ void pr3d_create_window(char *name)
         exit(EXIT_FAILURE);
     }
 
-    pr3d_screen = (struct PR3DScreen){.window = window,
-                                      .desktop_width = desktop_width,
-                                      .desktop_height = desktop_height};
+    pr3d_screen_data = (struct PR3DScreen){.window = window,
+                                           .desktop_width = desktop_width,
+                                           .desktop_height = desktop_height};
 }
 
 void pr3d_destroy_window(void)
 {
-    glfwDestroyWindow(pr3d_screen.window);
+    glfwDestroyWindow(pr3d_screen_data.window);
     glfwTerminate();
 }
 
 void pr3d_close_game(void)
 {
-    glfwSetWindowShouldClose(pr3d_screen.window, true);
+    glfwSetWindowShouldClose(pr3d_screen_data.window, true);
 }
 
-void pr3d_toggle_fullscreen()
+void pr3d_toggle_fullscreen(void)
 {
     // If monitor is NULL we are in fullscreen, and if glfwSetWindowMonitor
     // receives NULL for monitor it will change to window mode
-    GLFWwindow *window = pr3d_screen.window;
+    GLFWwindow *window = pr3d_screen_data.window;
     GLFWmonitor *monitor = glfwGetWindowMonitor(window);
     const GLFWvidmode *mode = glfwGetVideoMode(monitor);
     glfwSetWindowMonitor(
-        window, monitor, 0, 0, pr3d_screen.desktop_width,
-        pr3d_screen.desktop_height, mode->refreshRate
+        window, monitor, 0, 0, pr3d_screen_data.desktop_width,
+        pr3d_screen_data.desktop_height, mode->refreshRate
     );
 }
 
-struct PR3DScreen *pr3d_screen_data() { return &pr3d_screen; }
+struct PR3DScreen *pr3d_screen(void) { return &pr3d_screen_data; }
 
 /**
  * Called by GLFW when resizing the window

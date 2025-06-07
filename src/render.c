@@ -15,6 +15,8 @@ pr3d_create_shader_program(unsigned int shaders[], size_t length);
 static void pr3d_validate_shader(unsigned int shader);
 static void pr3d_validate_shader_program(unsigned int shader_program);
 
+static unsigned int pr3d_shader_pool[PR3D_SHADER_COUNT];
+
 void pr3d_clear_screen(float r, float g, float b, float a)
 {
     glClearColor(r, g, b, a);
@@ -111,6 +113,11 @@ void pr3d_delete_mesh(struct PR3DMesh *mesh)
     glDeleteVertexArrays(1, &mesh->vao);
     glDeleteBuffers(1, &mesh->vbo);
     glDeleteProgram(mesh->shader_program);
+}
+
+unsigned int pr3d_shader(enum PR3DShader type)
+{
+    return pr3d_shader_pool[type];
 }
 
 /**

@@ -4,5 +4,5 @@
 
 bool pr3d_key_pressed(int key)
 {
-    return glfwGetKey(pr3d_screen_data()->window, key) == GLFW_PRESS;
+    return glfwGetKey(pr3d_screen()->window, key) == GLFW_PRESS;
 }
