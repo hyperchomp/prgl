@@ -12,13 +12,6 @@ struct PR3DMesh
 {
     unsigned int vbo;
     unsigned int vao;
-    unsigned int shader_program;
-};
-
-enum PR3DShader
-{
-    PR3D_SHADER_BASIC,
-    PR3D_SHADER_COUNT
 };
 
 /**
@@ -54,10 +47,4 @@ void pr3d_render_mesh(struct PR3DMesh *mesh);
  */
 void pr3d_delete_mesh(struct PR3DMesh *mesh);
 
-/**
- * Gets the shader program for the given shader type.
- *
- * @return The shader program ID for the shader type
- */
-unsigned int pr3d_shader(enum PR3DShader type);
 #endif

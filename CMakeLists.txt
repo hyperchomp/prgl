@@ -21,6 +21,7 @@ target_sources(${CMAKE_PROJECT_NAME}
             ${CMAKE_SOURCE_DIR}/src/input.c
             ${CMAKE_SOURCE_DIR}/src/game.c
             ${CMAKE_SOURCE_DIR}/src/render.c
+            ${CMAKE_SOURCE_DIR}/src/shaders.c
             ${CMAKE_SOURCE_DIR}/extern/glad.c
 )
 
@@ -34,6 +35,7 @@ set(
                         "${CMAKE_SOURCE_DIR}/include/input.h"
                         "${CMAKE_SOURCE_DIR}/include/game.h"
                         "${CMAKE_SOURCE_DIR}/include/render.h"
+                        "${CMAKE_SOURCE_DIR}/include/shaders.h"
                         "${CMAKE_SOURCE_DIR}/include/common_macros.h"
 )
 set_target_properties(

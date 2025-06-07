@@ -1,5 +1,6 @@
 #include "game.h"
 #include "screen_internal.h"
+#include "shaders_internal.h"
 #include <GLFW/glfw3.h>
 
 static double last_update_start = 0;
@@ -13,6 +14,7 @@ void pr3d_run_game(
     glfwInit();
     pr3d_create_window(title);
 
+    pr3d_init_shader_pool();
     pr3d_init();
 
     struct PR3DScreen screen = *pr3d_screen();
@@ -28,6 +30,7 @@ void pr3d_run_game(
         glfwPollEvents();
     }
 
+    pr3d_delete_shader_pool();
     pr3d_destroy_window();
 }
 
