@@ -17,14 +17,30 @@ pr3d aims to provide these features:
 * Affine texture mapping
 * Flat and Gouraud shading
 * Keyboard and controller support
-* 
 
 This list will be updated with time, right now the focus is on getting basic features in before thinking too far ahead. As more features are fully or at least mostly completed I will add a features section when it makes sense.
 
 ## Dependencies
-
+When working with pr3d it should never be necessary to include any dependency headers as they are included by the framework itself.
+### Install
+These dependencies must be installed separately from pr3d as the framework relies on them.
 * [GLFW](https://github.com/glfw/glfw) for a multitude of functionality, for example rendering and input.
-* [Glad](https://github.com/Dav1dde/glad) for **glad1** as a GL loader, the repo already contains glad.c exported with GL version 4.6 (all extensions exported) but you will need to add glad.h to one of your system include folders like `/usr/local/include` or wherever pleases you.
+    * Most package managers have GLFW so you don't usually need to build it from source.
+      * Fedora
+        ```
+        dnf install glfw glfw-devel
+        ```
+      * Arch
+        ```
+        pacman -S glfw
+        ```
+      * Ubuntu
+        ```
+        apt install libglfw3 libglfw3-dev
+        ```
+### Bundled
+These dependencies are bundled in the project source code and don't require installation.
+* [Glad](https://github.com/Dav1dde/glad) for **glad1** as a GL loader.
 
 ## Installation
 
@@ -52,7 +68,9 @@ sudo make install
 After this simply include any necessary pr3d modules into your project. They are in a subfolder structure so you should include them like so:
 
 ```
-#include <pr3d/window.h>
+#include <pr3d/game.h>
+#include <pr3d/screen.h>
+// etc...
 ```
 
 ## Contributing
