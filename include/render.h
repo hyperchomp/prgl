@@ -1,8 +1,6 @@
 #ifndef PR3D_RENDER_H
 #define PR3D_RENDER_H
 
-#include <glad/glad.h>
-
 struct PR3DVec3
 {
     float x;

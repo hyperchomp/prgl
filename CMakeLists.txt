@@ -13,6 +13,7 @@ target_include_directories(${CMAKE_PROJECT_NAME}
         $<INSTALL_INTERFACE:include/${CMAKE_PROJECT_NAME}>
     PRIVATE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/extern>
 )
 
 target_sources(${CMAKE_PROJECT_NAME}

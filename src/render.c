@@ -1,4 +1,4 @@
-#include <glad/glad.h>
+#include "glad.h"
 #include "render.h"
 #include "common_macros.h"
 #include <GLFW/glfw3.h>

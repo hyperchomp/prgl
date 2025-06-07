@@ -1,4 +1,4 @@
-#include <glad/glad.h>
+#include "glad.h"
 #include "screen.h"
 #include "screen_internal.h"
 #include "common_macros.h"
