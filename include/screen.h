@@ -9,6 +9,6 @@
  */
 void pr3d_close_game(void);
 
-void pr3d_toggle_fullscreen();
+void pr3d_toggle_fullscreen(void);
 
 #endif
