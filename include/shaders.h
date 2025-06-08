@@ -51,7 +51,7 @@ void pr3d_use_shader(unsigned int shader);
 /**
  * Re-activates the default shader for use.
  */
-void pr3d_use_default_shader();
+void pr3d_use_default_shader(void);
 
 /**
  * Flags a shader for deletion.

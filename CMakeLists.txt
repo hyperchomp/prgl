@@ -22,6 +22,7 @@ target_sources(${CMAKE_PROJECT_NAME}
             ${CMAKE_SOURCE_DIR}/src/game.c
             ${CMAKE_SOURCE_DIR}/src/render.c
             ${CMAKE_SOURCE_DIR}/src/shaders.c
+            ${CMAKE_SOURCE_DIR}/src/shaders_init.c
             ${CMAKE_SOURCE_DIR}/extern/glad.c
 )
 

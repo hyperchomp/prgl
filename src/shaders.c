@@ -1,7 +1,7 @@
 #include "glad.h"
 #include "shaders.h"
-#include "render.h"
 #include "shaders_internal.h"
+#include "shaders_init_internal.h"
 #include "common_macros.h"
 #include <GLFW/glfw3.h>
 #include <stdio.h>
@@ -47,7 +47,7 @@ pr3d_create_shader(const char *vertex_source, const char *frag_source)
 
 void pr3d_use_shader(unsigned int shader) { glUseProgram(shader); }
 
-void pr3d_use_default_shader()
+void pr3d_use_default_shader(void)
 {
     pr3d_use_shader(pr3d_shader_pool[PR3D_SHADER_SOLID_COLOR]);
 }
@@ -78,24 +78,7 @@ void pr3d_set_shader_uniform_bool(unsigned int shader, char *name, bool value)
 
 void pr3d_init_shader_pool(void)
 {
-    const char *VERTEX_SHADER_SOURCE = "#version 330 core\n"
-                                       "layout (location = 0) in vec3 aPos;\n"
-                                       "void main()\n"
-                                       "{\n"
-                                       "    gl_Position = vec4(aPos, 1.0);\n"
-                                       "}\0";
-
-    const char *FRAG_SHADER_SOURCE = "#version 330 core\n"
-                                     "out vec4 FragColor;\n"
-                                     "uniform vec4 fillColor;\n"
-                                     "void main()\n"
-                                     "{\n"
-                                     "   FragColor = fillColor;\n"
-                                     "}\0";
-
-    unsigned int solid_color_shader =
-        pr3d_create_shader(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);
-
+    unsigned int solid_color_shader = pr3d_init_solid_color_shader();
     pr3d_shader_pool[PR3D_SHADER_SOLID_COLOR] = solid_color_shader;
 
     pr3d_use_default_shader();
