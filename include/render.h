@@ -15,7 +15,7 @@ struct PR3DMesh
 };
 
 /**
- * Clears the screen using the given color.
+ * Clears the screen using the given color. Values are from 0-1.
  *
  * @param r
  * @param g
@@ -23,6 +23,19 @@ struct PR3DMesh
  * @param a
  */
 void pr3d_clear_screen(float r, float g, float b, float a);
+
+/**
+ * Changes the color used to render objects.
+ * This is designed to work with the default shader type specified in
+ * PR3DShader. If you have changed the shader using pr3d_use_shader() using this
+ * function may cause undefined behavior or segfault.
+ *
+ * @param r
+ * @param g
+ * @param b
+ * @param a
+ */
+void pr3d_set_render_color(float r, float g, float b, float a);
 
 /**
  * Creates a triangle mesh with the given vertex positions.

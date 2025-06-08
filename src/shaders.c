@@ -1,5 +1,6 @@
 #include "glad.h"
 #include "shaders.h"
+#include "render.h"
 #include "shaders_internal.h"
 #include "common_macros.h"
 #include <GLFW/glfw3.h>
@@ -46,32 +47,58 @@ pr3d_create_shader(const char *vertex_source, const char *frag_source)
 
 void pr3d_use_shader(unsigned int shader) { glUseProgram(shader); }
 
+void pr3d_use_default_shader()
+{
+    pr3d_use_shader(pr3d_shader_pool[PR3D_SHADER_SOLID_COLOR]);
+}
+
 void pr3d_delete_shader(unsigned int shader) { glDeleteProgram(shader); }
+
+void pr3d_set_shader_uniform_4f(
+    unsigned int shader, char *name, float a, float b, float c, float d
+)
+{
+    glUniform4f(glGetUniformLocation(shader, name), a, b, c, d);
+}
+
+void pr3d_set_shader_uniform_float(unsigned int shader, char *name, float value)
+{
+    glUniform1f(glGetUniformLocation(shader, name), value);
+}
+
+void pr3d_set_shader_uniform_int(unsigned int shader, char *name, int value)
+{
+    glUniform1i(glGetUniformLocation(shader, name), value);
+}
+
+void pr3d_set_shader_uniform_bool(unsigned int shader, char *name, bool value)
+{
+    glUniform1i(glGetUniformLocation(shader, name), (int)value);
+}
 
 void pr3d_init_shader_pool(void)
 {
-    const char *VERTEX_SHADER_SOURCE =
-        "#version 330 core\n"
-        "layout (location = 0) in vec3 aPos;\n"
-        "void main()\n"
-        "{\n"
-        "    gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-        "}\0";
+    const char *VERTEX_SHADER_SOURCE = "#version 330 core\n"
+                                       "layout (location = 0) in vec3 aPos;\n"
+                                       "void main()\n"
+                                       "{\n"
+                                       "    gl_Position = vec4(aPos, 1.0);\n"
+                                       "}\0";
 
-    const char *FRAG_SHADER_SOURCE =
-        "#version 330 core\n"
-        "out vec4 FragColor;\n"
-        "void main()\n"
-        "{\n"
-        "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-        "}\0";
+    const char *FRAG_SHADER_SOURCE = "#version 330 core\n"
+                                     "out vec4 FragColor;\n"
+                                     "uniform vec4 fillColor;\n"
+                                     "void main()\n"
+                                     "{\n"
+                                     "   FragColor = fillColor;\n"
+                                     "}\0";
 
-    unsigned int basic_shader =
+    unsigned int solid_color_shader =
         pr3d_create_shader(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);
 
-    pr3d_shader_pool[PR3D_SHADER_BASIC] = basic_shader;
+    pr3d_shader_pool[PR3D_SHADER_SOLID_COLOR] = solid_color_shader;
 
-    pr3d_use_shader(basic_shader);
+    pr3d_use_default_shader();
 }
 
 void pr3d_delete_shader_pool(void)

@@ -1,14 +1,23 @@
 #include "glad.h"
+#include "shaders.h"
 #include "render.h"
-#include <GLFW/glfw3.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <GLFW/glfw3.h>
 
 void pr3d_clear_screen(float r, float g, float b, float a)
 {
     glClearColor(r, g, b, a);
     glClear(GL_COLOR_BUFFER_BIT);
+}
+
+void pr3d_set_render_color(float r, float g, float b, float a)
+{
+    pr3d_set_shader_uniform_4f(
+        pr3d_shader(PR3D_SHADER_SOLID_COLOR), "fillColor", r, g, b, a
+    );
 }
 
 struct PR3DMesh *pr3d_create_triangle(
@@ -38,11 +47,6 @@ struct PR3DMesh *pr3d_create_triangle(
         0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0
     );
     glEnableVertexAttribArray(0);
-
-    // Unbind the array buffer since glVertexAttribPointer() set it as the
-    // vertex attributes buffer object, we don't need to unbind the VBO and VAO
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
 
     struct PR3DMesh mesh = {.vao = vao, .vbo = vbo};
     struct PR3DMesh *mesh_pointer = malloc(sizeof(struct PR3DMesh));
