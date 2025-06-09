@@ -49,6 +49,21 @@ struct PR3DMesh *pr3d_create_triangle(
 );
 
 /**
+ * Creates a triangle mesh with the given vertex positions and colors.
+ *
+ * @param[in] v1
+ * @param[in] v2
+ * @param[in] v3
+ * @param[in] c1
+ * @param[in] c2
+ * @param[in] c3
+ */
+struct PR3DMesh *pr3d_create_triangle_vertex_color(
+    struct PR3DVec3 *v1, struct PR3DVec3 *v2, struct PR3DVec3 *v3,
+    struct PR3DVec3 *c1, struct PR3DVec3 *c2, struct PR3DVec3 *c3
+);
+
+/**
  * Renders a mesh to the screen.
  *
  * @param[in] mesh

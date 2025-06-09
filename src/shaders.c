@@ -22,8 +22,9 @@ unsigned int pr3d_shader(enum PR3DShader type)
     return pr3d_shader_pool[type];
 }
 
-unsigned int
-pr3d_create_shader(const char *vertex_source, const char *frag_source)
+unsigned int pr3d_create_shader(
+    const char *const vertex_source, const char *const frag_source
+)
 {
     // Create a basic vertex shader
     unsigned int vertex_shader =
@@ -79,7 +80,9 @@ void pr3d_set_shader_uniform_bool(unsigned int shader, char *name, bool value)
 void pr3d_init_shader_pool(void)
 {
     unsigned int solid_color_shader = pr3d_init_solid_color_shader();
+    unsigned int vertex_color_shader = pr3d_init_vertex_color_shader();
     pr3d_shader_pool[PR3D_SHADER_SOLID_COLOR] = solid_color_shader;
+    pr3d_shader_pool[PR3D_SHADER_VERTEX_COLOR] = vertex_color_shader;
 
     pr3d_use_default_shader();
 }
@@ -101,7 +104,7 @@ void pr3d_delete_shader_pool(void)
  * @return shader
  */
 static unsigned int
-pr3d_compile_shader(int gl_shader_type, const char *shader_source)
+pr3d_compile_shader(int gl_shader_type, const char *const shader_source)
 {
     unsigned int shader = glCreateShader(gl_shader_type);
     glShaderSource(shader, 1, &shader_source, NULL);

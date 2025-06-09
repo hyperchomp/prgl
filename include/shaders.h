@@ -14,6 +14,7 @@
 enum PR3DShader
 {
     PR3D_SHADER_SOLID_COLOR,
+    PR3D_SHADER_VERTEX_COLOR,
     PR3D_SHADER_COUNT
 };
 
@@ -35,8 +36,9 @@ unsigned int pr3d_shader(enum PR3DShader type);
  * @param[in] frag_source The GLSL code for the fragment shader.
  * @return The shader program ID.
  */
-unsigned int
-pr3d_create_shader(const char *vertex_source, const char *frag_source);
+unsigned int pr3d_create_shader(
+    const char *const vertex_source, const char *const frag_source
+);
 
 /**
  * Activates a shader for use. It will be used until another shader is
