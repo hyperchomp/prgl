@@ -81,8 +81,12 @@ void pr3d_init_shader_pool(void)
 {
     unsigned int solid_color_shader = pr3d_init_solid_color_shader();
     unsigned int vertex_color_shader = pr3d_init_vertex_color_shader();
+    unsigned int texture_shader = pr3d_init_texture_shader();
+
+    // Don't do loop so if we remove any it doesn't break even if out of order
     pr3d_shader_pool[PR3D_SHADER_SOLID_COLOR] = solid_color_shader;
     pr3d_shader_pool[PR3D_SHADER_VERTEX_COLOR] = vertex_color_shader;
+    pr3d_shader_pool[PR3D_SHADER_TEXTURE] = texture_shader;
 
     pr3d_use_default_shader();
 }

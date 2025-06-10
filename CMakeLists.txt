@@ -23,7 +23,9 @@ target_sources(${CMAKE_PROJECT_NAME}
             ${CMAKE_SOURCE_DIR}/src/render.c
             ${CMAKE_SOURCE_DIR}/src/shaders.c
             ${CMAKE_SOURCE_DIR}/src/shaders_init.c
+            ${CMAKE_SOURCE_DIR}/src/texture.c
             ${CMAKE_SOURCE_DIR}/extern/glad.c
+            ${CMAKE_SOURCE_DIR}/extern/stb_image.c
 )
 
 # Compiler flags for extra warnings/errors
@@ -37,6 +39,7 @@ set(
                         "${CMAKE_SOURCE_DIR}/include/game.h"
                         "${CMAKE_SOURCE_DIR}/include/render.h"
                         "${CMAKE_SOURCE_DIR}/include/shaders.h"
+                        "${CMAKE_SOURCE_DIR}/include/texture.h"
                         "${CMAKE_SOURCE_DIR}/include/common_macros.h"
 )
 set_target_properties(
@@ -46,7 +49,7 @@ set_target_properties(
                           LIBRARY_OUTPUT_DIRECTORY ${CMAKE_INSTALL_LIBDIR}/${CMAKE_PROJECT_NAME}
 )
 
-# Link external libraries, if local to the project need add_subdirectory
+# Link external libraries
 find_package(glfw3 REQUIRED) # Generates imported target glfw
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE glfw)
 
