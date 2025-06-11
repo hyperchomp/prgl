@@ -51,11 +51,14 @@ set_target_properties(
 
 # Link external libraries
 find_package(glfw3 REQUIRED) # Generates imported target glfw
-target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE glfw)
+find_package(cglm REQUIRED)
+
+target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE glfw 
+                                            PUBLIC cglm)
 
 # Install the includes and lib files, export targets needed for find_package()
 install(
-    TARGETS ${CMAKE_PROJECT_NAME} 
+    TARGETS ${CMAKE_PROJECT_NAME}
     EXPORT ${CMAKE_PROJECT_NAME}-targets
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/${CMAKE_PROJECT_NAME}
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${CMAKE_PROJECT_NAME}

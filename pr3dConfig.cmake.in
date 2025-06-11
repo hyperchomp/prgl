@@ -2,6 +2,7 @@
 
 include(CMakeFindDependencyMacro)
 find_dependency(glfw3)
+find_dependency(cglm)
 
 include(CMakePackageConfigHelpers)
 include("${CMAKE_CURRENT_LIST_DIR}/pr3d-targets.cmake")

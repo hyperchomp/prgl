@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <cglm/cglm.h>
 #include <GLFW/glfw3.h>
 
 void pr3d_clear_screen(float r, float g, float b, float a)
@@ -21,16 +22,8 @@ void pr3d_set_render_color(float r, float g, float b, float a)
     );
 }
 
-struct PR3DMesh *pr3d_create_triangle(
-    struct PR3DVec3 *v1, struct PR3DVec3 *v2, struct PR3DVec3 *v3
-)
+struct PR3DMesh *pr3d_create_triangle(mat3 vertices)
 {
-    float vertices[] = {
-        v1->x, v1->y, v1->z, //
-        v2->x, v2->y, v2->z, //
-        v3->x, v3->y, v3->z  //
-    };
-
     // Create a vertex buffer object and vertex array object, the VBO is to
     // generate the initial data, the VAO is so we can re-use it later
     unsigned int vbo;
@@ -41,7 +34,7 @@ struct PR3DMesh *pr3d_create_triangle(
     // Bind VAO, then bind and set buffers, then configure the vertex attributes
     glBindVertexArray(vao);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(mat3), vertices, GL_STATIC_DRAW);
 
     // Tell OpenGL how to interpret our vertex data
     glVertexAttribPointer(
@@ -61,16 +54,18 @@ struct PR3DMesh *pr3d_create_triangle(
     return mesh_pointer;
 }
 
-struct PR3DMesh *pr3d_create_triangle_vertex_color(
-    struct PR3DVec3 *v1, struct PR3DVec3 *v2, struct PR3DVec3 *v3,
-    struct PR3DVec3 *c1, struct PR3DVec3 *c2, struct PR3DVec3 *c3
-)
+struct PR3DMesh *pr3d_create_triangle_vertex_color(mat3 vertices, mat3 colors)
 {
-    float vertices[] = {
-        v1->x, v1->y, v1->z, c1->x, c1->y, c1->z, //
-        v2->x, v2->y, v2->z, c2->x, c2->y, c2->z, //
-        v3->x, v3->y, v3->z, c3->x, c3->y, c3->z  //
+    // clang-format off
+    float combined_data[18] = {
+        vertices[0][0], vertices[0][1], vertices[0][2],
+          colors[0][0],   colors[0][1],   colors[0][2],
+        vertices[1][0], vertices[1][1], vertices[1][2],
+          colors[1][0],   colors[1][1],   colors[1][2],
+        vertices[2][0], vertices[2][1], vertices[2][2],
+          colors[2][0],   colors[2][1],   colors[2][2],
     };
+    // clang-format on
 
     // Create a vertex buffer object and vertex array object, the VBO is to
     // generate the initial data, the VAO is so we can re-use it later
@@ -82,7 +77,9 @@ struct PR3DMesh *pr3d_create_triangle_vertex_color(
     // Bind VAO, then bind and set buffers, then configure the vertex attributes
     glBindVertexArray(vao);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBufferData(
+        GL_ARRAY_BUFFER, sizeof(combined_data), combined_data, GL_STATIC_DRAW
+    );
 
     // Tell OpenGL how to interpret the vertex data
     glVertexAttribPointer(
@@ -109,19 +106,25 @@ struct PR3DMesh *pr3d_create_triangle_vertex_color(
 }
 
 struct PR3DMesh *pr3d_create_rectangle_textured(
-    struct PR3DVec3 *v1, struct PR3DVec3 *v2, struct PR3DVec3 *v3,
-    struct PR3DVec3 *v4, struct PR3DVec3 *c1, struct PR3DVec3 *c2,
-    struct PR3DVec3 *c3, struct PR3DVec3 *c4, struct PR3DVec2 *t1,
-    struct PR3DVec2 *t2, struct PR3DVec2 *t3, struct PR3DVec2 *t4
+    mat4 vertices, mat4 colors, mat4x2 texture_coords
 )
 {
-    float vertices[] = {
-        // vertices          // colors            // texture coordinates
-        v1->x, v1->y, v1->z, c1->x, c1->y, c1->z, t1->x, t1->y, //
-        v2->x, v2->y, v2->z, c2->x, c2->y, c2->z, t2->x, t2->y, //
-        v3->x, v3->y, v3->z, c3->x, c3->y, c3->z, t3->x, t3->y, //
-        v4->x, v4->y, v4->z, c4->x, c4->y, c4->z, t4->x, t4->y  //
+    // clang-format off
+    float combined_data[40] = {
+              vertices[0][0],       vertices[0][1], vertices[0][2], 
+                colors[0][0],         colors[0][1],   colors[0][2], 
+        texture_coords[0][0], texture_coords[0][1],
+              vertices[1][0],       vertices[1][1], vertices[1][2], 
+                colors[1][0],         colors[1][1],   colors[1][2], 
+        texture_coords[1][0], texture_coords[1][1],
+              vertices[2][0],       vertices[2][1], vertices[2][2], 
+                colors[2][0],         colors[2][1],   colors[2][2], 
+        texture_coords[2][0], texture_coords[2][1],
+              vertices[3][0],       vertices[3][1], vertices[3][2], 
+                colors[3][0],         colors[3][1],   colors[3][2], 
+        texture_coords[3][0], texture_coords[3][1]
     };
+    // clang-format on
 
     // EBO stops us from needing overlapping vertices, but we need to tell
     // OpenGL the order to go over the existing ones again to create enough
@@ -143,7 +146,9 @@ struct PR3DMesh *pr3d_create_rectangle_textured(
     // Bind VAO, then bind and set buffers, then configure the vertex attributes
     glBindVertexArray(vao);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBufferData(
+        GL_ARRAY_BUFFER, sizeof(combined_data), combined_data, GL_STATIC_DRAW
+    );
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
     glBufferData(
         GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW

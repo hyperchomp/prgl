@@ -10,37 +10,19 @@ pr3d is licensed under the [zlib License](https://zlib.net/zlib_license.html)
 
 ## Goals
 
-pr3d aims to provide these features:
+pr3d aims to provide these features at a minimum:
 
+### Rendering
 * Pixel perfect fullscreen scaling from preset base resolutions similar to 90s retro games, but supporting modern 16:9 aspect ratios
 * Native vertex wobble
-* Affine texture mapping
+* Affine texture mapping (warped textures)
 * Flat and Gouraud shading
+* glTF 3D model loading
+
+### Input
 * Keyboard and controller support
 
 This list will be updated with time, right now the focus is on getting basic features in before thinking too far ahead. As more features are fully or at least mostly completed I will add a features section when it makes sense.
-
-## Dependencies
-When working with pr3d it should never be necessary to include any dependency headers as they are included by the framework itself.
-### Install
-These dependencies must be installed separately from pr3d as the framework relies on them.
-* [GLFW](https://github.com/glfw/glfw) for a multitude of functionality, for example rendering and input.
-    * Most package managers have GLFW so you don't usually need to build it from source.
-      * Fedora
-        ```
-        dnf install glfw glfw-devel
-        ```
-      * Arch
-        ```
-        pacman -S glfw
-        ```
-      * Ubuntu
-        ```
-        apt install libglfw3 libglfw3-dev
-        ```
-### Bundled
-These dependencies are bundled in the project source code and don't require installation.
-* [Glad](https://github.com/Dav1dde/glad) for **glad1** as a GL loader.
 
 ## Installation
 
@@ -55,7 +37,7 @@ make
 sudo make install
 ```
 
-If your Linux distribution defaults to something like `/usr/local/` and you want to instead install to the system directory **at your own risk** you may add the cmake flag `-DCMAKE_INSTALL_PREFIX=/usr`. You probably don't have to use clang, but I do so there it is.
+Your Linux distribution will probably default to `/usr/local/` which is not normally a system include directory by default. If you want to instead install to the system directory you may add the cmake flag `-DCMAKE_INSTALL_PREFIX=/usr`. You probably don't have to use clang, but I do so there it is.
 
 After running the above if you need to rebuild and haven't cleaned or deleted the build directory you can simply do the following from within the build directory:
 
@@ -65,13 +47,58 @@ make
 sudo make install
 ```
 
-After this simply include any necessary pr3d modules into your project. They are in a subfolder structure so you should include them like so:
+After this (and the dependencies below!) simply include any necessary pr3d modules into your project. They are in a subfolder structure so you should include them like so:
 
 ```
 #include <pr3d/game.h>
 #include <pr3d/screen.h>
 // etc...
+
 ```
+## Dependencies
+### Install
+These dependencies must be installed separately from pr3d as the framework relies on them.
+* [GLFW](https://github.com/glfw/glfw) for a multitude of functionality, for example rendering and input. pr3d wraps a lot of GLFW functionality so you shouldn't normally need to call it directly.
+    * Most package managers have GLFW so you don't usually need to build it from source.
+      * Fedora
+        ```
+        dnf install glfw glfw-devel
+        ```
+      * Arch
+        ```
+        pacman -S glfw
+        ```
+      * Ubuntu
+        ```
+        apt install libglfw3 libglfw3-dev
+        ```
+* [cglm](https://github.com/recp/cglm) For linear algebra (2D/3D math). This is what pr3d leverages for vectors, matrices, and all the math that goes along with them. pr3d is designed to be used alongside cglm so this one will need to be linked to your project.
+    * cglm usually needs to be built from source, but it's very simple.
+        ```
+        git clone git@github.com:recp/cglm.git
+        cd cglm
+        cmake -DBUILD_SHARED_LIBS=ON  .
+        make
+        sudo make install
+        ```
+        As noted above in Installation, if you want to install to the system directory you may add the cmake flag `-DCMAKE_INSTALL_PREFIX=/usr`.
+      * You can link cglm to your project in your CMakeLists.txt by adding the below:
+        ```
+        
+        ```
+#### Linking
+You can easily link pr3d and the required dependencies to your project in CMakeLists.txt. Note that for GLFW although you need it installed you don't need to link it as pr3d aims to provide similar functionality.
+```
+find_package(pr3d REQUIRED)
+find_package(cglm REQUIRED)
+
+target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE pr3d cglm)
+```
+
+### Bundled
+These dependencies are bundled in the project source code and don't require installation.
+* [Glad](https://github.com/Dav1dde/glad) for **glad1** as a GL loader.
+* [stb](https://github.com/nothings/stb) for stb_image as a loader for things like textures.
 
 ## Contributing
 

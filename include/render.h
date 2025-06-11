@@ -1,18 +1,7 @@
 #ifndef PR3D_RENDER_H
 #define PR3D_RENDER_H
 
-struct PR3DVec2
-{
-    float x;
-    float y;
-};
-
-struct PR3DVec3
-{
-    float x;
-    float y;
-    float z;
-};
+#include <cglm/cglm.h>
 
 /**
  * Mesh object made up of vertices.
@@ -61,52 +50,29 @@ void pr3d_set_render_color(float r, float g, float b, float a);
 /**
  * Creates a triangle mesh with the given vertex positions.
  *
- * @param[in] v1
- * @param[in] v2
- * @param[in] v3
+ * @param[in] vertices
  */
-struct PR3DMesh *pr3d_create_triangle(
-    struct PR3DVec3 *v1, struct PR3DVec3 *v2, struct PR3DVec3 *v3
-);
+struct PR3DMesh *pr3d_create_triangle(mat3 vertices);
 
 /**
  * Creates a triangle mesh with the given vertex positions and colors.
  *
- * @param[in] v1
- * @param[in] v2
- * @param[in] v3
- * @param[in] c1
- * @param[in] c2
- * @param[in] c3
+ * @param[in] vertices
+ * @param[in] colors
  */
-struct PR3DMesh *pr3d_create_triangle_vertex_color(
-    struct PR3DVec3 *v1, struct PR3DVec3 *v2, struct PR3DVec3 *v3,
-    struct PR3DVec3 *c1, struct PR3DVec3 *c2, struct PR3DVec3 *c3
-);
+struct PR3DMesh *pr3d_create_triangle_vertex_color(mat3 vertices, mat3 colors);
 
 /**
  * Creates a rectangle mesh with the given vertex positions, colors, and texture
  * coordinates.
  * Make sure to attach a texture to the returned mesh struct after creating it.
  *
- * @param[in] v1
- * @param[in] v2
- * @param[in] v3
- * @param[in] v4
- * @param[in] c1
- * @param[in] c2
- * @param[in] c3
- * @param[in] c4
- * @param[in] t1
- * @param[in] t2
- * @param[in] t3
- * @param[in] t4
+ * @param[in] vertices
+ * @param[in] colors
+ * @param[in] texture_coords
  */
 struct PR3DMesh *pr3d_create_rectangle_textured(
-    struct PR3DVec3 *v1, struct PR3DVec3 *v2, struct PR3DVec3 *v3,
-    struct PR3DVec3 *v4, struct PR3DVec3 *c1, struct PR3DVec3 *c2,
-    struct PR3DVec3 *c3, struct PR3DVec3 *c4, struct PR3DVec2 *t1,
-    struct PR3DVec2 *t2, struct PR3DVec2 *t3, struct PR3DVec2 *t4
+    mat4 vertices, mat4 colors, mat4x2 texture_coords
 );
 
 /**
