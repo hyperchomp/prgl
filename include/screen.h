@@ -11,4 +11,8 @@ void pr3d_close_game(void);
 
 void pr3d_toggle_fullscreen(void);
 
+bool pr3d_vsync(void);
+
+void pr3d_set_vsync(bool enabled);
+
 #endif

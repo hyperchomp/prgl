@@ -67,6 +67,7 @@ void pr3d_create_window(char *name)
     pr3d_screen_data = (struct PR3DScreen){.window = window,
                                            .desktop_width = desktop_width,
                                            .desktop_height = desktop_height};
+    pr3d_set_vsync(true);
 }
 
 void pr3d_destroy_window(void)
@@ -94,6 +95,14 @@ void pr3d_toggle_fullscreen(void)
 }
 
 struct PR3DScreen *pr3d_screen(void) { return &pr3d_screen_data; }
+
+void pr3d_set_vsync(bool enabled)
+{
+    glfwSwapInterval(enabled);
+    pr3d_screen_data.vsync_enabled = enabled;
+}
+
+bool pr3d_vsync(void) { return pr3d_screen_data.vsync_enabled; }
 
 /**
  * Called by GLFW when resizing the window

@@ -11,6 +11,7 @@ struct PR3DScreen
     GLFWwindow *window;
     int desktop_width;
     int desktop_height;
+    bool vsync_enabled;
 };
 
 /**
