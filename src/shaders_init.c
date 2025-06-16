@@ -1,5 +1,7 @@
 #include "shaders_init_internal.h"
 #include "shaders.h"
+#include <cglm/mat4.h>
+#include <cglm/types.h>
 
 unsigned int pr3d_init_solid_color_shader(void)
 {
@@ -55,11 +57,15 @@ unsigned int pr3d_init_texture_shader(void)
         "layout (location = 0) in vec3 aPos;\n"
         "layout (location = 1) in vec3 aColor;\n"
         "layout (location = 2) in vec2 aTexCoord;\n"
+
         "out vec3 vertexColor;\n"
         "out vec2 texCoord;\n"
+
+        "uniform mat4 transform;\n"
+
         "void main()\n"
         "{\n"
-        "    gl_Position = vec4(aPos, 1.0);\n"
+        "    gl_Position = transform * vec4(aPos, 1.0);\n"
         "    vertexColor = aColor;\n"
         "    texCoord = aTexCoord;\n"
         "}\0";
@@ -70,8 +76,10 @@ unsigned int pr3d_init_texture_shader(void)
         "out vec4 FragColor;\n"
         "in vec3 vertexColor;\n"
         "in vec2 texCoord;\n"
+
         "uniform float alpha;\n"
         "uniform sampler2D imageTexture;\n"
+
         "void main()\n"
         "{\n"
         "   FragColor = texture(imageTexture, texCoord) * vec4(vertexColor, "

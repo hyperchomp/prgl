@@ -4,6 +4,7 @@
 #include "shaders_init_internal.h"
 #include "common_macros.h"
 #include <GLFW/glfw3.h>
+#include <cglm/mat4.h>
 #include <stdio.h>
 
 static unsigned int pr3d_shader_pool[PR3D_SHADER_COUNT];
@@ -46,7 +47,19 @@ unsigned int pr3d_create_shader(
     return shader_program;
 }
 
-void pr3d_use_shader(unsigned int shader) { glUseProgram(shader); }
+void pr3d_use_shader(unsigned int shader)
+{
+    glUseProgram(shader);
+
+    // If this shader has a transform matrix uniform default it to identity
+    int transform = glGetUniformLocation(
+        pr3d_shader_pool[PR3D_SHADER_TEXTURE], "transform"
+    );
+    if (transform != -1)
+    {
+        glUniformMatrix4fv(transform, 1, GL_FALSE, (float *)GLM_MAT4_IDENTITY);
+    }
+}
 
 void pr3d_use_default_shader(void)
 {
@@ -60,6 +73,13 @@ void pr3d_set_shader_uniform_4f(
 )
 {
     glUniform4f(glGetUniformLocation(shader, name), a, b, c, d);
+}
+
+void pr3d_set_shader_uniform_mat4(unsigned int shader, char *name, mat4 matrix)
+{
+    glUniformMatrix4fv(
+        glGetUniformLocation(shader, name), 1, GL_FALSE, (float *)matrix
+    );
 }
 
 void pr3d_set_shader_uniform_float(unsigned int shader, char *name, float value)

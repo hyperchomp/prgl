@@ -1,6 +1,7 @@
 #ifndef PR3D_SHADERS_H
 #define PR3D_SHADERS_H
 
+#include <cglm/types.h>
 #include <stddef.h>
 #include <stdbool.h>
 
@@ -76,6 +77,15 @@ void pr3d_delete_shader(unsigned int shader);
 void pr3d_set_shader_uniform_4f(
     unsigned int shader, char *name, float a, float b, float c, float d
 );
+
+/**
+ * Sets the value of shader uniform variable which takes 4 floats.
+ *
+ * @param shader The shader ID to set the uniform on.
+ * @param name[in] The name of the uniform to set.
+ * @param matrix The cglm matrix to assign to the uniform.
+ */
+void pr3d_set_shader_uniform_mat4(unsigned int shader, char *name, mat4 matrix);
 
 /**
  * Sets the value of shader uniform variable which takes a float.
