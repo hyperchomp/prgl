@@ -105,11 +105,32 @@ struct PR3DMesh *pr3d_create_triangle_vertex_color(mat3 vertices, mat3 colors)
     return mesh_pointer;
 }
 
-struct PR3DMesh *pr3d_create_rectangle_textured(
-    mat4 vertices, mat4 colors, mat4x2 texture_coords
-)
+struct PR3DMesh *pr3d_create_rectangle(void)
+{
+    mat4 rect_colors = {
+        {1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f}
+    };
+    return pr3d_create_rectangle_vertex_color(rect_colors);
+}
+
+struct PR3DMesh *pr3d_create_rectangle_vertex_color(mat4 colors)
 {
     // clang-format off
+    const mat4 vertices = {
+        { 0.5f,  0.5f, 0.0f, 1.0f}, // Top-right
+        { 0.5f, -0.5f, 0.0f, 1.0f}, // Bottom-right
+        {-0.5f, -0.5f, 0.0f, 1.0f}, // Bottom-left
+        {-0.5f,  0.5f, 0.0f, 1.0f}  // Top-left
+    };
+    mat4x2 texture_coords = {
+        {1.0f, 1.0f}, 
+        {1.0f, 0.0f}, 
+        {0.0f, 0.0f}, 
+        {0.0f, 1.0f}
+    };
     float combined_data[40] = {
               vertices[0][0],       vertices[0][1], vertices[0][2], 
                 colors[0][0],         colors[0][1],   colors[0][2], 
