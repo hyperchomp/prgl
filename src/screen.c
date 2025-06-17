@@ -37,8 +37,8 @@ void pr3d_create_window(char *name)
     // video mode and using that to create the window
     GLFWmonitor *monitor = glfwGetPrimaryMonitor();
     const GLFWvidmode *mode = glfwGetVideoMode(monitor);
-    int desktop_height = mode->width;
-    int desktop_width = mode->height;
+    int desktop_height = mode->height;
+    int desktop_width = mode->width;
 
     glfwWindowHint(GLFW_RED_BITS, mode->redBits);
     glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);

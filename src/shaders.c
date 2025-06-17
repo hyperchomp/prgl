@@ -51,19 +51,19 @@ void pr3d_use_shader(unsigned int shader)
 {
     glUseProgram(shader);
 
-    // If this shader has a transform matrix uniform default it to identity
-    int transform = glGetUniformLocation(
-        pr3d_shader_pool[PR3D_SHADER_TEXTURE], "transform"
-    );
-    if (transform != -1)
+    // Default model matrix uniform to identity matrix so if we aren't
+    // transforming it will still render
+    int model =
+        glGetUniformLocation(pr3d_shader_pool[PR3D_SHADER_TEXTURE], "model");
+    if (model != -1)
     {
-        glUniformMatrix4fv(transform, 1, GL_FALSE, (float *)GLM_MAT4_IDENTITY);
+        glUniformMatrix4fv(model, 1, GL_FALSE, (float *)GLM_MAT4_IDENTITY);
     }
 }
 
 void pr3d_use_default_shader(void)
 {
-    pr3d_use_shader(pr3d_shader_pool[PR3D_SHADER_SOLID_COLOR]);
+    pr3d_use_shader(pr3d_shader_pool[PR3D_SHADER_TEXTURE]);
 }
 
 void pr3d_delete_shader(unsigned int shader) { glDeleteProgram(shader); }

@@ -24,6 +24,7 @@ target_sources(${CMAKE_PROJECT_NAME}
             ${CMAKE_SOURCE_DIR}/src/shaders.c
             ${CMAKE_SOURCE_DIR}/src/shaders_init.c
             ${CMAKE_SOURCE_DIR}/src/texture.c
+            ${CMAKE_SOURCE_DIR}/src/camera.c
             ${CMAKE_SOURCE_DIR}/extern/glad.c
             ${CMAKE_SOURCE_DIR}/extern/stb_image.c
 )

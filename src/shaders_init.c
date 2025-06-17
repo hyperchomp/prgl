@@ -61,11 +61,13 @@ unsigned int pr3d_init_texture_shader(void)
         "out vec3 vertexColor;\n"
         "out vec2 texCoord;\n"
 
-        "uniform mat4 transform;\n"
+        "uniform mat4 model;\n"
+        "uniform mat4 view;\n"
+        "uniform mat4 projection;\n"
 
         "void main()\n"
         "{\n"
-        "    gl_Position = transform * vec4(aPos, 1.0);\n"
+        "    gl_Position = projection * view * model * vec4(aPos, 1.0);\n"
         "    vertexColor = aColor;\n"
         "    texCoord = aTexCoord;\n"
         "}\0";
