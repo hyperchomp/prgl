@@ -4,7 +4,7 @@
 
 pr3d is a code driven framework for making 3D games in the style of 90s retro consoles like the PS1, built from the ground up to natively render clean, chunky pixelated 3D graphics to modern displays.
 
-pr3d is about making it as simple as possible to get a retro style 3D game project off the ground so you can get straight to coding the gameplay.
+pr3d is about making it simple to get a retro style 3D game project off the ground to get straight to coding gameplay and systems that matter.
 
 pr3d is licensed under the [zlib License](https://zlib.net/zlib_license.html)
 
@@ -53,8 +53,8 @@ After this (and the dependencies below!) simply include any necessary pr3d modul
 #include <pr3d/game.h>
 #include <pr3d/screen.h>
 // etc...
-
 ```
+
 ## Dependencies
 ### Install
 These dependencies must be installed separately from pr3d as the framework relies on them.
@@ -82,10 +82,7 @@ These dependencies must be installed separately from pr3d as the framework relie
         sudo make install
         ```
         As noted above in Installation, if you want to install to the system directory you may add the cmake flag `-DCMAKE_INSTALL_PREFIX=/usr`.
-      * You can link cglm to your project in your CMakeLists.txt by adding the below:
-        ```
-        
-        ```
+
 #### Linking
 You can easily link pr3d and the required dependencies to your project in CMakeLists.txt. Note that for GLFW although you need it installed you don't need to link it as pr3d aims to provide similar functionality.
 ```
@@ -102,6 +99,6 @@ These dependencies are bundled in the project source code and don't require inst
 
 ## Contributing
 
-As of right now I'm not looking for contributors to the project. It is is a passion project of mine, and I would like to maintain control over it. If I ever decide to take contributions I will update this section accordingly.
+As of right now I'm not looking for contributors. This is a passion project of mine which I'm making for my own games and I want to maintain control over it. If I ever decide to take contributions I will update this section accordingly.
 
 pr3d is open source under the zlib license and as such you are more than welcome to fork the project and use it for your own devilry as you see fit under the minimal stipulations of the license.
