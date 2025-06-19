@@ -12,7 +12,7 @@
 void pr3d_clear_screen(float r, float g, float b, float a)
 {
     glClearColor(r, g, b, a);
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void pr3d_set_render_color(float r, float g, float b, float a)
@@ -99,7 +99,8 @@ struct PR3DMesh *pr3d_create_triangle_vertex_color(mat3 vertices, mat3 colors)
     struct PR3DMesh *mesh_pointer = malloc(sizeof(struct PR3DMesh));
     if (mesh_pointer == NULL)
     {
-        printf("pr3d_create_triangle: Error allocating mesh pointer memory!");
+        printf("pr3d_create_triangle_vertex_color: Error allocating mesh "
+               "pointer memory!");
     }
     *mesh_pointer = mesh;
     return mesh_pointer;
@@ -177,19 +178,13 @@ struct PR3DMesh *pr3d_create_rectangle_vertex_color(mat4 colors)
 
     // Tell OpenGL how to interpret the vertex data
     glVertexAttribPointer(
-        0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)0
+        0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0
     );
     glEnableVertexAttribArray(0);
 
-    // Tell OpenGL how to interpret the color data
-    glVertexAttribPointer(
-        1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(3 * sizeof(float))
-    );
-    glEnableVertexAttribArray(1);
-
     // Tell OpenGL how to interpret the texture coordinate data
     glVertexAttribPointer(
-        2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(6 * sizeof(float))
+        1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float))
     );
     glEnableVertexAttribArray(2);
 
@@ -204,7 +199,89 @@ struct PR3DMesh *pr3d_create_rectangle_vertex_color(mat4 colors)
     struct PR3DMesh *mesh_pointer = malloc(sizeof(struct PR3DMesh));
     if (mesh_pointer == NULL)
     {
-        printf("pr3d_create_triangle: Error allocating mesh pointer memory!");
+        printf("pr3d_create_rectangle_vertex_color: Error allocating mesh "
+               "pointer memory!");
+    }
+    *mesh_pointer = mesh;
+    return mesh_pointer;
+}
+
+struct PR3DMesh *pr3d_create_cube()
+{
+    // clang-format off
+    const float vertices[180] = {
+        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+         0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+
+        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+         0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+
+        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+    };
+    // clang-format on
+
+    unsigned int vbo, vao;
+    glGenVertexArrays(1, &vao);
+    glGenBuffers(1, &vbo);
+
+    glBindVertexArray(vao);
+
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    // position attribute
+    glVertexAttribPointer(
+        0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0
+    );
+    glEnableVertexAttribArray(0);
+    // texture coord attribute
+    glVertexAttribPointer(
+        1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float))
+    );
+    glEnableVertexAttribArray(1);
+
+    // Texture zero'd, must be set after using load_texture()
+    struct PR3DMesh mesh = {
+        .num_vertices = 36, .vao = vao, .vbo = vbo, .ebo = 0, .texture = 0
+    };
+    struct PR3DMesh *mesh_pointer = malloc(sizeof(struct PR3DMesh));
+    if (mesh_pointer == NULL)
+    {
+        printf("pr3d_create_cube: Error allocating mesh pointer memory!");
     }
     *mesh_pointer = mesh;
     return mesh_pointer;

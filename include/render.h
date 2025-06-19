@@ -79,6 +79,12 @@ struct PR3DMesh *pr3d_create_rectangle(void);
 struct PR3DMesh *pr3d_create_rectangle_vertex_color(mat4 colors);
 
 /**
+ * Creates a cube mesh.
+ * Make sure to attach a texture to the returned mesh struct after creating it.
+ */
+struct PR3DMesh *pr3d_create_cube();
+
+/**
  * Renders a mesh to the screen.
  *
  * @param[in] mesh

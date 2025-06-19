@@ -64,6 +64,8 @@ void pr3d_create_window(char *name)
         exit(EXIT_FAILURE);
     }
 
+    glEnable(GL_DEPTH_TEST);
+
     pr3d_screen_data = (struct PR3DScreen){.window = window,
                                            .desktop_width = desktop_width,
                                            .desktop_height = desktop_height};

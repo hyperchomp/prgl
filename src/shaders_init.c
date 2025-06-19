@@ -55,10 +55,8 @@ unsigned int pr3d_init_texture_shader(void)
     const char *const VERTEX_SHADER_SOURCE =
         "#version 330 core\n"
         "layout (location = 0) in vec3 aPos;\n"
-        "layout (location = 1) in vec3 aColor;\n"
-        "layout (location = 2) in vec2 aTexCoord;\n"
+        "layout (location = 1) in vec2 aTexCoord;\n"
 
-        "out vec3 vertexColor;\n"
         "out vec2 texCoord;\n"
 
         "uniform mat4 model;\n"
@@ -68,7 +66,6 @@ unsigned int pr3d_init_texture_shader(void)
         "void main()\n"
         "{\n"
         "    gl_Position = projection * view * model * vec4(aPos, 1.0);\n"
-        "    vertexColor = aColor;\n"
         "    texCoord = aTexCoord;\n"
         "}\0";
 
@@ -76,7 +73,6 @@ unsigned int pr3d_init_texture_shader(void)
     const char *const FRAG_SHADER_SOURCE =
         "#version 330 core\n"
         "out vec4 FragColor;\n"
-        "in vec3 vertexColor;\n"
         "in vec2 texCoord;\n"
 
         "uniform float alpha;\n"
@@ -84,7 +80,7 @@ unsigned int pr3d_init_texture_shader(void)
 
         "void main()\n"
         "{\n"
-        "   FragColor = texture(imageTexture, texCoord) * vec4(vertexColor, "
+        "   FragColor = texture(imageTexture, texCoord) * vec4(1.0, 1.0, 1.0, "
         "alpha);\n"
         "}\0";
 
