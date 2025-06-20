@@ -1,7 +1,6 @@
 #include "shaders_init_internal.h"
 #include "shaders.h"
-#include <cglm/mat4.h>
-#include <cglm/types.h>
+#include <cglm/cglm.h>
 
 unsigned int pr3d_init_solid_color_shader(void)
 {

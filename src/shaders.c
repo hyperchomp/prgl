@@ -4,10 +4,13 @@
 #include "shaders_init_internal.h"
 #include "common_macros.h"
 #include <GLFW/glfw3.h>
-#include <cglm/mat4.h>
+#include <cglm/cglm.h>
 #include <stdio.h>
 
+const char *const PR3D_TRANSFORM_UNIFORM = "model";
+
 static unsigned int pr3d_shader_pool[PR3D_SHADER_COUNT];
+static unsigned int pr3d_current_shader_id;
 
 static unsigned int
 pr3d_compile_shader(int gl_shader_type, const char *const shader_source);
@@ -22,6 +25,8 @@ unsigned int pr3d_shader(enum PR3DShader type)
 {
     return pr3d_shader_pool[type];
 }
+
+unsigned int pr3d_current_shader(void) { return pr3d_current_shader_id; }
 
 unsigned int pr3d_create_shader(
     const char *const vertex_source, const char *const frag_source
@@ -50,11 +55,13 @@ unsigned int pr3d_create_shader(
 void pr3d_use_shader(unsigned int shader)
 {
     glUseProgram(shader);
+    pr3d_current_shader_id = shader;
 
     // Default model matrix uniform to identity matrix so if we aren't
     // transforming it will still render
-    int model =
-        glGetUniformLocation(pr3d_shader_pool[PR3D_SHADER_TEXTURE], "model");
+    int model = glGetUniformLocation(
+        pr3d_shader_pool[PR3D_SHADER_TEXTURE], PR3D_TRANSFORM_UNIFORM
+    );
     if (model != -1)
     {
         glUniformMatrix4fv(model, 1, GL_FALSE, (float *)GLM_MAT4_IDENTITY);
@@ -69,30 +76,39 @@ void pr3d_use_default_shader(void)
 void pr3d_delete_shader(unsigned int shader) { glDeleteProgram(shader); }
 
 void pr3d_set_shader_uniform_4f(
-    unsigned int shader, char *name, float a, float b, float c, float d
+    unsigned int shader, const char *const name, float a, float b, float c,
+    float d
 )
 {
     glUniform4f(glGetUniformLocation(shader, name), a, b, c, d);
 }
 
-void pr3d_set_shader_uniform_mat4(unsigned int shader, char *name, mat4 matrix)
+void pr3d_set_shader_uniform_mat4(
+    unsigned int shader, const char *const name, mat4 matrix
+)
 {
     glUniformMatrix4fv(
         glGetUniformLocation(shader, name), 1, GL_FALSE, (float *)matrix
     );
 }
 
-void pr3d_set_shader_uniform_float(unsigned int shader, char *name, float value)
+void pr3d_set_shader_uniform_float(
+    unsigned int shader, const char *const name, float value
+)
 {
     glUniform1f(glGetUniformLocation(shader, name), value);
 }
 
-void pr3d_set_shader_uniform_int(unsigned int shader, char *name, int value)
+void pr3d_set_shader_uniform_int(
+    unsigned int shader, const char *const name, int value
+)
 {
     glUniform1i(glGetUniformLocation(shader, name), value);
 }
 
-void pr3d_set_shader_uniform_bool(unsigned int shader, char *name, bool value)
+void pr3d_set_shader_uniform_bool(
+    unsigned int shader, const char *const name, bool value
+)
 {
     glUniform1i(glGetUniformLocation(shader, name), (int)value);
 }

@@ -287,7 +287,10 @@ struct PR3DMesh *pr3d_create_cube()
     return mesh_pointer;
 }
 
-void pr3d_render_mesh(struct PR3DMesh *mesh)
+void pr3d_render_mesh(
+    struct PR3DMesh *mesh, vec3 position, vec3 rotation_axis, float degrees,
+    vec3 scale
+)
 {
     glBindVertexArray(mesh->vao);
 
@@ -295,6 +298,16 @@ void pr3d_render_mesh(struct PR3DMesh *mesh)
     {
         glBindTexture(GL_TEXTURE_2D, mesh->texture);
     }
+
+    // Transform the mesh to the render position.
+    mat4 trans;
+    glm_mat4_identity(trans);
+    glm_translate(trans, position);
+    glm_rotate(trans, glm_rad(degrees), rotation_axis);
+    glm_scale(trans, scale);
+    pr3d_set_shader_uniform_mat4(
+        pr3d_current_shader(), PR3D_TRANSFORM_UNIFORM, trans
+    );
 
     if (mesh->ebo == 0)
     {

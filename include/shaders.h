@@ -5,6 +5,8 @@
 #include <stddef.h>
 #include <stdbool.h>
 
+extern const char *const PR3D_TRANSFORM_UNIFORM;
+
 /**
  * Precompiled shader types. These can be used with pr3d_shader() to get the ID
  * of a precompiled shader.
@@ -30,6 +32,13 @@ enum PR3DShader
  * @return The shader program ID for the shader type.
  */
 unsigned int pr3d_shader(enum PR3DShader type);
+
+/**
+ * Gets the shader ID for the current shader in use.
+ *
+ * @return The shader program ID for the current shader.
+ */
+unsigned int pr3d_current_shader(void);
 
 /**
  * Creates a shader from the given sources.
@@ -75,7 +84,8 @@ void pr3d_delete_shader(unsigned int shader);
  * @param d
  */
 void pr3d_set_shader_uniform_4f(
-    unsigned int shader, char *name, float a, float b, float c, float d
+    unsigned int shader, const char *const name, float a, float b, float c,
+    float d
 );
 
 /**
@@ -85,7 +95,9 @@ void pr3d_set_shader_uniform_4f(
  * @param name[in] The name of the uniform to set.
  * @param matrix The cglm matrix to assign to the uniform.
  */
-void pr3d_set_shader_uniform_mat4(unsigned int shader, char *name, mat4 matrix);
+void pr3d_set_shader_uniform_mat4(
+    unsigned int shader, const char *const name, mat4 matrix
+);
 
 /**
  * Sets the value of shader uniform variable which takes a float.
@@ -95,7 +107,7 @@ void pr3d_set_shader_uniform_mat4(unsigned int shader, char *name, mat4 matrix);
  * @param value
  */
 void pr3d_set_shader_uniform_float(
-    unsigned int shader, char *name, float value
+    unsigned int shader, const char *const name, float value
 );
 
 /**
@@ -105,7 +117,9 @@ void pr3d_set_shader_uniform_float(
  * @param name[in] The name of the uniform to set.
  * @param value
  */
-void pr3d_set_shader_uniform_int(unsigned int shader, char *name, int value);
+void pr3d_set_shader_uniform_int(
+    unsigned int shader, const char *const name, int value
+);
 
 /**
  * Sets the value of shader uniform variable which takes a bool.
@@ -114,6 +128,8 @@ void pr3d_set_shader_uniform_int(unsigned int shader, char *name, int value);
  * @param name[in] The name of the uniform to set.
  * @param value
  */
-void pr3d_set_shader_uniform_bool(unsigned int shader, char *name, bool value);
+void pr3d_set_shader_uniform_bool(
+    unsigned int shader, const char *const name, bool value
+);
 
 #endif

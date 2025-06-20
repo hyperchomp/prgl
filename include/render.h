@@ -85,11 +85,18 @@ struct PR3DMesh *pr3d_create_rectangle_vertex_color(mat4 colors);
 struct PR3DMesh *pr3d_create_cube();
 
 /**
- * Renders a mesh to the screen.
+ * Renders a mesh to the screen at a position.
  *
  * @param[in] mesh
+ * @param vec3 position The XYZ position to render the mesh at.
+ * @param vec3 rotation_axis The XYZ axis of the rotation.
+ * @param float degrees The angle of rotation in degrees.
+ * @param vec3 scale The XYZ scale to apply to the mesh.
  */
-void pr3d_render_mesh(struct PR3DMesh *mesh);
+void pr3d_render_mesh(
+    struct PR3DMesh *mesh, vec3 position, vec3 rotation_axis, float degrees,
+    vec3 scale
+);
 
 /**
  * Cleans up the GL objects associated with the mesh and then frees it.
