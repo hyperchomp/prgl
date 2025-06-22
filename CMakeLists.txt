@@ -41,6 +41,7 @@ set(
                         "${CMAKE_SOURCE_DIR}/include/render.h"
                         "${CMAKE_SOURCE_DIR}/include/shaders.h"
                         "${CMAKE_SOURCE_DIR}/include/texture.h"
+                        "${CMAKE_SOURCE_DIR}/include/camera.h"
                         "${CMAKE_SOURCE_DIR}/include/common_macros.h"
 )
 set_target_properties(

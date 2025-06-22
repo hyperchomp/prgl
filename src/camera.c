@@ -2,19 +2,19 @@
 #include "screen_internal.h"
 #include "shaders.h"
 #include <cglm/cglm.h>
+#include <cglm/vec3.h>
 
 static mat4 view;
 static mat4 projection;
 
-void pr3d_init_camera(void)
+void pr3d_set_camera(vec3 position, float fov_degrees)
 {
-    // For the view back up from the origin
+    // View is the position of the camera
     glm_mat4_identity(view);
-    vec3 trans_z = {0.0f, 0.0f, -3.0f};
-    glm_translate(view, trans_z);
+    glm_translate(view, position);
 
     // Projection needs fov, aspect, and near/far clip
-    float fov = glm_rad(45.0f);
+    float fov = glm_rad(fov_degrees);
 
     struct PR3DScreen *screen = pr3d_screen();
     float aspect_ratio =
@@ -29,6 +29,8 @@ void pr3d_init_camera(void)
         pr3d_shader(PR3D_SHADER_TEXTURE), "projection", projection
     );
 }
+
+void pr3d_init_camera(void) { pr3d_set_camera(GLM_VEC3_ZERO, 60.0f); }
 
 void pr3d_update_camera(void)
 {

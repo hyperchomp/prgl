@@ -4,7 +4,8 @@
 #include <cglm/cglm.h>
 
 /**
- * Mesh object made up of vertices.
+ * Defines the geometry of a 3D object. Only one Mesh is needed to draw many
+ * of the same object.
  * Any IDs which are optional should be set to 0 if unused.
  */
 struct PR3DMesh
@@ -22,6 +23,15 @@ struct PR3DMesh
 
     // Optional - Stores the texture image if the mesh is textured.
     unsigned int texture;
+};
+
+/**
+ * A 3D Mesh object which can be placed in the world and manipulated.
+ */
+struct PR3DMeshInstance
+{
+    struct PR3DMesh *mesh;
+    mat4 transform;
 };
 
 /**
