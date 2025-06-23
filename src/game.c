@@ -1,5 +1,4 @@
 #include "game.h"
-#include "camera_internal.h"
 #include "screen_internal.h"
 #include "shaders_internal.h"
 #include <GLFW/glfw3.h>
@@ -16,7 +15,6 @@ void pr3d_run_game(
     pr3d_create_window(title);
 
     pr3d_init_shader_pool();
-    pr3d_init_camera();
     pr3d_init();
 
     struct PR3DScreen screen = *pr3d_screen();
@@ -26,7 +24,6 @@ void pr3d_run_game(
         last_update_start = glfwGetTime();
 
         pr3d_update(dt);
-        pr3d_update_camera();
 
         pr3d_render();
 

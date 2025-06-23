@@ -45,8 +45,8 @@ void pr3d_create_window(char *name)
     glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
     glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
 
-    GLFWwindow *window =
-        glfwCreateWindow(mode->width, mode->height, name, monitor, NULL);
+    GLFWwindow *window
+        = glfwCreateWindow(mode->width, mode->height, name, monitor, NULL);
     if (window == NULL)
     {
         fprintf(stderr, "new_window: Failed to create GLFW window\n");
@@ -66,9 +66,12 @@ void pr3d_create_window(char *name)
 
     glEnable(GL_DEPTH_TEST);
 
-    pr3d_screen_data = (struct PR3DScreen){.window = window,
-                                           .desktop_width = desktop_width,
-                                           .desktop_height = desktop_height};
+    pr3d_screen_data = (struct PR3DScreen
+    ){.window = window,
+      .desktop_width = desktop_width,
+      .desktop_height = desktop_height,
+      .aspect_ratio = (float)desktop_width / (float)desktop_height};
+
     pr3d_set_vsync(true);
 }
 
