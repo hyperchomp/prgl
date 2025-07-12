@@ -7,6 +7,18 @@
 bool pr3d_key_pressed(int key);
 
 /**
+ * Gets the mouse cursor x,y positions and stores them in x_pos and y_pos.
+ *
+ * Will return a screen position with 0,0 in the upper left if mouse capture
+ * mode is PR3D_MOUSE_CAPTURED, or an unbounded double if capture mode is
+ * PR3D_MOUSE_DISABLED.
+ *
+ * @param x_pos
+ * @param y_pos
+ */
+void pr3d_mouse_position(double *x_pos, double *y_pos);
+
+/**
  * KEYCODE MAPPINGS
  * These are solely for the purpose of mapping to GLFW keycodes to abstract
  * out GLFW so it does not need to be included in a project.

@@ -109,6 +109,28 @@ void pr3d_set_vsync(bool enabled)
 
 bool pr3d_vsync(void) { return pr3d_screen_data.vsync_enabled; }
 
+void pr3d_set_mouse_capture_mode(enum PR3DMouseCaptureMode mode)
+{
+    switch (mode)
+    {
+        case PR3D_MOUSE_DISABLED:
+            glfwSetInputMode(
+                pr3d_screen_data.window, GLFW_CURSOR, GLFW_CURSOR_DISABLED
+            );
+            break;
+        case PR3D_MOUSE_CAPTURED:
+            glfwSetInputMode(
+                pr3d_screen_data.window, GLFW_CURSOR, GLFW_CURSOR_CAPTURED
+            );
+            break;
+        default:
+            fprintf(
+                stderr, "pr3d_set_mouse_capture_mode: Unspecified mouse "
+                        "capture mode type.\n"
+            );
+    }
+}
+
 /**
  * Called by GLFW when resizing the window
  */

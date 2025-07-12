@@ -17,16 +17,17 @@ target_include_directories(${CMAKE_PROJECT_NAME}
 )
 
 target_sources(${CMAKE_PROJECT_NAME}
-    PRIVATE ${CMAKE_SOURCE_DIR}/src/screen.c
-            ${CMAKE_SOURCE_DIR}/src/input.c
-            ${CMAKE_SOURCE_DIR}/src/game.c
-            ${CMAKE_SOURCE_DIR}/src/render.c
-            ${CMAKE_SOURCE_DIR}/src/shaders.c
-            ${CMAKE_SOURCE_DIR}/src/shaders_init.c
-            ${CMAKE_SOURCE_DIR}/src/texture.c
-            ${CMAKE_SOURCE_DIR}/src/camera.c
-            ${CMAKE_SOURCE_DIR}/extern/glad.c
-            ${CMAKE_SOURCE_DIR}/extern/stb_image.c
+    PRIVATE "${CMAKE_SOURCE_DIR}/src/screen.c"
+            "${CMAKE_SOURCE_DIR}/src/input.c"
+            "${CMAKE_SOURCE_DIR}/src/game.c"
+            "${CMAKE_SOURCE_DIR}/src/render.c"
+            "${CMAKE_SOURCE_DIR}/src/shaders.c"
+            "${CMAKE_SOURCE_DIR}/src/shaders_init.c"
+            "${CMAKE_SOURCE_DIR}/src/texture.c"
+            "${CMAKE_SOURCE_DIR}/src/camera.c"
+            "${CMAKE_SOURCE_DIR}/src/mathx.c"
+            "${CMAKE_SOURCE_DIR}/extern/glad.c"
+            "${CMAKE_SOURCE_DIR}/extern/stb_image.c"
 )
 
 # Compiler flags for extra warnings/errors
@@ -42,6 +43,7 @@ set(
                         "${CMAKE_SOURCE_DIR}/include/shaders.h"
                         "${CMAKE_SOURCE_DIR}/include/texture.h"
                         "${CMAKE_SOURCE_DIR}/include/camera.h"
+                        "${CMAKE_SOURCE_DIR}/include/mathx.h"
                         "${CMAKE_SOURCE_DIR}/include/common_macros.h"
 )
 set_target_properties(

@@ -1,4 +1,5 @@
 #include "camera.h"
+#include "mathx.h"
 #include "screen_internal.h"
 #include "shaders.h"
 #include <cglm/cglm.h>
@@ -14,11 +15,18 @@ void pr3d_init_camera(
     glm_vec3_zero(cam->front);
     glm_vec3_zero(cam->right);
 
-    cam->up[1] = 1.0f;
-    cam->front[2] = -1.0f;
+    cam->up[1] = 1.0f;     // Up is +y
+    cam->front[2] = -1.0f; // Forward is -z
+
+    // With angles 0 degrees is pointing straight to the right. For yaw we are
+    // looking down the y axis, so in a graph view we are looking at horizontal
+    // x and vertical z. Our forward axis is -z, so we need to rotate -90
+    // degrees to be looking "forward".
     cam->yaw = -90.0f;
+
     cam->pitch = 0.0f;
     cam->move_speed = move_speed;
+    cam->look_sensitivity = 0.1f;
 
     pr3d_set_camera_fov(cam, fov_degrees);
 }
@@ -54,7 +62,7 @@ void pr3d_update_camera(struct PR3DCamera *cam)
     );
 }
 
-void pr3d_move_camera(
+void pr3d_move_camera_fly(
     struct PR3DCamera *cam, const enum PR3DCameraMoveDirection move_dir,
     const double delta_time
 )
@@ -86,6 +94,18 @@ void pr3d_move_camera(
             );
             exit(EXIT_FAILURE);
     }
+}
+
+void pr3d_move_camera_look(struct PR3DCamera *cam, float yaw, float pitch)
+{
+    yaw *= cam->look_sensitivity;
+    pitch *= cam->look_sensitivity;
+
+    cam->yaw += yaw;
+    cam->pitch += pitch;
+
+    // Clamp the camera pitch to prevent flipping
+    cam->pitch = pr3d_clampf(cam->pitch, -89.0f, 89.0f);
 }
 
 void pr3d_set_camera_fov(struct PR3DCamera *cam, float fov_degrees)
