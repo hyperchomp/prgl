@@ -206,7 +206,7 @@ struct PR3DMesh *pr3d_create_rectangle_vertex_color(mat4 colors)
     return mesh_pointer;
 }
 
-struct PR3DMesh *pr3d_create_cube()
+struct PR3DMesh *pr3d_create_cube(void)
 {
     // clang-format off
     const float vertices[180] = {

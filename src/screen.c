@@ -5,6 +5,7 @@
 #include <GLFW/glfw3.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 static void
 framebuffer_size_callback(GLFWwindow *window, int width, int height);

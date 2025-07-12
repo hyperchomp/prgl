@@ -1,6 +1,7 @@
 #ifndef PR3D_SCREEN_H
 #define PR3D_SCREEN_H
 
+#include <stdbool.h>
 #include <GLFW/glfw3.h>
 
 enum PR3DMouseCaptureMode

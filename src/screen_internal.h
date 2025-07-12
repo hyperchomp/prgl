@@ -1,6 +1,7 @@
 #ifndef PR3D_SCREEN_INTERNAL_H
 #define PR3D_SCREEN_INTERNAL_H
 
+#include <stdbool.h>
 #include <GLFW/glfw3.h>
 
 /**
