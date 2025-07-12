@@ -1,28 +1,44 @@
 # Pixel Retro 3D Game Framework (pr3d)
 
-**\*pr3d is in very early development. Breaking changes will happen regularly.**
+## What is pr3d?
 
-pr3d is a code driven framework for making 3D games in the style of 90s retro consoles like the PS1, built from the ground up to natively render clean, chunky pixelated 3D graphics to modern displays.
+pr3d is a code driven framework for making 3D games in a retro style similar to games made in the 80s and 90s, built from the ground up to natively render clean, chunky pixelated 3D graphics to modern displays.
 
 pr3d is about making it simple to get a retro style 3D game project off the ground to get straight to coding gameplay and systems that matter.
 
+**pr3d is made for me, by me first and foremost. I have made the code open source so anyone can re-use it, analyze it, and benefit from it but above all things it is tailored for me to make games. It is not a one size fits all framework and it does not aim to be.**
+
 pr3d is licensed under the [zlib License](https://zlib.net/zlib_license.html)
 
-## Goals
+## Current Features
 
-pr3d aims to provide these features at a minimum:
+### Game
+* Fly camera supporting directional movement and rotation in pitch/yaw 
 
 ### Rendering
-* Pixel perfect fullscreen scaling from preset base resolutions similar to 90s retro games, but supporting modern 16:9 aspect ratios
-* Native vertex wobble
-* Affine texture mapping (warped textures)
-* Flat and Gouraud shading
+* Simple 3D meshes such as triangles and cubes
+* Textured rectangles and cubes
+* FOV adjustment
+* Custom shaders
+
+### Input
+* Keyboard/Mouse
+
+## Goal Features
+
+### Game
+* FPS camera
+* Box collisions
+
+### Rendering
+* Pixel perfect fullscreen scaling from preset base resolution(s) similar to 90s retro games, but supporting modern 16:9 aspect ratios
+* Gouraud shading
 * glTF 3D model loading
 
 ### Input
-* Keyboard and controller support
+* Gamepad support
 
-This list will be updated with time, right now the focus is on getting basic features in before thinking too far ahead. As more features are fully or at least mostly completed I will add a features section when it makes sense.
+This list will be updated with time, right now the focus is on getting basic features in before thinking too far ahead.
 
 ## Installation
 

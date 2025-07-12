@@ -1,5 +1,6 @@
 build-debug/
 build-release/
 .cache/
+docs/
 compile_commands.json
 
