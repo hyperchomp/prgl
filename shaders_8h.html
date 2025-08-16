@@ -105,8 +105,7 @@ $(document).ready(function(){initNavTree('shaders_8h.html',''); initResizable();
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a8e130506c1b4de48cf2b75e9d73ee823"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823">PR3DShader</a> { <a class="el" href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823afa243a259f1e5c22157e730f178cc73a">PR3D_SHADER_SOLID_COLOR</a>
-, <a class="el" href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a3fdfc8eaae81513e9182b6eb9a21a69d">PR3D_SHADER_VERTEX_COLOR</a>
+<tr class="memitem:a8e130506c1b4de48cf2b75e9d73ee823"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823">PR3DShader</a> { <a class="el" href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a48f383dce86fd106f48092189286c10e">PR3D_SHADER_2D</a>
 , <a class="el" href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a1755b626d1391b1f4427bf565868696c">PR3D_SHADER_TEXTURE</a>
 , <a class="el" href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a7e2f13700015022ca4a5a67b4532049d">PR3D_SHADER_COUNT</a>
  }</td></tr>
@@ -124,6 +123,8 @@ Functions</h2></td></tr>
 <tr class="separator:afc5c01a6c96b481c4ec1628ad1db98b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8ffd567509b66eece2688f7306932a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8h.html#ab8ffd567509b66eece2688f7306932a6">pr3d_use_default_shader</a> (void)</td></tr>
 <tr class="separator:ab8ffd567509b66eece2688f7306932a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34d8e37688a45669d3504d97a307677f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8h.html#a34d8e37688a45669d3504d97a307677f">pr3d_use_default_shader_2d</a> (void)</td></tr>
+<tr class="separator:a34d8e37688a45669d3504d97a307677f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d20e50f82710d11f110f10995b7ad71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8h.html#a5d20e50f82710d11f110f10995b7ad71">pr3d_delete_shader</a> (unsigned int shader)</td></tr>
 <tr class="separator:a5d20e50f82710d11f110f10995b7ad71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2c9ce3fd0650d162e7812135b078945"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8h.html#aa2c9ce3fd0650d162e7812135b078945">pr3d_set_shader_uniform_4f</a> (unsigned int shader, const char *const name, float a, float b, float c, float d)</td></tr>
@@ -155,15 +156,14 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Precompiled shader types. These can be used with <a class="el" href="shaders_8h.html#ad81f662b7c1ddabf77cf508e976e4eb3">pr3d_shader()</a> to get the ID of a precompiled shader.</p>
-<p>The default is PR3D_SHADER_SOLID_COLOR and is set after shaders are initialized before the game loop starts. </p>
+<p>The default is PR3D_SHADER_TEXTURE for 3D, and PR3D_SHADER_2D for 2D </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a8e130506c1b4de48cf2b75e9d73ee823afa243a259f1e5c22157e730f178cc73a" name="a8e130506c1b4de48cf2b75e9d73ee823afa243a259f1e5c22157e730f178cc73a"></a>PR3D_SHADER_SOLID_COLOR&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8e130506c1b4de48cf2b75e9d73ee823a3fdfc8eaae81513e9182b6eb9a21a69d" name="a8e130506c1b4de48cf2b75e9d73ee823a3fdfc8eaae81513e9182b6eb9a21a69d"></a>PR3D_SHADER_VERTEX_COLOR&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a8e130506c1b4de48cf2b75e9d73ee823a48f383dce86fd106f48092189286c10e" name="a8e130506c1b4de48cf2b75e9d73ee823a48f383dce86fd106f48092189286c10e"></a>PR3D_SHADER_2D&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a8e130506c1b4de48cf2b75e9d73ee823a1755b626d1391b1f4427bf565868696c" name="a8e130506c1b4de48cf2b75e9d73ee823a1755b626d1391b1f4427bf565868696c"></a>PR3D_SHADER_TEXTURE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a8e130506c1b4de48cf2b75e9d73ee823a7e2f13700015022ca4a5a67b4532049d" name="a8e130506c1b4de48cf2b75e9d73ee823a7e2f13700015022ca4a5a67b4532049d"></a>PR3D_SHADER_COUNT&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8h_source.html#l00017">17</a> of file <a class="el" href="shaders_8h_source.html">shaders.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8h_source.html#l00016">16</a> of file <a class="el" href="shaders_8h_source.html">shaders.h</a>.</p>
 
 </div>
 </div>
@@ -252,7 +252,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00076">76</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00081">81</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -318,7 +318,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00078">78</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00083">83</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -363,7 +363,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00109">109</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00114">114</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -408,7 +408,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00095">95</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00100">100</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -453,7 +453,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00102">102</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00107">107</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -498,7 +498,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00086">86</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00091">91</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -540,6 +540,27 @@ Variables</h2></td></tr>
 <p>Re-activates the default shader for use. </p>
 
 <p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00071">71</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+
+</div>
+</div>
+<a id="a34d8e37688a45669d3504d97a307677f" name="a34d8e37688a45669d3504d97a307677f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34d8e37688a45669d3504d97a307677f">&#9670;&#160;</a></span>pr3d_use_default_shader_2d()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pr3d_use_default_shader_2d </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Activates the default 2D shader for use. </p>
+
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00076">76</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>

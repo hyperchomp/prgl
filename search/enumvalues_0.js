@@ -126,8 +126,7 @@ var searchData=
   ['pr3d_5fkey_5fz_123',['PR3D_KEY_Z',['../input_8h.html#aaa69eeed51e68526f23c86d4af5fb93ea7362ae9dacfaea7ba4380b71749d9319',1,'input.h']]],
   ['pr3d_5fmouse_5fcaptured_124',['PR3D_MOUSE_CAPTURED',['../screen_8h.html#a42883193c4119e2822d46c3fee2e2e47aeb4a861f36c75ea9f330443aac7e858b',1,'screen.h']]],
   ['pr3d_5fmouse_5fdisabled_125',['PR3D_MOUSE_DISABLED',['../screen_8h.html#a42883193c4119e2822d46c3fee2e2e47ab714ba5f92a01cd09dd3949c617774e3',1,'screen.h']]],
-  ['pr3d_5fshader_5fcount_126',['PR3D_SHADER_COUNT',['../shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a7e2f13700015022ca4a5a67b4532049d',1,'shaders.h']]],
-  ['pr3d_5fshader_5fsolid_5fcolor_127',['PR3D_SHADER_SOLID_COLOR',['../shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823afa243a259f1e5c22157e730f178cc73a',1,'shaders.h']]],
-  ['pr3d_5fshader_5ftexture_128',['PR3D_SHADER_TEXTURE',['../shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a1755b626d1391b1f4427bf565868696c',1,'shaders.h']]],
-  ['pr3d_5fshader_5fvertex_5fcolor_129',['PR3D_SHADER_VERTEX_COLOR',['../shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a3fdfc8eaae81513e9182b6eb9a21a69d',1,'shaders.h']]]
+  ['pr3d_5fshader_5f2d_126',['PR3D_SHADER_2D',['../shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a48f383dce86fd106f48092189286c10e',1,'shaders.h']]],
+  ['pr3d_5fshader_5fcount_127',['PR3D_SHADER_COUNT',['../shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a7e2f13700015022ca4a5a67b4532049d',1,'shaders.h']]],
+  ['pr3d_5fshader_5ftexture_128',['PR3D_SHADER_TEXTURE',['../shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a1755b626d1391b1f4427bf565868696c',1,'shaders.h']]]
 ];

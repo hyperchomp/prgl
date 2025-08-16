@@ -168,126 +168,130 @@ $(document).ready(function(){initNavTree('shaders_8c_source.html',''); initResiz
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <a class="code hl_function" href="shaders_8c.html#afc5c01a6c96b481c4ec1628ad1db98b2">pr3d_use_shader</a>(pr3d_shader_pool[<a class="code hl_enumvalue" href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a1755b626d1391b1f4427bf565868696c">PR3D_SHADER_TEXTURE</a>]);</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="shaders_8c.html#a5d20e50f82710d11f110f10995b7ad71">   76</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="shaders_8c.html#a5d20e50f82710d11f110f10995b7ad71">pr3d_delete_shader</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader) { glDeleteProgram(shader); }</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="shaders_8c.html#aa2c9ce3fd0650d162e7812135b078945">   78</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="shaders_8c.html#aa2c9ce3fd0650d162e7812135b078945">pr3d_set_shader_uniform_4f</a>(</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> name, <span class="keywordtype">float</span> a, <span class="keywordtype">float</span> b, <span class="keywordtype">float</span> c,</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordtype">float</span> d</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>)</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>{</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    glUniform4f(glGetUniformLocation(shader, name), a, b, c, d);</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>}</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="shaders_8c.html#a200d492131d3e880a2686c4eaf533e15">   86</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="shaders_8c.html#a200d492131d3e880a2686c4eaf533e15">pr3d_set_shader_uniform_mat4</a>(</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> name, mat4 matrix</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>)</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>{</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    glUniformMatrix4fv(</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        glGetUniformLocation(shader, name), 1, GL_FALSE, (<span class="keywordtype">float</span> *)matrix</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    );</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="shaders_8c.html#a55b4c148e8e88576dadc204bfd8a39a7">   95</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="shaders_8c.html#a55b4c148e8e88576dadc204bfd8a39a7">pr3d_set_shader_uniform_float</a>(</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> name, <span class="keywordtype">float</span> value</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>)</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>{</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    glUniform1f(glGetUniformLocation(shader, name), value);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>}</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="shaders_8c.html#a69cfdad79b9a9324b578832d1de007ca">  102</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="shaders_8c.html#a69cfdad79b9a9324b578832d1de007ca">pr3d_set_shader_uniform_int</a>(</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> name, <span class="keywordtype">int</span> value</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>)</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>{</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    glUniform1i(glGetUniformLocation(shader, name), value);</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>}</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="shaders_8c.html#a5209a8b4a4c398a644a9f93135f6cec1">  109</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="shaders_8c.html#a5209a8b4a4c398a644a9f93135f6cec1">pr3d_set_shader_uniform_bool</a>(</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> name, <span class="keywordtype">bool</span> value</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>)</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>{</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    glUniform1i(glGetUniformLocation(shader, name), (<span class="keywordtype">int</span>)value);</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>}</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="shaders_8c.html#a3ca6d0c449e975ce83cbc31cf89c2f2b">  116</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="shaders_8c.html#a3ca6d0c449e975ce83cbc31cf89c2f2b">pr3d_init_shader_pool</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="shaders_8c.html#a34d8e37688a45669d3504d97a307677f">   76</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="shaders_8c.html#a34d8e37688a45669d3504d97a307677f">pr3d_use_default_shader_2d</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>{</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <a class="code hl_function" href="shaders_8c.html#afc5c01a6c96b481c4ec1628ad1db98b2">pr3d_use_shader</a>(pr3d_shader_pool[<a class="code hl_enumvalue" href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a48f383dce86fd106f48092189286c10e">PR3D_SHADER_2D</a>]);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>}</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="shaders_8c.html#a5d20e50f82710d11f110f10995b7ad71">   81</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="shaders_8c.html#a5d20e50f82710d11f110f10995b7ad71">pr3d_delete_shader</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader) { glDeleteProgram(shader); }</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="shaders_8c.html#aa2c9ce3fd0650d162e7812135b078945">   83</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="shaders_8c.html#aa2c9ce3fd0650d162e7812135b078945">pr3d_set_shader_uniform_4f</a>(</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> name, <span class="keywordtype">float</span> a, <span class="keywordtype">float</span> b, <span class="keywordtype">float</span> c,</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">float</span> d</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>)</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>{</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    glUniform4f(glGetUniformLocation(shader, name), a, b, c, d);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>}</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="shaders_8c.html#a200d492131d3e880a2686c4eaf533e15">   91</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="shaders_8c.html#a200d492131d3e880a2686c4eaf533e15">pr3d_set_shader_uniform_mat4</a>(</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> name, mat4 matrix</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>)</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>{</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    glUniformMatrix4fv(</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        glGetUniformLocation(shader, name), 1, GL_FALSE, (<span class="keywordtype">float</span> *)matrix</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    );</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>}</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="shaders_8c.html#a55b4c148e8e88576dadc204bfd8a39a7">  100</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="shaders_8c.html#a55b4c148e8e88576dadc204bfd8a39a7">pr3d_set_shader_uniform_float</a>(</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> name, <span class="keywordtype">float</span> value</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>)</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>{</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    glUniform1f(glGetUniformLocation(shader, name), value);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>}</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="shaders_8c.html#a69cfdad79b9a9324b578832d1de007ca">  107</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="shaders_8c.html#a69cfdad79b9a9324b578832d1de007ca">pr3d_set_shader_uniform_int</a>(</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> name, <span class="keywordtype">int</span> value</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>)</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>{</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    glUniform1i(glGetUniformLocation(shader, name), value);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>}</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="shaders_8c.html#a5209a8b4a4c398a644a9f93135f6cec1">  114</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="shaders_8c.html#a5209a8b4a4c398a644a9f93135f6cec1">pr3d_set_shader_uniform_bool</a>(</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> name, <span class="keywordtype">bool</span> value</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>)</div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>{</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> solid_color_shader = <a class="code hl_function" href="shaders__init_8c.html#a629579b82e0f28fe6c009c54ab4d406f">pr3d_init_solid_color_shader</a>();</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> vertex_color_shader = <a class="code hl_function" href="shaders__init_8c.html#a0e61f6a1c1f772aa55d52a077df595a2">pr3d_init_vertex_color_shader</a>();</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> texture_shader = <a class="code hl_function" href="shaders__init_8c.html#a48ba1808d962cf4554e9105f583f7bc5">pr3d_init_texture_shader</a>();</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="comment">// Don&#39;t do loop so if we remove any it doesn&#39;t break even if out of order</span></div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    pr3d_shader_pool[<a class="code hl_enumvalue" href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823afa243a259f1e5c22157e730f178cc73a">PR3D_SHADER_SOLID_COLOR</a>] = solid_color_shader;</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    pr3d_shader_pool[<a class="code hl_enumvalue" href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a3fdfc8eaae81513e9182b6eb9a21a69d">PR3D_SHADER_VERTEX_COLOR</a>] = vertex_color_shader;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    pr3d_shader_pool[<a class="code hl_enumvalue" href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a1755b626d1391b1f4427bf565868696c">PR3D_SHADER_TEXTURE</a>] = texture_shader;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <a class="code hl_function" href="shaders_8c.html#ab8ffd567509b66eece2688f7306932a6">pr3d_use_default_shader</a>();</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>}</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    glUniform1i(glGetUniformLocation(shader, name), (<span class="keywordtype">int</span>)value);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>}</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="shaders_8c.html#a3ca6d0c449e975ce83cbc31cf89c2f2b">  121</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="shaders_8c.html#a3ca6d0c449e975ce83cbc31cf89c2f2b">pr3d_init_shader_pool</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>{</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> texture_shader = <a class="code hl_function" href="shaders__init_8c.html#a48ba1808d962cf4554e9105f583f7bc5">pr3d_init_texture_shader</a>();</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader_2d = <a class="code hl_function" href="shaders__init_8c.html#aeab6c439edaa05ed3ab89365bbe0bb78">pr3d_init_shader_2d</a>();</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="comment">// Don&#39;t do loop so if we remove any it doesn&#39;t break even if out of order</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    pr3d_shader_pool[<a class="code hl_enumvalue" href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a48f383dce86fd106f48092189286c10e">PR3D_SHADER_2D</a>] = shader_2d;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    pr3d_shader_pool[<a class="code hl_enumvalue" href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a1755b626d1391b1f4427bf565868696c">PR3D_SHADER_TEXTURE</a>] = texture_shader;</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="shaders_8c.html#a2b2c917addf34e5b514f30cf976450d1">  130</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="shaders_8c.html#a2b2c917addf34e5b514f30cf976450d1">pr3d_delete_shader_pool</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>{</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_enumvalue" href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a7e2f13700015022ca4a5a67b4532049d">PR3D_SHADER_COUNT</a>; i++)</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    {</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        glDeleteProgram(pr3d_shader_pool[i]);</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    }</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>}</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>pr3d_compile_shader(<span class="keywordtype">int</span> gl_shader_type, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> shader_source)</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>{</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader = glCreateShader(gl_shader_type);</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    glShaderSource(shader, 1, &amp;shader_source, NULL);</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    glCompileShader(shader);</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    pr3d_validate_shader(shader);</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keywordflow">return</span> shader;</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>}</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <a class="code hl_function" href="shaders_8c.html#ab8ffd567509b66eece2688f7306932a6">pr3d_use_default_shader</a>();</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>}</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="shaders_8c.html#a2b2c917addf34e5b514f30cf976450d1">  133</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="shaders_8c.html#a2b2c917addf34e5b514f30cf976450d1">pr3d_delete_shader_pool</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>{</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_enumvalue" href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a7e2f13700015022ca4a5a67b4532049d">PR3D_SHADER_COUNT</a>; i++)</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    {</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        glDeleteProgram(pr3d_shader_pool[i]);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    }</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>}</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>pr3d_compile_shader(<span class="keywordtype">int</span> gl_shader_type, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> shader_source)</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>{</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader = glCreateShader(gl_shader_type);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    glShaderSource(shader, 1, &amp;shader_source, NULL);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    glCompileShader(shader);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    pr3d_validate_shader(shader);</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>pr3d_create_shader_program(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shaders[], <span class="keywordtype">size_t</span> length)</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>{</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader_program = glCreateProgram();</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; length; i++)</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    {</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        glAttachShader(shader_program, shaders[i]);</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    }</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    glLinkProgram(shader_program);</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    pr3d_validate_shader_program(shader_program);</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="keywordflow">return</span> shader_program;</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>}</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="keywordflow">return</span> shader;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>}</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>pr3d_create_shader_program(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shaders[], <span class="keywordtype">size_t</span> length)</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>{</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader_program = glCreateProgram();</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; length; i++)</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    {</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        glAttachShader(shader_program, shaders[i]);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    }</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    glLinkProgram(shader_program);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    pr3d_validate_shader_program(shader_program);</div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="keyword">static</span> <span class="keywordtype">void</span> pr3d_validate_shader(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader)</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>{</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="keywordtype">int</span> success;</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="keywordtype">char</span> info_log[512];</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    glGetShaderiv(shader, GL_COMPILE_STATUS, &amp;success);</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordflow">if</span> (!success)</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    {</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        glGetShaderInfoLog(shader, 512, NULL, info_log);</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        printf(<span class="stringliteral">&quot;ERROR::SHADER::COMPILATION_FAILED\n%s\n&quot;</span>, info_log);</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    }</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>}</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="keyword">static</span> <span class="keywordtype">void</span> pr3d_validate_shader_program(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader_program)</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>{</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordtype">int</span> success;</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    <span class="keywordtype">char</span> info_log[512];</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    glGetProgramiv(shader_program, GL_LINK_STATUS, &amp;success);</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keywordflow">if</span> (!success)</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    {</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        glGetProgramInfoLog(shader_program, 512, NULL, info_log);</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        printf(<span class="stringliteral">&quot;ERROR::SHADER::LINK_FAILED\n%s\n&quot;</span>, info_log);</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    }</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>}</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keywordflow">return</span> shader_program;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>}</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="keyword">static</span> <span class="keywordtype">void</span> pr3d_validate_shader(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader)</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>{</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordtype">int</span> success;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keywordtype">char</span> info_log[512];</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    glGetShaderiv(shader, GL_COMPILE_STATUS, &amp;success);</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keywordflow">if</span> (!success)</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    {</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        glGetShaderInfoLog(shader, 512, NULL, info_log);</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        printf(<span class="stringliteral">&quot;ERROR::SHADER::COMPILATION_FAILED\n%s\n&quot;</span>, info_log);</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    }</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>}</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="keyword">static</span> <span class="keywordtype">void</span> pr3d_validate_shader_program(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader_program)</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>{</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keywordtype">int</span> success;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="keywordtype">char</span> info_log[512];</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    glGetProgramiv(shader_program, GL_LINK_STATUS, &amp;success);</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="keywordflow">if</span> (!success)</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    {</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        glGetProgramInfoLog(shader_program, 512, NULL, info_log);</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        printf(<span class="stringliteral">&quot;ERROR::SHADER::LINK_FAILED\n%s\n&quot;</span>, info_log);</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    }</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>}</div>
 <div class="ttc" id="acommon__macros_8h_html"><div class="ttname"><a href="common__macros_8h.html">common_macros.h</a></div></div>
 <div class="ttc" id="acommon__macros_8h_html_aa0d31954193e3d97a35ac9861d609a0f"><div class="ttname"><a href="common__macros_8h.html#aa0d31954193e3d97a35ac9861d609a0f">ARR_LEN</a></div><div class="ttdeci">#define ARR_LEN(x)</div><div class="ttdef"><b>Definition:</b> <a href="common__macros_8h_source.html#l00023">common_macros.h:23</a></div></div>
-<div class="ttc" id="ashaders_8c_html_a200d492131d3e880a2686c4eaf533e15"><div class="ttname"><a href="shaders_8c.html#a200d492131d3e880a2686c4eaf533e15">pr3d_set_shader_uniform_mat4</a></div><div class="ttdeci">void pr3d_set_shader_uniform_mat4(unsigned int shader, const char *const name, mat4 matrix)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00086">shaders.c:86</a></div></div>
-<div class="ttc" id="ashaders_8c_html_a2b2c917addf34e5b514f30cf976450d1"><div class="ttname"><a href="shaders_8c.html#a2b2c917addf34e5b514f30cf976450d1">pr3d_delete_shader_pool</a></div><div class="ttdeci">void pr3d_delete_shader_pool(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00130">shaders.c:130</a></div></div>
-<div class="ttc" id="ashaders_8c_html_a3ca6d0c449e975ce83cbc31cf89c2f2b"><div class="ttname"><a href="shaders_8c.html#a3ca6d0c449e975ce83cbc31cf89c2f2b">pr3d_init_shader_pool</a></div><div class="ttdeci">void pr3d_init_shader_pool(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00116">shaders.c:116</a></div></div>
-<div class="ttc" id="ashaders_8c_html_a5209a8b4a4c398a644a9f93135f6cec1"><div class="ttname"><a href="shaders_8c.html#a5209a8b4a4c398a644a9f93135f6cec1">pr3d_set_shader_uniform_bool</a></div><div class="ttdeci">void pr3d_set_shader_uniform_bool(unsigned int shader, const char *const name, bool value)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00109">shaders.c:109</a></div></div>
-<div class="ttc" id="ashaders_8c_html_a55b4c148e8e88576dadc204bfd8a39a7"><div class="ttname"><a href="shaders_8c.html#a55b4c148e8e88576dadc204bfd8a39a7">pr3d_set_shader_uniform_float</a></div><div class="ttdeci">void pr3d_set_shader_uniform_float(unsigned int shader, const char *const name, float value)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00095">shaders.c:95</a></div></div>
-<div class="ttc" id="ashaders_8c_html_a5d20e50f82710d11f110f10995b7ad71"><div class="ttname"><a href="shaders_8c.html#a5d20e50f82710d11f110f10995b7ad71">pr3d_delete_shader</a></div><div class="ttdeci">void pr3d_delete_shader(unsigned int shader)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00076">shaders.c:76</a></div></div>
-<div class="ttc" id="ashaders_8c_html_a69cfdad79b9a9324b578832d1de007ca"><div class="ttname"><a href="shaders_8c.html#a69cfdad79b9a9324b578832d1de007ca">pr3d_set_shader_uniform_int</a></div><div class="ttdeci">void pr3d_set_shader_uniform_int(unsigned int shader, const char *const name, int value)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00102">shaders.c:102</a></div></div>
-<div class="ttc" id="ashaders_8c_html_aa2c9ce3fd0650d162e7812135b078945"><div class="ttname"><a href="shaders_8c.html#aa2c9ce3fd0650d162e7812135b078945">pr3d_set_shader_uniform_4f</a></div><div class="ttdeci">void pr3d_set_shader_uniform_4f(unsigned int shader, const char *const name, float a, float b, float c, float d)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00078">shaders.c:78</a></div></div>
+<div class="ttc" id="ashaders_8c_html_a200d492131d3e880a2686c4eaf533e15"><div class="ttname"><a href="shaders_8c.html#a200d492131d3e880a2686c4eaf533e15">pr3d_set_shader_uniform_mat4</a></div><div class="ttdeci">void pr3d_set_shader_uniform_mat4(unsigned int shader, const char *const name, mat4 matrix)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00091">shaders.c:91</a></div></div>
+<div class="ttc" id="ashaders_8c_html_a2b2c917addf34e5b514f30cf976450d1"><div class="ttname"><a href="shaders_8c.html#a2b2c917addf34e5b514f30cf976450d1">pr3d_delete_shader_pool</a></div><div class="ttdeci">void pr3d_delete_shader_pool(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00133">shaders.c:133</a></div></div>
+<div class="ttc" id="ashaders_8c_html_a34d8e37688a45669d3504d97a307677f"><div class="ttname"><a href="shaders_8c.html#a34d8e37688a45669d3504d97a307677f">pr3d_use_default_shader_2d</a></div><div class="ttdeci">void pr3d_use_default_shader_2d(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00076">shaders.c:76</a></div></div>
+<div class="ttc" id="ashaders_8c_html_a3ca6d0c449e975ce83cbc31cf89c2f2b"><div class="ttname"><a href="shaders_8c.html#a3ca6d0c449e975ce83cbc31cf89c2f2b">pr3d_init_shader_pool</a></div><div class="ttdeci">void pr3d_init_shader_pool(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00121">shaders.c:121</a></div></div>
+<div class="ttc" id="ashaders_8c_html_a5209a8b4a4c398a644a9f93135f6cec1"><div class="ttname"><a href="shaders_8c.html#a5209a8b4a4c398a644a9f93135f6cec1">pr3d_set_shader_uniform_bool</a></div><div class="ttdeci">void pr3d_set_shader_uniform_bool(unsigned int shader, const char *const name, bool value)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00114">shaders.c:114</a></div></div>
+<div class="ttc" id="ashaders_8c_html_a55b4c148e8e88576dadc204bfd8a39a7"><div class="ttname"><a href="shaders_8c.html#a55b4c148e8e88576dadc204bfd8a39a7">pr3d_set_shader_uniform_float</a></div><div class="ttdeci">void pr3d_set_shader_uniform_float(unsigned int shader, const char *const name, float value)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00100">shaders.c:100</a></div></div>
+<div class="ttc" id="ashaders_8c_html_a5d20e50f82710d11f110f10995b7ad71"><div class="ttname"><a href="shaders_8c.html#a5d20e50f82710d11f110f10995b7ad71">pr3d_delete_shader</a></div><div class="ttdeci">void pr3d_delete_shader(unsigned int shader)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00081">shaders.c:81</a></div></div>
+<div class="ttc" id="ashaders_8c_html_a69cfdad79b9a9324b578832d1de007ca"><div class="ttname"><a href="shaders_8c.html#a69cfdad79b9a9324b578832d1de007ca">pr3d_set_shader_uniform_int</a></div><div class="ttdeci">void pr3d_set_shader_uniform_int(unsigned int shader, const char *const name, int value)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00107">shaders.c:107</a></div></div>
+<div class="ttc" id="ashaders_8c_html_aa2c9ce3fd0650d162e7812135b078945"><div class="ttname"><a href="shaders_8c.html#aa2c9ce3fd0650d162e7812135b078945">pr3d_set_shader_uniform_4f</a></div><div class="ttdeci">void pr3d_set_shader_uniform_4f(unsigned int shader, const char *const name, float a, float b, float c, float d)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00083">shaders.c:83</a></div></div>
 <div class="ttc" id="ashaders_8c_html_aa6002123e219037103b11a30164e168c"><div class="ttname"><a href="shaders_8c.html#aa6002123e219037103b11a30164e168c">PR3D_TRANSFORM_UNIFORM</a></div><div class="ttdeci">const char *const PR3D_TRANSFORM_UNIFORM</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00010">shaders.c:10</a></div></div>
 <div class="ttc" id="ashaders_8c_html_ab5297d5ecae3e3e4becf2bad94884614"><div class="ttname"><a href="shaders_8c.html#ab5297d5ecae3e3e4becf2bad94884614">pr3d_create_shader</a></div><div class="ttdeci">unsigned int pr3d_create_shader(const char *const vertex_source, const char *const frag_source)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00031">shaders.c:31</a></div></div>
 <div class="ttc" id="ashaders_8c_html_ab8ffd567509b66eece2688f7306932a6"><div class="ttname"><a href="shaders_8c.html#ab8ffd567509b66eece2688f7306932a6">pr3d_use_default_shader</a></div><div class="ttdeci">void pr3d_use_default_shader(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00071">shaders.c:71</a></div></div>
@@ -295,14 +299,12 @@ $(document).ready(function(){initNavTree('shaders_8c_source.html',''); initResiz
 <div class="ttc" id="ashaders_8c_html_af97fd0c06e4d1e4e88b94ed246b95972"><div class="ttname"><a href="shaders_8c.html#af97fd0c06e4d1e4e88b94ed246b95972">pr3d_current_shader</a></div><div class="ttdeci">unsigned int pr3d_current_shader(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00029">shaders.c:29</a></div></div>
 <div class="ttc" id="ashaders_8c_html_afc5c01a6c96b481c4ec1628ad1db98b2"><div class="ttname"><a href="shaders_8c.html#afc5c01a6c96b481c4ec1628ad1db98b2">pr3d_use_shader</a></div><div class="ttdeci">void pr3d_use_shader(unsigned int shader)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00055">shaders.c:55</a></div></div>
 <div class="ttc" id="ashaders_8h_html"><div class="ttname"><a href="shaders_8h.html">shaders.h</a></div></div>
-<div class="ttc" id="ashaders_8h_html_a8e130506c1b4de48cf2b75e9d73ee823"><div class="ttname"><a href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823">PR3DShader</a></div><div class="ttdeci">PR3DShader</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8h_source.html#l00017">shaders.h:18</a></div></div>
-<div class="ttc" id="ashaders_8h_html_a8e130506c1b4de48cf2b75e9d73ee823a1755b626d1391b1f4427bf565868696c"><div class="ttname"><a href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a1755b626d1391b1f4427bf565868696c">PR3D_SHADER_TEXTURE</a></div><div class="ttdeci">@ PR3D_SHADER_TEXTURE</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8h_source.html#l00021">shaders.h:21</a></div></div>
-<div class="ttc" id="ashaders_8h_html_a8e130506c1b4de48cf2b75e9d73ee823a3fdfc8eaae81513e9182b6eb9a21a69d"><div class="ttname"><a href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a3fdfc8eaae81513e9182b6eb9a21a69d">PR3D_SHADER_VERTEX_COLOR</a></div><div class="ttdeci">@ PR3D_SHADER_VERTEX_COLOR</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8h_source.html#l00020">shaders.h:20</a></div></div>
-<div class="ttc" id="ashaders_8h_html_a8e130506c1b4de48cf2b75e9d73ee823a7e2f13700015022ca4a5a67b4532049d"><div class="ttname"><a href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a7e2f13700015022ca4a5a67b4532049d">PR3D_SHADER_COUNT</a></div><div class="ttdeci">@ PR3D_SHADER_COUNT</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8h_source.html#l00023">shaders.h:22</a></div></div>
-<div class="ttc" id="ashaders_8h_html_a8e130506c1b4de48cf2b75e9d73ee823afa243a259f1e5c22157e730f178cc73a"><div class="ttname"><a href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823afa243a259f1e5c22157e730f178cc73a">PR3D_SHADER_SOLID_COLOR</a></div><div class="ttdeci">@ PR3D_SHADER_SOLID_COLOR</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8h_source.html#l00019">shaders.h:19</a></div></div>
-<div class="ttc" id="ashaders__init_8c_html_a0e61f6a1c1f772aa55d52a077df595a2"><div class="ttname"><a href="shaders__init_8c.html#a0e61f6a1c1f772aa55d52a077df595a2">pr3d_init_vertex_color_shader</a></div><div class="ttdeci">unsigned int pr3d_init_vertex_color_shader(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders__init_8c_source.html#l00026">shaders_init.c:26</a></div></div>
-<div class="ttc" id="ashaders__init_8c_html_a48ba1808d962cf4554e9105f583f7bc5"><div class="ttname"><a href="shaders__init_8c.html#a48ba1808d962cf4554e9105f583f7bc5">pr3d_init_texture_shader</a></div><div class="ttdeci">unsigned int pr3d_init_texture_shader(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders__init_8c_source.html#l00052">shaders_init.c:52</a></div></div>
-<div class="ttc" id="ashaders__init_8c_html_a629579b82e0f28fe6c009c54ab4d406f"><div class="ttname"><a href="shaders__init_8c.html#a629579b82e0f28fe6c009c54ab4d406f">pr3d_init_solid_color_shader</a></div><div class="ttdeci">unsigned int pr3d_init_solid_color_shader(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders__init_8c_source.html#l00005">shaders_init.c:5</a></div></div>
+<div class="ttc" id="ashaders_8h_html_a8e130506c1b4de48cf2b75e9d73ee823"><div class="ttname"><a href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823">PR3DShader</a></div><div class="ttdeci">PR3DShader</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8h_source.html#l00016">shaders.h:17</a></div></div>
+<div class="ttc" id="ashaders_8h_html_a8e130506c1b4de48cf2b75e9d73ee823a1755b626d1391b1f4427bf565868696c"><div class="ttname"><a href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a1755b626d1391b1f4427bf565868696c">PR3D_SHADER_TEXTURE</a></div><div class="ttdeci">@ PR3D_SHADER_TEXTURE</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8h_source.html#l00019">shaders.h:19</a></div></div>
+<div class="ttc" id="ashaders_8h_html_a8e130506c1b4de48cf2b75e9d73ee823a48f383dce86fd106f48092189286c10e"><div class="ttname"><a href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a48f383dce86fd106f48092189286c10e">PR3D_SHADER_2D</a></div><div class="ttdeci">@ PR3D_SHADER_2D</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8h_source.html#l00018">shaders.h:18</a></div></div>
+<div class="ttc" id="ashaders_8h_html_a8e130506c1b4de48cf2b75e9d73ee823a7e2f13700015022ca4a5a67b4532049d"><div class="ttname"><a href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a7e2f13700015022ca4a5a67b4532049d">PR3D_SHADER_COUNT</a></div><div class="ttdeci">@ PR3D_SHADER_COUNT</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8h_source.html#l00021">shaders.h:20</a></div></div>
+<div class="ttc" id="ashaders__init_8c_html_a48ba1808d962cf4554e9105f583f7bc5"><div class="ttname"><a href="shaders__init_8c.html#a48ba1808d962cf4554e9105f583f7bc5">pr3d_init_texture_shader</a></div><div class="ttdeci">unsigned int pr3d_init_texture_shader(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders__init_8c_source.html#l00031">shaders_init.c:31</a></div></div>
+<div class="ttc" id="ashaders__init_8c_html_aeab6c439edaa05ed3ab89365bbe0bb78"><div class="ttname"><a href="shaders__init_8c.html#aeab6c439edaa05ed3ab89365bbe0bb78">pr3d_init_shader_2d</a></div><div class="ttdeci">unsigned int pr3d_init_shader_2d(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders__init_8c_source.html#l00005">shaders_init.c:5</a></div></div>
 <div class="ttc" id="ashaders__init__internal_8h_html"><div class="ttname"><a href="shaders__init__internal_8h.html">shaders_init_internal.h</a></div></div>
 <div class="ttc" id="ashaders__internal_8h_html"><div class="ttname"><a href="shaders__internal_8h.html">shaders_internal.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
