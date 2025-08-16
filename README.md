@@ -2,11 +2,9 @@
 
 ## What is pr3d?
 
+**pr3d is made for me, by me first and foremost. I have made the code open source so anyone can re-use it, analyze it, and benefit from it but above all things it is made by me to make my own games. It is not a one size fits all framework and it does not aim to be.**
+
 pr3d is a code driven framework for making 3D games in a retro style similar to games made in the 80s and 90s, built from the ground up to natively render clean, chunky pixelated 3D graphics to modern displays.
-
-pr3d is about making it simple to get a retro style 3D game project off the ground to get straight to coding gameplay and systems that matter.
-
-**pr3d is made for me, by me first and foremost. I have made the code open source so anyone can re-use it, analyze it, and benefit from it but above all things it is tailored for me to make games. It is not a one size fits all framework and it does not aim to be.**
 
 pr3d is licensed under the [zlib License](https://zlib.net/zlib_license.html)
 
