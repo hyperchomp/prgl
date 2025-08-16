@@ -11,13 +11,11 @@ extern const char *const PR3D_TRANSFORM_UNIFORM;
  * Precompiled shader types. These can be used with pr3d_shader() to get the ID
  * of a precompiled shader.
  *
- * The default is PR3D_SHADER_SOLID_COLOR and is set after shaders are
- * initialized before the game loop starts.
+ * The default is PR3D_SHADER_TEXTURE for 3D, and PR3D_SHADER_2D for 2D
  */
 enum PR3DShader
 {
-    PR3D_SHADER_SOLID_COLOR,
-    PR3D_SHADER_VERTEX_COLOR,
+    PR3D_SHADER_2D,
     PR3D_SHADER_TEXTURE,
     PR3D_SHADER_COUNT
 };
@@ -65,6 +63,11 @@ void pr3d_use_shader(unsigned int shader);
  * Re-activates the default shader for use.
  */
 void pr3d_use_default_shader(void);
+
+/**
+ * Activates the default 2D shader for use.
+ */
+void pr3d_use_default_shader_2d(void);
 
 /**
  * Flags a shader for deletion.

@@ -15,13 +15,6 @@ void pr3d_clear_screen(float r, float g, float b, float a)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void pr3d_set_render_color(float r, float g, float b, float a)
-{
-    pr3d_set_shader_uniform_4f(
-        pr3d_shader(PR3D_SHADER_SOLID_COLOR), "fillColor", r, g, b, a
-    );
-}
-
 struct PR3DMesh *pr3d_create_triangle(mat3 vertices)
 {
     // Create a vertex buffer object and vertex array object, the VBO is to
