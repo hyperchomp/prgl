@@ -2,7 +2,10 @@
 #include "mathx.h"
 #include "screen_internal.h"
 #include "shaders.h"
-#include <cglm/cglm.h>
+#include "cglm/types.h"
+#include "cglm/cam.h"
+#include "cglm/vec3.h"
+#include <stdio.h>
 
 static vec3 PR3D_WORLD_UP = {0.0f, 1.0f, 0.0f};
 

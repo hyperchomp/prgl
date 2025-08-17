@@ -1,7 +1,7 @@
 #ifndef PR3D_SHADERS_H
 #define PR3D_SHADERS_H
 
-#include <cglm/types.h>
+#include "cglm/types.h"
 #include <stddef.h>
 #include <stdbool.h>
 

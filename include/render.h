@@ -1,7 +1,7 @@
 #ifndef PR3D_RENDER_H
 #define PR3D_RENDER_H
 
-#include <cglm/cglm.h>
+#include "cglm/types.h"
 
 /**
  * Defines the geometry of a 3D object. Only one Mesh is needed to draw many

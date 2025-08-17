@@ -1,6 +1,5 @@
 #include "shaders_init_internal.h"
 #include "shaders.h"
-#include <cglm/cglm.h>
 
 unsigned int pr3d_init_shader_2d(void)
 {

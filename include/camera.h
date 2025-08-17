@@ -1,7 +1,7 @@
 #ifndef PR3D_CAMERA_H
 #define PR3D_CAMERA_H
 
-#include <cglm/cglm.h>
+#include "cglm/types.h"
 
 /**
  * A camera for viewing the scene.

@@ -3,8 +3,8 @@
 #include "shaders_internal.h"
 #include "shaders_init_internal.h"
 #include "common_macros.h"
+#include "cglm/mat4.h"
 #include <GLFW/glfw3.h>
-#include <cglm/cglm.h>
 #include <stdio.h>
 
 const char *const PR3D_TRANSFORM_UNIFORM = "model";

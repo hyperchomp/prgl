@@ -4,12 +4,19 @@ project(pr3d VERSION 0.0.1
         LANGUAGES C)
 set(CMAKE_C_STANDARD 99)
 
+# Search the local directory first for libs
+set(CMAKE_PREFIX_PATH "/usr/local" ${CMAKE_PREFIX_PATH})
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_library(${CMAKE_PROJECT_NAME})
+
+# BUILD_INTERFACE is for the files in the source tree
+# INSTALL_INTERFACE is for the files in the install (e.g. /usr/)
 target_include_directories(${CMAKE_PROJECT_NAME} 
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/extern/include>
         $<INSTALL_INTERFACE:include/${CMAKE_PROJECT_NAME}>
     PRIVATE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
@@ -55,10 +62,8 @@ set_target_properties(
 
 # Link external libraries
 find_package(glfw3 REQUIRED) # Generates imported target glfw
-find_package(cglm REQUIRED)
 
-target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE glfw 
-                                            PUBLIC cglm)
+target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE glfw) 
 
 # Install the includes and lib files, export targets needed for find_package()
 install(
@@ -69,6 +74,13 @@ install(
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/${CMAKE_PROJECT_NAME}
 )
 
+# Install cglm library files into a cglm subdirectory
+install(
+    DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/extern/include/cglm"
+    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${CMAKE_PROJECT_NAME}"
+)
+
+# CMake install
 install(
 	EXPORT ${CMAKE_PROJECT_NAME}-targets
 	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${CMAKE_PROJECT_NAME}

@@ -2,11 +2,13 @@
 #include "common_macros.h"
 #include "shaders.h"
 #include "render.h"
+#include "cglm/affine.h"
+#include "cglm/mat4.h"
+#include "cglm/types.h"
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <cglm/cglm.h>
 #include <GLFW/glfw3.h>
 
 void pr3d_clear_screen(float r, float g, float b, float a)
