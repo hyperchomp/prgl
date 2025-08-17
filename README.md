@@ -6,7 +6,11 @@
 
 pr3d is a code driven framework for making 3D games in a retro style similar to games made in the 80s and 90s, built from the ground up to natively render clean, chunky pixelated 3D graphics to modern displays.
 
+## Licensing
+
 pr3d is licensed under the [zlib License](https://zlib.net/zlib_license.html)
+
+Libraries used within pr3d may have differing licenses that are useable alongside the zlib license. Licenses for dependencies are listed below in the Dependencies section.
 
 ## Current Features
 
@@ -72,7 +76,7 @@ After this (and the dependencies below!) simply include any necessary pr3d modul
 ## Dependencies
 ### Install
 These dependencies must be installed separately from pr3d as the framework relies on them.
-* [GLFW](https://github.com/glfw/glfw) for a multitude of functionality, for example rendering and input. pr3d wraps a lot of GLFW functionality so you shouldn't normally need to call it directly.
+* [GLFW](https://github.com/glfw/glfw) (zlib) for a multitude of functionality, for example rendering and input. pr3d wraps a lot of GLFW functionality so you shouldn't normally need to call it directly.
     * I recommend building GLFW from source as a static library, this process is very similar to installing pr3d. The directions can be found [in the GLFW documentation](https://www.glfw.org/docs/latest/compile.html).
 
 #### Linking
@@ -85,9 +89,9 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE pr3d)
 
 ### Bundled
 These dependencies are bundled in the project source code and don't require installation.
-* [Glad](https://github.com/Dav1dde/glad) for **glad1** as a GL loader.
-* [stb](https://github.com/nothings/stb) for stb_image as a loader for things like textures.
-* [cglm](https://github.com/recp/cglm) For linear algebra (2D/3D math). This is what pr3d leverages for vectors, matrices, and all the math that goes along with them. This library is meant to be used directly when developing with pr3d for the data structures and supporting math it provides.
+* [Glad](https://github.com/Dav1dde/glad) (MIT) for **glad1** as a GL loader.
+* [stb](https://github.com/nothings/stb) (MIT) for stb_image as a loader for things like textures.
+* [cglm](https://github.com/recp/cglm) (MIT) For linear algebra (2D/3D math). This is what pr3d leverages for vectors, matrices, and all the math that goes along with them. This library is meant to be used directly when developing with pr3d for the data structures and supporting math it provides.
 
 ## Contributing
 
