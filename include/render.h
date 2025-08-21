@@ -52,28 +52,10 @@ void pr3d_clear_screen(float r, float g, float b, float a);
 struct PR3DMesh *pr3d_create_triangle(mat3 vertices);
 
 /**
- * Creates a triangle mesh with the given vertex positions and colors.
- *
- * @param[in] vertices
- * @param[in] colors
- */
-struct PR3DMesh *pr3d_create_triangle_vertex_color(mat3 vertices, mat3 colors);
-
-/**
  * Creates a rectangle mesh.
  * Make sure to attach a texture to the returned mesh struct after creating it.
- *
- * @param[in] colors
  */
 struct PR3DMesh *pr3d_create_rectangle(void);
-
-/**
- * Creates a rectangle mesh with the given vertex colors.
- * Make sure to attach a texture to the returned mesh struct after creating it.
- *
- * @param[in] colors
- */
-struct PR3DMesh *pr3d_create_rectangle_vertex_color(mat4 colors);
 
 /**
  * Creates a cube mesh.

@@ -75,70 +75,7 @@ struct PR3DMesh *pr3d_create_triangle(mat3 vertices)
     return mesh_pointer;
 }
 
-struct PR3DMesh *pr3d_create_triangle_vertex_color(mat3 vertices, mat3 colors)
-{
-    // clang-format off
-    float combined_data[18] = {
-        vertices[0][0], vertices[0][1], vertices[0][2],
-          colors[0][0],   colors[0][1],   colors[0][2],
-        vertices[1][0], vertices[1][1], vertices[1][2],
-          colors[1][0],   colors[1][1],   colors[1][2],
-        vertices[2][0], vertices[2][1], vertices[2][2],
-          colors[2][0],   colors[2][1],   colors[2][2],
-    };
-    // clang-format on
-
-    // Create a vertex buffer object and vertex array object, the VBO is to
-    // generate the initial data, the VAO is so we can re-use it later
-    unsigned int vbo;
-    unsigned int vao;
-    glGenBuffers(1, &vbo);
-    glGenVertexArrays(1, &vao);
-
-    // Bind VAO, then bind and set buffers, then configure the vertex attributes
-    glBindVertexArray(vao);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(
-        GL_ARRAY_BUFFER, sizeof(combined_data), combined_data, GL_STATIC_DRAW
-    );
-
-    // Tell OpenGL how to interpret the vertex data
-    glVertexAttribPointer(
-        0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *)0
-    );
-    glEnableVertexAttribArray(0);
-
-    // Tell OpenGL how to interpret the color data
-    glVertexAttribPointer(
-        1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *)(3 * sizeof(float))
-    );
-    glEnableVertexAttribArray(1);
-
-    struct PR3DMesh mesh = {
-        .num_vertices = 3, .vao = vao, .vbo = vbo, .ebo = 0, .texture = 0
-    };
-    struct PR3DMesh *mesh_pointer = malloc(sizeof(struct PR3DMesh));
-    if (mesh_pointer == NULL)
-    {
-        printf("pr3d_create_triangle_vertex_color: Error allocating mesh "
-               "pointer memory!");
-    }
-    *mesh_pointer = mesh;
-    return mesh_pointer;
-}
-
 struct PR3DMesh *pr3d_create_rectangle(void)
-{
-    mat4 rect_colors = {
-        {1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f}
-    };
-    return pr3d_create_rectangle_vertex_color(rect_colors);
-}
-
-struct PR3DMesh *pr3d_create_rectangle_vertex_color(mat4 colors)
 {
     // clang-format off
     const mat4 vertices = {
@@ -153,18 +90,14 @@ struct PR3DMesh *pr3d_create_rectangle_vertex_color(mat4 colors)
         {0.0f, 0.0f}, 
         {0.0f, 1.0f}
     };
-    float combined_data[40] = {
+    float combined_data[20] = {
               vertices[0][0],       vertices[0][1], vertices[0][2], 
-                colors[0][0],         colors[0][1],   colors[0][2], 
         texture_coords[0][0], texture_coords[0][1],
               vertices[1][0],       vertices[1][1], vertices[1][2], 
-                colors[1][0],         colors[1][1],   colors[1][2], 
         texture_coords[1][0], texture_coords[1][1],
               vertices[2][0],       vertices[2][1], vertices[2][2], 
-                colors[2][0],         colors[2][1],   colors[2][2], 
         texture_coords[2][0], texture_coords[2][1],
               vertices[3][0],       vertices[3][1], vertices[3][2], 
-                colors[3][0],         colors[3][1],   colors[3][2], 
         texture_coords[3][0], texture_coords[3][1]
     };
     // clang-format on
@@ -207,7 +140,7 @@ struct PR3DMesh *pr3d_create_rectangle_vertex_color(mat4 colors)
     glVertexAttribPointer(
         1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float))
     );
-    glEnableVertexAttribArray(2);
+    glEnableVertexAttribArray(1);
 
     // Texture zero'd, must be set after using load_texture()
     struct PR3DMesh mesh = {
