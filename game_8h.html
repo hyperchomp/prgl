@@ -100,8 +100,8 @@ $(document).ready(function(){initNavTree('game_8h.html',''); initResizable(); })
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad3e18b13872f4f638f4801cd277495cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8h.html#ad3e18b13872f4f638f4801cd277495cd">pr3d_run_game</a> (char *title, void(*pr3d_init)(void), void(*pr3d_update)(double delta_time), void(*pr3d_render)(void))</td></tr>
-<tr class="separator:ad3e18b13872f4f638f4801cd277495cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a019db917c35115dc11413b1462b43979"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8h.html#a019db917c35115dc11413b1462b43979">pr3d_run_game</a> (char *title, void(*pr3d_init)(void), void(*pr3d_update)(double delta_time), void(*pr3d_render)(void), void(*pr3d_render_gui)(void))</td></tr>
+<tr class="separator:a019db917c35115dc11413b1462b43979"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a098fb703b539a170740e7850016af4a6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8h.html#a098fb703b539a170740e7850016af4a6">pr3d_delta_time</a> (void)</td></tr>
 <tr class="separator:a098fb703b539a170740e7850016af4a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -129,12 +129,12 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00038">38</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00049">49</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
 
 </div>
 </div>
-<a id="ad3e18b13872f4f638f4801cd277495cd" name="ad3e18b13872f4f638f4801cd277495cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3e18b13872f4f638f4801cd277495cd">&#9670;&#160;</a></span>pr3d_run_game()</h2>
+<a id="a019db917c35115dc11413b1462b43979" name="a019db917c35115dc11413b1462b43979"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a019db917c35115dc11413b1462b43979">&#9670;&#160;</a></span>pr3d_run_game()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -161,7 +161,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">void(*)(void)&#160;</td>
-          <td class="paramname"><em>pr3d_render</em>&#160;</td>
+          <td class="paramname"><em>pr3d_render</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*)(void)&#160;</td>
+          <td class="paramname"><em>pr3d_render_gui</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -178,11 +184,12 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pr3d_init</td><td>Initialize callback function, runs before the main game loop starts. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pr3d_update</td><td>The update callback function, must accept a delta time </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pr3d_render</td><td>Render callback function </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pr3d_render_gui</td><td>Render gui callback function </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00009">9</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00013">13</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
 
 </div>
 </div>

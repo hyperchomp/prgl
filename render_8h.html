@@ -123,6 +123,8 @@ Functions</h2></td></tr>
 <tr class="separator:a196141e1b4bb71847f218c9f2870e233"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c3c6351ac03485f63485d220ba69ce2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8h.html#a2c3c6351ac03485f63485d220ba69ce2">pr3d_render_mesh</a> (struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *mesh, vec3 position, vec3 rotation_axis, float degrees, vec3 scale)</td></tr>
 <tr class="separator:a2c3c6351ac03485f63485d220ba69ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a2b878f2f08c87cd356780d382e4959"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8h.html#a8a2b878f2f08c87cd356780d382e4959">pr3d_render_mesh_2d</a> (struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *mesh, vec2 position, float rotation_degrees, vec2 scale)</td></tr>
+<tr class="separator:a8a2b878f2f08c87cd356780d382e4959"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e2eae802cf220b32b263c65a4ea8823"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8h.html#a2e2eae802cf220b32b263c65a4ea8823">pr3d_delete_mesh</a> (struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *mesh)</td></tr>
 <tr class="separator:a2e2eae802cf220b32b263c65a4ea8823"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -196,7 +198,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Creates a cube mesh. Make sure to attach a texture to the returned mesh struct after creating it. </p>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00204">204</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00230">230</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -223,7 +225,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00104">104</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00130">130</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -250,7 +252,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00115">115</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00141">141</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -315,7 +317,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00052">52</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00078">78</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -336,7 +338,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Cleans up the GL objects associated with the mesh and then frees it. </p>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00317">317</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00372">372</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -395,7 +397,59 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00285">285</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00311">311</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+
+</div>
+</div>
+<a id="a8a2b878f2f08c87cd356780d382e4959" name="a8a2b878f2f08c87cd356780d382e4959"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a2b878f2f08c87cd356780d382e4959">&#9670;&#160;</a></span>pr3d_render_mesh_2d()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pr3d_render_mesh_2d </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *&#160;</td>
+          <td class="paramname"><em>mesh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec2&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>rotation_degrees</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec2&#160;</td>
+          <td class="paramname"><em>scale</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Renders a mesh to the screen at a 2D position. Rotation will be about the Z axis.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">mesh</td><td></td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vec2</td><td>position The XY position to render the mesh at. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">float</td><td>degrees The angle of rotation in degrees. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">vec2</td><td>scale The XY scale to apply to the mesh. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00343">343</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
