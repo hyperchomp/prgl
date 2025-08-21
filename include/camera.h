@@ -58,7 +58,9 @@ void pr3d_init_camera(
 );
 
 /**
- * Sends the view and projection matrices to the shader every frame.
+ * Sends the view matrix to the shader, should be called each frame for
+ * perspective rendering. Note that orthogonal projection doesn't use the view
+ * matrix, so this update is not needed when using the 2D shader.
  *
  * @param cam[in,out]
  */
