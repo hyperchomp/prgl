@@ -19,6 +19,24 @@ void pr3d_clear_screen(float r, float g, float b, float a)
 
 struct PR3DMesh *pr3d_create_triangle(mat3 vertices)
 {
+    // clang-format off
+    
+    mat3x2 texture_coords = {
+        {0.0f, 0.0f}, 
+        {1.0f, 0.0f}, 
+        {0.5f, 1.0f}, 
+    };
+    // Combine vertex position and texture coordinate data
+    float combined_data[15] = {
+              vertices[0][0],       vertices[0][1], vertices[0][2],
+        texture_coords[0][0], texture_coords[0][1],
+              vertices[1][0],       vertices[1][1], vertices[1][2],
+        texture_coords[1][0], texture_coords[1][1],
+              vertices[2][0],       vertices[2][1], vertices[2][2],
+        texture_coords[2][0], texture_coords[2][1],
+    };
+    // clang-format on
+
     // Create a vertex buffer object and vertex array object, the VBO is to
     // generate the initial data, the VAO is so we can re-use it later
     unsigned int vbo;
@@ -29,13 +47,21 @@ struct PR3DMesh *pr3d_create_triangle(mat3 vertices)
     // Bind VAO, then bind and set buffers, then configure the vertex attributes
     glBindVertexArray(vao);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(mat3), vertices, GL_STATIC_DRAW);
+    glBufferData(
+        GL_ARRAY_BUFFER, sizeof(combined_data), combined_data, GL_STATIC_DRAW
+    );
 
     // Tell OpenGL how to interpret our vertex data
     glVertexAttribPointer(
-        0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0
+        0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0
     );
     glEnableVertexAttribArray(0);
+
+    // texture coord attribute
+    glVertexAttribPointer(
+        1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float))
+    );
+    glEnableVertexAttribArray(1);
 
     struct PR3DMesh mesh = {
         .num_vertices = 3, .vao = vao, .vbo = vbo, .ebo = 0, .texture = 0
@@ -303,6 +329,35 @@ void pr3d_render_mesh(
     pr3d_set_shader_uniform_mat4(
         pr3d_current_shader(), PR3D_TRANSFORM_UNIFORM, trans
     );
+
+    if (mesh->ebo == 0)
+    {
+        glDrawArrays(GL_TRIANGLES, 0, mesh->num_vertices);
+    }
+    else
+    {
+        glDrawElements(GL_TRIANGLES, mesh->num_vertices, GL_UNSIGNED_INT, 0);
+    }
+}
+
+void pr3d_render_mesh_2d(
+    struct PR3DMesh *mesh, vec2 position, float rotation_degrees, vec2 scale
+)
+{
+    glBindVertexArray(mesh->vao);
+
+    if (mesh->texture != 0)
+    {
+        glBindTexture(GL_TEXTURE_2D, mesh->texture);
+    }
+
+    // Transform the mesh to the render position.
+    mat4 trans;
+    glm_mat4_identity(trans);
+    glm_translate(trans, (vec3){position[0], position[1], 0.0f});
+    glm_rotate(trans, glm_rad(rotation_degrees), (vec3){0.0f, 0.0f, 1.0f});
+    glm_scale(trans, (vec3){scale[0], scale[1], 1.0f});
+    pr3d_set_shader_uniform_mat4(PR3D_SHADER_2D, PR3D_TRANSFORM_UNIFORM, trans);
 
     if (mesh->ebo == 0)
     {

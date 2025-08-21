@@ -10,8 +10,9 @@
  */
 struct PR3DCamera
 {
-    mat4 view;       ///< The position of the camera stored as a view matrix.
-    mat4 projection; ///< The camera's projection matrix for fov, clipping, etc.
+    mat4 view; ///< The position of the camera stored as a view matrix.
+    mat4 projection_perspective; ///< Projection matrix for fov, clipping, etc.
+    mat4 projection_orthogonal;  ///< Projection matrix for 2D/Ortho
 
     vec3 position;
     vec3 front;
@@ -30,10 +31,16 @@ struct PR3DCamera
  */
 enum PR3DCameraMoveDirection
 {
-    PR3D_CAMERA_FORWARD,
-    PR3D_CAMERA_BACKWARD,
-    PR3D_CAMERA_RIGHT,
-    PR3D_CAMERA_LEFT
+    PR3D_CAMERA_MOVE_DIR_FORWARD,
+    PR3D_CAMERA_MOVE_DIR_BACKWARD,
+    PR3D_CAMERA_MOVE_DIR_RIGHT,
+    PR3D_CAMERA_MOVE_DIR_LEFT
+};
+
+enum PR3DCameraProjectionType
+{
+    PR3D_CAMERA_PROJECTION_PERSPECTIVE,
+    PR3D_CAMERA_PROJECTION_ORTHOGONAL
 };
 
 /**
@@ -41,11 +48,13 @@ enum PR3DCameraMoveDirection
  * sets the camera's position to {0, 0, 0}.
  *
  * @param cam[in,out] An uninitialized PR3DCamera struct.
- * @param fov_degrees The vertical fov for the camera in degrees.
+ * @param fov_degrees The vertical fov for the camera in degrees. For orthogonal
+ * cameras this can be set to zero since it's not needed.
  * @param move_speed Speed value to use when moving the camera.
  */
 void pr3d_init_camera(
-    struct PR3DCamera *cam, float fov_degrees, float move_speed
+    struct PR3DCamera *cam, float fov_degrees, float move_speed,
+    enum PR3DCameraProjectionType projection_type
 );
 
 /**
@@ -84,6 +93,9 @@ void pr3d_move_camera_look(struct PR3DCamera *cam, float yaw, float pitch);
  * @param cam[in,out]
  * @param fov_degrees The vertical fov for the camera in degrees.
  */
-void pr3d_set_camera_fov(struct PR3DCamera *cam, float fov_degrees);
+void pr3d_set_camera_projection(
+    struct PR3DCamera *cam, float fov_degrees,
+    enum PR3DCameraProjectionType projection_type
+);
 
 #endif

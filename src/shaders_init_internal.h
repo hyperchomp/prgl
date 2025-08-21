@@ -3,6 +3,6 @@
 
 unsigned int pr3d_init_shader_2d(void);
 
-unsigned int pr3d_init_texture_shader(void);
+unsigned int pr3d_init_shader_3d(void);
 
 #endif

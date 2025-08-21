@@ -1,4 +1,6 @@
+#include "glad.h"
 #include "game.h"
+#include "shaders.h"
 #include "screen_internal.h"
 #include "shaders_internal.h"
 #include <GLFW/glfw3.h>
@@ -6,9 +8,12 @@
 static double last_update_start = 0;
 static double dt = 0;
 
+// static struct PR3DCamera gui_camera;
+
 void pr3d_run_game(
     char *title, void (*pr3d_init)(void),
-    void (*pr3d_update)(double delta_time), void (*pr3d_render)(void)
+    void (*pr3d_update)(double delta_time), void (*pr3d_render)(void),
+    void (*pr3d_render_gui)(void)
 )
 {
     glfwInit();
@@ -26,6 +31,12 @@ void pr3d_run_game(
         pr3d_update(dt);
 
         pr3d_render();
+
+        glDisable(GL_DEPTH_TEST);
+        pr3d_use_shader_2d();
+        pr3d_render_gui();
+        pr3d_use_shader_3d();
+        glEnable(GL_DEPTH_TEST);
 
         glfwSwapBuffers(screen.window);
         glfwPollEvents();

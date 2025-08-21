@@ -1,3 +1,4 @@
+#include "glad.h"
 #include "camera.h"
 #include "mathx.h"
 #include "screen_internal.h"
@@ -5,12 +6,14 @@
 #include "cglm/types.h"
 #include "cglm/cam.h"
 #include "cglm/vec3.h"
+#include <stddef.h>
 #include <stdio.h>
 
 static vec3 PR3D_WORLD_UP = {0.0f, 1.0f, 0.0f};
 
 void pr3d_init_camera(
-    struct PR3DCamera *cam, float fov_degrees, float move_speed
+    struct PR3DCamera *cam, float fov_degrees, float move_speed,
+    enum PR3DCameraProjectionType projection_type
 )
 {
     glm_vec3_zero(cam->position);
@@ -31,7 +34,7 @@ void pr3d_init_camera(
     cam->move_speed = move_speed;
     cam->look_sensitivity = 0.1f;
 
-    pr3d_set_camera_fov(cam, fov_degrees);
+    pr3d_set_camera_projection(cam, fov_degrees, projection_type);
 }
 
 void pr3d_update_camera(struct PR3DCamera *cam)
@@ -61,7 +64,7 @@ void pr3d_update_camera(struct PR3DCamera *cam)
 
     // The view matrix is the camera position, which we calculated above
     pr3d_set_shader_uniform_mat4(
-        pr3d_shader(PR3D_SHADER_TEXTURE), "view", cam->view
+        pr3d_shader(PR3D_SHADER_3D), "view", cam->view
     );
 }
 
@@ -78,16 +81,16 @@ void pr3d_move_camera_fly(
 
     switch (move_dir)
     {
-        case PR3D_CAMERA_FORWARD:
+        case PR3D_CAMERA_MOVE_DIR_FORWARD:
             glm_vec3_add(cam->position, front_velocity, cam->position);
             break;
-        case PR3D_CAMERA_BACKWARD:
+        case PR3D_CAMERA_MOVE_DIR_BACKWARD:
             glm_vec3_sub(cam->position, front_velocity, cam->position);
             break;
-        case PR3D_CAMERA_LEFT:
+        case PR3D_CAMERA_MOVE_DIR_LEFT:
             glm_vec3_sub(cam->position, right_velocity, cam->position);
             break;
-        case PR3D_CAMERA_RIGHT:
+        case PR3D_CAMERA_MOVE_DIR_RIGHT:
             glm_vec3_add(cam->position, right_velocity, cam->position);
             break;
         default:
@@ -111,17 +114,39 @@ void pr3d_move_camera_look(struct PR3DCamera *cam, float yaw, float pitch)
     cam->pitch = pr3d_clampf(cam->pitch, -89.0f, 89.0f);
 }
 
-void pr3d_set_camera_fov(struct PR3DCamera *cam, float fov_degrees)
+void pr3d_set_camera_projection(
+    struct PR3DCamera *cam, float fov_degrees,
+    enum PR3DCameraProjectionType projection_type
+)
 {
-    // Projection needs fov in radians, aspect, and near/far clip
-    cam->fov = fov_degrees;
-    float fov = glm_rad(fov_degrees);
-
     struct PR3DScreen *screen = pr3d_screen();
-    float aspect_ratio = screen->aspect_ratio;
+    if (projection_type == PR3D_CAMERA_PROJECTION_PERSPECTIVE)
+    {
+        // Perspective needs fov in radians, aspect, and near/far clip
+        cam->fov = fov_degrees;
+        float fov = glm_rad(fov_degrees);
 
-    glm_perspective(fov, aspect_ratio, 0.1f, 100.0f, cam->projection);
-    pr3d_set_shader_uniform_mat4(
-        pr3d_shader(PR3D_SHADER_TEXTURE), "projection", cam->projection
-    );
+        float aspect_ratio = screen->aspect_ratio;
+
+        glm_perspective(
+            fov, aspect_ratio, 0.1f, 100.0f, cam->projection_perspective
+        );
+        pr3d_set_shader_uniform_mat4(
+            pr3d_shader(PR3D_SHADER_3D), "projection",
+            cam->projection_perspective
+        );
+    }
+    else if (projection_type == PR3D_CAMERA_PROJECTION_ORTHOGONAL)
+    {
+        // Orthogonal is 2D so uses width/height, the clipping plane is the
+        // OpenGL coordinate plane which goes from -1.0 to 1.0
+        glm_ortho(
+            0.0f, screen->desktop_width, screen->desktop_height, 0.0f, -1.0f,
+            1.0f, cam->projection_orthogonal
+        );
+        pr3d_set_shader_uniform_mat4(
+            pr3d_shader(PR3D_SHADER_2D), "projection",
+            cam->projection_orthogonal
+        );
+    }
 }

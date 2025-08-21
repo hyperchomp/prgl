@@ -60,7 +60,7 @@ void pr3d_use_shader(unsigned int shader)
     // Default model matrix uniform to identity matrix so if we aren't
     // transforming it will still render
     int model = glGetUniformLocation(
-        pr3d_shader_pool[PR3D_SHADER_TEXTURE], PR3D_TRANSFORM_UNIFORM
+        pr3d_shader_pool[PR3D_SHADER_3D], PR3D_TRANSFORM_UNIFORM
     );
     if (model != -1)
     {
@@ -68,12 +68,12 @@ void pr3d_use_shader(unsigned int shader)
     }
 }
 
-void pr3d_use_default_shader(void)
+void pr3d_use_shader_3d(void)
 {
-    pr3d_use_shader(pr3d_shader_pool[PR3D_SHADER_TEXTURE]);
+    pr3d_use_shader(pr3d_shader_pool[PR3D_SHADER_3D]);
 }
 
-void pr3d_use_default_shader_2d(void)
+void pr3d_use_shader_2d(void)
 {
     pr3d_use_shader(pr3d_shader_pool[PR3D_SHADER_2D]);
 }
@@ -120,14 +120,14 @@ void pr3d_set_shader_uniform_bool(
 
 void pr3d_init_shader_pool(void)
 {
-    unsigned int texture_shader = pr3d_init_texture_shader();
+    unsigned int shader_3d = pr3d_init_shader_3d();
     unsigned int shader_2d = pr3d_init_shader_2d();
 
     // Don't do loop so if we remove any it doesn't break even if out of order
     pr3d_shader_pool[PR3D_SHADER_2D] = shader_2d;
-    pr3d_shader_pool[PR3D_SHADER_TEXTURE] = texture_shader;
+    pr3d_shader_pool[PR3D_SHADER_3D] = shader_3d;
 
-    pr3d_use_default_shader();
+    pr3d_use_shader_3d();
 }
 
 void pr3d_delete_shader_pool(void)

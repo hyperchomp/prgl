@@ -11,12 +11,12 @@ extern const char *const PR3D_TRANSFORM_UNIFORM;
  * Precompiled shader types. These can be used with pr3d_shader() to get the ID
  * of a precompiled shader.
  *
- * The default is PR3D_SHADER_TEXTURE for 3D, and PR3D_SHADER_2D for 2D
+ * The default is PR3D_SHADER_3D for 3D, and PR3D_SHADER_2D for 2D
  */
 enum PR3DShader
 {
     PR3D_SHADER_2D,
-    PR3D_SHADER_TEXTURE,
+    PR3D_SHADER_3D,
     PR3D_SHADER_COUNT
 };
 
@@ -50,24 +50,22 @@ unsigned int pr3d_create_shader(
 );
 
 /**
- * Activates a shader for use. It will be used until another shader is
- * activated.
- * You may want to call pr3d_use_default_shader after you're done rendering with
- * this unless you intend to replace the default.
+ * Activates a shader for use. Keep in mind there are default shaders activated
+ * for the render and render_gui loops.
  *
  * @param shader The ID of the shader to use.
  */
 void pr3d_use_shader(unsigned int shader);
 
 /**
- * Re-activates the default shader for use.
+ * Activates the 3D shader for use.
  */
-void pr3d_use_default_shader(void);
+void pr3d_use_shader_3d(void);
 
 /**
- * Activates the default 2D shader for use.
+ * Activates the 2D shader for use.
  */
-void pr3d_use_default_shader_2d(void);
+void pr3d_use_shader_2d(void);
 
 /**
  * Flags a shader for deletion.

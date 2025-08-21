@@ -96,6 +96,19 @@ void pr3d_render_mesh(
 );
 
 /**
+ * Renders a mesh to the screen at a 2D position.
+ * Rotation will be about the Z axis.
+ *
+ * @param[in] mesh
+ * @param vec2 position The XY position to render the mesh at.
+ * @param float degrees The angle of rotation in degrees.
+ * @param vec2 scale The XY scale to apply to the mesh.
+ */
+void pr3d_render_mesh_2d(
+    struct PR3DMesh *mesh, vec2 position, float rotation_degrees, vec2 scale
+);
+
+/**
  * Cleans up the GL objects associated with the mesh and then frees it.
  */
 void pr3d_delete_mesh(struct PR3DMesh *mesh);
