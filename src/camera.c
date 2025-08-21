@@ -10,6 +10,7 @@
 #include <stdio.h>
 
 static vec3 PR3D_WORLD_UP = {0.0f, 1.0f, 0.0f};
+static vec2 PR3D_GUI_RESOLUTION = {1280.0f, 720.0f};
 
 void pr3d_init_camera(
     struct PR3DCamera *cam, float fov_degrees, float move_speed,
@@ -141,7 +142,7 @@ void pr3d_set_camera_projection(
         // Orthogonal is 2D so uses width/height, the clipping plane is the
         // OpenGL coordinate plane which goes from -1.0 to 1.0
         glm_ortho(
-            0.0f, screen->desktop_width, screen->desktop_height, 0.0f, -1.0f,
+            0.0f, PR3D_GUI_RESOLUTION[0], PR3D_GUI_RESOLUTION[1], 0.0f, -1.0f,
             1.0f, cam->projection_orthogonal
         );
         pr3d_set_shader_uniform_mat4(
