@@ -322,7 +322,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sends the view and projection matrices to the shader every frame.</p>
+<p>Sends the view matrix to the shader, should be called each frame for perspective rendering. Note that orthogonal projection doesn't use the view matrix, so this update is not needed when using the 2D shader.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">cam[in,out]</td><td></td></tr>
