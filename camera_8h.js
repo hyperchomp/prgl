@@ -11,6 +11,7 @@ var camera_8h =
       [ "PR3D_CAMERA_PROJECTION_PERSPECTIVE", "camera_8h.html#a1d24e4fed4f6fecc9cb6326ad804ade8a534f89c3df076fd02d14b7a3df80ba2f", null ],
       [ "PR3D_CAMERA_PROJECTION_ORTHOGONAL", "camera_8h.html#a1d24e4fed4f6fecc9cb6326ad804ade8ac7d22960ec8e461875cfb1cb68dc2048", null ]
     ] ],
+    [ "pr3d_active_camera", "camera_8h.html#a6ce2f119a9d9622b9bb6f7a1384511f0", null ],
     [ "pr3d_init_camera", "camera_8h.html#a115663dca8fd23fe4c18fb8f3c02a737", null ],
     [ "pr3d_move_camera_fly", "camera_8h.html#a9a88bcddf6d0297e58b0c84c85fd61aa", null ],
     [ "pr3d_move_camera_look", "camera_8h.html#a7b001f96c8920ed1ade739e6c8dde3c0", null ],

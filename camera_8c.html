@@ -120,8 +120,31 @@ Functions</h2></td></tr>
 <tr class="separator:a7b001f96c8920ed1ade739e6c8dde3c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacfb350111dea1cf1e15454067c36ca4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8c.html#aacfb350111dea1cf1e15454067c36ca4">pr3d_set_camera_projection</a> (struct <a class="el" href="structPR3DCamera.html">PR3DCamera</a> *cam, float fov_degrees, enum <a class="el" href="camera_8h.html#a1d24e4fed4f6fecc9cb6326ad804ade8">PR3DCameraProjectionType</a> projection_type)</td></tr>
 <tr class="separator:aacfb350111dea1cf1e15454067c36ca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ce2f119a9d9622b9bb6f7a1384511f0"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPR3DCamera.html">PR3DCamera</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8c.html#a6ce2f119a9d9622b9bb6f7a1384511f0">pr3d_active_camera</a> (void)</td></tr>
+<tr class="separator:a6ce2f119a9d9622b9bb6f7a1384511f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a6ce2f119a9d9622b9bb6f7a1384511f0" name="a6ce2f119a9d9622b9bb6f7a1384511f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ce2f119a9d9622b9bb6f7a1384511f0">&#9670;&#160;</a></span>pr3d_active_camera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structPR3DCamera.html">PR3DCamera</a> * pr3d_active_camera </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the currently active camera. </p>
+
+<p class="definition">Definition at line <a class="el" href="camera_8c_source.html#l00158">158</a> of file <a class="el" href="camera_8c_source.html">camera.c</a>.</p>
+
+</div>
+</div>
 <a id="a115663dca8fd23fe4c18fb8f3c02a737" name="a115663dca8fd23fe4c18fb8f3c02a737"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a115663dca8fd23fe4c18fb8f3c02a737">&#9670;&#160;</a></span>pr3d_init_camera()</h2>
 
@@ -159,7 +182,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initializes the view (position) and projection matrices for the camera. This sets the camera's position to {0, 0, 0}.</p>
+<p>Initializes the view (position) and projection matrices for the camera. This sets the camera's position to {0, 0, 0} and sets it as the active camera.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">cam[in,out]</td><td>An uninitialized <a class="el" href="structPR3DCamera.html">PR3DCamera</a> struct. </td></tr>
@@ -169,7 +192,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="camera_8c_source.html#l00015">15</a> of file <a class="el" href="camera_8c_source.html">camera.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="camera_8c_source.html#l00016">16</a> of file <a class="el" href="camera_8c_source.html">camera.c</a>.</p>
 
 </div>
 </div>
@@ -214,7 +237,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="camera_8c_source.html#l00072">72</a> of file <a class="el" href="camera_8c_source.html">camera.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="camera_8c_source.html#l00075">75</a> of file <a class="el" href="camera_8c_source.html">camera.c</a>.</p>
 
 </div>
 </div>
@@ -259,7 +282,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="camera_8c_source.html#l00106">106</a> of file <a class="el" href="camera_8c_source.html">camera.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="camera_8c_source.html#l00109">109</a> of file <a class="el" href="camera_8c_source.html">camera.c</a>.</p>
 
 </div>
 </div>
@@ -303,7 +326,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="camera_8c_source.html#l00118">118</a> of file <a class="el" href="camera_8c_source.html">camera.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="camera_8c_source.html#l00121">121</a> of file <a class="el" href="camera_8c_source.html">camera.c</a>.</p>
 
 </div>
 </div>
@@ -330,7 +353,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="camera_8c_source.html#l00041">41</a> of file <a class="el" href="camera_8c_source.html">camera.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="camera_8c_source.html#l00044">44</a> of file <a class="el" href="camera_8c_source.html">camera.c</a>.</p>
 
 </div>
 </div>
