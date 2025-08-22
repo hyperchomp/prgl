@@ -11,12 +11,15 @@
 
 static vec3 PR3D_WORLD_UP = {0.0f, 1.0f, 0.0f};
 static vec2 PR3D_GUI_RESOLUTION = {1280.0f, 720.0f};
+static struct PR3DCamera *pr3d_active_camera_ref = NULL;
 
 void pr3d_init_camera(
     struct PR3DCamera *cam, float fov_degrees, float move_speed,
     enum PR3DCameraProjectionType projection_type
 )
 {
+    pr3d_active_camera_ref = cam;
+
     glm_vec3_zero(cam->position);
     glm_vec3_zero(cam->up);
     glm_vec3_zero(cam->front);
@@ -151,3 +154,5 @@ void pr3d_set_camera_projection(
         );
     }
 }
+
+struct PR3DCamera *pr3d_active_camera(void) { return pr3d_active_camera_ref; }

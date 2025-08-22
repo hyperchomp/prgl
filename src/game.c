@@ -1,3 +1,4 @@
+#include "camera.h"
 #include "glad.h"
 #include "game.h"
 #include "shaders.h"
@@ -34,7 +35,14 @@ void pr3d_run_game(
 
         glDisable(GL_DEPTH_TEST);
         pr3d_use_shader_2d();
+        pr3d_set_camera_projection(
+            pr3d_active_camera(), 0.0f, PR3D_CAMERA_PROJECTION_ORTHOGONAL
+        );
         pr3d_render_gui();
+        pr3d_set_camera_projection(
+            pr3d_active_camera(), pr3d_active_camera()->fov,
+            PR3D_CAMERA_PROJECTION_PERSPECTIVE
+        );
         pr3d_use_shader_3d();
         glEnable(GL_DEPTH_TEST);
 

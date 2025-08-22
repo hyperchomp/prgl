@@ -45,7 +45,7 @@ enum PR3DCameraProjectionType
 
 /**
  * Initializes the view (position) and projection matrices for the camera. This
- * sets the camera's position to {0, 0, 0}.
+ * sets the camera's position to {0, 0, 0} and sets it as the active camera.
  *
  * @param cam[in,out] An uninitialized PR3DCamera struct.
  * @param fov_degrees The vertical fov for the camera in degrees. For orthogonal
@@ -99,5 +99,10 @@ void pr3d_set_camera_projection(
     struct PR3DCamera *cam, float fov_degrees,
     enum PR3DCameraProjectionType projection_type
 );
+
+/**
+ * Returns the currently active camera.
+ */
+struct PR3DCamera *pr3d_active_camera(void);
 
 #endif
