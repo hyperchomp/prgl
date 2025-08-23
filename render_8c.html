@@ -116,8 +116,8 @@ Functions</h2></td></tr>
 <tr class="separator:a4c8390e54cd21087f02961f292abab02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a331cc7b8d6872db50536ac46504dafc8"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a331cc7b8d6872db50536ac46504dafc8">pr3d_create_triangle</a> (mat3 vertices)</td></tr>
 <tr class="separator:a331cc7b8d6872db50536ac46504dafc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa4b8e7639ef07fe468dbe4932fb8674"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#aaa4b8e7639ef07fe468dbe4932fb8674">pr3d_create_rectangle</a> (void)</td></tr>
-<tr class="separator:aaa4b8e7639ef07fe468dbe4932fb8674"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6012977a189847a4a83c2d27843a54ed"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a6012977a189847a4a83c2d27843a54ed">pr3d_create_rectangle</a> (mat4 vertices)</td></tr>
+<tr class="separator:a6012977a189847a4a83c2d27843a54ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a196141e1b4bb71847f218c9f2870e233"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a196141e1b4bb71847f218c9f2870e233">pr3d_create_cube</a> (void)</td></tr>
 <tr class="separator:a196141e1b4bb71847f218c9f2870e233"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c3c6351ac03485f63485d220ba69ce2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a2c3c6351ac03485f63485d220ba69ce2">pr3d_render_mesh</a> (struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *mesh, vec3 position, vec3 rotation_axis, float degrees, vec3 scale)</td></tr>
@@ -197,12 +197,12 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Creates a cube mesh. Make sure to attach a texture to the returned mesh struct after creating it. </p>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00163">163</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00157">157</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
-<a id="aaa4b8e7639ef07fe468dbe4932fb8674" name="aaa4b8e7639ef07fe468dbe4932fb8674"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa4b8e7639ef07fe468dbe4932fb8674">&#9670;&#160;</a></span>pr3d_create_rectangle()</h2>
+<a id="a6012977a189847a4a83c2d27843a54ed" name="a6012977a189847a4a83c2d27843a54ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6012977a189847a4a83c2d27843a54ed">&#9670;&#160;</a></span>pr3d_create_rectangle()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -210,13 +210,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> * pr3d_create_rectangle </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">mat4&#160;</td>
+          <td class="paramname"><em>vertices</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a rectangle mesh. Make sure to attach a texture to the returned mesh struct after creating it. </p>
+<p>Creates a rectangle mesh. Make sure to attach a texture to the returned mesh struct after creating it.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">vertices</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00078">78</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
@@ -325,7 +331,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00244">244</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00238">238</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -377,7 +383,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00276">276</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00270">270</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>

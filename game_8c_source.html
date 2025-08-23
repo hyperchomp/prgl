@@ -104,68 +104,66 @@ $(document).ready(function(){initNavTree('game_8c_source.html',''); initResizabl
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">static</span> <span class="keywordtype">double</span> last_update_start = 0;</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">static</span> <span class="keywordtype">double</span> dt = 0;</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// static struct PR3DCamera gui_camera;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="game_8c.html#a019db917c35115dc11413b1462b43979">   14</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="game_8c.html#a019db917c35115dc11413b1462b43979">pr3d_run_game</a>(</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">char</span> *title, <span class="keywordtype">void</span> (*pr3d_init)(<span class="keywordtype">void</span>),</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">void</span> (*pr3d_update)(<span class="keywordtype">double</span> delta_time), <span class="keywordtype">void</span> (*pr3d_render)(<span class="keywordtype">void</span>),</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">void</span> (*pr3d_render_gui)(<span class="keywordtype">void</span>)</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>)</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    glfwInit();</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_function" href="screen_8c.html#a1f404ea2d0aef0bff7f5c5747cfaad4b">pr3d_create_window</a>(title);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_function" href="shaders_8c.html#a3ca6d0c449e975ce83cbc31cf89c2f2b">pr3d_init_shader_pool</a>();</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    pr3d_init();</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structPR3DScreen.html">PR3DScreen</a> screen = *<a class="code hl_function" href="screen_8c.html#afc628f1ff13c2c86fcaaa3040c47e76e">pr3d_screen</a>();</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">while</span> (!glfwWindowShouldClose(screen.<a class="code hl_variable" href="structPR3DScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a>))</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        dt = glfwGetTime() - last_update_start;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        last_update_start = glfwGetTime();</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        pr3d_update(dt);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        pr3d_render();</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        glDisable(GL_DEPTH_TEST);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_function" href="shaders_8c.html#ab691a75f431938ad2516d5e6a54aa353">pr3d_use_shader_2d</a>();</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <a class="code hl_function" href="camera_8c.html#aacfb350111dea1cf1e15454067c36ca4">pr3d_set_camera_projection</a>(</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <a class="code hl_function" href="camera_8c.html#a6ce2f119a9d9622b9bb6f7a1384511f0">pr3d_active_camera</a>(), 0.0f, <a class="code hl_enumvalue" href="camera_8h.html#a1d24e4fed4f6fecc9cb6326ad804ade8ac7d22960ec8e461875cfb1cb68dc2048">PR3D_CAMERA_PROJECTION_ORTHOGONAL</a></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        );</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        pr3d_render_gui();</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="game_8c.html#a019db917c35115dc11413b1462b43979">   12</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="game_8c.html#a019db917c35115dc11413b1462b43979">pr3d_run_game</a>(</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordtype">char</span> *title, <span class="keywordtype">void</span> (*pr3d_init)(<span class="keywordtype">void</span>),</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordtype">void</span> (*pr3d_update)(<span class="keywordtype">double</span> delta_time), <span class="keywordtype">void</span> (*pr3d_render)(<span class="keywordtype">void</span>),</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">void</span> (*pr3d_render_gui)(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>)</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    glfwInit();</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_function" href="screen_8c.html#a1f404ea2d0aef0bff7f5c5747cfaad4b">pr3d_create_window</a>(title);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_function" href="shaders_8c.html#a3ca6d0c449e975ce83cbc31cf89c2f2b">pr3d_init_shader_pool</a>();</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    pr3d_init();</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structPR3DScreen.html">PR3DScreen</a> screen = *<a class="code hl_function" href="screen_8c.html#afc628f1ff13c2c86fcaaa3040c47e76e">pr3d_screen</a>();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordflow">while</span> (!glfwWindowShouldClose(screen.<a class="code hl_variable" href="structPR3DScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a>))</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        dt = glfwGetTime() - last_update_start;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        last_update_start = glfwGetTime();</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        glEnable(GL_DEPTH_TEST);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <a class="code hl_function" href="shaders_8c.html#a78e5603c3bc30a162a0a28b79ad34191">pr3d_use_shader_3d</a>();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <a class="code hl_function" href="camera_8c.html#aacfb350111dea1cf1e15454067c36ca4">pr3d_set_camera_projection</a>(</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            <a class="code hl_function" href="camera_8c.html#a6ce2f119a9d9622b9bb6f7a1384511f0">pr3d_active_camera</a>(), <a class="code hl_function" href="camera_8c.html#a6ce2f119a9d9622b9bb6f7a1384511f0">pr3d_active_camera</a>()-&gt;fov,</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <a class="code hl_enumvalue" href="camera_8h.html#a1d24e4fed4f6fecc9cb6326ad804ade8a534f89c3df076fd02d14b7a3df80ba2f">PR3D_CAMERA_PROJECTION_PERSPECTIVE</a></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        );</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        pr3d_update(dt);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        pr3d_render();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        glDisable(GL_DEPTH_TEST);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <a class="code hl_function" href="shaders_8c.html#ab691a75f431938ad2516d5e6a54aa353">pr3d_use_shader_2d</a>();</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_function" href="camera_8c.html#aacfb350111dea1cf1e15454067c36ca4">pr3d_set_camera_projection</a>(</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <a class="code hl_function" href="camera_8c.html#a6ce2f119a9d9622b9bb6f7a1384511f0">pr3d_active_camera</a>(), <a class="code hl_function" href="camera_8c.html#a6ce2f119a9d9622b9bb6f7a1384511f0">pr3d_active_camera</a>()-&gt;fov,</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <a class="code hl_enumvalue" href="camera_8h.html#a1d24e4fed4f6fecc9cb6326ad804ade8a534f89c3df076fd02d14b7a3df80ba2f">PR3D_CAMERA_PROJECTION_PERSPECTIVE</a></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        );</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <a class="code hl_function" href="shaders_8c.html#a78e5603c3bc30a162a0a28b79ad34191">pr3d_use_shader_3d</a>();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        glEnable(GL_DEPTH_TEST);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        glfwSwapBuffers(screen.<a class="code hl_variable" href="structPR3DScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a>);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        glfwPollEvents();</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    }</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <a class="code hl_function" href="shaders_8c.html#a2b2c917addf34e5b514f30cf976450d1">pr3d_delete_shader_pool</a>();</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <a class="code hl_function" href="screen_8c.html#ac9c3587eee67b1c8aedd71b9ced41a0a">pr3d_destroy_window</a>();</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="game_8c.html#a098fb703b539a170740e7850016af4a6">   57</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="game_8c.html#a098fb703b539a170740e7850016af4a6">pr3d_delta_time</a>(<span class="keywordtype">void</span>) { <span class="keywordflow">return</span> dt; }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <a class="code hl_function" href="camera_8c.html#a6ce2f119a9d9622b9bb6f7a1384511f0">pr3d_active_camera</a>(), 0.0f, <a class="code hl_enumvalue" href="camera_8h.html#a1d24e4fed4f6fecc9cb6326ad804ade8ac7d22960ec8e461875cfb1cb68dc2048">PR3D_CAMERA_PROJECTION_ORTHOGONAL</a></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        );</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        pr3d_render_gui();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        glfwSwapBuffers(screen.<a class="code hl_variable" href="structPR3DScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a>);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        glfwPollEvents();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_function" href="shaders_8c.html#a2b2c917addf34e5b514f30cf976450d1">pr3d_delete_shader_pool</a>();</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_function" href="screen_8c.html#ac9c3587eee67b1c8aedd71b9ced41a0a">pr3d_destroy_window</a>();</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="game_8c.html#a098fb703b539a170740e7850016af4a6">   55</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="game_8c.html#a098fb703b539a170740e7850016af4a6">pr3d_delta_time</a>(<span class="keywordtype">void</span>) { <span class="keywordflow">return</span> dt; }</div>
 <div class="ttc" id="acamera_8c_html_a6ce2f119a9d9622b9bb6f7a1384511f0"><div class="ttname"><a href="camera_8c.html#a6ce2f119a9d9622b9bb6f7a1384511f0">pr3d_active_camera</a></div><div class="ttdeci">struct PR3DCamera * pr3d_active_camera(void)</div><div class="ttdef"><b>Definition:</b> <a href="camera_8c_source.html#l00158">camera.c:158</a></div></div>
 <div class="ttc" id="acamera_8c_html_aacfb350111dea1cf1e15454067c36ca4"><div class="ttname"><a href="camera_8c.html#aacfb350111dea1cf1e15454067c36ca4">pr3d_set_camera_projection</a></div><div class="ttdeci">void pr3d_set_camera_projection(struct PR3DCamera *cam, float fov_degrees, enum PR3DCameraProjectionType projection_type)</div><div class="ttdef"><b>Definition:</b> <a href="camera_8c_source.html#l00121">camera.c:121</a></div></div>
 <div class="ttc" id="acamera_8h_html"><div class="ttname"><a href="camera_8h.html">camera.h</a></div></div>
 <div class="ttc" id="acamera_8h_html_a1d24e4fed4f6fecc9cb6326ad804ade8a534f89c3df076fd02d14b7a3df80ba2f"><div class="ttname"><a href="camera_8h.html#a1d24e4fed4f6fecc9cb6326ad804ade8a534f89c3df076fd02d14b7a3df80ba2f">PR3D_CAMERA_PROJECTION_PERSPECTIVE</a></div><div class="ttdeci">@ PR3D_CAMERA_PROJECTION_PERSPECTIVE</div><div class="ttdef"><b>Definition:</b> <a href="camera_8h_source.html#l00042">camera.h:42</a></div></div>
 <div class="ttc" id="acamera_8h_html_a1d24e4fed4f6fecc9cb6326ad804ade8ac7d22960ec8e461875cfb1cb68dc2048"><div class="ttname"><a href="camera_8h.html#a1d24e4fed4f6fecc9cb6326ad804ade8ac7d22960ec8e461875cfb1cb68dc2048">PR3D_CAMERA_PROJECTION_ORTHOGONAL</a></div><div class="ttdeci">@ PR3D_CAMERA_PROJECTION_ORTHOGONAL</div><div class="ttdef"><b>Definition:</b> <a href="camera_8h_source.html#l00044">camera.h:43</a></div></div>
-<div class="ttc" id="agame_8c_html_a019db917c35115dc11413b1462b43979"><div class="ttname"><a href="game_8c.html#a019db917c35115dc11413b1462b43979">pr3d_run_game</a></div><div class="ttdeci">void pr3d_run_game(char *title, void(*pr3d_init)(void), void(*pr3d_update)(double delta_time), void(*pr3d_render)(void), void(*pr3d_render_gui)(void))</div><div class="ttdef"><b>Definition:</b> <a href="game_8c_source.html#l00014">game.c:14</a></div></div>
-<div class="ttc" id="agame_8c_html_a098fb703b539a170740e7850016af4a6"><div class="ttname"><a href="game_8c.html#a098fb703b539a170740e7850016af4a6">pr3d_delta_time</a></div><div class="ttdeci">double pr3d_delta_time(void)</div><div class="ttdef"><b>Definition:</b> <a href="game_8c_source.html#l00057">game.c:57</a></div></div>
+<div class="ttc" id="agame_8c_html_a019db917c35115dc11413b1462b43979"><div class="ttname"><a href="game_8c.html#a019db917c35115dc11413b1462b43979">pr3d_run_game</a></div><div class="ttdeci">void pr3d_run_game(char *title, void(*pr3d_init)(void), void(*pr3d_update)(double delta_time), void(*pr3d_render)(void), void(*pr3d_render_gui)(void))</div><div class="ttdef"><b>Definition:</b> <a href="game_8c_source.html#l00012">game.c:12</a></div></div>
+<div class="ttc" id="agame_8c_html_a098fb703b539a170740e7850016af4a6"><div class="ttname"><a href="game_8c.html#a098fb703b539a170740e7850016af4a6">pr3d_delta_time</a></div><div class="ttdeci">double pr3d_delta_time(void)</div><div class="ttdef"><b>Definition:</b> <a href="game_8c_source.html#l00055">game.c:55</a></div></div>
 <div class="ttc" id="agame_8h_html"><div class="ttname"><a href="game_8h.html">game.h</a></div></div>
 <div class="ttc" id="ascreen_8c_html_a1f404ea2d0aef0bff7f5c5747cfaad4b"><div class="ttname"><a href="screen_8c.html#a1f404ea2d0aef0bff7f5c5747cfaad4b">pr3d_create_window</a></div><div class="ttdeci">void pr3d_create_window(char *name)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00017">screen.c:17</a></div></div>
 <div class="ttc" id="ascreen_8c_html_ac9c3587eee67b1c8aedd71b9ced41a0a"><div class="ttname"><a href="screen_8c.html#ac9c3587eee67b1c8aedd71b9ced41a0a">pr3d_destroy_window</a></div><div class="ttdeci">void pr3d_destroy_window(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00079">screen.c:79</a></div></div>
 <div class="ttc" id="ascreen_8c_html_afc628f1ff13c2c86fcaaa3040c47e76e"><div class="ttname"><a href="screen_8c.html#afc628f1ff13c2c86fcaaa3040c47e76e">pr3d_screen</a></div><div class="ttdeci">struct PR3DScreen * pr3d_screen(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00103">screen.c:103</a></div></div>
 <div class="ttc" id="ascreen__internal_8h_html"><div class="ttname"><a href="screen__internal_8h.html">screen_internal.h</a></div></div>
-<div class="ttc" id="ashaders_8c_html_a2b2c917addf34e5b514f30cf976450d1"><div class="ttname"><a href="shaders_8c.html#a2b2c917addf34e5b514f30cf976450d1">pr3d_delete_shader_pool</a></div><div class="ttdeci">void pr3d_delete_shader_pool(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00133">shaders.c:133</a></div></div>
-<div class="ttc" id="ashaders_8c_html_a3ca6d0c449e975ce83cbc31cf89c2f2b"><div class="ttname"><a href="shaders_8c.html#a3ca6d0c449e975ce83cbc31cf89c2f2b">pr3d_init_shader_pool</a></div><div class="ttdeci">void pr3d_init_shader_pool(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00121">shaders.c:121</a></div></div>
-<div class="ttc" id="ashaders_8c_html_a78e5603c3bc30a162a0a28b79ad34191"><div class="ttname"><a href="shaders_8c.html#a78e5603c3bc30a162a0a28b79ad34191">pr3d_use_shader_3d</a></div><div class="ttdeci">void pr3d_use_shader_3d(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00071">shaders.c:71</a></div></div>
-<div class="ttc" id="ashaders_8c_html_ab691a75f431938ad2516d5e6a54aa353"><div class="ttname"><a href="shaders_8c.html#ab691a75f431938ad2516d5e6a54aa353">pr3d_use_shader_2d</a></div><div class="ttdeci">void pr3d_use_shader_2d(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00076">shaders.c:76</a></div></div>
+<div class="ttc" id="ashaders_8c_html_a2b2c917addf34e5b514f30cf976450d1"><div class="ttname"><a href="shaders_8c.html#a2b2c917addf34e5b514f30cf976450d1">pr3d_delete_shader_pool</a></div><div class="ttdeci">void pr3d_delete_shader_pool(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00123">shaders.c:123</a></div></div>
+<div class="ttc" id="ashaders_8c_html_a3ca6d0c449e975ce83cbc31cf89c2f2b"><div class="ttname"><a href="shaders_8c.html#a3ca6d0c449e975ce83cbc31cf89c2f2b">pr3d_init_shader_pool</a></div><div class="ttdeci">void pr3d_init_shader_pool(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00111">shaders.c:111</a></div></div>
+<div class="ttc" id="ashaders_8c_html_a78e5603c3bc30a162a0a28b79ad34191"><div class="ttname"><a href="shaders_8c.html#a78e5603c3bc30a162a0a28b79ad34191">pr3d_use_shader_3d</a></div><div class="ttdeci">void pr3d_use_shader_3d(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00061">shaders.c:61</a></div></div>
+<div class="ttc" id="ashaders_8c_html_ab691a75f431938ad2516d5e6a54aa353"><div class="ttname"><a href="shaders_8c.html#ab691a75f431938ad2516d5e6a54aa353">pr3d_use_shader_2d</a></div><div class="ttdeci">void pr3d_use_shader_2d(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00066">shaders.c:66</a></div></div>
 <div class="ttc" id="ashaders_8h_html"><div class="ttname"><a href="shaders_8h.html">shaders.h</a></div></div>
 <div class="ttc" id="ashaders__internal_8h_html"><div class="ttname"><a href="shaders__internal_8h.html">shaders_internal.h</a></div></div>
 <div class="ttc" id="astructPR3DScreen_html"><div class="ttname"><a href="structPR3DScreen.html">PR3DScreen</a></div><div class="ttdef"><b>Definition:</b> <a href="screen__internal_8h_source.html#l00010">screen_internal.h:11</a></div></div>
