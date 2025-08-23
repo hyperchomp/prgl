@@ -1,7 +1,7 @@
 var render_8h =
 [
     [ "PR3DMesh", "structPR3DMesh.html", "structPR3DMesh" ],
-    [ "PR3DMeshInstance", "structPR3DMeshInstance.html", "structPR3DMeshInstance" ],
+    [ "PR3DPointLight", "structPR3DPointLight.html", "structPR3DPointLight" ],
     [ "pr3d_clear_screen", "render_8h.html#a4c8390e54cd21087f02961f292abab02", null ],
     [ "pr3d_create_cube", "render_8h.html#a196141e1b4bb71847f218c9f2870e233", null ],
     [ "pr3d_create_rectangle", "render_8h.html#a6012977a189847a4a83c2d27843a54ed", null ],
