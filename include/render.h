@@ -54,8 +54,10 @@ struct PR3DMesh *pr3d_create_triangle(mat3 vertices);
 /**
  * Creates a rectangle mesh.
  * Make sure to attach a texture to the returned mesh struct after creating it.
+ *
+ * @param[in] vertices
  */
-struct PR3DMesh *pr3d_create_rectangle(void);
+struct PR3DMesh *pr3d_create_rectangle(mat4 vertices);
 
 /**
  * Creates a cube mesh.

@@ -75,15 +75,9 @@ struct PR3DMesh *pr3d_create_triangle(mat3 vertices)
     return mesh_pointer;
 }
 
-struct PR3DMesh *pr3d_create_rectangle(void)
+struct PR3DMesh *pr3d_create_rectangle(mat4 vertices)
 {
     // clang-format off
-    const mat4 vertices = {
-        { 0.5f,  0.5f, 0.0f, 1.0f}, // Top-right
-        { 0.5f, -0.5f, 0.0f, 1.0f}, // Bottom-right
-        {-0.5f, -0.5f, 0.0f, 1.0f}, // Bottom-left
-        {-0.5f,  0.5f, 0.0f, 1.0f}  // Top-left
-    };
     mat4x2 texture_coords = {
         {1.0f, 1.0f}, 
         {1.0f, 0.0f}, 
@@ -288,9 +282,15 @@ void pr3d_render_mesh_2d(
     mat4 trans;
     glm_mat4_identity(trans);
     glm_translate(trans, (vec3){position[0], position[1], 0.0f});
+
+    glm_translate(trans, (vec3){0.5f * scale[0], 0.5f * scale[1], 0.0f});
     glm_rotate(trans, glm_rad(rotation_degrees), (vec3){0.0f, 0.0f, 1.0f});
+    glm_translate(trans, (vec3){-0.5f * scale[0], -0.5f * scale[1], 0.0f});
+
     glm_scale(trans, (vec3){scale[0], scale[1], 1.0f});
-    pr3d_set_shader_uniform_mat4(PR3D_SHADER_2D, PR3D_TRANSFORM_UNIFORM, trans);
+    pr3d_set_shader_uniform_mat4(
+        pr3d_shader(PR3D_SHADER_2D), PR3D_TRANSFORM_UNIFORM, trans
+    );
 
     if (mesh->ebo == 0)
     {

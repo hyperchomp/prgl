@@ -56,16 +56,6 @@ void pr3d_use_shader(unsigned int shader)
 {
     glUseProgram(shader);
     pr3d_current_shader_id = shader;
-
-    // Default model matrix uniform to identity matrix so if we aren't
-    // transforming it will still render
-    int model = glGetUniformLocation(
-        pr3d_shader_pool[PR3D_SHADER_3D], PR3D_TRANSFORM_UNIFORM
-    );
-    if (model != -1)
-    {
-        glUniformMatrix4fv(model, 1, GL_FALSE, (float *)GLM_MAT4_IDENTITY);
-    }
 }
 
 void pr3d_use_shader_3d(void)

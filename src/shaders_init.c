@@ -10,11 +10,12 @@ unsigned int pr3d_init_shader_2d(void)
 
         "out vec2 texCoord;\n"
 
+        "uniform mat4 model;\n"
         "uniform mat4 projection;\n"
 
         "void main()\n"
         "{\n"
-        "    gl_Position = projection * vec4(aPos, 1.0);\n"
+        "    gl_Position = projection * model * vec4(aPos.xy, 0.0f, 1.0);\n"
         "    texCoord = aTexCoord;\n"
         "}\0";
 
