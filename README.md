@@ -22,6 +22,7 @@ Libraries used within pr3d may have differing licenses that are useable alongsid
 * Textured rectangles and cubes
 * FOV adjustment
 * Custom shaders
+* 2D Rendering for basic shapes
 
 ### Input
 * Keyboard/Mouse
@@ -36,6 +37,7 @@ Libraries used within pr3d may have differing licenses that are useable alongsid
 * Pixel perfect fullscreen scaling from preset base resolution(s) similar to 90s retro games, but supporting modern 16:9 aspect ratios
 * Gouraud shading
 * glTF 3D model loading
+* Text rendering
 
 ### Input
 * Gamepad support
@@ -80,7 +82,7 @@ These dependencies must be installed separately from pr3d as the framework relie
     * I recommend building GLFW from source as a static library, this process is very similar to installing pr3d. The directions can be found [in the GLFW documentation](https://www.glfw.org/docs/latest/compile.html).
 
 #### Linking
-You can easily link pr3d and the required dependencies to your project in CMakeLists.txt. Note that for GLFW although you need it installed to compile pr3d itself you aren't required to link it in another project using the framework as pr3d aims to provide wrapper methods for any needed GLFW functionality.
+You can easily link pr3d to your project in CMakeLists.txt. Note that for GLFW although you need it installed to compile pr3d itself you aren't required to link it in another project using the framework as pr3d aims to provide wrapper methods for any needed GLFW functionality.
 ```
 find_package(pr3d REQUIRED)
 
