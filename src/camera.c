@@ -67,9 +67,7 @@ void pr3d_update_camera(struct PR3DCamera *cam)
     glm_lookat(cam->position, direction, cam->up, cam->view);
 
     // The view matrix is the camera position, which we calculated above
-    pr3d_set_shader_uniform_mat4(
-        pr3d_shader(PR3D_SHADER_3D), "view", cam->view
-    );
+    pr3d_set_shader_uniform_mat4(pr3d_current_shader(), "view", cam->view);
 }
 
 void pr3d_move_camera_fly(
@@ -136,8 +134,7 @@ void pr3d_set_camera_projection(
             fov, aspect_ratio, 0.1f, 100.0f, cam->projection_perspective
         );
         pr3d_set_shader_uniform_mat4(
-            pr3d_shader(PR3D_SHADER_3D), "projection",
-            cam->projection_perspective
+            pr3d_current_shader(), "projection", cam->projection_perspective
         );
     }
     else if (projection_type == PR3D_CAMERA_PROJECTION_ORTHOGONAL)
@@ -149,8 +146,7 @@ void pr3d_set_camera_projection(
             1.0f, cam->projection_orthogonal
         );
         pr3d_set_shader_uniform_mat4(
-            pr3d_shader(PR3D_SHADER_2D), "projection",
-            cam->projection_orthogonal
+            pr3d_current_shader(), "projection", cam->projection_orthogonal
         );
     }
 }

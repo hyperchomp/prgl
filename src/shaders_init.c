@@ -46,6 +46,10 @@ unsigned int pr3d_init_shader_3d(void)
 
         "out vec2 texCoord;\n"
 
+        // Calculate lighting per vertex for gouraud shading
+        "out vec3 vertexColor;\n"
+        "uniform vec3 lightColor;\n"
+
         "uniform mat4 model;\n"
         "uniform mat4 view;\n"
         "uniform mat4 projection;\n"
@@ -54,6 +58,7 @@ unsigned int pr3d_init_shader_3d(void)
         "{\n"
         "    gl_Position = projection * view * model * vec4(aPos, 1.0);\n"
         "    texCoord = aTexCoord;\n"
+        "    vertexColor = lightColor;\n"
         "}\0";
 
     // If nothing is passed for alpha it defaults to 1.0
@@ -61,14 +66,45 @@ unsigned int pr3d_init_shader_3d(void)
         "#version 330 core\n"
         "out vec4 FragColor;\n"
         "in vec2 texCoord;\n"
+        "in vec3 vertexColor;\n"
 
         "uniform float alpha;\n"
         "uniform sampler2D imageTexture;\n"
 
         "void main()\n"
         "{\n"
-        "   FragColor = texture(imageTexture, texCoord) * vec4(1.0, 1.0, 1.0, "
+        "   FragColor = texture(imageTexture, texCoord) * vec4(vertexColor, "
         "alpha);\n"
+        "}\0";
+
+    return pr3d_create_shader(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);
+}
+
+unsigned int pr3d_init_shader_unlit(void)
+{
+    const char *const VERTEX_SHADER_SOURCE =
+        "#version 330 core\n"
+        "layout (location = 0) in vec3 aPos;\n"
+
+        "uniform mat4 model;\n"
+        "uniform mat4 view;\n"
+        "uniform mat4 projection;\n"
+
+        "void main()\n"
+        "{\n"
+        "    gl_Position = projection * view * model * vec4(aPos, 1.0);\n"
+        "}\0";
+
+    // If nothing is passed for alpha it defaults to 1.0
+    const char *const FRAG_SHADER_SOURCE =
+        "#version 330 core\n"
+        "out vec4 FragColor;\n"
+
+        "uniform float alpha;\n"
+
+        "void main()\n"
+        "{\n"
+        "   FragColor = vec4(1.0, 1.0, 1.0, alpha);\n"
         "}\0";
 
     return pr3d_create_shader(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);

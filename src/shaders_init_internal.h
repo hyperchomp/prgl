@@ -5,4 +5,6 @@ unsigned int pr3d_init_shader_2d(void);
 
 unsigned int pr3d_init_shader_3d(void);
 
+unsigned int pr3d_init_shader_unlit(void);
+
 #endif

@@ -6,6 +6,7 @@
 #include <stdbool.h>
 
 extern const char *const PR3D_TRANSFORM_UNIFORM;
+extern const char *const PR3D_LIGHT_COLOR_UNIFORM;
 
 /**
  * Precompiled shader types. These can be used with pr3d_shader() to get the ID
@@ -17,6 +18,7 @@ enum PR3DShader
 {
     PR3D_SHADER_2D,
     PR3D_SHADER_3D,
+    PR3D_SHADER_UNLIT,
     PR3D_SHADER_COUNT
 };
 
@@ -87,6 +89,17 @@ void pr3d_delete_shader(unsigned int shader);
 void pr3d_set_shader_uniform_4f(
     unsigned int shader, const char *const name, float a, float b, float c,
     float d
+);
+
+/**
+ * Sets the value of shader uniform variable which takes a vec3.
+ *
+ * @param shader The shader ID to set the uniform on.
+ * @param name[in] The name of the uniform to set.
+ * @param vec3
+ */
+void pr3d_set_shader_uniform_vec3(
+    unsigned int shader, const char *const name, vec3 vec
 );
 
 /**

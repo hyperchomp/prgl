@@ -3,11 +3,11 @@
 #include "shaders_internal.h"
 #include "shaders_init_internal.h"
 #include "common_macros.h"
-#include "cglm/mat4.h"
 #include <GLFW/glfw3.h>
 #include <stdio.h>
 
 const char *const PR3D_TRANSFORM_UNIFORM = "model";
+const char *const PR3D_LIGHT_COLOR_UNIFORM = "lightColor";
 
 static unsigned int pr3d_shader_pool[PR3D_SHADER_COUNT];
 static unsigned int pr3d_current_shader_id;
@@ -78,6 +78,13 @@ void pr3d_set_shader_uniform_4f(
     glUniform4f(glGetUniformLocation(shader, name), a, b, c, d);
 }
 
+void pr3d_set_shader_uniform_vec3(
+    unsigned int shader, const char *const name, vec3 vec
+)
+{
+    glUniform3fv(glGetUniformLocation(shader, name), 1, vec);
+}
+
 void pr3d_set_shader_uniform_mat4(
     unsigned int shader, const char *const name, mat4 matrix
 )
@@ -112,10 +119,12 @@ void pr3d_init_shader_pool(void)
 {
     unsigned int shader_3d = pr3d_init_shader_3d();
     unsigned int shader_2d = pr3d_init_shader_2d();
+    unsigned int shader_unlit = pr3d_init_shader_unlit();
 
     // Don't do loop so if we remove any it doesn't break even if out of order
     pr3d_shader_pool[PR3D_SHADER_2D] = shader_2d;
     pr3d_shader_pool[PR3D_SHADER_3D] = shader_3d;
+    pr3d_shader_pool[PR3D_SHADER_UNLIT] = shader_unlit;
 
     pr3d_use_shader_3d();
 }

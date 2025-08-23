@@ -26,12 +26,12 @@ struct PR3DMesh
 };
 
 /**
- * A 3D Mesh object which can be placed in the world and manipulated.
+ * A light which can be positioned in the world and emits a color.
  */
-struct PR3DMeshInstance
+struct PR3DPointLight
 {
-    struct PR3DMesh *mesh;
-    mat4 transform;
+    vec3 position;
+    vec3 lightColor;
 };
 
 /**
