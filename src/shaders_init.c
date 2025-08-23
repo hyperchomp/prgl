@@ -42,13 +42,15 @@ unsigned int pr3d_init_shader_3d(void)
     const char *const VERTEX_SHADER_SOURCE =
         "#version 330 core\n"
         "layout (location = 0) in vec3 aPos;\n"
-        "layout (location = 1) in vec2 aTexCoord;\n"
+        "layout (location = 1) in vec3 aNormal;\n"
+        "layout (location = 2) in vec2 aTexCoord;\n"
 
         "out vec2 texCoord;\n"
 
         // Calculate lighting per vertex for gouraud shading
         "out vec3 vertexColor;\n"
         "uniform vec3 lightColor;\n"
+        "uniform vec3 lightPosition;\n"
 
         "uniform mat4 model;\n"
         "uniform mat4 view;\n"
@@ -56,9 +58,27 @@ unsigned int pr3d_init_shader_3d(void)
 
         "void main()\n"
         "{\n"
+
+        // view * model brings into camera view space, the below operation
+        // transforms to clip space.
         "    gl_Position = projection * view * model * vec4(aPos, 1.0);\n"
         "    texCoord = aTexCoord;\n"
-        "    vertexColor = lightColor;\n"
+
+        // For non-uniform scaling need to multiply by the normal matrix.
+        "    vec3 normal = mat3(transpose(inverse(model))) * aNormal;\n"
+
+        // Get world space position of vertex and calculate light direction from
+        // the light source to the vertex.
+        "    normal = normalize(vec3(model * vec4(aNormal, 0.0)));\n"
+        "    vec3 vertexWorldPosition = vec3(model * vec4(aPos, 1.0));\n"
+        "    vec3 lightDir = normalize(lightPosition - vertexWorldPosition);\n"
+
+        // Calculate diffuse, darkens the greater the angle between vectors.
+        // max() is used to prevent negatives when the angle is > 90 degrees.
+        "    float diffuse = max(dot(normal, lightDir), 0.0);\n"
+
+        "    float ambient = 0.1;\n"
+        "    vertexColor = (ambient + diffuse) * lightColor;\n"
         "}\0";
 
     // If nothing is passed for alpha it defaults to 1.0

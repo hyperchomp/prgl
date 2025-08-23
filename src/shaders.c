@@ -8,6 +8,7 @@
 
 const char *const PR3D_TRANSFORM_UNIFORM = "model";
 const char *const PR3D_LIGHT_COLOR_UNIFORM = "lightColor";
+const char *const PR3D_LIGHT_POSITION_UNIFORM = "lightPosition";
 
 static unsigned int pr3d_shader_pool[PR3D_SHADER_COUNT];
 static unsigned int pr3d_current_shader_id;

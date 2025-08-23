@@ -7,6 +7,7 @@
 
 extern const char *const PR3D_TRANSFORM_UNIFORM;
 extern const char *const PR3D_LIGHT_COLOR_UNIFORM;
+extern const char *const PR3D_LIGHT_POSITION_UNIFORM;
 
 /**
  * Precompiled shader types. These can be used with pr3d_shader() to get the ID
