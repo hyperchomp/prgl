@@ -197,6 +197,7 @@ var NAVTREEINDEX0 =
 "render_8c.html#a4c8390e54cd21087f02961f292abab02":[1,0,1,4,0],
 "render_8c.html#a6012977a189847a4a83c2d27843a54ed":[1,0,1,4,2],
 "render_8c.html#a8a2b878f2f08c87cd356780d382e4959":[1,0,1,4,6],
+"render_8c.html#aba50df176110382827138e97b004515a":[1,0,1,4,7],
 "render_8c_source.html":[1,0,1,4],
 "render_8h.html":[1,0,0,5],
 "render_8h.html#a196141e1b4bb71847f218c9f2870e233":[1,0,0,5,3],
@@ -206,6 +207,7 @@ var NAVTREEINDEX0 =
 "render_8h.html#a4c8390e54cd21087f02961f292abab02":[1,0,0,5,2],
 "render_8h.html#a6012977a189847a4a83c2d27843a54ed":[1,0,0,5,4],
 "render_8h.html#a8a2b878f2f08c87cd356780d382e4959":[1,0,0,5,8],
+"render_8h.html#aba50df176110382827138e97b004515a":[1,0,0,5,9],
 "render_8h_source.html":[1,0,0,5],
 "screen_8c.html":[1,0,1,5],
 "screen_8c.html#a1f404ea2d0aef0bff7f5c5747cfaad4b":[1,0,1,5,1],
@@ -233,6 +235,7 @@ var NAVTREEINDEX0 =
 "screen__internal_8h.html#afc628f1ff13c2c86fcaaa3040c47e76e":[1,0,1,6,3],
 "screen__internal_8h_source.html":[1,0,1,6],
 "shaders_8c.html":[1,0,1,7],
+"shaders_8c.html#a11ed180c3416d14ca54615d663225372":[1,0,1,7,16],
 "shaders_8c.html#a200d492131d3e880a2686c4eaf533e15":[1,0,1,7,9],
 "shaders_8c.html#a2b2c917addf34e5b514f30cf976450d1":[1,0,1,7,3],
 "shaders_8c.html#a3ca6d0c449e975ce83cbc31cf89c2f2b":[1,0,1,7,4],
@@ -242,12 +245,9 @@ var NAVTREEINDEX0 =
 "shaders_8c.html#a69cfdad79b9a9324b578832d1de007ca":[1,0,1,7,8],
 "shaders_8c.html#a78e5603c3bc30a162a0a28b79ad34191":[1,0,1,7,14],
 "shaders_8c.html#aa2c9ce3fd0650d162e7812135b078945":[1,0,1,7,5],
-"shaders_8c.html#aa6002123e219037103b11a30164e168c":[1,0,1,7,16],
+"shaders_8c.html#aa6002123e219037103b11a30164e168c":[1,0,1,7,17],
 "shaders_8c.html#ab5297d5ecae3e3e4becf2bad94884614":[1,0,1,7,0],
 "shaders_8c.html#ab691a75f431938ad2516d5e6a54aa353":[1,0,1,7,13],
 "shaders_8c.html#ac722eb9f50281e82ec2ae61ca6d1850c":[1,0,1,7,15],
-"shaders_8c.html#aced98f5cc9a1b8d38cb85d58c8525b39":[1,0,1,7,10],
-"shaders_8c.html#ad81f662b7c1ddabf77cf508e976e4eb3":[1,0,1,7,11],
-"shaders_8c.html#af97fd0c06e4d1e4e88b94ed246b95972":[1,0,1,7,1],
-"shaders_8c.html#afc5c01a6c96b481c4ec1628ad1db98b2":[1,0,1,7,12]
+"shaders_8c.html#aced98f5cc9a1b8d38cb85d58c8525b39":[1,0,1,7,10]
 };

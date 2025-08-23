@@ -8,5 +8,6 @@ var render_8h =
     [ "pr3d_create_triangle", "render_8h.html#a331cc7b8d6872db50536ac46504dafc8", null ],
     [ "pr3d_delete_mesh", "render_8h.html#a2e2eae802cf220b32b263c65a4ea8823", null ],
     [ "pr3d_render_mesh", "render_8h.html#a2c3c6351ac03485f63485d220ba69ce2", null ],
-    [ "pr3d_render_mesh_2d", "render_8h.html#a8a2b878f2f08c87cd356780d382e4959", null ]
+    [ "pr3d_render_mesh_2d", "render_8h.html#a8a2b878f2f08c87cd356780d382e4959", null ],
+    [ "pr3d_update_lighting", "render_8h.html#aba50df176110382827138e97b004515a", null ]
 ];
