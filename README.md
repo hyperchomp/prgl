@@ -20,9 +20,10 @@ Libraries used within pr3d may have differing licenses that are useable alongsid
 ### Rendering
 * Simple 3D meshes such as triangles and cubes
 * Textured rectangles and cubes
-* FOV adjustment
+* Gouraud shading
+* Point lights
 * Custom shaders
-* 2D Rendering for basic shapes
+* 2D Rendering for basic shapes (GUI)
 
 ### Input
 * Keyboard/Mouse
@@ -35,7 +36,6 @@ Libraries used within pr3d may have differing licenses that are useable alongsid
 
 ### Rendering
 * Pixel perfect fullscreen scaling from preset base resolution(s) similar to 90s retro games, but supporting modern 16:9 aspect ratios
-* Gouraud shading
 * glTF 3D model loading
 * Text rendering
 
