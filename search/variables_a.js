@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['up_0',['up',['../structPR3DCamera.html#af25e132b20481c5c82d8394e0beeea4a',1,'PR3DCamera']]]
+  ['texture_0',['texture',['../structPR3DRenderTexture.html#a9b08d4c2ab8a02835f60165f65621131',1,'PR3DRenderTexture::texture()'],['../structPR3DMesh.html#a9b08d4c2ab8a02835f60165f65621131',1,'PR3DMesh::texture()']]]
 ];

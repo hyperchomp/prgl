@@ -131,5 +131,6 @@ var searchData=
   ['pr3d_5fshader_5f2d_128',['PR3D_SHADER_2D',['../shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a48f383dce86fd106f48092189286c10e',1,'shaders.h']]],
   ['pr3d_5fshader_5f3d_129',['PR3D_SHADER_3D',['../shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a07a23ef28bf7d52d0c9ceddb890a26b5',1,'shaders.h']]],
   ['pr3d_5fshader_5fcount_130',['PR3D_SHADER_COUNT',['../shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823a7e2f13700015022ca4a5a67b4532049d',1,'shaders.h']]],
-  ['pr3d_5fshader_5funlit_131',['PR3D_SHADER_UNLIT',['../shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823aa9cb3f760d074308715cad31954085be',1,'shaders.h']]]
+  ['pr3d_5fshader_5fscreen_131',['PR3D_SHADER_SCREEN',['../shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823acba1ffa699e7482a1fafc314075dadce',1,'shaders.h']]],
+  ['pr3d_5fshader_5funlit_132',['PR3D_SHADER_UNLIT',['../shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823aa9cb3f760d074308715cad31954085be',1,'shaders.h']]]
 ];

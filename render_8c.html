@@ -91,17 +91,21 @@ $(document).ready(function(){initNavTree('render_8c.html',''); initResizable(); 
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">render.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;glad.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="common__macros_8h_source.html">common_macros.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen__internal_8h_source.html">screen_internal.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="shaders_8h_source.html">shaders.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="render_8h_source.html">render.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="render__internal_8h_source.html">render_internal.h</a>&quot;</code><br />
 <code>#include &quot;cglm/affine.h&quot;</code><br />
 <code>#include &quot;cglm/mat4.h&quot;</code><br />
 <code>#include &quot;cglm/types.h&quot;</code><br />
+<code>#include &lt;complex.h&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
@@ -116,6 +120,8 @@ Functions</h2></td></tr>
 <tr class="separator:a4c8390e54cd21087f02961f292abab02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a331cc7b8d6872db50536ac46504dafc8"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a331cc7b8d6872db50536ac46504dafc8">pr3d_create_triangle</a> (mat3 vertices)</td></tr>
 <tr class="separator:a331cc7b8d6872db50536ac46504dafc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f5987b4b464a2778ed64133f8fb4e70"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a3f5987b4b464a2778ed64133f8fb4e70">pr3d_create_screen_quad</a> (void)</td></tr>
+<tr class="separator:a3f5987b4b464a2778ed64133f8fb4e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6012977a189847a4a83c2d27843a54ed"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a6012977a189847a4a83c2d27843a54ed">pr3d_create_rectangle</a> (mat4 vertices)</td></tr>
 <tr class="separator:a6012977a189847a4a83c2d27843a54ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a196141e1b4bb71847f218c9f2870e233"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a196141e1b4bb71847f218c9f2870e233">pr3d_create_cube</a> (void)</td></tr>
@@ -128,6 +134,17 @@ Functions</h2></td></tr>
 <tr class="separator:a2e2eae802cf220b32b263c65a4ea8823"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafd45e837fc668338f07ba6c4d62aecb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#aafd45e837fc668338f07ba6c4d62aecb">pr3d_update_lighting</a> (struct <a class="el" href="structPR3DPointLight.html">PR3DPointLight</a> point_lights[], int num_lights)</td></tr>
 <tr class="separator:aafd45e837fc668338f07ba6c4d62aecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04509246bbe83d1cb1db71b8464a316e"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPR3DRenderTexture.html">PR3DRenderTexture</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a04509246bbe83d1cb1db71b8464a316e">pr3d_create_render_texture</a> (void)</td></tr>
+<tr class="separator:a04509246bbe83d1cb1db71b8464a316e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d859837e508a37fd7fa54f028f3231d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a4d859837e508a37fd7fa54f028f3231d">pr3d_enable_render_texture</a> (unsigned int fbo)</td></tr>
+<tr class="separator:a4d859837e508a37fd7fa54f028f3231d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9de061243608767ae2bc02eadab08b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#ac9de061243608767ae2bc02eadab08b2">pr3d_render_render_texture</a> (unsigned int <a class="el" href="game_8c.html#a7b0639c14543450dbafa41d5881f17aa">render_texture</a>, struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *screen_quad)</td></tr>
+<tr class="separator:ac9de061243608767ae2bc02eadab08b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a5ec40499fe362090894297fca8fba82e"><td class="memItemLeft" align="right" valign="top">const vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a5ec40499fe362090894297fca8fba82e">PR3D_RENDER_RESOLUTION</a> = {320.0f, 180.0f}</td></tr>
+<tr class="separator:a5ec40499fe362090894297fca8fba82e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a4c8390e54cd21087f02961f292abab02" name="a4c8390e54cd21087f02961f292abab02"></a>
@@ -178,7 +195,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00014">14</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00019">19</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -199,7 +216,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Creates a cube mesh. Make sure to attach a texture to the returned mesh struct after creating it. </p>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00157">157</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00249">249</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -226,7 +243,50 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00078">78</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00169">169</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+
+</div>
+</div>
+<a id="a04509246bbe83d1cb1db71b8464a316e" name="a04509246bbe83d1cb1db71b8464a316e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04509246bbe83d1cb1db71b8464a316e">&#9670;&#160;</a></span>pr3d_create_render_texture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structPR3DRenderTexture.html">PR3DRenderTexture</a> pr3d_create_render_texture </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates a 320x180 render texture to draw the game to.</p>
+<dl class="section return"><dt>Returns</dt><dd>The render texture struct. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00463">463</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+
+</div>
+</div>
+<a id="a3f5987b4b464a2778ed64133f8fb4e70" name="a3f5987b4b464a2778ed64133f8fb4e70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f5987b4b464a2778ed64133f8fb4e70">&#9670;&#160;</a></span>pr3d_create_screen_quad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> * pr3d_create_screen_quad </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates a quad for drawing the screen's render texture to. </p>
+
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00083">83</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -253,7 +313,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00020">20</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00025">25</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -274,7 +334,29 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Cleans up the GL objects associated with the mesh and then frees it. </p>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00313">313</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00405">405</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+
+</div>
+</div>
+<a id="a4d859837e508a37fd7fa54f028f3231d" name="a4d859837e508a37fd7fa54f028f3231d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d859837e508a37fd7fa54f028f3231d">&#9670;&#160;</a></span>pr3d_enable_render_texture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pr3d_enable_render_texture </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>fbo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Enables the render texture fbo for rendering. This should be called before doing any rendering to ensure everything is drawn to the internal resolution.</p>
+<p>The screen should be cleared after calling this using <a class="el" href="render_8c.html#a4c8390e54cd21087f02961f292abab02">pr3d_clear_screen()</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00513">513</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -333,7 +415,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00246">246</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00338">338</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -385,7 +467,45 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00278">278</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00370">370</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+
+</div>
+</div>
+<a id="ac9de061243608767ae2bc02eadab08b2" name="ac9de061243608767ae2bc02eadab08b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9de061243608767ae2bc02eadab08b2">&#9670;&#160;</a></span>pr3d_render_render_texture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pr3d_render_render_texture </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>render_texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *&#160;</td>
+          <td class="paramname"><em>screen_quad</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Disable the render texture fbo and render the render texture itself to the default framebuffer.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">render_texture</td><td>The ID of the texture to draw the screen quad to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">screen_quad</td><td>The quad mesh to draw the render texture onto. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00520">520</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -422,7 +542,24 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00324">324</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00416">416</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a5ec40499fe362090894297fca8fba82e" name="a5ec40499fe362090894297fca8fba82e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ec40499fe362090894297fca8fba82e">&#9670;&#160;</a></span>PR3D_RENDER_RESOLUTION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const vec2 PR3D_RENDER_RESOLUTION = {320.0f, 180.0f}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00017">17</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
