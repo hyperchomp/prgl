@@ -16,6 +16,8 @@ var shaders_8c =
     [ "pr3d_use_shader_2d", "shaders_8c.html#ab691a75f431938ad2516d5e6a54aa353", null ],
     [ "pr3d_use_shader_3d", "shaders_8c.html#a78e5603c3bc30a162a0a28b79ad34191", null ],
     [ "PR3D_LIGHT_COLOR_UNIFORM", "shaders_8c.html#ac722eb9f50281e82ec2ae61ca6d1850c", null ],
+    [ "PR3D_LIGHT_LINEAR_UNIFORM", "shaders_8c.html#a8b66429de5bc218fe2555aceaaedbbc8", null ],
     [ "PR3D_LIGHT_POSITION_UNIFORM", "shaders_8c.html#a11ed180c3416d14ca54615d663225372", null ],
+    [ "PR3D_LIGHT_QUADRATIC_UNIFORM", "shaders_8c.html#af1fec3fdee129a4146183052e19e6ebe", null ],
     [ "PR3D_TRANSFORM_UNIFORM", "shaders_8c.html#aa6002123e219037103b11a30164e168c", null ]
 ];

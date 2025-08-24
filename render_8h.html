@@ -123,8 +123,8 @@ Functions</h2></td></tr>
 <tr class="separator:a8a2b878f2f08c87cd356780d382e4959"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e2eae802cf220b32b263c65a4ea8823"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8h.html#a2e2eae802cf220b32b263c65a4ea8823">pr3d_delete_mesh</a> (struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *mesh)</td></tr>
 <tr class="separator:a2e2eae802cf220b32b263c65a4ea8823"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba50df176110382827138e97b004515a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8h.html#aba50df176110382827138e97b004515a">pr3d_update_lighting</a> (struct <a class="el" href="structPR3DPointLight.html">PR3DPointLight</a> *light)</td></tr>
-<tr class="separator:aba50df176110382827138e97b004515a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafd45e837fc668338f07ba6c4d62aecb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8h.html#aafd45e837fc668338f07ba6c4d62aecb">pr3d_update_lighting</a> (struct <a class="el" href="structPR3DPointLight.html">PR3DPointLight</a> point_lights[], int num_lights)</td></tr>
+<tr class="separator:aafd45e837fc668338f07ba6c4d62aecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a4c8390e54cd21087f02961f292abab02" name="a4c8390e54cd21087f02961f292abab02"></a>
@@ -386,8 +386,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aba50df176110382827138e97b004515a" name="aba50df176110382827138e97b004515a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba50df176110382827138e97b004515a">&#9670;&#160;</a></span>pr3d_update_lighting()</h2>
+<a id="aafd45e837fc668338f07ba6c4d62aecb" name="aafd45e837fc668338f07ba6c4d62aecb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafd45e837fc668338f07ba6c4d62aecb">&#9670;&#160;</a></span>pr3d_update_lighting()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -395,16 +395,26 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void pr3d_update_lighting </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPR3DPointLight.html">PR3DPointLight</a> *&#160;</td>
-          <td class="paramname"><em>light</em></td><td>)</td>
+          <td class="paramtype">struct <a class="el" href="structPR3DPointLight.html">PR3DPointLight</a>&#160;</td>
+          <td class="paramname"><em>point_lights</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_lights</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Passes lighting data from lights to the active shader.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">struct[in]</td><td><a class="el" href="structPR3DPointLight.html">PR3DPointLight</a> The light for the scene. </td></tr>
+    <tr><td class="paramname">struct[in]</td><td><a class="el" href="structPR3DPointLight.html">PR3DPointLight</a>[] The point lights for the scene. </td></tr>
   </table>
   </dd>
 </dl>

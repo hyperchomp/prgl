@@ -7,5 +7,5 @@ var render_8c =
     [ "pr3d_delete_mesh", "render_8c.html#a2e2eae802cf220b32b263c65a4ea8823", null ],
     [ "pr3d_render_mesh", "render_8c.html#a2c3c6351ac03485f63485d220ba69ce2", null ],
     [ "pr3d_render_mesh_2d", "render_8c.html#a8a2b878f2f08c87cd356780d382e4959", null ],
-    [ "pr3d_update_lighting", "render_8c.html#aba50df176110382827138e97b004515a", null ]
+    [ "pr3d_update_lighting", "render_8c.html#aafd45e837fc668338f07ba6c4d62aecb", null ]
 ];

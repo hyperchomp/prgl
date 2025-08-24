@@ -104,6 +104,10 @@ Macros</h2></td></tr>
 <tr class="separator:a86d500a34c624c2cae56bc25a31b12f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0d31954193e3d97a35ac9861d609a0f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common__macros_8h.html#aa0d31954193e3d97a35ac9861d609a0f">ARR_LEN</a>(x)</td></tr>
 <tr class="separator:aa0d31954193e3d97a35ac9861d609a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d91b1baec1dcaf7337ee9db651a7a7e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common__macros_8h.html#a4d91b1baec1dcaf7337ee9db651a7a7e">STRINGIFY_STAGE1</a>(x)&#160;&#160;&#160;#x</td></tr>
+<tr class="separator:a4d91b1baec1dcaf7337ee9db651a7a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6df1d22fb5f09eccc23b9f399670cfd7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common__macros_8h.html#a6df1d22fb5f09eccc23b9f399670cfd7">STRINGIFY</a>(x)&#160;&#160;&#160;<a class="el" href="common__macros_8h.html#a4d91b1baec1dcaf7337ee9db651a7a7e">STRINGIFY_STAGE1</a>(x)</td></tr>
+<tr class="separator:a6df1d22fb5f09eccc23b9f399670cfd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="aa0d31954193e3d97a35ac9861d609a0f" name="aa0d31954193e3d97a35ac9861d609a0f"></a>
@@ -121,8 +125,8 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    ((size_t)(<span class="keyword">sizeof</span>(x) / <span class="keyword">sizeof</span>(0 [x])) /                                     \</div>
-<div class="line">     ((size_t)(!(<span class="keyword">sizeof</span>(x) % <span class="keyword">sizeof</span>(0 [x])))))</div>
+<b>Value:</b><div class="fragment"><div class="line">    ((size_t)(<span class="keyword">sizeof</span>(x) / <span class="keyword">sizeof</span>(0 [x]))                                       \</div>
+<div class="line">     / ((size_t)(!(<span class="keyword">sizeof</span>(x) % <span class="keyword">sizeof</span>(0 [x])))))</div>
 </div><!-- fragment --><p>Can be used to get the length of an array when used in the same scope it is declared in. This version has some protections from passing pointers as arguments, but it isn't completely foolproof.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -133,6 +137,46 @@ Macros</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>size_t The length of the array </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="common__macros_8h_source.html#l00023">23</a> of file <a class="el" href="common__macros_8h_source.html">common_macros.h</a>.</p>
+
+</div>
+</div>
+<a id="a6df1d22fb5f09eccc23b9f399670cfd7" name="a6df1d22fb5f09eccc23b9f399670cfd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6df1d22fb5f09eccc23b9f399670cfd7">&#9670;&#160;</a></span>STRINGIFY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STRINGIFY</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="common__macros_8h.html#a4d91b1baec1dcaf7337ee9db651a7a7e">STRINGIFY_STAGE1</a>(x)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="common__macros_8h_source.html#l00030">30</a> of file <a class="el" href="common__macros_8h_source.html">common_macros.h</a>.</p>
+
+</div>
+</div>
+<a id="a4d91b1baec1dcaf7337ee9db651a7a7e" name="a4d91b1baec1dcaf7337ee9db651a7a7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d91b1baec1dcaf7337ee9db651a7a7e">&#9670;&#160;</a></span>STRINGIFY_STAGE1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STRINGIFY_STAGE1</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;#x</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="common__macros_8h_source.html#l00029">29</a> of file <a class="el" href="common__macros_8h_source.html">common_macros.h</a>.</p>
 
 </div>
 </div>
