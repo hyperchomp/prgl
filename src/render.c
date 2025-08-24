@@ -321,12 +321,49 @@ void pr3d_delete_mesh(struct PR3DMesh *mesh)
     }
 }
 
-void pr3d_update_lighting(struct PR3DPointLight *light)
+void pr3d_update_lighting(struct PR3DPointLight point_lights[], int num_lights)
 {
-    pr3d_set_shader_uniform_vec3(
-        pr3d_current_shader(), PR3D_LIGHT_COLOR_UNIFORM, light->lightColor
-    );
-    pr3d_set_shader_uniform_vec3(
-        pr3d_current_shader(), PR3D_LIGHT_POSITION_UNIFORM, light->position
-    );
+    if (num_lights > PR3D_MAX_POINT_LIGHTS)
+    {
+        num_lights = PR3D_MAX_POINT_LIGHTS;
+    }
+
+    char uniform_name_buffer[64];
+    for (int i = 0; i < num_lights; i++)
+    {
+        snprintf(
+            uniform_name_buffer, sizeof(uniform_name_buffer),
+            "pointLights[%d].%s", i, PR3D_LIGHT_COLOR_UNIFORM
+        );
+        pr3d_set_shader_uniform_vec3(
+            pr3d_current_shader(), uniform_name_buffer,
+            point_lights[i].lightColor
+        );
+
+        snprintf(
+            uniform_name_buffer, sizeof(uniform_name_buffer),
+            "pointLights[%d].%s", i, PR3D_LIGHT_POSITION_UNIFORM
+        );
+        pr3d_set_shader_uniform_vec3(
+            pr3d_current_shader(), uniform_name_buffer, point_lights[i].position
+        );
+
+        float linear_constant = 0.09f;
+        snprintf(
+            uniform_name_buffer, sizeof(uniform_name_buffer),
+            "pointLights[%d].%s", i, PR3D_LIGHT_LINEAR_UNIFORM
+        );
+        pr3d_set_shader_uniform_vec3(
+            pr3d_current_shader(), uniform_name_buffer, &linear_constant
+        );
+
+        float quadratic_constant = 0.032f;
+        snprintf(
+            uniform_name_buffer, sizeof(uniform_name_buffer),
+            "pointLights[%d].%s", i, PR3D_LIGHT_QUADRATIC_UNIFORM
+        );
+        pr3d_set_shader_uniform_vec3(
+            pr3d_current_shader(), uniform_name_buffer, &quadratic_constant
+        );
+    }
 }

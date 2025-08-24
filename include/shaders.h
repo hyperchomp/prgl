@@ -5,9 +5,14 @@
 #include <stddef.h>
 #include <stdbool.h>
 
+#define PR3D_MAX_POINT_LIGHTS 32
+
 extern const char *const PR3D_TRANSFORM_UNIFORM;
+
 extern const char *const PR3D_LIGHT_COLOR_UNIFORM;
 extern const char *const PR3D_LIGHT_POSITION_UNIFORM;
+extern const char *const PR3D_LIGHT_LINEAR_UNIFORM;
+extern const char *const PR3D_LIGHT_QUADRATIC_UNIFORM;
 
 /**
  * Precompiled shader types. These can be used with pr3d_shader() to get the ID

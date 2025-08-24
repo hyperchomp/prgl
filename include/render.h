@@ -100,8 +100,8 @@ void pr3d_delete_mesh(struct PR3DMesh *mesh);
 /**
  * Passes lighting data from lights to the active shader.
  *
- * @param struct[in] PR3DPointLight The light for the scene.
+ * @param struct[in] PR3DPointLight[] The point lights for the scene.
  */
-void pr3d_update_lighting(struct PR3DPointLight *light);
+void pr3d_update_lighting(struct PR3DPointLight point_lights[], int num_lights);
 
 #endif

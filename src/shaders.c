@@ -7,8 +7,10 @@
 #include <stdio.h>
 
 const char *const PR3D_TRANSFORM_UNIFORM = "model";
-const char *const PR3D_LIGHT_COLOR_UNIFORM = "lightColor";
-const char *const PR3D_LIGHT_POSITION_UNIFORM = "lightPosition";
+const char *const PR3D_LIGHT_COLOR_UNIFORM = "color";
+const char *const PR3D_LIGHT_POSITION_UNIFORM = "position";
+const char *const PR3D_LIGHT_LINEAR_UNIFORM = "linear";
+const char *const PR3D_LIGHT_QUADRATIC_UNIFORM = "quadratic";
 
 static unsigned int pr3d_shader_pool[PR3D_SHADER_COUNT];
 static unsigned int pr3d_current_shader_id;

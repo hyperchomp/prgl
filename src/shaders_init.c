@@ -1,5 +1,6 @@
 #include "shaders_init_internal.h"
 #include "shaders.h"
+#include "common_macros.h"
 
 unsigned int pr3d_init_shader_2d(void)
 {
@@ -39,8 +40,20 @@ unsigned int pr3d_init_shader_2d(void)
 
 unsigned int pr3d_init_shader_3d(void)
 {
+    // clang-format off
     const char *const VERTEX_SHADER_SOURCE =
         "#version 330 core\n"
+        "struct PointLight {\n"
+        "    vec3 position;\n"
+        "    vec3 color;\n"
+
+        // Constants for calculating light attenuation (fade distance).
+        "    float linear;\n"
+        "    float quadratic;\n"
+        "};\n"
+
+        "#define NR_POINT_LIGHTS " STRINGIFY(PR3D_MAX_POINT_LIGHTS) "\n"
+
         "layout (location = 0) in vec3 aPos;\n"
         "layout (location = 1) in vec3 aNormal;\n"
         "layout (location = 2) in vec2 aTexCoord;\n"
@@ -49,8 +62,7 @@ unsigned int pr3d_init_shader_3d(void)
 
         // Calculate lighting per vertex for gouraud shading
         "out vec3 vertexColor;\n"
-        "uniform vec3 lightColor;\n"
-        "uniform vec3 lightPosition;\n"
+        "uniform PointLight pointLights[NR_POINT_LIGHTS];"
 
         "uniform mat4 model;\n"
         "uniform mat4 view;\n"
@@ -70,16 +82,29 @@ unsigned int pr3d_init_shader_3d(void)
         // Get world space position of vertex and calculate light direction from
         // the light source to the vertex.
         "    normal = normalize(vec3(model * vec4(aNormal, 0.0)));\n"
-        "    vec3 vertexWorldPosition = vec3(model * vec4(aPos, 1.0));\n"
-        "    vec3 lightDir = normalize(lightPosition - vertexWorldPosition);\n"
+        "    vec3 vertexPosition = vec3(model * vec4(aPos, 1.0));\n"
+        "    vec3 result;\n"
+        "    for (int i = 0; i < NR_POINT_LIGHTS; i++)\n"
+        "    {\n"
+        "        vec3 lightDir = normalize(pointLights[i].position - vertexPosition);\n"
 
-        // Calculate diffuse, darkens the greater the angle between vectors.
-        // max() is used to prevent negatives when the angle is > 90 degrees.
-        "    float diffuse = max(dot(normal, lightDir), 0.0);\n"
+                 // Calculate diffuse, darkens the greater the angle between vectors.
+                 // max() is used to prevent negatives when the angle is > 90 degrees.
+        "        float diffuse = max(dot(normal, lightDir), 0.0);\n"
+        "        float ambient = 0.1;\n"
+        
+        "        float distance = length(pointLights[i].position - vertexPosition);\n" 
+        "        float attenuation = 1.0 / "
+                    "(1.0 + (pointLights[i].linear * distance) "
+                    "+ (pointLights[i].quadratic * (distance * distance)));\n"
+        "        ambient *= attenuation;\n"
+        "        diffuse *= attenuation;\n"
 
-        "    float ambient = 0.1;\n"
-        "    vertexColor = (ambient + diffuse) * lightColor;\n"
+        "        result += (ambient + diffuse) * pointLights[i].color;\n"
+        "    }\n"
+        "    vertexColor = result;\n"
         "}\0";
+    // clang-format on
 
     // If nothing is passed for alpha it defaults to 1.0
     const char *const FRAG_SHADER_SOURCE =

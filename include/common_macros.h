@@ -21,7 +21,13 @@
  */
 #ifndef ARR_LEN
 #define ARR_LEN(x)                                                             \
-    ((size_t)(sizeof(x) / sizeof(0 [x])) /                                     \
-     ((size_t)(!(sizeof(x) % sizeof(0 [x])))))
+    ((size_t)(sizeof(x) / sizeof(0 [x]))                                       \
+     / ((size_t)(!(sizeof(x) % sizeof(0 [x])))))
 #endif
+
+#ifndef STRINGIFY
+#define STRINGIFY_STAGE1(x) #x
+#define STRINGIFY(x) STRINGIFY_STAGE1(x)
+#endif
+
 #endif
