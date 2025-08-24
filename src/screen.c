@@ -1,14 +1,10 @@
 #include "glad.h"
 #include "screen.h"
 #include "screen_internal.h"
-#include "common_macros.h"
 #include <GLFW/glfw3.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-
-static void
-framebuffer_size_callback(GLFWwindow *window, int width, int height);
 
 struct PR3DScreen *pr3d_screen(void);
 
@@ -46,8 +42,8 @@ void pr3d_create_window(char *name)
     glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
     glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
 
-    GLFWwindow *window
-        = glfwCreateWindow(mode->width, mode->height, name, monitor, NULL);
+    GLFWwindow *window =
+        glfwCreateWindow(mode->width, mode->height, name, monitor, NULL);
     if (window == NULL)
     {
         fprintf(stderr, "new_window: Failed to create GLFW window\n");
@@ -56,7 +52,6 @@ void pr3d_create_window(char *name)
     }
 
     glfwMakeContextCurrent(window);
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
@@ -130,13 +125,4 @@ void pr3d_set_mouse_capture_mode(enum PR3DMouseCaptureMode mode)
                         "capture mode type.\n"
             );
     }
-}
-
-/**
- * Called by GLFW when resizing the window
- */
-static void
-framebuffer_size_callback(GLFWwindow *UNUSED(window), int width, int height)
-{
-    glViewport(0, 0, width, height);
 }

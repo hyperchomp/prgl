@@ -14,6 +14,8 @@ extern const char *const PR3D_LIGHT_POSITION_UNIFORM;
 extern const char *const PR3D_LIGHT_LINEAR_UNIFORM;
 extern const char *const PR3D_LIGHT_QUADRATIC_UNIFORM;
 
+extern const char *const PR3D_RENDER_RESOLUTION_UNIFORM;
+
 /**
  * Precompiled shader types. These can be used with pr3d_shader() to get the ID
  * of a precompiled shader.
@@ -22,6 +24,7 @@ extern const char *const PR3D_LIGHT_QUADRATIC_UNIFORM;
  */
 enum PR3DShader
 {
+    PR3D_SHADER_SCREEN,
     PR3D_SHADER_2D,
     PR3D_SHADER_3D,
     PR3D_SHADER_UNLIT,
@@ -106,6 +109,17 @@ void pr3d_set_shader_uniform_4f(
  */
 void pr3d_set_shader_uniform_vec3(
     unsigned int shader, const char *const name, vec3 vec
+);
+
+/**
+ * Sets the value of shader uniform variable which takes a vec2.
+ *
+ * @param shader The shader ID to set the uniform on.
+ * @param name[in] The name of the uniform to set.
+ * @param vec2
+ */
+void pr3d_set_shader_uniform_vec2(
+    unsigned int shader, const char *const name, vec2 vec
 );
 
 /**

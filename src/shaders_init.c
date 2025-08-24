@@ -2,6 +2,36 @@
 #include "shaders.h"
 #include "common_macros.h"
 
+unsigned int pr3d_init_shader_screen(void)
+{
+    const char *const VERTEX_SHADER_SOURCE =
+        "#version 330 core\n"
+        "layout (location = 0) in vec3 aPos;\n"
+        "layout (location = 1) in vec2 aTexCoord;\n"
+
+        "out vec2 texCoord;\n"
+
+        "void main()\n"
+        "{\n"
+        "    gl_Position = vec4(aPos, 1.0);\n"
+        "    texCoord = aTexCoord;\n"
+        "}\0";
+
+    const char *const FRAG_SHADER_SOURCE =
+        "#version 330 core\n"
+        "out vec4 FragColor;\n"
+        "in vec2 texCoord;\n"
+
+        "uniform sampler2D imageTexture;\n"
+
+        "void main()\n"
+        "{\n"
+        "   FragColor = texture(imageTexture, texCoord);\n"
+        "}\0";
+
+    return pr3d_create_shader(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);
+}
+
 unsigned int pr3d_init_shader_2d(void)
 {
     const char *const VERTEX_SHADER_SOURCE =
@@ -14,9 +44,15 @@ unsigned int pr3d_init_shader_2d(void)
         "uniform mat4 model;\n"
         "uniform mat4 projection;\n"
 
+        "uniform vec2 renderResolution;\n"
+
         "void main()\n"
         "{\n"
-        "    gl_Position = projection * model * vec4(aPos.xy, 0.0f, 1.0);\n"
+        // Half pixel offset to align with pixel grid
+        "    vec2 half_pixel_offset = 0.5 / renderResolution;\n"
+        "    vec4 pos = projection * model * vec4(aPos.xy, 0.0f, 1.0);\n"
+        "    pos.xy += half_pixel_offset * pos.w;\n"
+        "    gl_Position = pos;\n"
         "    texCoord = aTexCoord;\n"
         "}\0";
 
@@ -68,12 +104,20 @@ unsigned int pr3d_init_shader_3d(void)
         "uniform mat4 view;\n"
         "uniform mat4 projection;\n"
 
+        "uniform vec2 renderResolution;\n"
+
         "void main()\n"
         "{\n"
 
         // view * model brings into camera view space, the below operation
         // transforms to clip space.
-        "    gl_Position = projection * view * model * vec4(aPos, 1.0);\n"
+        "    vec4 pos = projection * view * model * vec4(aPos, 1.0);\n"
+
+        // Align pixels
+        "    vec2 half_pixel_offset = 0.5 / renderResolution;\n"
+        "    pos.xy += half_pixel_offset * pos.w;\n"
+        "    gl_Position = pos;\n"
+
         "    texCoord = aTexCoord;\n"
 
         // For non-uniform scaling need to multiply by the normal matrix.

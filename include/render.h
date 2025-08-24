@@ -3,6 +3,8 @@
 
 #include "cglm/types.h"
 
+extern const vec2 PR3D_RENDER_RESOLUTION;
+
 /**
  * Defines the geometry of a 3D object. Only one Mesh is needed to draw many
  * of the same object.
@@ -50,6 +52,11 @@ void pr3d_clear_screen(float r, float g, float b, float a);
  * @param[in] vertices
  */
 struct PR3DMesh *pr3d_create_triangle(mat3 vertices);
+
+/**
+ * Creates a quad for drawing the screen's render texture to.
+ */
+struct PR3DMesh *pr3d_create_screen_quad(void);
 
 /**
  * Creates a rectangle mesh.
