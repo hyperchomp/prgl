@@ -18,9 +18,11 @@ Libraries used within pr3d may have differing licenses that are useable alongsid
 * Fly camera supporting directional movement and rotation in pitch/yaw 
 
 ### Rendering
+* Pixel perfect fullscreen scaling from base resolution similar to 90s retro games, but supporting modern 16:9 aspect ratios
+* Gouraud shading
+* Pixel wobble/jitter
 * Simple 3D meshes such as triangles and cubes
 * Textured rectangles and cubes
-* Gouraud shading
 * Point lights
 * Custom shaders
 * 2D Rendering for basic shapes (GUI)
@@ -35,7 +37,6 @@ Libraries used within pr3d may have differing licenses that are useable alongsid
 * Box collisions
 
 ### Rendering
-* Pixel perfect fullscreen scaling from preset base resolution(s) similar to 90s retro games, but supporting modern 16:9 aspect ratios
 * glTF 3D model loading
 * Text rendering
 

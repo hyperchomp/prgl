@@ -113,10 +113,19 @@ unsigned int pr3d_init_shader_3d(void)
         // transforms to clip space.
         "    vec4 pos = projection * view * model * vec4(aPos, 1.0);\n"
 
+        // Pixel wobble - redo the perspective divide and floor it to int value
+        "   vec3 perspective_divide = pos.xyz / vec3(pos.w);\n"
+        "   vec2 render_coords = (perspective_divide.xy + vec2(1.0, 1.0)) * renderResolution * 0.5;\n"
+        "   vec2 int_coords = floor(render_coords);\n"
+        // Convert back to unit space clip range -1 to 1
+        "   vec2 reclipped = (int_coords * 2.0 / renderResolution) - vec2(1, 1);\n" 
+        // Rebuild clip space projection with new imprecise values
+        "   vec4 wobble_pos = vec4(reclipped.x * pos.w, reclipped.y * pos.w, perspective_divide.z * pos.w, pos.w);\n"
+
         // Align pixels
         "    vec2 half_pixel_offset = 0.5 / renderResolution;\n"
-        "    pos.xy += half_pixel_offset * pos.w;\n"
-        "    gl_Position = pos;\n"
+        "    wobble_pos.xy += half_pixel_offset * wobble_pos.w;\n"
+        "    gl_Position = wobble_pos;\n"
 
         "    texCoord = aTexCoord;\n"
 
