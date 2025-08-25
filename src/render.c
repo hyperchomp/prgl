@@ -70,15 +70,19 @@ struct PR3DMesh *pr3d_create_triangle(mat3 vertices)
     );
     glEnableVertexAttribArray(1);
 
-    struct PR3DMesh mesh = {
-        .num_vertices = 3, .vao = vao, .vbo = vbo, .ebo = 0, .texture = 0
-    };
     struct PR3DMesh *mesh_pointer = malloc(sizeof(struct PR3DMesh));
     if (mesh_pointer == NULL)
     {
         printf("pr3d_create_triangle: Error allocating mesh pointer memory!");
     }
-    *mesh_pointer = mesh;
+
+    *mesh_pointer = (struct PR3DMesh){
+        .num_vertices = 3,
+        .vao = vao,
+        .vbo = vbo,
+        .ebo = 0,
+        .texture = 0,
+    };
     return mesh_pointer;
 }
 
@@ -150,21 +154,21 @@ struct PR3DMesh *pr3d_create_screen_quad(void)
     );
     glEnableVertexAttribArray(1);
 
-    // Texture zero'd, must be set after using load_texture()
-    struct PR3DMesh mesh = {
-        .num_vertices = ARR_LEN(indices),
-        .vao = vao,
-        .vbo = vbo,
-        .ebo = ebo,
-        .texture = 0
-    };
     struct PR3DMesh *mesh_pointer = malloc(sizeof(struct PR3DMesh));
     if (mesh_pointer == NULL)
     {
         printf("pr3d_create_screen_quad: Error allocating mesh "
                "pointer memory!");
     }
-    *mesh_pointer = mesh;
+
+    // Texture zero'd, must be set after using load_texture()
+    *mesh_pointer = (struct PR3DMesh){
+        .num_vertices = ARR_LEN(indices),
+        .vao = vao,
+        .vbo = vbo,
+        .ebo = ebo,
+        .texture = 0,
+    };
     return mesh_pointer;
 }
 
@@ -234,23 +238,23 @@ struct PR3DMesh *pr3d_create_rectangle(mat4 vertices)
     vec3 max_bounds;
     int num_vertices = ARR_LEN(indices);
 
-    // Texture zero'd, must be set after using load_texture()
-    struct PR3DMesh mesh = {
-        .num_vertices = num_vertices,
-        .vao = vao,
-        .vbo = vbo,
-        .ebo = ebo,
-        .texture = 0,
-        .min_bounds = {min_bounds[0], min_bounds[1], min_bounds[2]},
-        .max_bounds = {max_bounds[0], max_bounds[1], max_bounds[2]}
-    };
     struct PR3DMesh *mesh_pointer = malloc(sizeof(struct PR3DMesh));
     if (mesh_pointer == NULL)
     {
         printf("pr3d_create_rectangle: Error allocating mesh "
                "pointer memory!");
     }
-    *mesh_pointer = mesh;
+
+    // Texture zero'd, must be set after using load_texture()
+    *mesh_pointer = (struct PR3DMesh){
+        .num_vertices = num_vertices,
+        .vao = vao,
+        .vbo = vbo,
+        .ebo = ebo,
+        .texture = 0,
+        .min_bounds = {min_bounds[0], min_bounds[1], min_bounds[2]},
+        .max_bounds = {max_bounds[0], max_bounds[1], max_bounds[2]},
+    };
     return mesh_pointer;
 }
 
@@ -345,8 +349,14 @@ struct PR3DMesh *pr3d_create_cube(void)
     }
     pr3d_calculate_aabb(vertices, num_vertices, min_bounds, max_bounds);
 
+    struct PR3DMesh *mesh_pointer = malloc(sizeof(struct PR3DMesh));
+    if (mesh_pointer == NULL)
+    {
+        printf("pr3d_create_cube: Error allocating mesh pointer memory!");
+    }
+
     // Texture zero'd, must be set after using load_texture()
-    struct PR3DMesh mesh = {
+    *mesh_pointer = (struct PR3DMesh){
         .num_vertices = num_vertices,
         .vao = vao,
         .vbo = vbo,
@@ -355,12 +365,6 @@ struct PR3DMesh *pr3d_create_cube(void)
         .min_bounds = {min_bounds[0], min_bounds[1], min_bounds[2]},
         .max_bounds = {max_bounds[0], max_bounds[1], max_bounds[2]},
     };
-    struct PR3DMesh *mesh_pointer = malloc(sizeof(struct PR3DMesh));
-    if (mesh_pointer == NULL)
-    {
-        printf("pr3d_create_cube: Error allocating mesh pointer memory!");
-    }
-    *mesh_pointer = mesh;
     return mesh_pointer;
 }
 
