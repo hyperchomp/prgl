@@ -12,6 +12,9 @@ extern const vec2 PR3D_RENDER_RESOLUTION;
  */
 struct PR3DMesh
 {
+    vec3 min_bounds;
+    vec3 max_bounds;
+
     int num_vertices;
 
     // Vertex Buffer Object stores raw vertex data.

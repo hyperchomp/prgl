@@ -7,7 +7,7 @@
 
 #define PR3D_MAX_POINT_LIGHTS 32
 
-extern const char *const PR3D_TRANSFORM_UNIFORM;
+extern const char *const PR3D_MODEL_UNIFORM;
 
 extern const char *const PR3D_LIGHT_COLOR_UNIFORM;
 extern const char *const PR3D_LIGHT_POSITION_UNIFORM;

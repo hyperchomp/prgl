@@ -7,6 +7,8 @@
 #include "cglm/affine.h"
 #include "cglm/mat4.h"
 #include "cglm/types.h"
+#include "mesh.h"
+#include "transform_internal.h"
 #include <complex.h>
 #include <stddef.h>
 #include <stdio.h>
@@ -228,13 +230,19 @@ struct PR3DMesh *pr3d_create_rectangle(mat4 vertices)
     );
     glEnableVertexAttribArray(1);
 
+    vec3 min_bounds;
+    vec3 max_bounds;
+    int num_vertices = ARR_LEN(indices);
+
     // Texture zero'd, must be set after using load_texture()
     struct PR3DMesh mesh = {
-        .num_vertices = ARR_LEN(indices),
+        .num_vertices = num_vertices,
         .vao = vao,
         .vbo = vbo,
         .ebo = ebo,
-        .texture = 0
+        .texture = 0,
+        .min_bounds = {min_bounds[0], min_bounds[1], min_bounds[2]},
+        .max_bounds = {max_bounds[0], max_bounds[1], max_bounds[2]}
     };
     struct PR3DMesh *mesh_pointer = malloc(sizeof(struct PR3DMesh));
     if (mesh_pointer == NULL)
@@ -322,9 +330,30 @@ struct PR3DMesh *pr3d_create_cube(void)
     );
     glEnableVertexAttribArray(2);
 
+    // Bounding box
+    vec3 min_bounds;
+    vec3 max_bounds;
+    int num_vertices = 36;
+
+    // Create array of just vertex positions without the other data
+    float positions[num_vertices * 3];
+    for (int i = 0; i < 36; ++i)
+    {
+        positions[i * 3 + 0] = vertices[i * 8 + 0];
+        positions[i * 3 + 1] = vertices[i * 8 + 1];
+        positions[i * 3 + 2] = vertices[i * 8 + 2];
+    }
+    pr3d_calculate_aabb(vertices, num_vertices, min_bounds, max_bounds);
+
     // Texture zero'd, must be set after using load_texture()
     struct PR3DMesh mesh = {
-        .num_vertices = 36, .vao = vao, .vbo = vbo, .ebo = 0, .texture = 0
+        .num_vertices = num_vertices,
+        .vao = vao,
+        .vbo = vbo,
+        .ebo = 0,
+        .texture = 0,
+        .min_bounds = {min_bounds[0], min_bounds[1], min_bounds[2]},
+        .max_bounds = {max_bounds[0], max_bounds[1], max_bounds[2]},
     };
     struct PR3DMesh *mesh_pointer = malloc(sizeof(struct PR3DMesh));
     if (mesh_pointer == NULL)
@@ -348,13 +377,10 @@ void pr3d_render_mesh(
     }
 
     // Transform the mesh to the render position.
-    mat4 trans;
-    glm_mat4_identity(trans);
-    glm_translate(trans, position);
-    glm_rotate(trans, glm_rad(degrees), rotation_axis);
-    glm_scale(trans, scale);
+    mat4 model;
+    pr3d_create_model_matrix(model, position, rotation_axis, degrees, scale);
     pr3d_set_shader_uniform_mat4(
-        pr3d_current_shader(), PR3D_TRANSFORM_UNIFORM, trans
+        pr3d_current_shader(), PR3D_MODEL_UNIFORM, model
     );
 
     if (mesh->ebo == 0)
@@ -389,7 +415,7 @@ void pr3d_render_mesh_2d(
 
     glm_scale(trans, (vec3){scale[0], scale[1], 1.0f});
     pr3d_set_shader_uniform_mat4(
-        pr3d_shader(PR3D_SHADER_2D), PR3D_TRANSFORM_UNIFORM, trans
+        pr3d_shader(PR3D_SHADER_2D), PR3D_MODEL_UNIFORM, trans
     );
 
     if (mesh->ebo == 0)

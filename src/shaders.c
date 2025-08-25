@@ -6,7 +6,7 @@
 #include <GLFW/glfw3.h>
 #include <stdio.h>
 
-const char *const PR3D_TRANSFORM_UNIFORM = "model";
+const char *const PR3D_MODEL_UNIFORM = "model";
 const char *const PR3D_LIGHT_COLOR_UNIFORM = "color";
 const char *const PR3D_LIGHT_POSITION_UNIFORM = "position";
 const char *const PR3D_LIGHT_LINEAR_UNIFORM = "linear";

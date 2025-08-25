@@ -33,6 +33,8 @@ target_sources(${CMAKE_PROJECT_NAME}
             "${CMAKE_SOURCE_DIR}/src/texture.c"
             "${CMAKE_SOURCE_DIR}/src/camera.c"
             "${CMAKE_SOURCE_DIR}/src/mathx.c"
+            "${CMAKE_SOURCE_DIR}/src/mesh.c"
+            "${CMAKE_SOURCE_DIR}/src/transform.c"
             "${CMAKE_SOURCE_DIR}/extern/glad.c"
             "${CMAKE_SOURCE_DIR}/extern/stb_image.c"
 )
@@ -51,6 +53,7 @@ set(
                         "${CMAKE_SOURCE_DIR}/include/texture.h"
                         "${CMAKE_SOURCE_DIR}/include/camera.h"
                         "${CMAKE_SOURCE_DIR}/include/mathx.h"
+                        "${CMAKE_SOURCE_DIR}/include/mesh.h"
                         "${CMAKE_SOURCE_DIR}/include/common_macros.h"
 )
 set_target_properties(
