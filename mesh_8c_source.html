@@ -142,9 +142,9 @@ $(document).ready(function(){initNavTree('mesh_8c_source.html',''); initResizabl
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">// texture coord attribute</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    glVertexAttribPointer(</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        1, 2, GL_FLOAT, GL_FALSE, 5 * <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>), (<span class="keywordtype">void</span> *)(3 * <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>))</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        2, 2, GL_FLOAT, GL_FALSE, 5 * <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>), (<span class="keywordtype">void</span> *)(3 * <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>))</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    );</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    glEnableVertexAttribArray(1);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    glEnableVertexAttribArray(2);</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structPR3DMesh.html">PR3DMesh</a> *mesh_pointer = malloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code hl_struct" href="structPR3DMesh.html">PR3DMesh</a>));</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">if</span> (mesh_pointer == NULL)</div>
@@ -220,9 +220,9 @@ $(document).ready(function(){initNavTree('mesh_8c_source.html',''); initResizabl
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="comment">// Tell OpenGL how to interpret the texture coordinate data</span></div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    glVertexAttribPointer(</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        1, 2, GL_FLOAT, GL_FALSE, 5 * <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>), (<span class="keywordtype">void</span> *)(3 * <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>))</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        2, 2, GL_FLOAT, GL_FALSE, 5 * <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>), (<span class="keywordtype">void</span> *)(3 * <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>))</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    );</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    glEnableVertexAttribArray(1);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    glEnableVertexAttribArray(2);</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    vec3 <a class="code hl_variable" href="structPR3DMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>;</div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    vec3 <a class="code hl_variable" href="structPR3DMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>;</div>

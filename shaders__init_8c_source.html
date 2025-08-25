@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('shaders__init_8c_source.html',''); ini
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> VERTEX_SHADER_SOURCE =</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>        <span class="stringliteral">&quot;#version 330 core\n&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        <span class="stringliteral">&quot;layout (location = 0) in vec3 aPos;\n&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        <span class="stringliteral">&quot;layout (location = 1) in vec2 aTexCoord;\n&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        <span class="stringliteral">&quot;layout (location = 2) in vec2 aTexCoord;\n&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="stringliteral">&quot;out vec2 texCoord;\n&quot;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
@@ -132,7 +132,7 @@ $(document).ready(function(){initNavTree('shaders__init_8c_source.html',''); ini
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> VERTEX_SHADER_SOURCE =</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="stringliteral">&quot;#version 330 core\n&quot;</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="stringliteral">&quot;layout (location = 0) in vec3 aPos;\n&quot;</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="stringliteral">&quot;layout (location = 1) in vec2 aTexCoord;\n&quot;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="stringliteral">&quot;layout (location = 2) in vec2 aTexCoord;\n&quot;</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="stringliteral">&quot;out vec2 texCoord;\n&quot;</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
@@ -286,61 +286,62 @@ $(document).ready(function(){initNavTree('shaders__init_8c_source.html',''); ini
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        <span class="stringliteral">&quot;uniform float alpha;\n&quot;</span></div>
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        <span class="stringliteral">&quot;uniform sampler2D imageTexture;\n&quot;</span></div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        <span class="stringliteral">&quot;void main()\n&quot;</span></div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="stringliteral">&quot;{\n&quot;</span></div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        <span class="stringliteral">&quot;   vec2 texCoordFinal = texCoord;\n&quot;</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        <span class="stringliteral">&quot;   if (useAffineFlag &gt; 0)\n&quot;</span></div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        <span class="stringliteral">&quot;   {\n&quot;</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        <span class="comment">// Reapply the w coordinate here, has to do with perspective correction</span></div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <span class="stringliteral">&quot;       texCoordFinal = affineTexCoord * originalW;\n&quot;</span></div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <span class="stringliteral">&quot;   }\n&quot;</span></div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        <span class="stringliteral">&quot;   FragColor = texture(imageTexture, texCoordFinal) * vec4(vertexColor, &quot;</span></div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        <span class="stringliteral">&quot;alpha);\n&quot;</span></div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        <span class="stringliteral">&quot;}\0&quot;</span>;</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    <span class="comment">// clang-format on</span></div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="shaders_8c.html#ab5297d5ecae3e3e4becf2bad94884614">pr3d_create_shader</a>(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>}</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno"><a class="line" href="shaders__init_8c.html#af7bdc195834a7a17aa9e463fcc5677c0">  211</a></span><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="shaders__init_8c.html#af7bdc195834a7a17aa9e463fcc5677c0">pr3d_init_shader_unlit</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>{</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> VERTEX_SHADER_SOURCE =</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        <span class="stringliteral">&quot;#version 330 core\n&quot;</span></div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        <span class="stringliteral">&quot;layout (location = 0) in vec3 aPos;\n&quot;</span></div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span> </div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <span class="stringliteral">&quot;uniform mat4 model;\n&quot;</span></div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <span class="stringliteral">&quot;uniform mat4 view;\n&quot;</span></div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <span class="stringliteral">&quot;uniform mat4 projection;\n&quot;</span></div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        <span class="stringliteral">&quot;void main()\n&quot;</span></div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <span class="stringliteral">&quot;{\n&quot;</span></div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        <span class="stringliteral">&quot;    gl_Position = projection * view * model * vec4(aPos, 1.0);\n&quot;</span></div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <span class="stringliteral">&quot;}\0&quot;</span>;</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="comment">// If nothing is passed for alpha it defaults to 1.0</span></div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> FRAG_SHADER_SOURCE =</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        <span class="stringliteral">&quot;#version 330 core\n&quot;</span></div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <span class="stringliteral">&quot;out vec4 FragColor;\n&quot;</span></div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        <span class="stringliteral">&quot;uniform float alpha;\n&quot;</span></div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        <span class="stringliteral">&quot;void main()\n&quot;</span></div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        <span class="stringliteral">&quot;{\n&quot;</span></div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        <span class="stringliteral">&quot;   FragColor = vec4(1.0, 1.0, 1.0, alpha);\n&quot;</span></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <span class="stringliteral">&quot;}\0&quot;</span>;</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span> </div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="shaders_8c.html#ab5297d5ecae3e3e4becf2bad94884614">pr3d_create_shader</a>(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>}</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        <span class="stringliteral">&quot;uniform vec2 tileFactor;\n&quot;</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="stringliteral">&quot;void main()\n&quot;</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        <span class="stringliteral">&quot;{\n&quot;</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        <span class="stringliteral">&quot;   vec2 texCoordFinal = texCoord;\n&quot;</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        <span class="stringliteral">&quot;   if (useAffineFlag &gt; 0)\n&quot;</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        <span class="stringliteral">&quot;   {\n&quot;</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <span class="comment">// Reapply the w coordinate here, has to do with perspective correction</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <span class="stringliteral">&quot;       texCoordFinal = affineTexCoord * originalW;\n&quot;</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        <span class="stringliteral">&quot;   }\n&quot;</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        <span class="stringliteral">&quot;   FragColor = texture(imageTexture, texCoordFinal * tileFactor) * vec4(vertexColor, &quot;</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        <span class="stringliteral">&quot;alpha);\n&quot;</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <span class="stringliteral">&quot;}\0&quot;</span>;</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="comment">// clang-format on</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="shaders_8c.html#ab5297d5ecae3e3e4becf2bad94884614">pr3d_create_shader</a>(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>}</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno"><a class="line" href="shaders__init_8c.html#af7bdc195834a7a17aa9e463fcc5677c0">  212</a></span><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="shaders__init_8c.html#af7bdc195834a7a17aa9e463fcc5677c0">pr3d_init_shader_unlit</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>{</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> VERTEX_SHADER_SOURCE =</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        <span class="stringliteral">&quot;#version 330 core\n&quot;</span></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        <span class="stringliteral">&quot;layout (location = 0) in vec3 aPos;\n&quot;</span></div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <span class="stringliteral">&quot;uniform mat4 model;\n&quot;</span></div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <span class="stringliteral">&quot;uniform mat4 view;\n&quot;</span></div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        <span class="stringliteral">&quot;uniform mat4 projection;\n&quot;</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <span class="stringliteral">&quot;void main()\n&quot;</span></div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        <span class="stringliteral">&quot;{\n&quot;</span></div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <span class="stringliteral">&quot;    gl_Position = projection * view * model * vec4(aPos, 1.0);\n&quot;</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="stringliteral">&quot;}\0&quot;</span>;</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <span class="comment">// If nothing is passed for alpha it defaults to 1.0</span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> FRAG_SHADER_SOURCE =</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <span class="stringliteral">&quot;#version 330 core\n&quot;</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <span class="stringliteral">&quot;out vec4 FragColor;\n&quot;</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        <span class="stringliteral">&quot;uniform float alpha;\n&quot;</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        <span class="stringliteral">&quot;void main()\n&quot;</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        <span class="stringliteral">&quot;{\n&quot;</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <span class="stringliteral">&quot;   FragColor = vec4(1.0, 1.0, 1.0, alpha);\n&quot;</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        <span class="stringliteral">&quot;}\0&quot;</span>;</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="shaders_8c.html#ab5297d5ecae3e3e4becf2bad94884614">pr3d_create_shader</a>(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>}</div>
 <div class="ttc" id="acommon__macros_8h_html"><div class="ttname"><a href="common__macros_8h.html">common_macros.h</a></div></div>
 <div class="ttc" id="acommon__macros_8h_html_a6df1d22fb5f09eccc23b9f399670cfd7"><div class="ttname"><a href="common__macros_8h.html#a6df1d22fb5f09eccc23b9f399670cfd7">STRINGIFY</a></div><div class="ttdeci">#define STRINGIFY(x)</div><div class="ttdef"><b>Definition:</b> <a href="common__macros_8h_source.html#l00030">common_macros.h:30</a></div></div>
-<div class="ttc" id="ashaders_8c_html_ab5297d5ecae3e3e4becf2bad94884614"><div class="ttname"><a href="shaders_8c.html#ab5297d5ecae3e3e4becf2bad94884614">pr3d_create_shader</a></div><div class="ttdeci">unsigned int pr3d_create_shader(const char *const vertex_source, const char *const frag_source)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00035">shaders.c:35</a></div></div>
+<div class="ttc" id="ashaders_8c_html_ab5297d5ecae3e3e4becf2bad94884614"><div class="ttname"><a href="shaders_8c.html#ab5297d5ecae3e3e4becf2bad94884614">pr3d_create_shader</a></div><div class="ttdeci">unsigned int pr3d_create_shader(const char *const vertex_source, const char *const frag_source)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00036">shaders.c:36</a></div></div>
 <div class="ttc" id="ashaders_8h_html"><div class="ttname"><a href="shaders_8h.html">shaders.h</a></div></div>
 <div class="ttc" id="ashaders_8h_html_a73855faadb010437853e87546d5689ed"><div class="ttname"><a href="shaders_8h.html#a73855faadb010437853e87546d5689ed">PR3D_MAX_POINT_LIGHTS</a></div><div class="ttdeci">#define PR3D_MAX_POINT_LIGHTS</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8h_source.html#l00008">shaders.h:8</a></div></div>
 <div class="ttc" id="ashaders__init_8c_html_a76676bb83b2464ad1d628dac95d6f39c"><div class="ttname"><a href="shaders__init_8c.html#a76676bb83b2464ad1d628dac95d6f39c">pr3d_init_shader_3d</a></div><div class="ttdeci">unsigned int pr3d_init_shader_3d(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders__init_8c_source.html#l00077">shaders_init.c:77</a></div></div>
 <div class="ttc" id="ashaders__init_8c_html_a9b2c6c091066fe2e49f2e0b246dbf8e0"><div class="ttname"><a href="shaders__init_8c.html#a9b2c6c091066fe2e49f2e0b246dbf8e0">pr3d_init_shader_screen</a></div><div class="ttdeci">unsigned int pr3d_init_shader_screen(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders__init_8c_source.html#l00005">shaders_init.c:5</a></div></div>
 <div class="ttc" id="ashaders__init_8c_html_aeab6c439edaa05ed3ab89365bbe0bb78"><div class="ttname"><a href="shaders__init_8c.html#aeab6c439edaa05ed3ab89365bbe0bb78">pr3d_init_shader_2d</a></div><div class="ttdeci">unsigned int pr3d_init_shader_2d(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders__init_8c_source.html#l00035">shaders_init.c:35</a></div></div>
-<div class="ttc" id="ashaders__init_8c_html_af7bdc195834a7a17aa9e463fcc5677c0"><div class="ttname"><a href="shaders__init_8c.html#af7bdc195834a7a17aa9e463fcc5677c0">pr3d_init_shader_unlit</a></div><div class="ttdeci">unsigned int pr3d_init_shader_unlit(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders__init_8c_source.html#l00211">shaders_init.c:211</a></div></div>
+<div class="ttc" id="ashaders__init_8c_html_af7bdc195834a7a17aa9e463fcc5677c0"><div class="ttname"><a href="shaders__init_8c.html#af7bdc195834a7a17aa9e463fcc5677c0">pr3d_init_shader_unlit</a></div><div class="ttdeci">unsigned int pr3d_init_shader_unlit(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders__init_8c_source.html#l00212">shaders_init.c:212</a></div></div>
 <div class="ttc" id="ashaders__init__internal_8h_html"><div class="ttname"><a href="shaders__init__internal_8h.html">shaders_init_internal.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
