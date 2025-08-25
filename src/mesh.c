@@ -47,9 +47,9 @@ struct PR3DMesh *pr3d_create_triangle(mat3 vertices)
 
     // texture coord attribute
     glVertexAttribPointer(
-        1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float))
+        2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float))
     );
-    glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(2);
 
     struct PR3DMesh *mesh_pointer = malloc(sizeof(struct PR3DMesh));
     if (mesh_pointer == NULL)
@@ -125,9 +125,9 @@ struct PR3DMesh *pr3d_create_rectangle(mat4 vertices)
 
     // Tell OpenGL how to interpret the texture coordinate data
     glVertexAttribPointer(
-        1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float))
+        2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float))
     );
-    glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(2);
 
     vec3 min_bounds;
     vec3 max_bounds;

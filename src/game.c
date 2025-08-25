@@ -44,6 +44,9 @@ void pr3d_run_game(
         glEnable(GL_DEPTH_TEST);
         pr3d_use_shader_3d();
         pr3d_set_shader_uniform_vec2(
+            pr3d_current_shader(), PR3D_TILE_FACTOR_UNIFORM, (vec2){1.0f, 1.0f}
+        );
+        pr3d_set_shader_uniform_vec2(
             pr3d_current_shader(), PR3D_RENDER_RESOLUTION_UNIFORM, render_res
         );
         pr3d_set_camera_projection(

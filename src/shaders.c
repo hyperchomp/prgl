@@ -12,6 +12,7 @@ const char *const PR3D_LIGHT_POSITION_UNIFORM = "position";
 const char *const PR3D_LIGHT_LINEAR_UNIFORM = "linear";
 const char *const PR3D_LIGHT_QUADRATIC_UNIFORM = "quadratic";
 const char *const PR3D_RENDER_RESOLUTION_UNIFORM = "renderResolution";
+const char *const PR3D_TILE_FACTOR_UNIFORM = "tileFactor";
 
 static unsigned int pr3d_shader_pool[PR3D_SHADER_COUNT];
 static unsigned int pr3d_current_shader_id;

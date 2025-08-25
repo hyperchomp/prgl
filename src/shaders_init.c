@@ -7,7 +7,7 @@ unsigned int pr3d_init_shader_screen(void)
     const char *const VERTEX_SHADER_SOURCE =
         "#version 330 core\n"
         "layout (location = 0) in vec3 aPos;\n"
-        "layout (location = 1) in vec2 aTexCoord;\n"
+        "layout (location = 2) in vec2 aTexCoord;\n"
 
         "out vec2 texCoord;\n"
 
@@ -37,7 +37,7 @@ unsigned int pr3d_init_shader_2d(void)
     const char *const VERTEX_SHADER_SOURCE =
         "#version 330 core\n"
         "layout (location = 0) in vec3 aPos;\n"
-        "layout (location = 1) in vec2 aTexCoord;\n"
+        "layout (location = 2) in vec2 aTexCoord;\n"
 
         "out vec2 texCoord;\n"
 
@@ -191,6 +191,7 @@ unsigned int pr3d_init_shader_3d(void)
 
         "uniform float alpha;\n"
         "uniform sampler2D imageTexture;\n"
+        "uniform vec2 tileFactor;\n"
 
         "void main()\n"
         "{\n"
@@ -200,7 +201,7 @@ unsigned int pr3d_init_shader_3d(void)
         // Reapply the w coordinate here, has to do with perspective correction
         "       texCoordFinal = affineTexCoord * originalW;\n"
         "   }\n"
-        "   FragColor = texture(imageTexture, texCoordFinal) * vec4(vertexColor, "
+        "   FragColor = texture(imageTexture, texCoordFinal * tileFactor) * vec4(vertexColor, "
         "alpha);\n"
         "}\0";
     // clang-format on
