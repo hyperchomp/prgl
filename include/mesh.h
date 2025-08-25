@@ -36,12 +36,12 @@ struct PR3DMesh
 struct PR3DMesh *pr3d_create_triangle(mat3 vertices);
 
 /**
- * Creates a rectangle mesh.
+ * Creates a quad mesh. For 3D the normals assume XY orientation.
  * Make sure to attach a texture to the returned mesh struct after creating it.
  *
  * @param[in] vertices
  */
-struct PR3DMesh *pr3d_create_rectangle(mat4 vertices);
+struct PR3DMesh *pr3d_create_quad(mat4 vertices);
 
 /**
  * Creates a cube mesh.

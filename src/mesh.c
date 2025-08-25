@@ -67,7 +67,7 @@ struct PR3DMesh *pr3d_create_triangle(mat3 vertices)
     return mesh_pointer;
 }
 
-struct PR3DMesh *pr3d_create_rectangle(mat4 vertices)
+struct PR3DMesh *pr3d_create_quad(mat4 vertices)
 {
     // clang-format off
     mat4x2 texture_coords = {
@@ -76,15 +76,22 @@ struct PR3DMesh *pr3d_create_rectangle(mat4 vertices)
         {0.0f, 0.0f},
         {0.0f, 1.0f}
     };
+
+    // Assumes quad is oriented on XY plane
+    vec3 normal = {0.0f, 0.0f, 1.0f};
     
-    float combined_data[20] = {
+    float combined_data[32] = {
               vertices[0][0],       vertices[0][1], vertices[0][2], 
+                   normal[0],            normal[1],      normal[2],
         texture_coords[0][0], texture_coords[0][1],
               vertices[1][0],       vertices[1][1], vertices[1][2], 
+                   normal[0],            normal[1],      normal[2],
         texture_coords[1][0], texture_coords[1][1],
               vertices[2][0],       vertices[2][1], vertices[2][2], 
+                   normal[0],            normal[1],      normal[2],
         texture_coords[2][0], texture_coords[2][1],
               vertices[3][0],       vertices[3][1], vertices[3][2], 
+                   normal[0],            normal[1],      normal[2],
         texture_coords[3][0], texture_coords[3][1]
     };
     // clang-format on
@@ -119,13 +126,19 @@ struct PR3DMesh *pr3d_create_rectangle(mat4 vertices)
 
     // Tell OpenGL how to interpret the vertex data
     glVertexAttribPointer(
-        0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0
+        0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)0
     );
     glEnableVertexAttribArray(0);
 
+    // Tell OpenGL how to interpret the normal data
+    glVertexAttribPointer(
+        1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(3 * sizeof(float))
+    );
+    glEnableVertexAttribArray(1);
+
     // Tell OpenGL how to interpret the texture coordinate data
     glVertexAttribPointer(
-        2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float))
+        2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(6 * sizeof(float))
     );
     glEnableVertexAttribArray(2);
 
