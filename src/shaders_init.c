@@ -2,7 +2,7 @@
 #include "shaders.h"
 #include "common_macros.h"
 
-unsigned int pr3d_init_shader_screen(void)
+unsigned int prgl_init_shader_screen(void)
 {
     const char *const VERTEX_SHADER_SOURCE =
         "#version 330 core\n"
@@ -29,10 +29,10 @@ unsigned int pr3d_init_shader_screen(void)
         "   FragColor = texture(imageTexture, texCoord);\n"
         "}\0";
 
-    return pr3d_create_shader(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);
+    return prgl_create_shader(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);
 }
 
-unsigned int pr3d_init_shader_2d(void)
+unsigned int prgl_init_shader_2d(void)
 {
     const char *const VERTEX_SHADER_SOURCE =
         "#version 330 core\n"
@@ -71,10 +71,10 @@ unsigned int pr3d_init_shader_2d(void)
         "alpha);\n"
         "}\0";
 
-    return pr3d_create_shader(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);
+    return prgl_create_shader(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);
 }
 
-unsigned int pr3d_init_shader_3d(void)
+unsigned int prgl_init_shader_3d(void)
 {
     // clang-format off
     const char *const VERTEX_SHADER_SOURCE =
@@ -88,7 +88,7 @@ unsigned int pr3d_init_shader_3d(void)
         "    float quadratic;\n"
         "};\n"
 
-        "#define NR_POINT_LIGHTS " STRINGIFY(PR3D_MAX_POINT_LIGHTS) "\n"
+        "#define NR_POINT_LIGHTS " STRINGIFY(PRGL_MAX_POINT_LIGHTS) "\n"
 
         "layout (location = 0) in vec3 aPos;\n"
         "layout (location = 1) in vec3 aNormal;\n"
@@ -206,10 +206,10 @@ unsigned int pr3d_init_shader_3d(void)
         "}\0";
     // clang-format on
 
-    return pr3d_create_shader(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);
+    return prgl_create_shader(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);
 }
 
-unsigned int pr3d_init_shader_unlit(void)
+unsigned int prgl_init_shader_unlit(void)
 {
     const char *const VERTEX_SHADER_SOURCE =
         "#version 330 core\n"
@@ -236,5 +236,5 @@ unsigned int pr3d_init_shader_unlit(void)
         "   FragColor = vec4(1.0, 1.0, 1.0, alpha);\n"
         "}\0";
 
-    return pr3d_create_shader(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);
+    return prgl_create_shader(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);
 }

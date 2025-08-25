@@ -16,15 +16,15 @@
 #include <string.h>
 #include <GLFW/glfw3.h>
 
-const vec2 PR3D_RENDER_RESOLUTION = {320.0f, 180.0f};
+const vec2 PRGL_RENDER_RESOLUTION = {320.0f, 180.0f};
 
-void pr3d_clear_screen(float r, float g, float b, float a)
+void prgl_clear_screen(float r, float g, float b, float a)
 {
     glClearColor(r, g, b, a);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-struct PR3DMesh *pr3d_create_screen_quad(void)
+struct PRGLMesh *prgl_create_screen_quad(void)
 {
     // clang-format off
     mat4 vertices = {
@@ -92,15 +92,15 @@ struct PR3DMesh *pr3d_create_screen_quad(void)
     );
     glEnableVertexAttribArray(2);
 
-    struct PR3DMesh *mesh_pointer = malloc(sizeof(struct PR3DMesh));
+    struct PRGLMesh *mesh_pointer = malloc(sizeof(struct PRGLMesh));
     if (mesh_pointer == NULL)
     {
-        printf("pr3d_create_screen_quad: Error allocating mesh "
+        printf("prgl_create_screen_quad: Error allocating mesh "
                "pointer memory!");
     }
 
     // Texture zero'd, must be set after using load_texture()
-    *mesh_pointer = (struct PR3DMesh){
+    *mesh_pointer = (struct PRGLMesh){
         .num_vertices = ARR_LEN(indices),
         .vao = vao,
         .vbo = vbo,
@@ -110,8 +110,8 @@ struct PR3DMesh *pr3d_create_screen_quad(void)
     return mesh_pointer;
 }
 
-void pr3d_render_mesh(
-    struct PR3DMesh *mesh, vec3 position, vec3 rotation_axis, float degrees,
+void prgl_render_mesh(
+    struct PRGLMesh *mesh, vec3 position, vec3 rotation_axis, float degrees,
     vec3 scale
 )
 {
@@ -124,9 +124,9 @@ void pr3d_render_mesh(
 
     // Transform the mesh to the render position.
     mat4 model;
-    pr3d_create_model_matrix(model, position, rotation_axis, degrees, scale);
-    pr3d_set_shader_uniform_mat4(
-        pr3d_current_shader(), PR3D_MODEL_UNIFORM, model
+    prgl_create_model_matrix(model, position, rotation_axis, degrees, scale);
+    prgl_set_shader_uniform_mat4(
+        prgl_current_shader(), PRGL_MODEL_UNIFORM, model
     );
 
     if (mesh->ebo == 0)
@@ -139,8 +139,8 @@ void pr3d_render_mesh(
     }
 }
 
-void pr3d_render_mesh_2d(
-    struct PR3DMesh *mesh, vec2 position, float rotation_degrees, vec2 scale
+void prgl_render_mesh_2d(
+    struct PRGLMesh *mesh, vec2 position, float rotation_degrees, vec2 scale
 )
 {
     glBindVertexArray(mesh->vao);
@@ -160,8 +160,8 @@ void pr3d_render_mesh_2d(
     glm_translate(trans, (vec3){-0.5f * scale[0], -0.5f * scale[1], 0.0f});
 
     glm_scale(trans, (vec3){scale[0], scale[1], 1.0f});
-    pr3d_set_shader_uniform_mat4(
-        pr3d_shader(PR3D_SHADER_2D), PR3D_MODEL_UNIFORM, trans
+    prgl_set_shader_uniform_mat4(
+        prgl_shader(PRGL_SHADER_2D), PRGL_MODEL_UNIFORM, trans
     );
 
     if (mesh->ebo == 0)
@@ -174,11 +174,11 @@ void pr3d_render_mesh_2d(
     }
 }
 
-void pr3d_update_lighting(struct PR3DPointLight point_lights[], int num_lights)
+void prgl_update_lighting(struct PRGLPointLight point_lights[], int num_lights)
 {
-    if (num_lights > PR3D_MAX_POINT_LIGHTS)
+    if (num_lights > PRGL_MAX_POINT_LIGHTS)
     {
-        num_lights = PR3D_MAX_POINT_LIGHTS;
+        num_lights = PRGL_MAX_POINT_LIGHTS;
     }
 
     char uniform_name_buffer[64];
@@ -186,50 +186,50 @@ void pr3d_update_lighting(struct PR3DPointLight point_lights[], int num_lights)
     {
         snprintf(
             uniform_name_buffer, sizeof(uniform_name_buffer),
-            "pointLights[%d].%s", i, PR3D_LIGHT_COLOR_UNIFORM
+            "pointLights[%d].%s", i, PRGL_LIGHT_COLOR_UNIFORM
         );
-        pr3d_set_shader_uniform_vec3(
-            pr3d_current_shader(), uniform_name_buffer,
+        prgl_set_shader_uniform_vec3(
+            prgl_current_shader(), uniform_name_buffer,
             point_lights[i].lightColor
         );
 
         snprintf(
             uniform_name_buffer, sizeof(uniform_name_buffer),
-            "pointLights[%d].%s", i, PR3D_LIGHT_POSITION_UNIFORM
+            "pointLights[%d].%s", i, PRGL_LIGHT_POSITION_UNIFORM
         );
-        pr3d_set_shader_uniform_vec3(
-            pr3d_current_shader(), uniform_name_buffer, point_lights[i].position
+        prgl_set_shader_uniform_vec3(
+            prgl_current_shader(), uniform_name_buffer, point_lights[i].position
         );
 
         float linear_constant = 0.09f;
         snprintf(
             uniform_name_buffer, sizeof(uniform_name_buffer),
-            "pointLights[%d].%s", i, PR3D_LIGHT_LINEAR_UNIFORM
+            "pointLights[%d].%s", i, PRGL_LIGHT_LINEAR_UNIFORM
         );
-        pr3d_set_shader_uniform_vec3(
-            pr3d_current_shader(), uniform_name_buffer, &linear_constant
+        prgl_set_shader_uniform_vec3(
+            prgl_current_shader(), uniform_name_buffer, &linear_constant
         );
 
         float quadratic_constant = 0.032f;
         snprintf(
             uniform_name_buffer, sizeof(uniform_name_buffer),
-            "pointLights[%d].%s", i, PR3D_LIGHT_QUADRATIC_UNIFORM
+            "pointLights[%d].%s", i, PRGL_LIGHT_QUADRATIC_UNIFORM
         );
-        pr3d_set_shader_uniform_vec3(
-            pr3d_current_shader(), uniform_name_buffer, &quadratic_constant
+        prgl_set_shader_uniform_vec3(
+            prgl_current_shader(), uniform_name_buffer, &quadratic_constant
         );
     }
 }
 
-void pr3d_enable_render_texture(unsigned int fbo)
+void prgl_enable_render_texture(unsigned int fbo)
 {
     glBindFramebuffer(GL_FRAMEBUFFER, fbo);
-    glViewport(0, 0, PR3D_RENDER_RESOLUTION[0], PR3D_RENDER_RESOLUTION[1]);
-    pr3d_clear_screen(0.1f, 0.1f, 0.1f, 1.0f);
+    glViewport(0, 0, PRGL_RENDER_RESOLUTION[0], PRGL_RENDER_RESOLUTION[1]);
+    prgl_clear_screen(0.1f, 0.1f, 0.1f, 1.0f);
 }
 
-void pr3d_render_render_texture(
-    unsigned int render_texture, struct PR3DMesh *screen_quad
+void prgl_render_render_texture(
+    unsigned int render_texture, struct PRGLMesh *screen_quad
 )
 {
     // Switch back to default framebuffer
@@ -238,7 +238,7 @@ void pr3d_render_render_texture(
     // Set the viewport to the actual window size
     int windowWidth;
     int windowHeight;
-    glfwGetFramebufferSize(pr3d_screen()->window, &windowWidth, &windowHeight);
+    glfwGetFramebufferSize(prgl_screen()->window, &windowWidth, &windowHeight);
     glViewport(0, 0, windowWidth, windowHeight);
 
     // Clear just the color buffer
@@ -246,7 +246,7 @@ void pr3d_render_render_texture(
     glClear(GL_COLOR_BUFFER_BIT);
 
     // Render the screen quad to the window
-    pr3d_use_shader(pr3d_shader(PR3D_SHADER_SCREEN));
+    prgl_use_shader(prgl_shader(PRGL_SHADER_SCREEN));
     glBindVertexArray(screen_quad->vao);
     glBindTexture(GL_TEXTURE_2D, render_texture);
     glDrawElements(GL_TRIANGLES, screen_quad->num_vertices, GL_UNSIGNED_INT, 0);

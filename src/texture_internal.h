@@ -1,7 +1,7 @@
-#ifndef PR3D_TEXTURE_INTERNAL_H
-#define PR3D_TEXTURE_INTERNAL_H
+#ifndef PRGL_TEXTURE_INTERNAL_H
+#define PRGL_TEXTURE_INTERNAL_H
 
-struct PR3DRenderTexture
+struct PRGLRenderTexture
 {
     unsigned int fbo;
     unsigned int texture;
@@ -12,6 +12,6 @@ struct PR3DRenderTexture
  *
  * @return The render texture struct.
  */
-struct PR3DRenderTexture pr3d_create_render_texture(void);
+struct PRGLRenderTexture prgl_create_render_texture(void);
 
 #endif

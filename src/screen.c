@@ -6,13 +6,13 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-struct PR3DScreen *pr3d_screen(void);
+struct PRGLScreen *prgl_screen(void);
 
-static struct PR3DScreen pr3d_screen_data;
+static struct PRGLScreen prgl_screen_data;
 
-void pr3d_create_window(char *name)
+void prgl_create_window(char *name)
 {
-    if (pr3d_screen_data.window)
+    if (prgl_screen_data.window)
     {
         fprintf(
             stderr, "new_window: Failed to create GLFW window because a window "
@@ -62,66 +62,66 @@ void pr3d_create_window(char *name)
 
     glEnable(GL_DEPTH_TEST);
 
-    pr3d_screen_data = (struct PR3DScreen
+    prgl_screen_data = (struct PRGLScreen
     ){.window = window,
       .desktop_width = desktop_width,
       .desktop_height = desktop_height,
       .aspect_ratio = (float)desktop_width / (float)desktop_height};
 
-    pr3d_set_vsync(true);
+    prgl_set_vsync(true);
 }
 
-void pr3d_destroy_window(void)
+void prgl_destroy_window(void)
 {
-    glfwDestroyWindow(pr3d_screen_data.window);
+    glfwDestroyWindow(prgl_screen_data.window);
     glfwTerminate();
 }
 
-void pr3d_close_game(void)
+void prgl_close_game(void)
 {
-    glfwSetWindowShouldClose(pr3d_screen_data.window, true);
+    glfwSetWindowShouldClose(prgl_screen_data.window, true);
 }
 
-void pr3d_toggle_fullscreen(void)
+void prgl_toggle_fullscreen(void)
 {
     // If monitor is NULL we are in fullscreen, and if glfwSetWindowMonitor
     // receives NULL for monitor it will change to window mode
-    GLFWwindow *window = pr3d_screen_data.window;
+    GLFWwindow *window = prgl_screen_data.window;
     GLFWmonitor *monitor = glfwGetWindowMonitor(window);
     const GLFWvidmode *mode = glfwGetVideoMode(monitor);
     glfwSetWindowMonitor(
-        window, monitor, 0, 0, pr3d_screen_data.desktop_width,
-        pr3d_screen_data.desktop_height, mode->refreshRate
+        window, monitor, 0, 0, prgl_screen_data.desktop_width,
+        prgl_screen_data.desktop_height, mode->refreshRate
     );
 }
 
-struct PR3DScreen *pr3d_screen(void) { return &pr3d_screen_data; }
+struct PRGLScreen *prgl_screen(void) { return &prgl_screen_data; }
 
-void pr3d_set_vsync(bool enabled)
+void prgl_set_vsync(bool enabled)
 {
     glfwSwapInterval(enabled);
-    pr3d_screen_data.vsync_enabled = enabled;
+    prgl_screen_data.vsync_enabled = enabled;
 }
 
-bool pr3d_vsync(void) { return pr3d_screen_data.vsync_enabled; }
+bool prgl_vsync(void) { return prgl_screen_data.vsync_enabled; }
 
-void pr3d_set_mouse_capture_mode(enum PR3DMouseCaptureMode mode)
+void prgl_set_mouse_capture_mode(enum PRGLMouseCaptureMode mode)
 {
     switch (mode)
     {
-        case PR3D_MOUSE_DISABLED:
+        case PRGL_MOUSE_DISABLED:
             glfwSetInputMode(
-                pr3d_screen_data.window, GLFW_CURSOR, GLFW_CURSOR_DISABLED
+                prgl_screen_data.window, GLFW_CURSOR, GLFW_CURSOR_DISABLED
             );
             break;
-        case PR3D_MOUSE_CAPTURED:
+        case PRGL_MOUSE_CAPTURED:
             glfwSetInputMode(
-                pr3d_screen_data.window, GLFW_CURSOR, GLFW_CURSOR_CAPTURED
+                prgl_screen_data.window, GLFW_CURSOR, GLFW_CURSOR_CAPTURED
             );
             break;
         default:
             fprintf(
-                stderr, "pr3d_set_mouse_capture_mode: Unspecified mouse "
+                stderr, "prgl_set_mouse_capture_mode: Unspecified mouse "
                         "capture mode type.\n"
             );
     }

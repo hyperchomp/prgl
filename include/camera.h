@@ -1,5 +1,5 @@
-#ifndef PR3D_CAMERA_H
-#define PR3D_CAMERA_H
+#ifndef PRGL_CAMERA_H
+#define PRGL_CAMERA_H
 
 #include "cglm/types.h"
 
@@ -8,7 +8,7 @@
  * The struct values should be initialized and updated with the framework's
  * provided helper functions. Doing otherwise may cause undefined behavior.
  */
-struct PR3DCamera
+struct PRGLCamera
 {
     mat4 view; ///< The position of the camera stored as a view matrix.
     mat4 projection_perspective; ///< Projection matrix for fov, clipping, etc.
@@ -29,32 +29,32 @@ struct PR3DCamera
 /**
  * Camera movement directions to obfuscate movement from input.
  */
-enum PR3DCameraMoveDirection
+enum PRGLCameraMoveDirection
 {
-    PR3D_CAMERA_MOVE_DIR_FORWARD,
-    PR3D_CAMERA_MOVE_DIR_BACKWARD,
-    PR3D_CAMERA_MOVE_DIR_RIGHT,
-    PR3D_CAMERA_MOVE_DIR_LEFT
+    PRGL_CAMERA_MOVE_DIR_FORWARD,
+    PRGL_CAMERA_MOVE_DIR_BACKWARD,
+    PRGL_CAMERA_MOVE_DIR_RIGHT,
+    PRGL_CAMERA_MOVE_DIR_LEFT
 };
 
-enum PR3DCameraProjectionType
+enum PRGLCameraProjectionType
 {
-    PR3D_CAMERA_PROJECTION_PERSPECTIVE,
-    PR3D_CAMERA_PROJECTION_ORTHOGONAL
+    PRGL_CAMERA_PROJECTION_PERSPECTIVE,
+    PRGL_CAMERA_PROJECTION_ORTHOGONAL
 };
 
 /**
  * Initializes the view (position) and projection matrices for the camera. This
  * sets the camera's position to {0, 0, 0} and sets it as the active camera.
  *
- * @param cam[in,out] An uninitialized PR3DCamera struct.
+ * @param cam[in,out] An uninitialized PRGLCamera struct.
  * @param fov_degrees The vertical fov for the camera in degrees. For orthogonal
  * cameras this can be set to zero since it's not needed.
  * @param move_speed Speed value to use when moving the camera.
  */
-void pr3d_init_camera(
-    struct PR3DCamera *cam, float fov_degrees, float move_speed,
-    enum PR3DCameraProjectionType projection_type
+void prgl_init_camera(
+    struct PRGLCamera *cam, float fov_degrees, float move_speed,
+    enum PRGLCameraProjectionType projection_type
 );
 
 /**
@@ -64,7 +64,7 @@ void pr3d_init_camera(
  *
  * @param cam[in,out]
  */
-void pr3d_update_camera(struct PR3DCamera *cam);
+void prgl_update_camera(struct PRGLCamera *cam);
 
 /**
  * Smoothly moves the camera in a given direction using its speed.
@@ -75,8 +75,8 @@ void pr3d_update_camera(struct PR3DCamera *cam);
  * @param move_dir
  * @param delta_time
  */
-void pr3d_move_camera_fly(
-    struct PR3DCamera *cam, enum PR3DCameraMoveDirection move_dir,
+void prgl_move_camera_fly(
+    struct PRGLCamera *cam, enum PRGLCameraMoveDirection move_dir,
     double delta_time
 );
 
@@ -87,7 +87,7 @@ void pr3d_move_camera_fly(
  * @param yaw The amount to move the camera in yaw.
  * @param pitch The amount to move the camera in pitch.
  */
-void pr3d_move_camera_look(struct PR3DCamera *cam, float yaw, float pitch);
+void prgl_move_camera_look(struct PRGLCamera *cam, float yaw, float pitch);
 
 /**
  * Updates the camera's vertical fov.
@@ -95,14 +95,14 @@ void pr3d_move_camera_look(struct PR3DCamera *cam, float yaw, float pitch);
  * @param cam[in,out]
  * @param fov_degrees The vertical fov for the camera in degrees.
  */
-void pr3d_set_camera_projection(
-    struct PR3DCamera *cam, float fov_degrees,
-    enum PR3DCameraProjectionType projection_type
+void prgl_set_camera_projection(
+    struct PRGLCamera *cam, float fov_degrees,
+    enum PRGLCameraProjectionType projection_type
 );
 
 /**
  * Returns the currently active camera.
  */
-struct PR3DCamera *pr3d_active_camera(void);
+struct PRGLCamera *prgl_active_camera(void);
 
 #endif

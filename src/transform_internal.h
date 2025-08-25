@@ -1,5 +1,5 @@
-#ifndef PR3D_TRANSFORM_INTERNAL_H
-#define PR3D_TRANSFORM_INTERNAL_H
+#ifndef PRGL_TRANSFORM_INTERNAL_H
+#define PRGL_TRANSFORM_INTERNAL_H
 
 #include "cglm/types.h"
 
@@ -12,7 +12,7 @@
  * @param degrees
  * @param[in] scale
  */
-void pr3d_create_model_matrix(
+void prgl_create_model_matrix(
     mat4 dest, vec3 position, vec3 rotation_axis, float degrees, vec3 scale
 );
 

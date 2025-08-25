@@ -1,54 +1,54 @@
-#ifndef PR3D_SHADERS_H
-#define PR3D_SHADERS_H
+#ifndef PRGL_SHADERS_H
+#define PRGL_SHADERS_H
 
 #include "cglm/types.h"
 #include <stddef.h>
 #include <stdbool.h>
 
-#define PR3D_MAX_POINT_LIGHTS 32
+#define PRGL_MAX_POINT_LIGHTS 32
 
-extern const char *const PR3D_MODEL_UNIFORM;
+extern const char *const PRGL_MODEL_UNIFORM;
 
-extern const char *const PR3D_LIGHT_COLOR_UNIFORM;
-extern const char *const PR3D_LIGHT_POSITION_UNIFORM;
-extern const char *const PR3D_LIGHT_LINEAR_UNIFORM;
-extern const char *const PR3D_LIGHT_QUADRATIC_UNIFORM;
+extern const char *const PRGL_LIGHT_COLOR_UNIFORM;
+extern const char *const PRGL_LIGHT_POSITION_UNIFORM;
+extern const char *const PRGL_LIGHT_LINEAR_UNIFORM;
+extern const char *const PRGL_LIGHT_QUADRATIC_UNIFORM;
 
-extern const char *const PR3D_RENDER_RESOLUTION_UNIFORM;
-extern const char *const PR3D_TILE_FACTOR_UNIFORM;
+extern const char *const PRGL_RENDER_RESOLUTION_UNIFORM;
+extern const char *const PRGL_TILE_FACTOR_UNIFORM;
 
 /**
- * Precompiled shader types. These can be used with pr3d_shader() to get the ID
+ * Precompiled shader types. These can be used with prgl_shader() to get the ID
  * of a precompiled shader.
  *
- * The default is PR3D_SHADER_3D for 3D, and PR3D_SHADER_2D for 2D
+ * The default is PRGL_SHADER_3D for 3D, and PRGL_SHADER_2D for 2D
  */
-enum PR3DShader
+enum PRGLShader
 {
-    PR3D_SHADER_SCREEN,
-    PR3D_SHADER_2D,
-    PR3D_SHADER_3D,
-    PR3D_SHADER_UNLIT,
-    PR3D_SHADER_COUNT
+    PRGL_SHADER_SCREEN,
+    PRGL_SHADER_2D,
+    PRGL_SHADER_3D,
+    PRGL_SHADER_UNLIT,
+    PRGL_SHADER_COUNT
 };
 
 /*
  * Gets the shader ID for the given shader type. This is for shaders that are
- * precompiled with pr3d.
+ * precompiled with prgl.
  *
  * For custom shaders the owning project should store and track its own IDs.
  *
  * @param type The type of precompiled shader.
  * @return The shader program ID for the shader type.
  */
-unsigned int pr3d_shader(enum PR3DShader type);
+unsigned int prgl_shader(enum PRGLShader type);
 
 /**
  * Gets the shader ID for the current shader in use.
  *
  * @return The shader program ID for the current shader.
  */
-unsigned int pr3d_current_shader(void);
+unsigned int prgl_current_shader(void);
 
 /**
  * Creates a shader from the given sources.
@@ -57,7 +57,7 @@ unsigned int pr3d_current_shader(void);
  * @param[in] frag_source The GLSL code for the fragment shader.
  * @return The shader program ID.
  */
-unsigned int pr3d_create_shader(
+unsigned int prgl_create_shader(
     const char *const vertex_source, const char *const frag_source
 );
 
@@ -67,24 +67,24 @@ unsigned int pr3d_create_shader(
  *
  * @param shader The ID of the shader to use.
  */
-void pr3d_use_shader(unsigned int shader);
+void prgl_use_shader(unsigned int shader);
 
 /**
  * Activates the 3D shader for use.
  */
-void pr3d_use_shader_3d(void);
+void prgl_use_shader_3d(void);
 
 /**
  * Activates the 2D shader for use.
  */
-void pr3d_use_shader_2d(void);
+void prgl_use_shader_2d(void);
 
 /**
  * Flags a shader for deletion.
  *
  * @param shader The ID of the shader to delete.
  */
-void pr3d_delete_shader(unsigned int shader);
+void prgl_delete_shader(unsigned int shader);
 
 /**
  * Sets the value of shader uniform variable which takes 4 floats.
@@ -96,7 +96,7 @@ void pr3d_delete_shader(unsigned int shader);
  * @param c
  * @param d
  */
-void pr3d_set_shader_uniform_4f(
+void prgl_set_shader_uniform_4f(
     unsigned int shader, const char *const name, float a, float b, float c,
     float d
 );
@@ -108,7 +108,7 @@ void pr3d_set_shader_uniform_4f(
  * @param name[in] The name of the uniform to set.
  * @param vec3
  */
-void pr3d_set_shader_uniform_vec3(
+void prgl_set_shader_uniform_vec3(
     unsigned int shader, const char *const name, vec3 vec
 );
 
@@ -119,7 +119,7 @@ void pr3d_set_shader_uniform_vec3(
  * @param name[in] The name of the uniform to set.
  * @param vec2
  */
-void pr3d_set_shader_uniform_vec2(
+void prgl_set_shader_uniform_vec2(
     unsigned int shader, const char *const name, vec2 vec
 );
 
@@ -130,7 +130,7 @@ void pr3d_set_shader_uniform_vec2(
  * @param name[in] The name of the uniform to set.
  * @param matrix The cglm matrix to assign to the uniform.
  */
-void pr3d_set_shader_uniform_mat4(
+void prgl_set_shader_uniform_mat4(
     unsigned int shader, const char *const name, mat4 matrix
 );
 
@@ -141,7 +141,7 @@ void pr3d_set_shader_uniform_mat4(
  * @param name[in] The name of the uniform to set.
  * @param value
  */
-void pr3d_set_shader_uniform_float(
+void prgl_set_shader_uniform_float(
     unsigned int shader, const char *const name, float value
 );
 
@@ -152,7 +152,7 @@ void pr3d_set_shader_uniform_float(
  * @param name[in] The name of the uniform to set.
  * @param value
  */
-void pr3d_set_shader_uniform_int(
+void prgl_set_shader_uniform_int(
     unsigned int shader, const char *const name, int value
 );
 
@@ -163,7 +163,7 @@ void pr3d_set_shader_uniform_int(
  * @param name[in] The name of the uniform to set.
  * @param value
  */
-void pr3d_set_shader_uniform_bool(
+void prgl_set_shader_uniform_bool(
     unsigned int shader, const char *const name, bool value
 );
 

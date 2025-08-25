@@ -1,6 +1,6 @@
-#ifndef PR3D_MATHX_H
-#define PR3D_MATHX_H
+#ifndef PRGL_MATHX_H
+#define PRGL_MATHX_H
 
-float pr3d_clampf(float val, float min, float max);
+float prgl_clampf(float val, float min, float max);
 
 #endif

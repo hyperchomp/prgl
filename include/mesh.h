@@ -1,5 +1,5 @@
-#ifndef PR3D_MESH_H
-#define PR3D_MESH_H
+#ifndef PRGL_MESH_H
+#define PRGL_MESH_H
 
 #include "cglm/types.h"
 
@@ -8,7 +8,7 @@
  * of the same object.
  * Any IDs which are optional should be set to 0 if unused.
  */
-struct PR3DMesh
+struct PRGLMesh
 {
     vec3 min_bounds;
     vec3 max_bounds;
@@ -33,7 +33,7 @@ struct PR3DMesh
  *
  * @param[in] vertices
  */
-struct PR3DMesh *pr3d_create_triangle(mat3 vertices);
+struct PRGLMesh *prgl_create_triangle(mat3 vertices);
 
 /**
  * Creates a quad mesh. For 3D the normals assume XY orientation.
@@ -41,18 +41,18 @@ struct PR3DMesh *pr3d_create_triangle(mat3 vertices);
  *
  * @param[in] vertices
  */
-struct PR3DMesh *pr3d_create_quad(mat4 vertices);
+struct PRGLMesh *prgl_create_quad(mat4 vertices);
 
 /**
  * Creates a cube mesh.
  * Make sure to attach a texture to the returned mesh struct after creating it.
  */
-struct PR3DMesh *pr3d_create_cube(void);
+struct PRGLMesh *prgl_create_cube(void);
 
 /**
  * Cleans up the GL objects associated with the mesh, call before freeing.
  */
-void pr3d_delete_mesh(struct PR3DMesh *mesh);
+void prgl_delete_mesh(struct PRGLMesh *mesh);
 
 /**
  * Calculates a 3D AABB bounding box from the vertices of a mesh.
@@ -62,7 +62,7 @@ void pr3d_delete_mesh(struct PR3DMesh *mesh);
  * @param min_bounds
  * @param max_bounds
  */
-void pr3d_calculate_aabb(
+void prgl_calculate_aabb(
     const float *vertices, int num_vertices, vec3 min_bounds, vec3 max_bounds
 );
 

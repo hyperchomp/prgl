@@ -2,12 +2,12 @@
 #include "screen_internal.h"
 #include <GLFW/glfw3.h>
 
-bool pr3d_key_pressed(int key)
+bool prgl_key_pressed(int key)
 {
-    return glfwGetKey(pr3d_screen()->window, key) == GLFW_PRESS;
+    return glfwGetKey(prgl_screen()->window, key) == GLFW_PRESS;
 }
 
-void pr3d_mouse_position(double *x_pos, double *y_pos)
+void prgl_mouse_position(double *x_pos, double *y_pos)
 {
-    glfwGetCursorPos(pr3d_screen()->window, x_pos, y_pos);
+    glfwGetCursorPos(prgl_screen()->window, x_pos, y_pos);
 }

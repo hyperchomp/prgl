@@ -6,49 +6,49 @@
 #include <GLFW/glfw3.h>
 #include <stdio.h>
 
-const char *const PR3D_MODEL_UNIFORM = "model";
-const char *const PR3D_LIGHT_COLOR_UNIFORM = "color";
-const char *const PR3D_LIGHT_POSITION_UNIFORM = "position";
-const char *const PR3D_LIGHT_LINEAR_UNIFORM = "linear";
-const char *const PR3D_LIGHT_QUADRATIC_UNIFORM = "quadratic";
-const char *const PR3D_RENDER_RESOLUTION_UNIFORM = "renderResolution";
-const char *const PR3D_TILE_FACTOR_UNIFORM = "tileFactor";
+const char *const PRGL_MODEL_UNIFORM = "model";
+const char *const PRGL_LIGHT_COLOR_UNIFORM = "color";
+const char *const PRGL_LIGHT_POSITION_UNIFORM = "position";
+const char *const PRGL_LIGHT_LINEAR_UNIFORM = "linear";
+const char *const PRGL_LIGHT_QUADRATIC_UNIFORM = "quadratic";
+const char *const PRGL_RENDER_RESOLUTION_UNIFORM = "renderResolution";
+const char *const PRGL_TILE_FACTOR_UNIFORM = "tileFactor";
 
-static unsigned int pr3d_shader_pool[PR3D_SHADER_COUNT];
-static unsigned int pr3d_current_shader_id;
-
-static unsigned int
-pr3d_compile_shader(int gl_shader_type, const char *const shader_source);
+static unsigned int prgl_shader_pool[PRGL_SHADER_COUNT];
+static unsigned int prgl_current_shader_id;
 
 static unsigned int
-pr3d_create_shader_program(unsigned int shaders[], size_t length);
+prgl_compile_shader(int gl_shader_type, const char *const shader_source);
 
-static void pr3d_validate_shader(unsigned int shader);
-static void pr3d_validate_shader_program(unsigned int shader_program);
+static unsigned int
+prgl_create_shader_program(unsigned int shaders[], size_t length);
 
-unsigned int pr3d_shader(enum PR3DShader type)
+static void prgl_validate_shader(unsigned int shader);
+static void prgl_validate_shader_program(unsigned int shader_program);
+
+unsigned int prgl_shader(enum PRGLShader type)
 {
-    return pr3d_shader_pool[type];
+    return prgl_shader_pool[type];
 }
 
-unsigned int pr3d_current_shader(void) { return pr3d_current_shader_id; }
+unsigned int prgl_current_shader(void) { return prgl_current_shader_id; }
 
-unsigned int pr3d_create_shader(
+unsigned int prgl_create_shader(
     const char *const vertex_source, const char *const frag_source
 )
 {
     // Create a basic vertex shader
     unsigned int vertex_shader =
-        pr3d_compile_shader(GL_VERTEX_SHADER, vertex_source);
+        prgl_compile_shader(GL_VERTEX_SHADER, vertex_source);
 
     // Create a fragment shader for color
     unsigned int fragment_shader =
-        pr3d_compile_shader(GL_FRAGMENT_SHADER, frag_source);
+        prgl_compile_shader(GL_FRAGMENT_SHADER, frag_source);
 
     // Use a shader program to link the shaders together
     unsigned int shaders[] = {vertex_shader, fragment_shader};
     unsigned int shader_program =
-        pr3d_create_shader_program(shaders, ARR_LEN(shaders));
+        prgl_create_shader_program(shaders, ARR_LEN(shaders));
 
     // Delete the shader objects, we're done with them
     glDeleteShader(vertex_shader);
@@ -57,25 +57,25 @@ unsigned int pr3d_create_shader(
     return shader_program;
 }
 
-void pr3d_use_shader(unsigned int shader)
+void prgl_use_shader(unsigned int shader)
 {
     glUseProgram(shader);
-    pr3d_current_shader_id = shader;
+    prgl_current_shader_id = shader;
 }
 
-void pr3d_use_shader_3d(void)
+void prgl_use_shader_3d(void)
 {
-    pr3d_use_shader(pr3d_shader_pool[PR3D_SHADER_3D]);
+    prgl_use_shader(prgl_shader_pool[PRGL_SHADER_3D]);
 }
 
-void pr3d_use_shader_2d(void)
+void prgl_use_shader_2d(void)
 {
-    pr3d_use_shader(pr3d_shader_pool[PR3D_SHADER_2D]);
+    prgl_use_shader(prgl_shader_pool[PRGL_SHADER_2D]);
 }
 
-void pr3d_delete_shader(unsigned int shader) { glDeleteProgram(shader); }
+void prgl_delete_shader(unsigned int shader) { glDeleteProgram(shader); }
 
-void pr3d_set_shader_uniform_4f(
+void prgl_set_shader_uniform_4f(
     unsigned int shader, const char *const name, float a, float b, float c,
     float d
 )
@@ -83,21 +83,21 @@ void pr3d_set_shader_uniform_4f(
     glUniform4f(glGetUniformLocation(shader, name), a, b, c, d);
 }
 
-void pr3d_set_shader_uniform_vec3(
+void prgl_set_shader_uniform_vec3(
     unsigned int shader, const char *const name, vec3 vec
 )
 {
     glUniform3fv(glGetUniformLocation(shader, name), 1, vec);
 }
 
-void pr3d_set_shader_uniform_vec2(
+void prgl_set_shader_uniform_vec2(
     unsigned int shader, const char *const name, vec2 vec
 )
 {
     glUniform2fv(glGetUniformLocation(shader, name), 1, vec);
 }
 
-void pr3d_set_shader_uniform_mat4(
+void prgl_set_shader_uniform_mat4(
     unsigned int shader, const char *const name, mat4 matrix
 )
 {
@@ -106,48 +106,48 @@ void pr3d_set_shader_uniform_mat4(
     );
 }
 
-void pr3d_set_shader_uniform_float(
+void prgl_set_shader_uniform_float(
     unsigned int shader, const char *const name, float value
 )
 {
     glUniform1f(glGetUniformLocation(shader, name), value);
 }
 
-void pr3d_set_shader_uniform_int(
+void prgl_set_shader_uniform_int(
     unsigned int shader, const char *const name, int value
 )
 {
     glUniform1i(glGetUniformLocation(shader, name), value);
 }
 
-void pr3d_set_shader_uniform_bool(
+void prgl_set_shader_uniform_bool(
     unsigned int shader, const char *const name, bool value
 )
 {
     glUniform1i(glGetUniformLocation(shader, name), (int)value);
 }
 
-void pr3d_init_shader_pool(void)
+void prgl_init_shader_pool(void)
 {
-    unsigned int shader_screen = pr3d_init_shader_screen();
-    unsigned int shader_3d = pr3d_init_shader_3d();
-    unsigned int shader_2d = pr3d_init_shader_2d();
-    unsigned int shader_unlit = pr3d_init_shader_unlit();
+    unsigned int shader_screen = prgl_init_shader_screen();
+    unsigned int shader_3d = prgl_init_shader_3d();
+    unsigned int shader_2d = prgl_init_shader_2d();
+    unsigned int shader_unlit = prgl_init_shader_unlit();
 
     // Don't do loop so if we remove any it doesn't break even if out of order
-    pr3d_shader_pool[PR3D_SHADER_SCREEN] = shader_screen;
-    pr3d_shader_pool[PR3D_SHADER_2D] = shader_2d;
-    pr3d_shader_pool[PR3D_SHADER_3D] = shader_3d;
-    pr3d_shader_pool[PR3D_SHADER_UNLIT] = shader_unlit;
+    prgl_shader_pool[PRGL_SHADER_SCREEN] = shader_screen;
+    prgl_shader_pool[PRGL_SHADER_2D] = shader_2d;
+    prgl_shader_pool[PRGL_SHADER_3D] = shader_3d;
+    prgl_shader_pool[PRGL_SHADER_UNLIT] = shader_unlit;
 
-    pr3d_use_shader_3d();
+    prgl_use_shader_3d();
 }
 
-void pr3d_delete_shader_pool(void)
+void prgl_delete_shader_pool(void)
 {
-    for (int i = 0; i < PR3D_SHADER_COUNT; i++)
+    for (int i = 0; i < PRGL_SHADER_COUNT; i++)
     {
-        glDeleteProgram(pr3d_shader_pool[i]);
+        glDeleteProgram(prgl_shader_pool[i]);
     }
 }
 
@@ -160,12 +160,12 @@ void pr3d_delete_shader_pool(void)
  * @return shader
  */
 static unsigned int
-pr3d_compile_shader(int gl_shader_type, const char *const shader_source)
+prgl_compile_shader(int gl_shader_type, const char *const shader_source)
 {
     unsigned int shader = glCreateShader(gl_shader_type);
     glShaderSource(shader, 1, &shader_source, NULL);
     glCompileShader(shader);
-    pr3d_validate_shader(shader);
+    prgl_validate_shader(shader);
 
     return shader;
 }
@@ -177,7 +177,7 @@ pr3d_compile_shader(int gl_shader_type, const char *const shader_source)
  * @param length The length of the shaders array
  */
 static unsigned int
-pr3d_create_shader_program(unsigned int shaders[], size_t length)
+prgl_create_shader_program(unsigned int shaders[], size_t length)
 {
     unsigned int shader_program = glCreateProgram();
     for (size_t i = 0; i < length; i++)
@@ -185,7 +185,7 @@ pr3d_create_shader_program(unsigned int shaders[], size_t length)
         glAttachShader(shader_program, shaders[i]);
     }
     glLinkProgram(shader_program);
-    pr3d_validate_shader_program(shader_program);
+    prgl_validate_shader_program(shader_program);
 
     return shader_program;
 }
@@ -195,7 +195,7 @@ pr3d_create_shader_program(unsigned int shaders[], size_t length)
  *
  * @param shader The ID of the shader to validate
  */
-static void pr3d_validate_shader(unsigned int shader)
+static void prgl_validate_shader(unsigned int shader)
 {
     int success;
     char info_log[512];
@@ -212,7 +212,7 @@ static void pr3d_validate_shader(unsigned int shader)
  *
  * @param shader The ID of the shader program to validate
  */
-static void pr3d_validate_shader_program(unsigned int shader_program)
+static void prgl_validate_shader_program(unsigned int shader_program)
 {
     int success;
     char info_log[512];

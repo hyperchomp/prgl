@@ -1,5 +1,5 @@
-#ifndef PR3D_COMMON_MACROS_H
-#define PR3D_COMMON_MACROS_H
+#ifndef PRGL_COMMON_MACROS_H
+#define PRGL_COMMON_MACROS_H
 
 #ifdef __GNUC__
 #ifndef UNUSED

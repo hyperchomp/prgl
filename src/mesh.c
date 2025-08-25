@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct PR3DMesh *pr3d_create_triangle(mat3 vertices)
+struct PRGLMesh *prgl_create_triangle(mat3 vertices)
 {
     // clang-format off
     
@@ -51,13 +51,13 @@ struct PR3DMesh *pr3d_create_triangle(mat3 vertices)
     );
     glEnableVertexAttribArray(2);
 
-    struct PR3DMesh *mesh_pointer = malloc(sizeof(struct PR3DMesh));
+    struct PRGLMesh *mesh_pointer = malloc(sizeof(struct PRGLMesh));
     if (mesh_pointer == NULL)
     {
-        printf("pr3d_create_triangle: Error allocating mesh pointer memory!");
+        printf("prgl_create_triangle: Error allocating mesh pointer memory!");
     }
 
-    *mesh_pointer = (struct PR3DMesh){
+    *mesh_pointer = (struct PRGLMesh){
         .num_vertices = 3,
         .vao = vao,
         .vbo = vbo,
@@ -67,7 +67,7 @@ struct PR3DMesh *pr3d_create_triangle(mat3 vertices)
     return mesh_pointer;
 }
 
-struct PR3DMesh *pr3d_create_quad(mat4 vertices)
+struct PRGLMesh *prgl_create_quad(mat4 vertices)
 {
     // clang-format off
     mat4x2 texture_coords = {
@@ -146,15 +146,15 @@ struct PR3DMesh *pr3d_create_quad(mat4 vertices)
     vec3 max_bounds;
     int num_vertices = ARR_LEN(indices);
 
-    struct PR3DMesh *mesh_pointer = malloc(sizeof(struct PR3DMesh));
+    struct PRGLMesh *mesh_pointer = malloc(sizeof(struct PRGLMesh));
     if (mesh_pointer == NULL)
     {
-        printf("pr3d_create_rectangle: Error allocating mesh "
+        printf("prgl_create_rectangle: Error allocating mesh "
                "pointer memory!");
     }
 
     // Texture zero'd, must be set after using load_texture()
-    *mesh_pointer = (struct PR3DMesh){
+    *mesh_pointer = (struct PRGLMesh){
         .num_vertices = num_vertices,
         .vao = vao,
         .vbo = vbo,
@@ -166,7 +166,7 @@ struct PR3DMesh *pr3d_create_quad(mat4 vertices)
     return mesh_pointer;
 }
 
-struct PR3DMesh *pr3d_create_cube(void)
+struct PRGLMesh *prgl_create_cube(void)
 {
     // clang-format off
     const float vertices[] = {
@@ -255,16 +255,16 @@ struct PR3DMesh *pr3d_create_cube(void)
         positions[i * 3 + 1] = vertices[i * 8 + 1];
         positions[i * 3 + 2] = vertices[i * 8 + 2];
     }
-    pr3d_calculate_aabb(vertices, num_vertices, min_bounds, max_bounds);
+    prgl_calculate_aabb(vertices, num_vertices, min_bounds, max_bounds);
 
-    struct PR3DMesh *mesh_pointer = malloc(sizeof(struct PR3DMesh));
+    struct PRGLMesh *mesh_pointer = malloc(sizeof(struct PRGLMesh));
     if (mesh_pointer == NULL)
     {
-        printf("pr3d_create_cube: Error allocating mesh pointer memory!");
+        printf("prgl_create_cube: Error allocating mesh pointer memory!");
     }
 
     // Texture zero'd, must be set after using load_texture()
-    *mesh_pointer = (struct PR3DMesh){
+    *mesh_pointer = (struct PRGLMesh){
         .num_vertices = num_vertices,
         .vao = vao,
         .vbo = vbo,
@@ -276,7 +276,7 @@ struct PR3DMesh *pr3d_create_cube(void)
     return mesh_pointer;
 }
 
-void pr3d_delete_mesh(struct PR3DMesh *mesh)
+void prgl_delete_mesh(struct PRGLMesh *mesh)
 {
     glDeleteVertexArrays(1, &mesh->vao);
     glDeleteBuffers(1, &mesh->vbo);
@@ -287,7 +287,7 @@ void pr3d_delete_mesh(struct PR3DMesh *mesh)
     }
 }
 
-void pr3d_calculate_aabb(
+void prgl_calculate_aabb(
     const float *vertices, int num_vertices, vec3 min_bounds, vec3 max_bounds
 )
 {

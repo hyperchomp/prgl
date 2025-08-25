@@ -1,16 +1,16 @@
-# Pixel Retro 3D Game Framework
+# Pixel Retro Game Library
 
-![pr3d version](https://img.shields.io/badge/pr3d-0.1.0-orange)
+![prgl version](https://img.shields.io/badge/prgl-0.1.0-orange)
 
-**pr3d is a personal project created to build my own games. I've made the code open source so anyone can re-use it, analyze it, and benefit from it.**
+**prgl is a personal project created to build my own games. I've made the code open source so anyone can re-use it, analyze it, and benefit from it.**
 
-pr3d is a code driven framework for making 3D games in a retro style similar to games made in the 80s and 90s, built from the ground up to natively render clean, chunky pixelated 3D graphics to modern displays.
+prgl is a code driven framework for making 3D games in a retro style similar to games made in the 80s and 90s, built from the ground up to natively render clean, chunky pixelated 3D graphics to modern displays.
 
 ## Licensing
 
-pr3d is licensed under the [zlib License](https://zlib.net/zlib_license.html)
+prgl is licensed under the [zlib License](https://zlib.net/zlib_license.html)
 
-Libraries used within pr3d may have differing licenses that are useable alongside the zlib license. Licenses for dependencies are listed below in the Dependencies section.
+Libraries used within prgl may have differing licenses that are useable alongside the zlib license. Licenses for dependencies are listed below in the Dependencies section.
 
 ## Current Features
 
@@ -50,11 +50,11 @@ Libraries used within pr3d may have differing licenses that are useable alongsid
 
 ## Installation
 
-At this point it is not recommended to start development using the framework, but if you are interested in how it is being developed or would like to fork the project for something you are working on you are more than welcome to. You can install pr3d on Linux systems very simply with the below steps:
+At this point it is not recommended to start development using the framework, but if you are interested in how it is being developed or would like to fork the project for something you are working on you are more than welcome to. You can install prgl on Linux systems very simply with the below steps:
 
 ```
-git clone git@github.com:hyperchomp/pr3d.git
-cd pr3d
+git clone git@github.com:hyperchomp/prgl.git
+cd prgl
 mkdir build-debug
 CC=clang cmake -DCMAKE_BUILD_TYPE=Debug ..
 make
@@ -71,30 +71,30 @@ make
 sudo make install
 ```
 
-After this (and the dependencies below!) simply include any necessary pr3d modules into your project. They are in a subfolder structure so you should include them like so:
+After this (and the dependencies below!) simply include any necessary prgl modules into your project. They are in a subfolder structure so you should include them like so:
 
 ```
-#include <pr3d/game.h>
-#include <pr3d/screen.h>
+#include <prgl/game.h>
+#include <prgl/screen.h>
 // etc...
 ```
 
 ## Dependencies
 ### Install
-These dependencies must be installed separately from pr3d as the framework relies on them.
-* [GLFW](https://github.com/glfw/glfw) (zlib) for a multitude of functionality, for example rendering and input. pr3d wraps a lot of GLFW functionality so you shouldn't normally need to call it directly.
-    * I recommend building GLFW from source as a static library, this process is very similar to installing pr3d. The directions can be found [in the GLFW documentation](https://www.glfw.org/docs/latest/compile.html).
+These dependencies must be installed separately from prgl as the framework relies on them.
+* [GLFW](https://github.com/glfw/glfw) (zlib) for a multitude of functionality, for example rendering and input. prgl wraps a lot of GLFW functionality so you shouldn't normally need to call it directly.
+    * I recommend building GLFW from source as a static library, this process is very similar to installing prgl. The directions can be found [in the GLFW documentation](https://www.glfw.org/docs/latest/compile.html).
 
 #### Linking
-You can easily link pr3d to your project in CMakeLists.txt. Note that for GLFW although you need it installed to compile pr3d itself you aren't required to link it in another project using the framework as pr3d aims to provide wrapper methods for any needed GLFW functionality.
+You can easily link prgl to your project in CMakeLists.txt. Note that for GLFW although you need it installed to compile prgl itself you aren't required to link it in another project using the framework as prgl aims to provide wrapper methods for any needed GLFW functionality.
 ```
-find_package(pr3d REQUIRED)
+find_package(prgl REQUIRED)
 
-target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE pr3d)
+target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE prgl)
 ```
 
 ### Bundled
 These dependencies are bundled in the project source code and don't require installation.
 * [Glad](https://github.com/Dav1dde/glad) (MIT) for **glad1** as a GL loader.
 * [stb](https://github.com/nothings/stb) (MIT) for stb_image as a loader for things like textures.
-* [cglm](https://github.com/recp/cglm) (MIT) For linear algebra (2D/3D math). This is what pr3d leverages for vectors, matrices, and all the math that goes along with them. This library is meant to be used directly when developing with pr3d for the data structures and supporting math it provides.
+* [cglm](https://github.com/recp/cglm) (MIT) For linear algebra (2D/3D math). This is what prgl leverages for vectors, matrices, and all the math that goes along with them. This library is meant to be used directly when developing with prgl for the data structures and supporting math it provides.

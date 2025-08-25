@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <GLFW/glfw3.h>
 
-unsigned int pr3d_load_texture(const char *const filename)
+unsigned int prgl_load_texture(const char *const filename)
 {
     int width;
     int height;
@@ -18,7 +18,7 @@ unsigned int pr3d_load_texture(const char *const filename)
     if (image == NULL)
     {
         fprintf(
-            stderr, "pr3d_load_texture: Failed to load image file \"%s\": %s\n",
+            stderr, "prgl_load_texture: Failed to load image file \"%s\": %s\n",
             filename, stbi_failure_reason()
         );
         exit(EXIT_FAILURE);
@@ -48,7 +48,7 @@ unsigned int pr3d_load_texture(const char *const filename)
     return texture;
 }
 
-struct PR3DRenderTexture pr3d_create_render_texture(void)
+struct PRGLRenderTexture prgl_create_render_texture(void)
 {
     // Create a framebuffer object
     unsigned int fbo;
@@ -60,8 +60,8 @@ struct PR3DRenderTexture pr3d_create_render_texture(void)
     glGenTextures(1, &render_texture);
     glBindTexture(GL_TEXTURE_2D, render_texture);
     glTexImage2D(
-        GL_TEXTURE_2D, 0, GL_RGB, PR3D_RENDER_RESOLUTION[0],
-        PR3D_RENDER_RESOLUTION[1], 0, GL_RGB, GL_UNSIGNED_BYTE, NULL
+        GL_TEXTURE_2D, 0, GL_RGB, PRGL_RENDER_RESOLUTION[0],
+        PRGL_RENDER_RESOLUTION[1], 0, GL_RGB, GL_UNSIGNED_BYTE, NULL
     );
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -76,8 +76,8 @@ struct PR3DRenderTexture pr3d_create_render_texture(void)
     glGenRenderbuffers(1, &rbo);
     glBindRenderbuffer(GL_RENDERBUFFER, rbo);
     glRenderbufferStorage(
-        GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, PR3D_RENDER_RESOLUTION[0],
-        PR3D_RENDER_RESOLUTION[1]
+        GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, PRGL_RENDER_RESOLUTION[0],
+        PRGL_RENDER_RESOLUTION[1]
     );
     glFramebufferRenderbuffer(
         GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo
@@ -86,13 +86,13 @@ struct PR3DRenderTexture pr3d_create_render_texture(void)
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
     {
         fprintf(
-            stderr, "pr3d_create_render_texture: Tried to create framebuffer "
+            stderr, "prgl_create_render_texture: Tried to create framebuffer "
                     "but framebuffer is not complete!\n"
         );
         exit(EXIT_FAILURE);
     }
 
-    struct PR3DRenderTexture render_tex = {
+    struct PRGLRenderTexture render_tex = {
         .fbo = fbo, .texture = render_texture
     };
     return render_tex;

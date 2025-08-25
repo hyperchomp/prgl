@@ -13,71 +13,71 @@
 
 static double last_update_start = 0;
 static double dt = 0;
-struct PR3DRenderTexture render_texture;
-struct PR3DMesh *screen_render_quad;
+struct PRGLRenderTexture render_texture;
+struct PRGLMesh *screen_render_quad;
 
-void pr3d_run_game(
-    char *title, void (*pr3d_init)(void),
-    void (*pr3d_update)(double delta_time), void (*pr3d_render)(void),
-    void (*pr3d_render_gui)(void)
+void prgl_run_game(
+    char *title, void (*prgl_init)(void),
+    void (*prgl_update)(double delta_time), void (*prgl_render)(void),
+    void (*prgl_render_gui)(void)
 )
 {
     glfwInit();
-    pr3d_create_window(title);
+    prgl_create_window(title);
 
-    pr3d_init_shader_pool();
-    render_texture = pr3d_create_render_texture();
-    screen_render_quad = pr3d_create_screen_quad();
-    pr3d_init();
+    prgl_init_shader_pool();
+    render_texture = prgl_create_render_texture();
+    screen_render_quad = prgl_create_screen_quad();
+    prgl_init();
 
-    struct PR3DScreen screen = *pr3d_screen();
+    struct PRGLScreen screen = *prgl_screen();
     while (!glfwWindowShouldClose(screen.window))
     {
         vec2 render_res = {
-            PR3D_RENDER_RESOLUTION[0], PR3D_RENDER_RESOLUTION[1]
+            PRGL_RENDER_RESOLUTION[0], PRGL_RENDER_RESOLUTION[1]
         };
 
         dt = glfwGetTime() - last_update_start;
         last_update_start = glfwGetTime();
 
-        pr3d_enable_render_texture(render_texture.fbo);
+        prgl_enable_render_texture(render_texture.fbo);
         glEnable(GL_DEPTH_TEST);
-        pr3d_use_shader_3d();
-        pr3d_set_shader_uniform_vec2(
-            pr3d_current_shader(), PR3D_TILE_FACTOR_UNIFORM, (vec2){1.0f, 1.0f}
+        prgl_use_shader_3d();
+        prgl_set_shader_uniform_vec2(
+            prgl_current_shader(), PRGL_TILE_FACTOR_UNIFORM, (vec2){1.0f, 1.0f}
         );
-        pr3d_set_shader_uniform_vec2(
-            pr3d_current_shader(), PR3D_RENDER_RESOLUTION_UNIFORM, render_res
+        prgl_set_shader_uniform_vec2(
+            prgl_current_shader(), PRGL_RENDER_RESOLUTION_UNIFORM, render_res
         );
-        pr3d_set_camera_projection(
-            pr3d_active_camera(), pr3d_active_camera()->fov,
-            PR3D_CAMERA_PROJECTION_PERSPECTIVE
+        prgl_set_camera_projection(
+            prgl_active_camera(), prgl_active_camera()->fov,
+            PRGL_CAMERA_PROJECTION_PERSPECTIVE
         );
-        pr3d_update(dt);
+        prgl_update(dt);
 
-        pr3d_render();
+        prgl_render();
 
         glDisable(GL_DEPTH_TEST);
-        pr3d_use_shader_2d();
-        pr3d_set_shader_uniform_vec2(
-            pr3d_current_shader(), PR3D_RENDER_RESOLUTION_UNIFORM, render_res
+        prgl_use_shader_2d();
+        prgl_set_shader_uniform_vec2(
+            prgl_current_shader(), PRGL_RENDER_RESOLUTION_UNIFORM, render_res
         );
-        pr3d_set_camera_projection(
-            pr3d_active_camera(), 0.0f, PR3D_CAMERA_PROJECTION_ORTHOGONAL
+        prgl_set_camera_projection(
+            prgl_active_camera(), 0.0f, PRGL_CAMERA_PROJECTION_ORTHOGONAL
         );
-        pr3d_render_gui();
+        prgl_render_gui();
 
-        pr3d_render_render_texture(render_texture.texture, screen_render_quad);
+        prgl_render_render_texture(render_texture.texture, screen_render_quad);
 
         glfwSwapBuffers(screen.window);
         glfwPollEvents();
     }
 
-    pr3d_delete_mesh(screen_render_quad);
+    prgl_delete_mesh(screen_render_quad);
     free(screen_render_quad);
 
-    pr3d_delete_shader_pool();
-    pr3d_destroy_window();
+    prgl_delete_shader_pool();
+    prgl_destroy_window();
 }
 
-double pr3d_delta_time(void) { return dt; }
+double prgl_delta_time(void) { return dt; }

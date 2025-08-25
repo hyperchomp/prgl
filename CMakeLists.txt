@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.30)
-project(pr3d VERSION 0.1.0
-        DESCRIPTION "Pixel Retro 3D Game Framework"
+project(prgl VERSION 0.1.0
+        DESCRIPTION "Pixel Retro Game Library"
         LANGUAGES C)
 set(CMAKE_C_STANDARD 99)
 
@@ -45,7 +45,7 @@ target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE ${C_FLAGS})
 
 include(GNUInstallDirs)
 set(
-    PR3D_PUBLIC_HEADERS "${CMAKE_SOURCE_DIR}/include/screen.h"
+    PRGL_PUBLIC_HEADERS "${CMAKE_SOURCE_DIR}/include/screen.h"
                         "${CMAKE_SOURCE_DIR}/include/input.h"
                         "${CMAKE_SOURCE_DIR}/include/game.h"
                         "${CMAKE_SOURCE_DIR}/include/render.h"
@@ -59,7 +59,7 @@ set(
 set_target_properties(
     ${CMAKE_PROJECT_NAME} PROPERTIES
                           VERSION ${PROJECT_VERSION}
-                          PUBLIC_HEADER "${PR3D_PUBLIC_HEADERS}"                                        
+                          PUBLIC_HEADER "${PRGL_PUBLIC_HEADERS}"                                        
                           LIBRARY_OUTPUT_DIRECTORY ${CMAKE_INSTALL_LIBDIR}/${CMAKE_PROJECT_NAME}
 )
 
