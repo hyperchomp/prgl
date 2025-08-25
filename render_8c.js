@@ -1,11 +1,11 @@
 var render_8c =
 [
-    [ "pr3d_clear_screen", "render_8c.html#a4c8390e54cd21087f02961f292abab02", null ],
-    [ "pr3d_create_screen_quad", "render_8c.html#a3f5987b4b464a2778ed64133f8fb4e70", null ],
-    [ "pr3d_enable_render_texture", "render_8c.html#a4d859837e508a37fd7fa54f028f3231d", null ],
-    [ "pr3d_render_mesh", "render_8c.html#a2c3c6351ac03485f63485d220ba69ce2", null ],
-    [ "pr3d_render_mesh_2d", "render_8c.html#a8a2b878f2f08c87cd356780d382e4959", null ],
-    [ "pr3d_render_render_texture", "render_8c.html#ac9de061243608767ae2bc02eadab08b2", null ],
-    [ "pr3d_update_lighting", "render_8c.html#aafd45e837fc668338f07ba6c4d62aecb", null ],
-    [ "PR3D_RENDER_RESOLUTION", "render_8c.html#a5ec40499fe362090894297fca8fba82e", null ]
+    [ "prgl_clear_screen", "render_8c.html#a6be9b8ca983e7efddcd062bf9410832e", null ],
+    [ "prgl_create_screen_quad", "render_8c.html#abc7c5681e3be2ca05f23f120bbb1c685", null ],
+    [ "prgl_enable_render_texture", "render_8c.html#ac62cc4254c291ed5ed40af78460f89fe", null ],
+    [ "prgl_render_mesh", "render_8c.html#adea9fc613c73000a611de4b59f64e950", null ],
+    [ "prgl_render_mesh_2d", "render_8c.html#aa1510a95e1e328a16d58f741b2daf23f", null ],
+    [ "prgl_render_render_texture", "render_8c.html#a446b319ff45444f8f9f5af807ca6e4f6", null ],
+    [ "prgl_update_lighting", "render_8c.html#a46e1eaa4c4dc1808365fa60a09f3f3db", null ],
+    [ "PRGL_RENDER_RESOLUTION", "render_8c.html#a282e8651627ae92b28f86c43538cf695", null ]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>pr3d: include/camera.h File Reference</title>
+<title>prgl: include/camera.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">pr3d
+   <div id="projectname">prgl
    </div>
-   <div id="projectbrief">Pixel Retro 3D Game Framework</div>
+   <div id="projectbrief">Pixel Retro Game Library</div>
   </td>
  </tr>
  </tbody>
@@ -103,75 +103,75 @@ $(document).ready(function(){initNavTree('camera_8h.html',''); initResizable(); 
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPR3DCamera.html">PR3DCamera</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPRGLCamera.html">PRGLCamera</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a40cb7884b7a762980daf56d10a55e5e8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#a40cb7884b7a762980daf56d10a55e5e8">PR3DCameraMoveDirection</a> { <a class="el" href="camera_8h.html#a40cb7884b7a762980daf56d10a55e5e8adcd31b7914b899476f872e69b123f8ea">PR3D_CAMERA_MOVE_DIR_FORWARD</a>
-, <a class="el" href="camera_8h.html#a40cb7884b7a762980daf56d10a55e5e8ad2363ecfec29dc2ead85b3fefe30b018">PR3D_CAMERA_MOVE_DIR_BACKWARD</a>
-, <a class="el" href="camera_8h.html#a40cb7884b7a762980daf56d10a55e5e8ac626d15375be752b23ad94046261e5af">PR3D_CAMERA_MOVE_DIR_RIGHT</a>
-, <a class="el" href="camera_8h.html#a40cb7884b7a762980daf56d10a55e5e8a1e2b75b4016f089835bca96882bd8313">PR3D_CAMERA_MOVE_DIR_LEFT</a>
+<tr class="memitem:af7ec5697e0929f86a6170c7db0999d5e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#af7ec5697e0929f86a6170c7db0999d5e">PRGLCameraMoveDirection</a> { <a class="el" href="camera_8h.html#af7ec5697e0929f86a6170c7db0999d5eaca991f1b8471a80223bd0a3cb7229593">PRGL_CAMERA_MOVE_DIR_FORWARD</a>
+, <a class="el" href="camera_8h.html#af7ec5697e0929f86a6170c7db0999d5ea7027da136e8b467b665951f9d3617388">PRGL_CAMERA_MOVE_DIR_BACKWARD</a>
+, <a class="el" href="camera_8h.html#af7ec5697e0929f86a6170c7db0999d5eab8b97d5fc17cc45c10880155eef69af5">PRGL_CAMERA_MOVE_DIR_RIGHT</a>
+, <a class="el" href="camera_8h.html#af7ec5697e0929f86a6170c7db0999d5ea2fb855623c660dc78d3acf76818895d8">PRGL_CAMERA_MOVE_DIR_LEFT</a>
  }</td></tr>
-<tr class="separator:a40cb7884b7a762980daf56d10a55e5e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d24e4fed4f6fecc9cb6326ad804ade8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#a1d24e4fed4f6fecc9cb6326ad804ade8">PR3DCameraProjectionType</a> { <a class="el" href="camera_8h.html#a1d24e4fed4f6fecc9cb6326ad804ade8a534f89c3df076fd02d14b7a3df80ba2f">PR3D_CAMERA_PROJECTION_PERSPECTIVE</a>
-, <a class="el" href="camera_8h.html#a1d24e4fed4f6fecc9cb6326ad804ade8ac7d22960ec8e461875cfb1cb68dc2048">PR3D_CAMERA_PROJECTION_ORTHOGONAL</a>
+<tr class="separator:af7ec5697e0929f86a6170c7db0999d5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6dd7e8a8d8464f8b67e8d7fa9767ad4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#ac6dd7e8a8d8464f8b67e8d7fa9767ad4">PRGLCameraProjectionType</a> { <a class="el" href="camera_8h.html#ac6dd7e8a8d8464f8b67e8d7fa9767ad4ae13d417adbb2c5ea1e3539a3b1bad5ab">PRGL_CAMERA_PROJECTION_PERSPECTIVE</a>
+, <a class="el" href="camera_8h.html#ac6dd7e8a8d8464f8b67e8d7fa9767ad4a313deb57880019a1b493ffd9ca35d000">PRGL_CAMERA_PROJECTION_ORTHOGONAL</a>
  }</td></tr>
-<tr class="separator:a1d24e4fed4f6fecc9cb6326ad804ade8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ac6dd7e8a8d8464f8b67e8d7fa9767ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a115663dca8fd23fe4c18fb8f3c02a737"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#a115663dca8fd23fe4c18fb8f3c02a737">pr3d_init_camera</a> (struct <a class="el" href="structPR3DCamera.html">PR3DCamera</a> *cam, float fov_degrees, float move_speed, enum <a class="el" href="camera_8h.html#a1d24e4fed4f6fecc9cb6326ad804ade8">PR3DCameraProjectionType</a> projection_type)</td></tr>
-<tr class="separator:a115663dca8fd23fe4c18fb8f3c02a737"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad45ae0f84c51f7800ee9dd4e06962750"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#ad45ae0f84c51f7800ee9dd4e06962750">pr3d_update_camera</a> (struct <a class="el" href="structPR3DCamera.html">PR3DCamera</a> *cam)</td></tr>
-<tr class="separator:ad45ae0f84c51f7800ee9dd4e06962750"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a88bcddf6d0297e58b0c84c85fd61aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#a9a88bcddf6d0297e58b0c84c85fd61aa">pr3d_move_camera_fly</a> (struct <a class="el" href="structPR3DCamera.html">PR3DCamera</a> *cam, enum <a class="el" href="camera_8h.html#a40cb7884b7a762980daf56d10a55e5e8">PR3DCameraMoveDirection</a> move_dir, double delta_time)</td></tr>
-<tr class="separator:a9a88bcddf6d0297e58b0c84c85fd61aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b001f96c8920ed1ade739e6c8dde3c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#a7b001f96c8920ed1ade739e6c8dde3c0">pr3d_move_camera_look</a> (struct <a class="el" href="structPR3DCamera.html">PR3DCamera</a> *cam, float yaw, float pitch)</td></tr>
-<tr class="separator:a7b001f96c8920ed1ade739e6c8dde3c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacfb350111dea1cf1e15454067c36ca4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#aacfb350111dea1cf1e15454067c36ca4">pr3d_set_camera_projection</a> (struct <a class="el" href="structPR3DCamera.html">PR3DCamera</a> *cam, float fov_degrees, enum <a class="el" href="camera_8h.html#a1d24e4fed4f6fecc9cb6326ad804ade8">PR3DCameraProjectionType</a> projection_type)</td></tr>
-<tr class="separator:aacfb350111dea1cf1e15454067c36ca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ce2f119a9d9622b9bb6f7a1384511f0"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPR3DCamera.html">PR3DCamera</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#a6ce2f119a9d9622b9bb6f7a1384511f0">pr3d_active_camera</a> (void)</td></tr>
-<tr class="separator:a6ce2f119a9d9622b9bb6f7a1384511f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfd6e1c6df42bef73ea7ba061c803346"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#abfd6e1c6df42bef73ea7ba061c803346">prgl_init_camera</a> (struct <a class="el" href="structPRGLCamera.html">PRGLCamera</a> *cam, float fov_degrees, float move_speed, enum <a class="el" href="camera_8h.html#ac6dd7e8a8d8464f8b67e8d7fa9767ad4">PRGLCameraProjectionType</a> projection_type)</td></tr>
+<tr class="separator:abfd6e1c6df42bef73ea7ba061c803346"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a924f1e5e7c7a5a02d83f5893a762d472"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#a924f1e5e7c7a5a02d83f5893a762d472">prgl_update_camera</a> (struct <a class="el" href="structPRGLCamera.html">PRGLCamera</a> *cam)</td></tr>
+<tr class="separator:a924f1e5e7c7a5a02d83f5893a762d472"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb795d345ce1db047663875fa551afe2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#acb795d345ce1db047663875fa551afe2">prgl_move_camera_fly</a> (struct <a class="el" href="structPRGLCamera.html">PRGLCamera</a> *cam, enum <a class="el" href="camera_8h.html#af7ec5697e0929f86a6170c7db0999d5e">PRGLCameraMoveDirection</a> move_dir, double delta_time)</td></tr>
+<tr class="separator:acb795d345ce1db047663875fa551afe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbda052313d2c37f1d001e075bfa16e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#adbda052313d2c37f1d001e075bfa16e6">prgl_move_camera_look</a> (struct <a class="el" href="structPRGLCamera.html">PRGLCamera</a> *cam, float yaw, float pitch)</td></tr>
+<tr class="separator:adbda052313d2c37f1d001e075bfa16e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ace16a16c884442b1a487be32c6c8df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#a8ace16a16c884442b1a487be32c6c8df">prgl_set_camera_projection</a> (struct <a class="el" href="structPRGLCamera.html">PRGLCamera</a> *cam, float fov_degrees, enum <a class="el" href="camera_8h.html#ac6dd7e8a8d8464f8b67e8d7fa9767ad4">PRGLCameraProjectionType</a> projection_type)</td></tr>
+<tr class="separator:a8ace16a16c884442b1a487be32c6c8df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf735198a3de77943028c920e7d6b7dd"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPRGLCamera.html">PRGLCamera</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#adf735198a3de77943028c920e7d6b7dd">prgl_active_camera</a> (void)</td></tr>
+<tr class="separator:adf735198a3de77943028c920e7d6b7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a40cb7884b7a762980daf56d10a55e5e8" name="a40cb7884b7a762980daf56d10a55e5e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40cb7884b7a762980daf56d10a55e5e8">&#9670;&#160;</a></span>PR3DCameraMoveDirection</h2>
+<a id="af7ec5697e0929f86a6170c7db0999d5e" name="af7ec5697e0929f86a6170c7db0999d5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7ec5697e0929f86a6170c7db0999d5e">&#9670;&#160;</a></span>PRGLCameraMoveDirection</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="camera_8h.html#a40cb7884b7a762980daf56d10a55e5e8">PR3DCameraMoveDirection</a></td>
+          <td class="memname">enum <a class="el" href="camera_8h.html#af7ec5697e0929f86a6170c7db0999d5e">PRGLCameraMoveDirection</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Camera movement directions to obfuscate movement from input. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a40cb7884b7a762980daf56d10a55e5e8adcd31b7914b899476f872e69b123f8ea" name="a40cb7884b7a762980daf56d10a55e5e8adcd31b7914b899476f872e69b123f8ea"></a>PR3D_CAMERA_MOVE_DIR_FORWARD&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a40cb7884b7a762980daf56d10a55e5e8ad2363ecfec29dc2ead85b3fefe30b018" name="a40cb7884b7a762980daf56d10a55e5e8ad2363ecfec29dc2ead85b3fefe30b018"></a>PR3D_CAMERA_MOVE_DIR_BACKWARD&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a40cb7884b7a762980daf56d10a55e5e8ac626d15375be752b23ad94046261e5af" name="a40cb7884b7a762980daf56d10a55e5e8ac626d15375be752b23ad94046261e5af"></a>PR3D_CAMERA_MOVE_DIR_RIGHT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a40cb7884b7a762980daf56d10a55e5e8a1e2b75b4016f089835bca96882bd8313" name="a40cb7884b7a762980daf56d10a55e5e8a1e2b75b4016f089835bca96882bd8313"></a>PR3D_CAMERA_MOVE_DIR_LEFT&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af7ec5697e0929f86a6170c7db0999d5eaca991f1b8471a80223bd0a3cb7229593" name="af7ec5697e0929f86a6170c7db0999d5eaca991f1b8471a80223bd0a3cb7229593"></a>PRGL_CAMERA_MOVE_DIR_FORWARD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af7ec5697e0929f86a6170c7db0999d5ea7027da136e8b467b665951f9d3617388" name="af7ec5697e0929f86a6170c7db0999d5ea7027da136e8b467b665951f9d3617388"></a>PRGL_CAMERA_MOVE_DIR_BACKWARD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af7ec5697e0929f86a6170c7db0999d5eab8b97d5fc17cc45c10880155eef69af5" name="af7ec5697e0929f86a6170c7db0999d5eab8b97d5fc17cc45c10880155eef69af5"></a>PRGL_CAMERA_MOVE_DIR_RIGHT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af7ec5697e0929f86a6170c7db0999d5ea2fb855623c660dc78d3acf76818895d8" name="af7ec5697e0929f86a6170c7db0999d5ea2fb855623c660dc78d3acf76818895d8"></a>PRGL_CAMERA_MOVE_DIR_LEFT&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="camera_8h_source.html#l00032">32</a> of file <a class="el" href="camera_8h_source.html">camera.h</a>.</p>
 
 </div>
 </div>
-<a id="a1d24e4fed4f6fecc9cb6326ad804ade8" name="a1d24e4fed4f6fecc9cb6326ad804ade8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d24e4fed4f6fecc9cb6326ad804ade8">&#9670;&#160;</a></span>PR3DCameraProjectionType</h2>
+<a id="ac6dd7e8a8d8464f8b67e8d7fa9767ad4" name="ac6dd7e8a8d8464f8b67e8d7fa9767ad4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6dd7e8a8d8464f8b67e8d7fa9767ad4">&#9670;&#160;</a></span>PRGLCameraProjectionType</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="camera_8h.html#a1d24e4fed4f6fecc9cb6326ad804ade8">PR3DCameraProjectionType</a></td>
+          <td class="memname">enum <a class="el" href="camera_8h.html#ac6dd7e8a8d8464f8b67e8d7fa9767ad4">PRGLCameraProjectionType</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1d24e4fed4f6fecc9cb6326ad804ade8a534f89c3df076fd02d14b7a3df80ba2f" name="a1d24e4fed4f6fecc9cb6326ad804ade8a534f89c3df076fd02d14b7a3df80ba2f"></a>PR3D_CAMERA_PROJECTION_PERSPECTIVE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a1d24e4fed4f6fecc9cb6326ad804ade8ac7d22960ec8e461875cfb1cb68dc2048" name="a1d24e4fed4f6fecc9cb6326ad804ade8ac7d22960ec8e461875cfb1cb68dc2048"></a>PR3D_CAMERA_PROJECTION_ORTHOGONAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ac6dd7e8a8d8464f8b67e8d7fa9767ad4ae13d417adbb2c5ea1e3539a3b1bad5ab" name="ac6dd7e8a8d8464f8b67e8d7fa9767ad4ae13d417adbb2c5ea1e3539a3b1bad5ab"></a>PRGL_CAMERA_PROJECTION_PERSPECTIVE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac6dd7e8a8d8464f8b67e8d7fa9767ad4a313deb57880019a1b493ffd9ca35d000" name="ac6dd7e8a8d8464f8b67e8d7fa9767ad4a313deb57880019a1b493ffd9ca35d000"></a>PRGL_CAMERA_PROJECTION_ORTHOGONAL&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="camera_8h_source.html#l00040">40</a> of file <a class="el" href="camera_8h_source.html">camera.h</a>.</p>
@@ -179,14 +179,14 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a6ce2f119a9d9622b9bb6f7a1384511f0" name="a6ce2f119a9d9622b9bb6f7a1384511f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ce2f119a9d9622b9bb6f7a1384511f0">&#9670;&#160;</a></span>pr3d_active_camera()</h2>
+<a id="adf735198a3de77943028c920e7d6b7dd" name="adf735198a3de77943028c920e7d6b7dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf735198a3de77943028c920e7d6b7dd">&#9670;&#160;</a></span>prgl_active_camera()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structPR3DCamera.html">PR3DCamera</a> * pr3d_active_camera </td>
+          <td class="memname">struct <a class="el" href="structPRGLCamera.html">PRGLCamera</a> * prgl_active_camera </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -200,16 +200,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a115663dca8fd23fe4c18fb8f3c02a737" name="a115663dca8fd23fe4c18fb8f3c02a737"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a115663dca8fd23fe4c18fb8f3c02a737">&#9670;&#160;</a></span>pr3d_init_camera()</h2>
+<a id="abfd6e1c6df42bef73ea7ba061c803346" name="abfd6e1c6df42bef73ea7ba061c803346"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfd6e1c6df42bef73ea7ba061c803346">&#9670;&#160;</a></span>prgl_init_camera()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pr3d_init_camera </td>
+          <td class="memname">void prgl_init_camera </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPR3DCamera.html">PR3DCamera</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structPRGLCamera.html">PRGLCamera</a> *&#160;</td>
           <td class="paramname"><em>cam</em>, </td>
         </tr>
         <tr>
@@ -227,7 +227,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">enum <a class="el" href="camera_8h.html#a1d24e4fed4f6fecc9cb6326ad804ade8">PR3DCameraProjectionType</a>&#160;</td>
+          <td class="paramtype">enum <a class="el" href="camera_8h.html#ac6dd7e8a8d8464f8b67e8d7fa9767ad4">PRGLCameraProjectionType</a>&#160;</td>
           <td class="paramname"><em>projection_type</em>&#160;</td>
         </tr>
         <tr>
@@ -240,7 +240,7 @@ Functions</h2></td></tr>
 <p>Initializes the view (position) and projection matrices for the camera. This sets the camera's position to {0, 0, 0} and sets it as the active camera.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cam[in,out]</td><td>An uninitialized <a class="el" href="structPR3DCamera.html">PR3DCamera</a> struct. </td></tr>
+    <tr><td class="paramname">cam[in,out]</td><td>An uninitialized <a class="el" href="structPRGLCamera.html">PRGLCamera</a> struct. </td></tr>
     <tr><td class="paramname">fov_degrees</td><td>The vertical fov for the camera in degrees. For orthogonal cameras this can be set to zero since it's not needed. </td></tr>
     <tr><td class="paramname">move_speed</td><td>Speed value to use when moving the camera. </td></tr>
   </table>
@@ -251,22 +251,22 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9a88bcddf6d0297e58b0c84c85fd61aa" name="a9a88bcddf6d0297e58b0c84c85fd61aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a88bcddf6d0297e58b0c84c85fd61aa">&#9670;&#160;</a></span>pr3d_move_camera_fly()</h2>
+<a id="acb795d345ce1db047663875fa551afe2" name="acb795d345ce1db047663875fa551afe2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb795d345ce1db047663875fa551afe2">&#9670;&#160;</a></span>prgl_move_camera_fly()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pr3d_move_camera_fly </td>
+          <td class="memname">void prgl_move_camera_fly </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPR3DCamera.html">PR3DCamera</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structPRGLCamera.html">PRGLCamera</a> *&#160;</td>
           <td class="paramname"><em>cam</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">enum <a class="el" href="camera_8h.html#a40cb7884b7a762980daf56d10a55e5e8">PR3DCameraMoveDirection</a>&#160;</td>
+          <td class="paramtype">enum <a class="el" href="camera_8h.html#af7ec5697e0929f86a6170c7db0999d5e">PRGLCameraMoveDirection</a>&#160;</td>
           <td class="paramname"><em>move_dir</em>, </td>
         </tr>
         <tr>
@@ -296,16 +296,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a7b001f96c8920ed1ade739e6c8dde3c0" name="a7b001f96c8920ed1ade739e6c8dde3c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b001f96c8920ed1ade739e6c8dde3c0">&#9670;&#160;</a></span>pr3d_move_camera_look()</h2>
+<a id="adbda052313d2c37f1d001e075bfa16e6" name="adbda052313d2c37f1d001e075bfa16e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbda052313d2c37f1d001e075bfa16e6">&#9670;&#160;</a></span>prgl_move_camera_look()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pr3d_move_camera_look </td>
+          <td class="memname">void prgl_move_camera_look </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPR3DCamera.html">PR3DCamera</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structPRGLCamera.html">PRGLCamera</a> *&#160;</td>
           <td class="paramname"><em>cam</em>, </td>
         </tr>
         <tr>
@@ -341,16 +341,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aacfb350111dea1cf1e15454067c36ca4" name="aacfb350111dea1cf1e15454067c36ca4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aacfb350111dea1cf1e15454067c36ca4">&#9670;&#160;</a></span>pr3d_set_camera_projection()</h2>
+<a id="a8ace16a16c884442b1a487be32c6c8df" name="a8ace16a16c884442b1a487be32c6c8df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ace16a16c884442b1a487be32c6c8df">&#9670;&#160;</a></span>prgl_set_camera_projection()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pr3d_set_camera_projection </td>
+          <td class="memname">void prgl_set_camera_projection </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPR3DCamera.html">PR3DCamera</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structPRGLCamera.html">PRGLCamera</a> *&#160;</td>
           <td class="paramname"><em>cam</em>, </td>
         </tr>
         <tr>
@@ -362,7 +362,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">enum <a class="el" href="camera_8h.html#a1d24e4fed4f6fecc9cb6326ad804ade8">PR3DCameraProjectionType</a>&#160;</td>
+          <td class="paramtype">enum <a class="el" href="camera_8h.html#ac6dd7e8a8d8464f8b67e8d7fa9767ad4">PRGLCameraProjectionType</a>&#160;</td>
           <td class="paramname"><em>projection_type</em>&#160;</td>
         </tr>
         <tr>
@@ -385,16 +385,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad45ae0f84c51f7800ee9dd4e06962750" name="ad45ae0f84c51f7800ee9dd4e06962750"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad45ae0f84c51f7800ee9dd4e06962750">&#9670;&#160;</a></span>pr3d_update_camera()</h2>
+<a id="a924f1e5e7c7a5a02d83f5893a762d472" name="a924f1e5e7c7a5a02d83f5893a762d472"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a924f1e5e7c7a5a02d83f5893a762d472">&#9670;&#160;</a></span>prgl_update_camera()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pr3d_update_camera </td>
+          <td class="memname">void prgl_update_camera </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPR3DCamera.html">PR3DCamera</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structPRGLCamera.html">PRGLCamera</a> *&#160;</td>
           <td class="paramname"><em>cam</em></td><td>)</td>
           <td></td>
         </tr>

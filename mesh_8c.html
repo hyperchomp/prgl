@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>pr3d: src/mesh.c File Reference</title>
+<title>prgl: src/mesh.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">pr3d
+   <div id="projectname">prgl
    </div>
-   <div id="projectbrief">Pixel Retro 3D Game Framework</div>
+   <div id="projectbrief">Pixel Retro Game Library</div>
   </td>
  </tr>
  </tbody>
@@ -106,26 +106,26 @@ $(document).ready(function(){initNavTree('mesh_8c.html',''); initResizable(); })
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a331cc7b8d6872db50536ac46504dafc8"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#a331cc7b8d6872db50536ac46504dafc8">pr3d_create_triangle</a> (mat3 vertices)</td></tr>
-<tr class="separator:a331cc7b8d6872db50536ac46504dafc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a181e479882d3054c5a409fef19aa3484"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#a181e479882d3054c5a409fef19aa3484">pr3d_create_quad</a> (mat4 vertices)</td></tr>
-<tr class="separator:a181e479882d3054c5a409fef19aa3484"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a196141e1b4bb71847f218c9f2870e233"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#a196141e1b4bb71847f218c9f2870e233">pr3d_create_cube</a> (void)</td></tr>
-<tr class="separator:a196141e1b4bb71847f218c9f2870e233"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e2eae802cf220b32b263c65a4ea8823"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#a2e2eae802cf220b32b263c65a4ea8823">pr3d_delete_mesh</a> (struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *mesh)</td></tr>
-<tr class="separator:a2e2eae802cf220b32b263c65a4ea8823"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25f8b0c69be593e730626f6b514827bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#a25f8b0c69be593e730626f6b514827bc">pr3d_calculate_aabb</a> (const float *vertices, int num_vertices, vec3 min_bounds, vec3 max_bounds)</td></tr>
-<tr class="separator:a25f8b0c69be593e730626f6b514827bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b01752c1965e9febb1c288f55c8b7f2"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#a6b01752c1965e9febb1c288f55c8b7f2">prgl_create_triangle</a> (mat3 vertices)</td></tr>
+<tr class="separator:a6b01752c1965e9febb1c288f55c8b7f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f24206e70f4714a64315459007cf0f7"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#a9f24206e70f4714a64315459007cf0f7">prgl_create_quad</a> (mat4 vertices)</td></tr>
+<tr class="separator:a9f24206e70f4714a64315459007cf0f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d0039abe86fe2e016e92f9ca072f15e"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#a9d0039abe86fe2e016e92f9ca072f15e">prgl_create_cube</a> (void)</td></tr>
+<tr class="separator:a9d0039abe86fe2e016e92f9ca072f15e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8fe164c7026bfdce0aeb2f7621454d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#af8fe164c7026bfdce0aeb2f7621454d6">prgl_delete_mesh</a> (struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *mesh)</td></tr>
+<tr class="separator:af8fe164c7026bfdce0aeb2f7621454d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f735afc3b1e8614b807c67f6fadeedb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#a0f735afc3b1e8614b807c67f6fadeedb">prgl_calculate_aabb</a> (const float *vertices, int num_vertices, vec3 min_bounds, vec3 max_bounds)</td></tr>
+<tr class="separator:a0f735afc3b1e8614b807c67f6fadeedb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a25f8b0c69be593e730626f6b514827bc" name="a25f8b0c69be593e730626f6b514827bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25f8b0c69be593e730626f6b514827bc">&#9670;&#160;</a></span>pr3d_calculate_aabb()</h2>
+<a id="a0f735afc3b1e8614b807c67f6fadeedb" name="a0f735afc3b1e8614b807c67f6fadeedb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f735afc3b1e8614b807c67f6fadeedb">&#9670;&#160;</a></span>prgl_calculate_aabb()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pr3d_calculate_aabb </td>
+          <td class="memname">void prgl_calculate_aabb </td>
           <td>(</td>
           <td class="paramtype">const float *&#160;</td>
           <td class="paramname"><em>vertices</em>, </td>
@@ -170,14 +170,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a196141e1b4bb71847f218c9f2870e233" name="a196141e1b4bb71847f218c9f2870e233"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a196141e1b4bb71847f218c9f2870e233">&#9670;&#160;</a></span>pr3d_create_cube()</h2>
+<a id="a9d0039abe86fe2e016e92f9ca072f15e" name="a9d0039abe86fe2e016e92f9ca072f15e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d0039abe86fe2e016e92f9ca072f15e">&#9670;&#160;</a></span>prgl_create_cube()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> * pr3d_create_cube </td>
+          <td class="memname">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> * prgl_create_cube </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -191,14 +191,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a181e479882d3054c5a409fef19aa3484" name="a181e479882d3054c5a409fef19aa3484"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a181e479882d3054c5a409fef19aa3484">&#9670;&#160;</a></span>pr3d_create_quad()</h2>
+<a id="a9f24206e70f4714a64315459007cf0f7" name="a9f24206e70f4714a64315459007cf0f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f24206e70f4714a64315459007cf0f7">&#9670;&#160;</a></span>prgl_create_quad()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> * pr3d_create_quad </td>
+          <td class="memname">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> * prgl_create_quad </td>
           <td>(</td>
           <td class="paramtype">mat4&#160;</td>
           <td class="paramname"><em>vertices</em></td><td>)</td>
@@ -218,14 +218,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a331cc7b8d6872db50536ac46504dafc8" name="a331cc7b8d6872db50536ac46504dafc8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a331cc7b8d6872db50536ac46504dafc8">&#9670;&#160;</a></span>pr3d_create_triangle()</h2>
+<a id="a6b01752c1965e9febb1c288f55c8b7f2" name="a6b01752c1965e9febb1c288f55c8b7f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b01752c1965e9febb1c288f55c8b7f2">&#9670;&#160;</a></span>prgl_create_triangle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> * pr3d_create_triangle </td>
+          <td class="memname">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> * prgl_create_triangle </td>
           <td>(</td>
           <td class="paramtype">mat3&#160;</td>
           <td class="paramname"><em>vertices</em></td><td>)</td>
@@ -245,16 +245,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2e2eae802cf220b32b263c65a4ea8823" name="a2e2eae802cf220b32b263c65a4ea8823"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e2eae802cf220b32b263c65a4ea8823">&#9670;&#160;</a></span>pr3d_delete_mesh()</h2>
+<a id="af8fe164c7026bfdce0aeb2f7621454d6" name="af8fe164c7026bfdce0aeb2f7621454d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8fe164c7026bfdce0aeb2f7621454d6">&#9670;&#160;</a></span>prgl_delete_mesh()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pr3d_delete_mesh </td>
+          <td class="memname">void prgl_delete_mesh </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td>
           <td class="paramname"><em>mesh</em></td><td>)</td>
           <td></td>
         </tr>

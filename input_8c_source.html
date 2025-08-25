@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>pr3d: src/input.c Source File</title>
+<title>prgl: src/input.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">pr3d
+   <div id="projectname">prgl
    </div>
-   <div id="projectbrief">Pixel Retro 3D Game Framework</div>
+   <div id="projectbrief">Pixel Retro Game Library</div>
   </td>
  </tr>
  </tbody>
@@ -97,19 +97,19 @@ $(document).ready(function(){initNavTree('input_8c_source.html',''); initResizab
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="screen__internal_8h.html">screen_internal.h</a>&quot;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;GLFW/glfw3.h&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="input_8c.html#ab8a5e9c0a917b40ec24988885cb500d5">    5</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="input_8c.html#ab8a5e9c0a917b40ec24988885cb500d5">pr3d_key_pressed</a>(<span class="keywordtype">int</span> key)</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="input_8c.html#a9c36f160e4d1901747426a393a01475a">    5</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="input_8c.html#a9c36f160e4d1901747426a393a01475a">prgl_key_pressed</a>(<span class="keywordtype">int</span> key)</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keywordflow">return</span> glfwGetKey(<a class="code hl_function" href="screen_8c.html#afc628f1ff13c2c86fcaaa3040c47e76e">pr3d_screen</a>()-&gt;window, key) == GLFW_PRESS;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keywordflow">return</span> glfwGetKey(<a class="code hl_function" href="screen_8c.html#a77e508480827923d72113b1097a4e79c">prgl_screen</a>()-&gt;window, key) == GLFW_PRESS;</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>}</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="input_8c.html#ab790f2ee8edf1adab7ce6a7684d03eba">   10</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="input_8c.html#ab790f2ee8edf1adab7ce6a7684d03eba">pr3d_mouse_position</a>(<span class="keywordtype">double</span> *x_pos, <span class="keywordtype">double</span> *y_pos)</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="input_8c.html#a4120acefa5b42f97b6fd3f06e7bd85a6">   10</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="input_8c.html#a4120acefa5b42f97b6fd3f06e7bd85a6">prgl_mouse_position</a>(<span class="keywordtype">double</span> *x_pos, <span class="keywordtype">double</span> *y_pos)</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    glfwGetCursorPos(<a class="code hl_function" href="screen_8c.html#afc628f1ff13c2c86fcaaa3040c47e76e">pr3d_screen</a>()-&gt;window, x_pos, y_pos);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    glfwGetCursorPos(<a class="code hl_function" href="screen_8c.html#a77e508480827923d72113b1097a4e79c">prgl_screen</a>()-&gt;window, x_pos, y_pos);</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>}</div>
-<div class="ttc" id="ainput_8c_html_ab790f2ee8edf1adab7ce6a7684d03eba"><div class="ttname"><a href="input_8c.html#ab790f2ee8edf1adab7ce6a7684d03eba">pr3d_mouse_position</a></div><div class="ttdeci">void pr3d_mouse_position(double *x_pos, double *y_pos)</div><div class="ttdef"><b>Definition:</b> <a href="input_8c_source.html#l00010">input.c:10</a></div></div>
-<div class="ttc" id="ainput_8c_html_ab8a5e9c0a917b40ec24988885cb500d5"><div class="ttname"><a href="input_8c.html#ab8a5e9c0a917b40ec24988885cb500d5">pr3d_key_pressed</a></div><div class="ttdeci">bool pr3d_key_pressed(int key)</div><div class="ttdef"><b>Definition:</b> <a href="input_8c_source.html#l00005">input.c:5</a></div></div>
+<div class="ttc" id="ainput_8c_html_a4120acefa5b42f97b6fd3f06e7bd85a6"><div class="ttname"><a href="input_8c.html#a4120acefa5b42f97b6fd3f06e7bd85a6">prgl_mouse_position</a></div><div class="ttdeci">void prgl_mouse_position(double *x_pos, double *y_pos)</div><div class="ttdef"><b>Definition:</b> <a href="input_8c_source.html#l00010">input.c:10</a></div></div>
+<div class="ttc" id="ainput_8c_html_a9c36f160e4d1901747426a393a01475a"><div class="ttname"><a href="input_8c.html#a9c36f160e4d1901747426a393a01475a">prgl_key_pressed</a></div><div class="ttdeci">bool prgl_key_pressed(int key)</div><div class="ttdef"><b>Definition:</b> <a href="input_8c_source.html#l00005">input.c:5</a></div></div>
 <div class="ttc" id="ainput_8h_html"><div class="ttname"><a href="input_8h.html">input.h</a></div></div>
-<div class="ttc" id="ascreen_8c_html_afc628f1ff13c2c86fcaaa3040c47e76e"><div class="ttname"><a href="screen_8c.html#afc628f1ff13c2c86fcaaa3040c47e76e">pr3d_screen</a></div><div class="ttdeci">struct PR3DScreen * pr3d_screen(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00098">screen.c:98</a></div></div>
+<div class="ttc" id="ascreen_8c_html_a77e508480827923d72113b1097a4e79c"><div class="ttname"><a href="screen_8c.html#a77e508480827923d72113b1097a4e79c">prgl_screen</a></div><div class="ttdeci">struct PRGLScreen * prgl_screen(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00098">screen.c:98</a></div></div>
 <div class="ttc" id="ascreen__internal_8h_html"><div class="ttname"><a href="screen__internal_8h.html">screen_internal.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

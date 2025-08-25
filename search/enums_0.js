@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['pr3dcameramovedirection_0',['PR3DCameraMoveDirection',['../camera_8h.html#a40cb7884b7a762980daf56d10a55e5e8',1,'camera.h']]],
-  ['pr3dcameraprojectiontype_1',['PR3DCameraProjectionType',['../camera_8h.html#a1d24e4fed4f6fecc9cb6326ad804ade8',1,'camera.h']]],
-  ['pr3dkeyboardkey_2',['PR3DKeyboardKey',['../input_8h.html#aaa69eeed51e68526f23c86d4af5fb93e',1,'input.h']]],
-  ['pr3dmousecapturemode_3',['PR3DMouseCaptureMode',['../screen_8h.html#a42883193c4119e2822d46c3fee2e2e47',1,'screen.h']]],
-  ['pr3dshader_4',['PR3DShader',['../shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823',1,'shaders.h']]]
+  ['prglcameramovedirection_0',['PRGLCameraMoveDirection',['../camera_8h.html#af7ec5697e0929f86a6170c7db0999d5e',1,'camera.h']]],
+  ['prglcameraprojectiontype_1',['PRGLCameraProjectionType',['../camera_8h.html#ac6dd7e8a8d8464f8b67e8d7fa9767ad4',1,'camera.h']]],
+  ['prglkeyboardkey_2',['PRGLKeyboardKey',['../input_8h.html#a173a7a96e85803a4a3e152e2f6ff94eb',1,'input.h']]],
+  ['prglmousecapturemode_3',['PRGLMouseCaptureMode',['../screen_8h.html#abf549066deedd97319a2045b8a8ef1e7',1,'screen.h']]],
+  ['prglshader_4',['PRGLShader',['../shaders_8h.html#a8d772e21c5960b33e87ad473f8248ea7',1,'shaders.h']]]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>pr3d: src/mesh.c Source File</title>
+<title>prgl: src/mesh.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">pr3d
+   <div id="projectname">prgl
    </div>
-   <div id="projectbrief">Pixel Retro 3D Game Framework</div>
+   <div id="projectbrief">Pixel Retro Game Library</div>
   </td>
  </tr>
  </tbody>
@@ -100,7 +100,7 @@ $(document).ready(function(){initNavTree('mesh_8c_source.html',''); initResizabl
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="mesh_8c.html#a331cc7b8d6872db50536ac46504dafc8">    8</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structPR3DMesh.html">PR3DMesh</a> *<a class="code hl_function" href="mesh_8c.html#a331cc7b8d6872db50536ac46504dafc8">pr3d_create_triangle</a>(mat3 vertices)</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="mesh_8c.html#a6b01752c1965e9febb1c288f55c8b7f2">    8</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structPRGLMesh.html">PRGLMesh</a> *<a class="code hl_function" href="mesh_8c.html#a6b01752c1965e9febb1c288f55c8b7f2">prgl_create_triangle</a>(mat3 vertices)</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="comment">// clang-format off</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    </div>
@@ -122,14 +122,14 @@ $(document).ready(function(){initNavTree('mesh_8c_source.html',''); initResizabl
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="comment">// Create a vertex buffer object and vertex array object, the VBO is to</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// generate the initial data, the VAO is so we can re-use it later</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structPR3DMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structPR3DMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    glGenBuffers(1, &amp;<a class="code hl_variable" href="structPR3DMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    glGenVertexArrays(1, &amp;<a class="code hl_variable" href="structPR3DMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structPRGLMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structPRGLMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    glGenBuffers(1, &amp;<a class="code hl_variable" href="structPRGLMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    glGenVertexArrays(1, &amp;<a class="code hl_variable" href="structPRGLMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>);</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="comment">// Bind VAO, then bind and set buffers, then configure the vertex attributes</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    glBindVertexArray(<a class="code hl_variable" href="structPR3DMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    glBindBuffer(GL_ARRAY_BUFFER, <a class="code hl_variable" href="structPR3DMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    glBindVertexArray(<a class="code hl_variable" href="structPRGLMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    glBindBuffer(GL_ARRAY_BUFFER, <a class="code hl_variable" href="structPRGLMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>);</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    glBufferData(</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(combined_data), combined_data, GL_STATIC_DRAW</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    );</div>
@@ -146,23 +146,23 @@ $(document).ready(function(){initNavTree('mesh_8c_source.html',''); initResizabl
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    );</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    glEnableVertexAttribArray(2);</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structPR3DMesh.html">PR3DMesh</a> *mesh_pointer = malloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code hl_struct" href="structPR3DMesh.html">PR3DMesh</a>));</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structPRGLMesh.html">PRGLMesh</a> *mesh_pointer = malloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code hl_struct" href="structPRGLMesh.html">PRGLMesh</a>));</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">if</span> (mesh_pointer == NULL)</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        printf(<span class="stringliteral">&quot;pr3d_create_triangle: Error allocating mesh pointer memory!&quot;</span>);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        printf(<span class="stringliteral">&quot;prgl_create_triangle: Error allocating mesh pointer memory!&quot;</span>);</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    *mesh_pointer = (<span class="keyword">struct </span><a class="code hl_struct" href="structPR3DMesh.html">PR3DMesh</a>){</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        .<a class="code hl_variable" href="structPR3DMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a> = 3,</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        .vao = <a class="code hl_variable" href="structPR3DMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>,</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        .vbo = <a class="code hl_variable" href="structPR3DMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>,</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    *mesh_pointer = (<span class="keyword">struct </span><a class="code hl_struct" href="structPRGLMesh.html">PRGLMesh</a>){</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        .<a class="code hl_variable" href="structPRGLMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a> = 3,</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        .vao = <a class="code hl_variable" href="structPRGLMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>,</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        .vbo = <a class="code hl_variable" href="structPRGLMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>,</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        .ebo = 0,</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        .texture = 0,</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    };</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">return</span> mesh_pointer;</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="mesh_8c.html#a181e479882d3054c5a409fef19aa3484">   70</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structPR3DMesh.html">PR3DMesh</a> *<a class="code hl_function" href="mesh_8c.html#a181e479882d3054c5a409fef19aa3484">pr3d_create_quad</a>(mat4 vertices)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="mesh_8c.html#a9f24206e70f4714a64315459007cf0f7">   70</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structPRGLMesh.html">PRGLMesh</a> *<a class="code hl_function" href="mesh_8c.html#a9f24206e70f4714a64315459007cf0f7">prgl_create_quad</a>(mat4 vertices)</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>{</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">// clang-format off</span></div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    mat4x2 texture_coords = {</div>
@@ -201,20 +201,20 @@ $(document).ready(function(){initNavTree('mesh_8c_source.html',''); initResizabl
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="comment">// Create a vertex buffer object and vertex array object, the VBO is to</span></div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="comment">// generate the initial data, the VAO is so we can re-use it later</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structPR3DMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>;</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structPR3DMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>;</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structPR3DMesh.html#a7ad670e5715f3451e595409673f29db6">ebo</a>;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    glGenBuffers(1, &amp;<a class="code hl_variable" href="structPR3DMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>);</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    glGenBuffers(1, &amp;<a class="code hl_variable" href="structPR3DMesh.html#a7ad670e5715f3451e595409673f29db6">ebo</a>);</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    glGenVertexArrays(1, &amp;<a class="code hl_variable" href="structPR3DMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structPRGLMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structPRGLMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structPRGLMesh.html#a7ad670e5715f3451e595409673f29db6">ebo</a>;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    glGenBuffers(1, &amp;<a class="code hl_variable" href="structPRGLMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    glGenBuffers(1, &amp;<a class="code hl_variable" href="structPRGLMesh.html#a7ad670e5715f3451e595409673f29db6">ebo</a>);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    glGenVertexArrays(1, &amp;<a class="code hl_variable" href="structPRGLMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>);</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="comment">// Bind VAO, then bind and set buffers, then configure the vertex attributes</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    glBindVertexArray(<a class="code hl_variable" href="structPR3DMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>);</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    glBindBuffer(GL_ARRAY_BUFFER, <a class="code hl_variable" href="structPR3DMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    glBindVertexArray(<a class="code hl_variable" href="structPRGLMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>);</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    glBindBuffer(GL_ARRAY_BUFFER, <a class="code hl_variable" href="structPRGLMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>);</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    glBufferData(</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(combined_data), combined_data, GL_STATIC_DRAW</div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    );</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, <a class="code hl_variable" href="structPR3DMesh.html#a7ad670e5715f3451e595409673f29db6">ebo</a>);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, <a class="code hl_variable" href="structPRGLMesh.html#a7ad670e5715f3451e595409673f29db6">ebo</a>);</div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    glBufferData(</div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        GL_ELEMENT_ARRAY_BUFFER, <span class="keyword">sizeof</span>(indices), indices, GL_STATIC_DRAW</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    );</div>
@@ -237,31 +237,31 @@ $(document).ready(function(){initNavTree('mesh_8c_source.html',''); initResizabl
 <div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    );</div>
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    glEnableVertexAttribArray(2);</div>
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    vec3 <a class="code hl_variable" href="structPR3DMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>;</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    vec3 <a class="code hl_variable" href="structPR3DMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>;</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structPR3DMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a> = <a class="code hl_define" href="common__macros_8h.html#aa0d31954193e3d97a35ac9861d609a0f">ARR_LEN</a>(indices);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    vec3 <a class="code hl_variable" href="structPRGLMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    vec3 <a class="code hl_variable" href="structPRGLMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structPRGLMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a> = <a class="code hl_define" href="common__macros_8h.html#aa0d31954193e3d97a35ac9861d609a0f">ARR_LEN</a>(indices);</div>
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structPR3DMesh.html">PR3DMesh</a> *mesh_pointer = malloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code hl_struct" href="structPR3DMesh.html">PR3DMesh</a>));</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structPRGLMesh.html">PRGLMesh</a> *mesh_pointer = malloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code hl_struct" href="structPRGLMesh.html">PRGLMesh</a>));</div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordflow">if</span> (mesh_pointer == NULL)</div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    {</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        printf(<span class="stringliteral">&quot;pr3d_create_rectangle: Error allocating mesh &quot;</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        printf(<span class="stringliteral">&quot;prgl_create_rectangle: Error allocating mesh &quot;</span></div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>               <span class="stringliteral">&quot;pointer memory!&quot;</span>);</div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    }</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="comment">// Texture zero&#39;d, must be set after using load_texture()</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    *mesh_pointer = (<span class="keyword">struct </span><a class="code hl_struct" href="structPR3DMesh.html">PR3DMesh</a>){</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        .<a class="code hl_variable" href="structPR3DMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a> = <a class="code hl_variable" href="structPR3DMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a>,</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        .vao = <a class="code hl_variable" href="structPR3DMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>,</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        .vbo = <a class="code hl_variable" href="structPR3DMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>,</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        .ebo = <a class="code hl_variable" href="structPR3DMesh.html#a7ad670e5715f3451e595409673f29db6">ebo</a>,</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    *mesh_pointer = (<span class="keyword">struct </span><a class="code hl_struct" href="structPRGLMesh.html">PRGLMesh</a>){</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        .<a class="code hl_variable" href="structPRGLMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a> = <a class="code hl_variable" href="structPRGLMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a>,</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        .vao = <a class="code hl_variable" href="structPRGLMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>,</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        .vbo = <a class="code hl_variable" href="structPRGLMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>,</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        .ebo = <a class="code hl_variable" href="structPRGLMesh.html#a7ad670e5715f3451e595409673f29db6">ebo</a>,</div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        .texture = 0,</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        .min_bounds = {<a class="code hl_variable" href="structPR3DMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>[0], <a class="code hl_variable" href="structPR3DMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>[1], <a class="code hl_variable" href="structPR3DMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>[2]},</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        .max_bounds = {<a class="code hl_variable" href="structPR3DMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>[0], <a class="code hl_variable" href="structPR3DMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>[1], <a class="code hl_variable" href="structPR3DMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>[2]},</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        .min_bounds = {<a class="code hl_variable" href="structPRGLMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>[0], <a class="code hl_variable" href="structPRGLMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>[1], <a class="code hl_variable" href="structPRGLMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>[2]},</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        .max_bounds = {<a class="code hl_variable" href="structPRGLMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>[0], <a class="code hl_variable" href="structPRGLMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>[1], <a class="code hl_variable" href="structPRGLMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>[2]},</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    };</div>
 <div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="keywordflow">return</span> mesh_pointer;</div>
 <div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>}</div>
 <div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="mesh_8c.html#a196141e1b4bb71847f218c9f2870e233">  169</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structPR3DMesh.html">PR3DMesh</a> *<a class="code hl_function" href="mesh_8c.html#a196141e1b4bb71847f218c9f2870e233">pr3d_create_cube</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="mesh_8c.html#a9d0039abe86fe2e016e92f9ca072f15e">  169</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structPRGLMesh.html">PRGLMesh</a> *<a class="code hl_function" href="mesh_8c.html#a9d0039abe86fe2e016e92f9ca072f15e">prgl_create_cube</a>(<span class="keywordtype">void</span>)</div>
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>{</div>
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="comment">// clang-format off</span></div>
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> vertices[] = {</div>
@@ -310,13 +310,13 @@ $(document).ready(function(){initNavTree('mesh_8c_source.html',''); initResizabl
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    };</div>
 <div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    <span class="comment">// clang-format on</span></div>
 <div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structPR3DMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>, <a class="code hl_variable" href="structPR3DMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>;</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    glGenVertexArrays(1, &amp;<a class="code hl_variable" href="structPR3DMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>);</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    glGenBuffers(1, &amp;<a class="code hl_variable" href="structPR3DMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>);</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structPRGLMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>, <a class="code hl_variable" href="structPRGLMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>;</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    glGenVertexArrays(1, &amp;<a class="code hl_variable" href="structPRGLMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>);</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    glGenBuffers(1, &amp;<a class="code hl_variable" href="structPRGLMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>);</div>
 <div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    glBindVertexArray(<a class="code hl_variable" href="structPR3DMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    glBindVertexArray(<a class="code hl_variable" href="structPRGLMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>);</div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    glBindBuffer(GL_ARRAY_BUFFER, <a class="code hl_variable" href="structPR3DMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>);</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    glBindBuffer(GL_ARRAY_BUFFER, <a class="code hl_variable" href="structPRGLMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>);</div>
 <div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    glBufferData(GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(vertices), vertices, GL_STATIC_DRAW);</div>
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
 <div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <span class="comment">// position attribute</span></div>
@@ -338,51 +338,51 @@ $(document).ready(function(){initNavTree('mesh_8c_source.html',''); initResizabl
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    glEnableVertexAttribArray(2);</div>
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
 <div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <span class="comment">// Bounding box</span></div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    vec3 <a class="code hl_variable" href="structPR3DMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>;</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    vec3 <a class="code hl_variable" href="structPR3DMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>;</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structPR3DMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a> = 36;</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    vec3 <a class="code hl_variable" href="structPRGLMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>;</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    vec3 <a class="code hl_variable" href="structPRGLMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>;</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structPRGLMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a> = 36;</div>
 <div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
 <div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    <span class="comment">// Create array of just vertex positions without the other data</span></div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    <span class="keywordtype">float</span> positions[<a class="code hl_variable" href="structPR3DMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a> * 3];</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    <span class="keywordtype">float</span> positions[<a class="code hl_variable" href="structPRGLMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a> * 3];</div>
 <div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 36; ++i)</div>
 <div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    {</div>
 <div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        positions[i * 3 + 0] = vertices[i * 8 + 0];</div>
 <div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        positions[i * 3 + 1] = vertices[i * 8 + 1];</div>
 <div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        positions[i * 3 + 2] = vertices[i * 8 + 2];</div>
 <div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    }</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    <a class="code hl_function" href="mesh_8c.html#a25f8b0c69be593e730626f6b514827bc">pr3d_calculate_aabb</a>(vertices, <a class="code hl_variable" href="structPR3DMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a>, <a class="code hl_variable" href="structPR3DMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>, <a class="code hl_variable" href="structPR3DMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>);</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    <a class="code hl_function" href="mesh_8c.html#a0f735afc3b1e8614b807c67f6fadeedb">prgl_calculate_aabb</a>(vertices, <a class="code hl_variable" href="structPRGLMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a>, <a class="code hl_variable" href="structPRGLMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>, <a class="code hl_variable" href="structPRGLMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>);</div>
 <div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structPR3DMesh.html">PR3DMesh</a> *mesh_pointer = malloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code hl_struct" href="structPR3DMesh.html">PR3DMesh</a>));</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structPRGLMesh.html">PRGLMesh</a> *mesh_pointer = malloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code hl_struct" href="structPRGLMesh.html">PRGLMesh</a>));</div>
 <div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="keywordflow">if</span> (mesh_pointer == NULL)</div>
 <div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    {</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        printf(<span class="stringliteral">&quot;pr3d_create_cube: Error allocating mesh pointer memory!&quot;</span>);</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        printf(<span class="stringliteral">&quot;prgl_create_cube: Error allocating mesh pointer memory!&quot;</span>);</div>
 <div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    }</div>
 <div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
 <div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    <span class="comment">// Texture zero&#39;d, must be set after using load_texture()</span></div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    *mesh_pointer = (<span class="keyword">struct </span><a class="code hl_struct" href="structPR3DMesh.html">PR3DMesh</a>){</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        .<a class="code hl_variable" href="structPR3DMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a> = <a class="code hl_variable" href="structPR3DMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a>,</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        .vao = <a class="code hl_variable" href="structPR3DMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>,</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        .vbo = <a class="code hl_variable" href="structPR3DMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>,</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    *mesh_pointer = (<span class="keyword">struct </span><a class="code hl_struct" href="structPRGLMesh.html">PRGLMesh</a>){</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        .<a class="code hl_variable" href="structPRGLMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a> = <a class="code hl_variable" href="structPRGLMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a>,</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        .vao = <a class="code hl_variable" href="structPRGLMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>,</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        .vbo = <a class="code hl_variable" href="structPRGLMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>,</div>
 <div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        .ebo = 0,</div>
 <div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        .texture = 0,</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        .min_bounds = {<a class="code hl_variable" href="structPR3DMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>[0], <a class="code hl_variable" href="structPR3DMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>[1], <a class="code hl_variable" href="structPR3DMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>[2]},</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        .max_bounds = {<a class="code hl_variable" href="structPR3DMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>[0], <a class="code hl_variable" href="structPR3DMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>[1], <a class="code hl_variable" href="structPR3DMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>[2]},</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        .min_bounds = {<a class="code hl_variable" href="structPRGLMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>[0], <a class="code hl_variable" href="structPRGLMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>[1], <a class="code hl_variable" href="structPRGLMesh.html#a305c9e9055ab3db2923c578a6589dfd8">min_bounds</a>[2]},</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        .max_bounds = {<a class="code hl_variable" href="structPRGLMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>[0], <a class="code hl_variable" href="structPRGLMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>[1], <a class="code hl_variable" href="structPRGLMesh.html#ab5d40d8b6a2c65a165578694d3978266">max_bounds</a>[2]},</div>
 <div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    };</div>
 <div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    <span class="keywordflow">return</span> mesh_pointer;</div>
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>}</div>
 <div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno"><a class="line" href="mesh_8c.html#a2e2eae802cf220b32b263c65a4ea8823">  279</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="mesh_8c.html#a2e2eae802cf220b32b263c65a4ea8823">pr3d_delete_mesh</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structPR3DMesh.html">PR3DMesh</a> *mesh)</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno"><a class="line" href="mesh_8c.html#af8fe164c7026bfdce0aeb2f7621454d6">  279</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="mesh_8c.html#af8fe164c7026bfdce0aeb2f7621454d6">prgl_delete_mesh</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structPRGLMesh.html">PRGLMesh</a> *mesh)</div>
 <div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>{</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    glDeleteVertexArrays(1, &amp;mesh-&gt;<a class="code hl_variable" href="structPR3DMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>);</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    glDeleteBuffers(1, &amp;mesh-&gt;<a class="code hl_variable" href="structPR3DMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>);</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    glDeleteVertexArrays(1, &amp;mesh-&gt;<a class="code hl_variable" href="structPRGLMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a>);</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    glDeleteBuffers(1, &amp;mesh-&gt;<a class="code hl_variable" href="structPRGLMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a>);</div>
 <div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    <span class="keywordflow">if</span> (mesh-&gt;<a class="code hl_variable" href="structPR3DMesh.html#a7ad670e5715f3451e595409673f29db6">ebo</a> != 0)</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    <span class="keywordflow">if</span> (mesh-&gt;<a class="code hl_variable" href="structPRGLMesh.html#a7ad670e5715f3451e595409673f29db6">ebo</a> != 0)</div>
 <div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    {</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        glDeleteBuffers(1, &amp;mesh-&gt;<a class="code hl_variable" href="structPR3DMesh.html#a7ad670e5715f3451e595409673f29db6">ebo</a>);</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        glDeleteBuffers(1, &amp;mesh-&gt;<a class="code hl_variable" href="structPRGLMesh.html#a7ad670e5715f3451e595409673f29db6">ebo</a>);</div>
 <div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    }</div>
 <div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>}</div>
 <div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno"><a class="line" href="mesh_8c.html#a25f8b0c69be593e730626f6b514827bc">  290</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="mesh_8c.html#a25f8b0c69be593e730626f6b514827bc">pr3d_calculate_aabb</a>(</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno"><a class="line" href="mesh_8c.html#a0f735afc3b1e8614b807c67f6fadeedb">  290</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="mesh_8c.html#a0f735afc3b1e8614b807c67f6fadeedb">prgl_calculate_aabb</a>(</div>
 <div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> *vertices, <span class="keywordtype">int</span> num_vertices, vec3 min_bounds, vec3 max_bounds</div>
 <div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>)</div>
 <div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>{</div>
@@ -418,19 +418,19 @@ $(document).ready(function(){initNavTree('mesh_8c_source.html',''); initResizabl
 <div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>}</div>
 <div class="ttc" id="acommon__macros_8h_html"><div class="ttname"><a href="common__macros_8h.html">common_macros.h</a></div></div>
 <div class="ttc" id="acommon__macros_8h_html_aa0d31954193e3d97a35ac9861d609a0f"><div class="ttname"><a href="common__macros_8h.html#aa0d31954193e3d97a35ac9861d609a0f">ARR_LEN</a></div><div class="ttdeci">#define ARR_LEN(x)</div><div class="ttdef"><b>Definition:</b> <a href="common__macros_8h_source.html#l00023">common_macros.h:23</a></div></div>
-<div class="ttc" id="amesh_8c_html_a181e479882d3054c5a409fef19aa3484"><div class="ttname"><a href="mesh_8c.html#a181e479882d3054c5a409fef19aa3484">pr3d_create_quad</a></div><div class="ttdeci">struct PR3DMesh * pr3d_create_quad(mat4 vertices)</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8c_source.html#l00070">mesh.c:70</a></div></div>
-<div class="ttc" id="amesh_8c_html_a196141e1b4bb71847f218c9f2870e233"><div class="ttname"><a href="mesh_8c.html#a196141e1b4bb71847f218c9f2870e233">pr3d_create_cube</a></div><div class="ttdeci">struct PR3DMesh * pr3d_create_cube(void)</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8c_source.html#l00169">mesh.c:169</a></div></div>
-<div class="ttc" id="amesh_8c_html_a25f8b0c69be593e730626f6b514827bc"><div class="ttname"><a href="mesh_8c.html#a25f8b0c69be593e730626f6b514827bc">pr3d_calculate_aabb</a></div><div class="ttdeci">void pr3d_calculate_aabb(const float *vertices, int num_vertices, vec3 min_bounds, vec3 max_bounds)</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8c_source.html#l00290">mesh.c:290</a></div></div>
-<div class="ttc" id="amesh_8c_html_a2e2eae802cf220b32b263c65a4ea8823"><div class="ttname"><a href="mesh_8c.html#a2e2eae802cf220b32b263c65a4ea8823">pr3d_delete_mesh</a></div><div class="ttdeci">void pr3d_delete_mesh(struct PR3DMesh *mesh)</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8c_source.html#l00279">mesh.c:279</a></div></div>
-<div class="ttc" id="amesh_8c_html_a331cc7b8d6872db50536ac46504dafc8"><div class="ttname"><a href="mesh_8c.html#a331cc7b8d6872db50536ac46504dafc8">pr3d_create_triangle</a></div><div class="ttdeci">struct PR3DMesh * pr3d_create_triangle(mat3 vertices)</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8c_source.html#l00008">mesh.c:8</a></div></div>
+<div class="ttc" id="amesh_8c_html_a0f735afc3b1e8614b807c67f6fadeedb"><div class="ttname"><a href="mesh_8c.html#a0f735afc3b1e8614b807c67f6fadeedb">prgl_calculate_aabb</a></div><div class="ttdeci">void prgl_calculate_aabb(const float *vertices, int num_vertices, vec3 min_bounds, vec3 max_bounds)</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8c_source.html#l00290">mesh.c:290</a></div></div>
+<div class="ttc" id="amesh_8c_html_a6b01752c1965e9febb1c288f55c8b7f2"><div class="ttname"><a href="mesh_8c.html#a6b01752c1965e9febb1c288f55c8b7f2">prgl_create_triangle</a></div><div class="ttdeci">struct PRGLMesh * prgl_create_triangle(mat3 vertices)</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8c_source.html#l00008">mesh.c:8</a></div></div>
+<div class="ttc" id="amesh_8c_html_a9d0039abe86fe2e016e92f9ca072f15e"><div class="ttname"><a href="mesh_8c.html#a9d0039abe86fe2e016e92f9ca072f15e">prgl_create_cube</a></div><div class="ttdeci">struct PRGLMesh * prgl_create_cube(void)</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8c_source.html#l00169">mesh.c:169</a></div></div>
+<div class="ttc" id="amesh_8c_html_a9f24206e70f4714a64315459007cf0f7"><div class="ttname"><a href="mesh_8c.html#a9f24206e70f4714a64315459007cf0f7">prgl_create_quad</a></div><div class="ttdeci">struct PRGLMesh * prgl_create_quad(mat4 vertices)</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8c_source.html#l00070">mesh.c:70</a></div></div>
+<div class="ttc" id="amesh_8c_html_af8fe164c7026bfdce0aeb2f7621454d6"><div class="ttname"><a href="mesh_8c.html#af8fe164c7026bfdce0aeb2f7621454d6">prgl_delete_mesh</a></div><div class="ttdeci">void prgl_delete_mesh(struct PRGLMesh *mesh)</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8c_source.html#l00279">mesh.c:279</a></div></div>
 <div class="ttc" id="amesh_8h_html"><div class="ttname"><a href="mesh_8h.html">mesh.h</a></div></div>
-<div class="ttc" id="astructPR3DMesh_html"><div class="ttname"><a href="structPR3DMesh.html">PR3DMesh</a></div><div class="ttdef"><b>Definition:</b> <a href="mesh_8h_source.html#l00011">mesh.h:12</a></div></div>
-<div class="ttc" id="astructPR3DMesh_html_a305c9e9055ab3db2923c578a6589dfd8"><div class="ttname"><a href="structPR3DMesh.html#a305c9e9055ab3db2923c578a6589dfd8">PR3DMesh::min_bounds</a></div><div class="ttdeci">vec3 min_bounds</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8h_source.html#l00013">mesh.h:13</a></div></div>
-<div class="ttc" id="astructPR3DMesh_html_a66af7003e38e6bc4336b96bbda1fe29a"><div class="ttname"><a href="structPR3DMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">PR3DMesh::vao</a></div><div class="ttdeci">unsigned int vao</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8h_source.html#l00022">mesh.h:22</a></div></div>
-<div class="ttc" id="astructPR3DMesh_html_a7ad670e5715f3451e595409673f29db6"><div class="ttname"><a href="structPR3DMesh.html#a7ad670e5715f3451e595409673f29db6">PR3DMesh::ebo</a></div><div class="ttdeci">unsigned int ebo</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8h_source.html#l00025">mesh.h:25</a></div></div>
-<div class="ttc" id="astructPR3DMesh_html_ab52c5c997b55ddee18e7a92287b4e347"><div class="ttname"><a href="structPR3DMesh.html#ab52c5c997b55ddee18e7a92287b4e347">PR3DMesh::num_vertices</a></div><div class="ttdeci">int num_vertices</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8h_source.html#l00016">mesh.h:16</a></div></div>
-<div class="ttc" id="astructPR3DMesh_html_ab5d40d8b6a2c65a165578694d3978266"><div class="ttname"><a href="structPR3DMesh.html#ab5d40d8b6a2c65a165578694d3978266">PR3DMesh::max_bounds</a></div><div class="ttdeci">vec3 max_bounds</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8h_source.html#l00014">mesh.h:14</a></div></div>
-<div class="ttc" id="astructPR3DMesh_html_ad8ad85e5ea665ec96050fb1c68a316ad"><div class="ttname"><a href="structPR3DMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">PR3DMesh::vbo</a></div><div class="ttdeci">unsigned int vbo</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8h_source.html#l00019">mesh.h:19</a></div></div>
+<div class="ttc" id="astructPRGLMesh_html"><div class="ttname"><a href="structPRGLMesh.html">PRGLMesh</a></div><div class="ttdef"><b>Definition:</b> <a href="mesh_8h_source.html#l00011">mesh.h:12</a></div></div>
+<div class="ttc" id="astructPRGLMesh_html_a305c9e9055ab3db2923c578a6589dfd8"><div class="ttname"><a href="structPRGLMesh.html#a305c9e9055ab3db2923c578a6589dfd8">PRGLMesh::min_bounds</a></div><div class="ttdeci">vec3 min_bounds</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8h_source.html#l00013">mesh.h:13</a></div></div>
+<div class="ttc" id="astructPRGLMesh_html_a66af7003e38e6bc4336b96bbda1fe29a"><div class="ttname"><a href="structPRGLMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">PRGLMesh::vao</a></div><div class="ttdeci">unsigned int vao</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8h_source.html#l00022">mesh.h:22</a></div></div>
+<div class="ttc" id="astructPRGLMesh_html_a7ad670e5715f3451e595409673f29db6"><div class="ttname"><a href="structPRGLMesh.html#a7ad670e5715f3451e595409673f29db6">PRGLMesh::ebo</a></div><div class="ttdeci">unsigned int ebo</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8h_source.html#l00025">mesh.h:25</a></div></div>
+<div class="ttc" id="astructPRGLMesh_html_ab52c5c997b55ddee18e7a92287b4e347"><div class="ttname"><a href="structPRGLMesh.html#ab52c5c997b55ddee18e7a92287b4e347">PRGLMesh::num_vertices</a></div><div class="ttdeci">int num_vertices</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8h_source.html#l00016">mesh.h:16</a></div></div>
+<div class="ttc" id="astructPRGLMesh_html_ab5d40d8b6a2c65a165578694d3978266"><div class="ttname"><a href="structPRGLMesh.html#ab5d40d8b6a2c65a165578694d3978266">PRGLMesh::max_bounds</a></div><div class="ttdeci">vec3 max_bounds</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8h_source.html#l00014">mesh.h:14</a></div></div>
+<div class="ttc" id="astructPRGLMesh_html_ad8ad85e5ea665ec96050fb1c68a316ad"><div class="ttname"><a href="structPRGLMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">PRGLMesh::vbo</a></div><div class="ttdeci">unsigned int vbo</div><div class="ttdef"><b>Definition:</b> <a href="mesh_8h_source.html#l00019">mesh.h:19</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

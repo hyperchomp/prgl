@@ -1,11 +1,11 @@
 var screen_8c =
 [
-    [ "pr3d_close_game", "screen_8c.html#a370cdf626acb41a5653c90056c765703", null ],
-    [ "pr3d_create_window", "screen_8c.html#a1f404ea2d0aef0bff7f5c5747cfaad4b", null ],
-    [ "pr3d_destroy_window", "screen_8c.html#ac9c3587eee67b1c8aedd71b9ced41a0a", null ],
-    [ "pr3d_screen", "screen_8c.html#afc628f1ff13c2c86fcaaa3040c47e76e", null ],
-    [ "pr3d_set_mouse_capture_mode", "screen_8c.html#a6b23b51e42657e63293a4f0f4327c419", null ],
-    [ "pr3d_set_vsync", "screen_8c.html#a59c62b084ad7e18b989cdffa353c5b07", null ],
-    [ "pr3d_toggle_fullscreen", "screen_8c.html#a9916549195029d0621a17747bca01b3c", null ],
-    [ "pr3d_vsync", "screen_8c.html#a2d3833498407fb1412ef52ad76ebd4aa", null ]
+    [ "prgl_close_game", "screen_8c.html#a985689302236428da21110d9d44cbd96", null ],
+    [ "prgl_create_window", "screen_8c.html#a07e20547d5d518620ecf3fe9d5fa5853", null ],
+    [ "prgl_destroy_window", "screen_8c.html#a8598f061fb44d49fcc8032a55bd7cddd", null ],
+    [ "prgl_screen", "screen_8c.html#a77e508480827923d72113b1097a4e79c", null ],
+    [ "prgl_set_mouse_capture_mode", "screen_8c.html#a57e5e5ef124e05690e844b9ddbb6e5d2", null ],
+    [ "prgl_set_vsync", "screen_8c.html#a07464dd5cd4ea5d8a81979eb2c1c080b", null ],
+    [ "prgl_toggle_fullscreen", "screen_8c.html#aabccc40cc697a74ad7d45db1243db0cd", null ],
+    [ "prgl_vsync", "screen_8c.html#a548ae43bcebf8104b38cfd8bd56b2561", null ]
 ];

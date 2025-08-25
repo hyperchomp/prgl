@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>pr3d: src/shaders_init.c Source File</title>
+<title>prgl: src/shaders_init.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">pr3d
+   <div id="projectname">prgl
    </div>
-   <div id="projectbrief">Pixel Retro 3D Game Framework</div>
+   <div id="projectbrief">Pixel Retro Game Library</div>
   </td>
  </tr>
  </tbody>
@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('shaders__init_8c_source.html',''); ini
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="shaders_8h.html">shaders.h</a>&quot;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="common__macros_8h.html">common_macros.h</a>&quot;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="shaders__init_8c.html#a9b2c6c091066fe2e49f2e0b246dbf8e0">    5</a></span><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="shaders__init_8c.html#a9b2c6c091066fe2e49f2e0b246dbf8e0">pr3d_init_shader_screen</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="shaders__init_8c.html#a48eed55fa57ad8a38ca7c65cd47ca5bc">    5</a></span><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="shaders__init_8c.html#a48eed55fa57ad8a38ca7c65cd47ca5bc">prgl_init_shader_screen</a>(<span class="keywordtype">void</span>)</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> VERTEX_SHADER_SOURCE =</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>        <span class="stringliteral">&quot;#version 330 core\n&quot;</span></div>
@@ -124,10 +124,10 @@ $(document).ready(function(){initNavTree('shaders__init_8c_source.html',''); ini
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="stringliteral">&quot;   FragColor = texture(imageTexture, texCoord);\n&quot;</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="stringliteral">&quot;}\0&quot;</span>;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="shaders_8c.html#ab5297d5ecae3e3e4becf2bad94884614">pr3d_create_shader</a>(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="shaders_8c.html#ac27d6c3b47f991ad7449990d1510b557">prgl_create_shader</a>(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="shaders__init_8c.html#aeab6c439edaa05ed3ab89365bbe0bb78">   35</a></span><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="shaders__init_8c.html#aeab6c439edaa05ed3ab89365bbe0bb78">pr3d_init_shader_2d</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="shaders__init_8c.html#ae793da48e02d10ff978652ccd0c813e0">   35</a></span><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="shaders__init_8c.html#ae793da48e02d10ff978652ccd0c813e0">prgl_init_shader_2d</a>(<span class="keywordtype">void</span>)</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> VERTEX_SHADER_SOURCE =</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="stringliteral">&quot;#version 330 core\n&quot;</span></div>
@@ -166,10 +166,10 @@ $(document).ready(function(){initNavTree('shaders__init_8c_source.html',''); ini
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="stringliteral">&quot;alpha);\n&quot;</span></div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="stringliteral">&quot;}\0&quot;</span>;</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="shaders_8c.html#ab5297d5ecae3e3e4becf2bad94884614">pr3d_create_shader</a>(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="shaders_8c.html#ac27d6c3b47f991ad7449990d1510b557">prgl_create_shader</a>(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="shaders__init_8c.html#a76676bb83b2464ad1d628dac95d6f39c">   77</a></span><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="shaders__init_8c.html#a76676bb83b2464ad1d628dac95d6f39c">pr3d_init_shader_3d</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="shaders__init_8c.html#a03c893d2b63f9434d0764fb12b8af5f5">   77</a></span><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="shaders__init_8c.html#a03c893d2b63f9434d0764fb12b8af5f5">prgl_init_shader_3d</a>(<span class="keywordtype">void</span>)</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>{</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="comment">// clang-format off</span></div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> VERTEX_SHADER_SOURCE =</div>
@@ -183,7 +183,7 @@ $(document).ready(function(){initNavTree('shaders__init_8c_source.html',''); ini
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="stringliteral">&quot;    float quadratic;\n&quot;</span></div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="stringliteral">&quot;};\n&quot;</span></div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="stringliteral">&quot;#define NR_POINT_LIGHTS &quot;</span> <a class="code hl_define" href="common__macros_8h.html#a6df1d22fb5f09eccc23b9f399670cfd7">STRINGIFY</a>(<a class="code hl_define" href="shaders_8h.html#a73855faadb010437853e87546d5689ed">PR3D_MAX_POINT_LIGHTS</a>) <span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="stringliteral">&quot;#define NR_POINT_LIGHTS &quot;</span> <a class="code hl_define" href="common__macros_8h.html#a6df1d22fb5f09eccc23b9f399670cfd7">STRINGIFY</a>(<a class="code hl_define" href="shaders_8h.html#a8f7edcdfc9cc3346cf40b66646ecf920">PRGL_MAX_POINT_LIGHTS</a>) <span class="stringliteral">&quot;\n&quot;</span></div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="stringliteral">&quot;layout (location = 0) in vec3 aPos;\n&quot;</span></div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="stringliteral">&quot;layout (location = 1) in vec3 aNormal;\n&quot;</span></div>
@@ -301,10 +301,10 @@ $(document).ready(function(){initNavTree('shaders__init_8c_source.html',''); ini
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <span class="stringliteral">&quot;}\0&quot;</span>;</div>
 <div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="comment">// clang-format on</span></div>
 <div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="shaders_8c.html#ab5297d5ecae3e3e4becf2bad94884614">pr3d_create_shader</a>(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="shaders_8c.html#ac27d6c3b47f991ad7449990d1510b557">prgl_create_shader</a>(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>}</div>
 <div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno"><a class="line" href="shaders__init_8c.html#af7bdc195834a7a17aa9e463fcc5677c0">  212</a></span><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="shaders__init_8c.html#af7bdc195834a7a17aa9e463fcc5677c0">pr3d_init_shader_unlit</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno"><a class="line" href="shaders__init_8c.html#a613792957b6ba895a8b305ee3c892794">  212</a></span><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="shaders__init_8c.html#a613792957b6ba895a8b305ee3c892794">prgl_init_shader_unlit</a>(<span class="keywordtype">void</span>)</div>
 <div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>{</div>
 <div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> VERTEX_SHADER_SOURCE =</div>
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        <span class="stringliteral">&quot;#version 330 core\n&quot;</span></div>
@@ -331,17 +331,17 @@ $(document).ready(function(){initNavTree('shaders__init_8c_source.html',''); ini
 <div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <span class="stringliteral">&quot;   FragColor = vec4(1.0, 1.0, 1.0, alpha);\n&quot;</span></div>
 <div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        <span class="stringliteral">&quot;}\0&quot;</span>;</div>
 <div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="shaders_8c.html#ab5297d5ecae3e3e4becf2bad94884614">pr3d_create_shader</a>(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="shaders_8c.html#ac27d6c3b47f991ad7449990d1510b557">prgl_create_shader</a>(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE);</div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>}</div>
 <div class="ttc" id="acommon__macros_8h_html"><div class="ttname"><a href="common__macros_8h.html">common_macros.h</a></div></div>
 <div class="ttc" id="acommon__macros_8h_html_a6df1d22fb5f09eccc23b9f399670cfd7"><div class="ttname"><a href="common__macros_8h.html#a6df1d22fb5f09eccc23b9f399670cfd7">STRINGIFY</a></div><div class="ttdeci">#define STRINGIFY(x)</div><div class="ttdef"><b>Definition:</b> <a href="common__macros_8h_source.html#l00030">common_macros.h:30</a></div></div>
-<div class="ttc" id="ashaders_8c_html_ab5297d5ecae3e3e4becf2bad94884614"><div class="ttname"><a href="shaders_8c.html#ab5297d5ecae3e3e4becf2bad94884614">pr3d_create_shader</a></div><div class="ttdeci">unsigned int pr3d_create_shader(const char *const vertex_source, const char *const frag_source)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00036">shaders.c:36</a></div></div>
+<div class="ttc" id="ashaders_8c_html_ac27d6c3b47f991ad7449990d1510b557"><div class="ttname"><a href="shaders_8c.html#ac27d6c3b47f991ad7449990d1510b557">prgl_create_shader</a></div><div class="ttdeci">unsigned int prgl_create_shader(const char *const vertex_source, const char *const frag_source)</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8c_source.html#l00036">shaders.c:36</a></div></div>
 <div class="ttc" id="ashaders_8h_html"><div class="ttname"><a href="shaders_8h.html">shaders.h</a></div></div>
-<div class="ttc" id="ashaders_8h_html_a73855faadb010437853e87546d5689ed"><div class="ttname"><a href="shaders_8h.html#a73855faadb010437853e87546d5689ed">PR3D_MAX_POINT_LIGHTS</a></div><div class="ttdeci">#define PR3D_MAX_POINT_LIGHTS</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8h_source.html#l00008">shaders.h:8</a></div></div>
-<div class="ttc" id="ashaders__init_8c_html_a76676bb83b2464ad1d628dac95d6f39c"><div class="ttname"><a href="shaders__init_8c.html#a76676bb83b2464ad1d628dac95d6f39c">pr3d_init_shader_3d</a></div><div class="ttdeci">unsigned int pr3d_init_shader_3d(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders__init_8c_source.html#l00077">shaders_init.c:77</a></div></div>
-<div class="ttc" id="ashaders__init_8c_html_a9b2c6c091066fe2e49f2e0b246dbf8e0"><div class="ttname"><a href="shaders__init_8c.html#a9b2c6c091066fe2e49f2e0b246dbf8e0">pr3d_init_shader_screen</a></div><div class="ttdeci">unsigned int pr3d_init_shader_screen(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders__init_8c_source.html#l00005">shaders_init.c:5</a></div></div>
-<div class="ttc" id="ashaders__init_8c_html_aeab6c439edaa05ed3ab89365bbe0bb78"><div class="ttname"><a href="shaders__init_8c.html#aeab6c439edaa05ed3ab89365bbe0bb78">pr3d_init_shader_2d</a></div><div class="ttdeci">unsigned int pr3d_init_shader_2d(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders__init_8c_source.html#l00035">shaders_init.c:35</a></div></div>
-<div class="ttc" id="ashaders__init_8c_html_af7bdc195834a7a17aa9e463fcc5677c0"><div class="ttname"><a href="shaders__init_8c.html#af7bdc195834a7a17aa9e463fcc5677c0">pr3d_init_shader_unlit</a></div><div class="ttdeci">unsigned int pr3d_init_shader_unlit(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders__init_8c_source.html#l00212">shaders_init.c:212</a></div></div>
+<div class="ttc" id="ashaders_8h_html_a8f7edcdfc9cc3346cf40b66646ecf920"><div class="ttname"><a href="shaders_8h.html#a8f7edcdfc9cc3346cf40b66646ecf920">PRGL_MAX_POINT_LIGHTS</a></div><div class="ttdeci">#define PRGL_MAX_POINT_LIGHTS</div><div class="ttdef"><b>Definition:</b> <a href="shaders_8h_source.html#l00008">shaders.h:8</a></div></div>
+<div class="ttc" id="ashaders__init_8c_html_a03c893d2b63f9434d0764fb12b8af5f5"><div class="ttname"><a href="shaders__init_8c.html#a03c893d2b63f9434d0764fb12b8af5f5">prgl_init_shader_3d</a></div><div class="ttdeci">unsigned int prgl_init_shader_3d(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders__init_8c_source.html#l00077">shaders_init.c:77</a></div></div>
+<div class="ttc" id="ashaders__init_8c_html_a48eed55fa57ad8a38ca7c65cd47ca5bc"><div class="ttname"><a href="shaders__init_8c.html#a48eed55fa57ad8a38ca7c65cd47ca5bc">prgl_init_shader_screen</a></div><div class="ttdeci">unsigned int prgl_init_shader_screen(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders__init_8c_source.html#l00005">shaders_init.c:5</a></div></div>
+<div class="ttc" id="ashaders__init_8c_html_a613792957b6ba895a8b305ee3c892794"><div class="ttname"><a href="shaders__init_8c.html#a613792957b6ba895a8b305ee3c892794">prgl_init_shader_unlit</a></div><div class="ttdeci">unsigned int prgl_init_shader_unlit(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders__init_8c_source.html#l00212">shaders_init.c:212</a></div></div>
+<div class="ttc" id="ashaders__init_8c_html_ae793da48e02d10ff978652ccd0c813e0"><div class="ttname"><a href="shaders__init_8c.html#ae793da48e02d10ff978652ccd0c813e0">prgl_init_shader_2d</a></div><div class="ttdeci">unsigned int prgl_init_shader_2d(void)</div><div class="ttdef"><b>Definition:</b> <a href="shaders__init_8c_source.html#l00035">shaders_init.c:35</a></div></div>
 <div class="ttc" id="ashaders__init__internal_8h_html"><div class="ttname"><a href="shaders__init__internal_8h.html">shaders_init_internal.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

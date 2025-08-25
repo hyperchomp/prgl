@@ -1,4 +1,4 @@
 var mathx_8h =
 [
-    [ "pr3d_clampf", "mathx_8h.html#a65888cec373af3892ef758ef25e36245", null ]
+    [ "prgl_clampf", "mathx_8h.html#a71c7c447e1dd96624941d5d33189236d", null ]
 ];

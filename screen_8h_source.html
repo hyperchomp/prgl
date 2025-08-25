@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>pr3d: include/screen.h Source File</title>
+<title>prgl: include/screen.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">pr3d
+   <div id="projectname">prgl
    </div>
-   <div id="projectbrief">Pixel Retro 3D Game Framework</div>
+   <div id="projectbrief">Pixel Retro Game Library</div>
   </td>
  </tr>
  </tbody>
@@ -93,37 +93,37 @@ $(document).ready(function(){initNavTree('screen_8h_source.html',''); initResiza
   <div class="headertitle"><div class="title">screen.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="screen_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef PR3D_SCREEN_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define PR3D_SCREEN_H</span></div>
+<a href="screen_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef PRGL_SCREEN_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define PRGL_SCREEN_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;GLFW/glfw3.h&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="screen_8h.html#a42883193c4119e2822d46c3fee2e2e47">    7</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="screen_8h.html#a42883193c4119e2822d46c3fee2e2e47">PR3DMouseCaptureMode</a></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="screen_8h.html#abf549066deedd97319a2045b8a8ef1e7">    7</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="screen_8h.html#abf549066deedd97319a2045b8a8ef1e7">PRGLMouseCaptureMode</a></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="screen_8h.html#a42883193c4119e2822d46c3fee2e2e47ab714ba5f92a01cd09dd3949c617774e3">    9</a></span>    <a class="code hl_enumvalue" href="screen_8h.html#a42883193c4119e2822d46c3fee2e2e47ab714ba5f92a01cd09dd3949c617774e3">PR3D_MOUSE_DISABLED</a>,</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <a class="code hl_enumvalue" href="screen_8h.html#a42883193c4119e2822d46c3fee2e2e47aeb4a861f36c75ea9f330443aac7e858b">PR3D_MOUSE_CAPTURED</a></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="screen_8h.html#a42883193c4119e2822d46c3fee2e2e47aeb4a861f36c75ea9f330443aac7e858b">   11</a></span>};</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="screen_8h.html#abf549066deedd97319a2045b8a8ef1e7aaa5b997bf6b9ea10cccc362f03d46ad6">    9</a></span>    <a class="code hl_enumvalue" href="screen_8h.html#abf549066deedd97319a2045b8a8ef1e7aaa5b997bf6b9ea10cccc362f03d46ad6">PRGL_MOUSE_DISABLED</a>,</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <a class="code hl_enumvalue" href="screen_8h.html#abf549066deedd97319a2045b8a8ef1e7ae8f9e9b357cc4a00a8c496d69a9ab284">PRGL_MOUSE_CAPTURED</a></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="screen_8h.html#abf549066deedd97319a2045b8a8ef1e7ae8f9e9b357cc4a00a8c496d69a9ab284">   11</a></span>};</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keywordtype">void</span> <a class="code hl_function" href="screen_8h.html#a370cdf626acb41a5653c90056c765703">pr3d_close_game</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keywordtype">void</span> <a class="code hl_function" href="screen_8h.html#a985689302236428da21110d9d44cbd96">prgl_close_game</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keywordtype">void</span> <a class="code hl_function" href="screen_8h.html#a9916549195029d0621a17747bca01b3c">pr3d_toggle_fullscreen</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keywordtype">void</span> <a class="code hl_function" href="screen_8h.html#aabccc40cc697a74ad7d45db1243db0cd">prgl_toggle_fullscreen</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keywordtype">bool</span> <a class="code hl_function" href="screen_8h.html#a2d3833498407fb1412ef52ad76ebd4aa">pr3d_vsync</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keywordtype">bool</span> <a class="code hl_function" href="screen_8h.html#a548ae43bcebf8104b38cfd8bd56b2561">prgl_vsync</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keywordtype">void</span> <a class="code hl_function" href="screen_8h.html#a59c62b084ad7e18b989cdffa353c5b07">pr3d_set_vsync</a>(<span class="keywordtype">bool</span> enabled);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keywordtype">void</span> <a class="code hl_function" href="screen_8h.html#a07464dd5cd4ea5d8a81979eb2c1c080b">prgl_set_vsync</a>(<span class="keywordtype">bool</span> enabled);</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keywordtype">void</span> <a class="code hl_function" href="screen_8h.html#a6b23b51e42657e63293a4f0f4327c419">pr3d_set_mouse_capture_mode</a>(<span class="keyword">enum</span> <a class="code hl_enumeration" href="screen_8h.html#a42883193c4119e2822d46c3fee2e2e47">PR3DMouseCaptureMode</a> mode);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keywordtype">void</span> <a class="code hl_function" href="screen_8h.html#a57e5e5ef124e05690e844b9ddbb6e5d2">prgl_set_mouse_capture_mode</a>(<span class="keyword">enum</span> <a class="code hl_enumeration" href="screen_8h.html#abf549066deedd97319a2045b8a8ef1e7">PRGLMouseCaptureMode</a> mode);</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="ascreen_8h_html_a2d3833498407fb1412ef52ad76ebd4aa"><div class="ttname"><a href="screen_8h.html#a2d3833498407fb1412ef52ad76ebd4aa">pr3d_vsync</a></div><div class="ttdeci">bool pr3d_vsync(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00106">screen.c:106</a></div></div>
-<div class="ttc" id="ascreen_8h_html_a370cdf626acb41a5653c90056c765703"><div class="ttname"><a href="screen_8h.html#a370cdf626acb41a5653c90056c765703">pr3d_close_game</a></div><div class="ttdeci">void pr3d_close_game(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00080">screen.c:80</a></div></div>
-<div class="ttc" id="ascreen_8h_html_a42883193c4119e2822d46c3fee2e2e47"><div class="ttname"><a href="screen_8h.html#a42883193c4119e2822d46c3fee2e2e47">PR3DMouseCaptureMode</a></div><div class="ttdeci">PR3DMouseCaptureMode</div><div class="ttdef"><b>Definition:</b> <a href="screen_8h_source.html#l00007">screen.h:8</a></div></div>
-<div class="ttc" id="ascreen_8h_html_a42883193c4119e2822d46c3fee2e2e47ab714ba5f92a01cd09dd3949c617774e3"><div class="ttname"><a href="screen_8h.html#a42883193c4119e2822d46c3fee2e2e47ab714ba5f92a01cd09dd3949c617774e3">PR3D_MOUSE_DISABLED</a></div><div class="ttdeci">@ PR3D_MOUSE_DISABLED</div><div class="ttdef"><b>Definition:</b> <a href="screen_8h_source.html#l00009">screen.h:9</a></div></div>
-<div class="ttc" id="ascreen_8h_html_a42883193c4119e2822d46c3fee2e2e47aeb4a861f36c75ea9f330443aac7e858b"><div class="ttname"><a href="screen_8h.html#a42883193c4119e2822d46c3fee2e2e47aeb4a861f36c75ea9f330443aac7e858b">PR3D_MOUSE_CAPTURED</a></div><div class="ttdeci">@ PR3D_MOUSE_CAPTURED</div><div class="ttdef"><b>Definition:</b> <a href="screen_8h_source.html#l00011">screen.h:10</a></div></div>
-<div class="ttc" id="ascreen_8h_html_a59c62b084ad7e18b989cdffa353c5b07"><div class="ttname"><a href="screen_8h.html#a59c62b084ad7e18b989cdffa353c5b07">pr3d_set_vsync</a></div><div class="ttdeci">void pr3d_set_vsync(bool enabled)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00100">screen.c:100</a></div></div>
-<div class="ttc" id="ascreen_8h_html_a6b23b51e42657e63293a4f0f4327c419"><div class="ttname"><a href="screen_8h.html#a6b23b51e42657e63293a4f0f4327c419">pr3d_set_mouse_capture_mode</a></div><div class="ttdeci">void pr3d_set_mouse_capture_mode(enum PR3DMouseCaptureMode mode)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00108">screen.c:108</a></div></div>
-<div class="ttc" id="ascreen_8h_html_a9916549195029d0621a17747bca01b3c"><div class="ttname"><a href="screen_8h.html#a9916549195029d0621a17747bca01b3c">pr3d_toggle_fullscreen</a></div><div class="ttdeci">void pr3d_toggle_fullscreen(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00085">screen.c:85</a></div></div>
+<div class="ttc" id="ascreen_8h_html_a07464dd5cd4ea5d8a81979eb2c1c080b"><div class="ttname"><a href="screen_8h.html#a07464dd5cd4ea5d8a81979eb2c1c080b">prgl_set_vsync</a></div><div class="ttdeci">void prgl_set_vsync(bool enabled)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00100">screen.c:100</a></div></div>
+<div class="ttc" id="ascreen_8h_html_a548ae43bcebf8104b38cfd8bd56b2561"><div class="ttname"><a href="screen_8h.html#a548ae43bcebf8104b38cfd8bd56b2561">prgl_vsync</a></div><div class="ttdeci">bool prgl_vsync(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00106">screen.c:106</a></div></div>
+<div class="ttc" id="ascreen_8h_html_a57e5e5ef124e05690e844b9ddbb6e5d2"><div class="ttname"><a href="screen_8h.html#a57e5e5ef124e05690e844b9ddbb6e5d2">prgl_set_mouse_capture_mode</a></div><div class="ttdeci">void prgl_set_mouse_capture_mode(enum PRGLMouseCaptureMode mode)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00108">screen.c:108</a></div></div>
+<div class="ttc" id="ascreen_8h_html_a985689302236428da21110d9d44cbd96"><div class="ttname"><a href="screen_8h.html#a985689302236428da21110d9d44cbd96">prgl_close_game</a></div><div class="ttdeci">void prgl_close_game(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00080">screen.c:80</a></div></div>
+<div class="ttc" id="ascreen_8h_html_aabccc40cc697a74ad7d45db1243db0cd"><div class="ttname"><a href="screen_8h.html#aabccc40cc697a74ad7d45db1243db0cd">prgl_toggle_fullscreen</a></div><div class="ttdeci">void prgl_toggle_fullscreen(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00085">screen.c:85</a></div></div>
+<div class="ttc" id="ascreen_8h_html_abf549066deedd97319a2045b8a8ef1e7"><div class="ttname"><a href="screen_8h.html#abf549066deedd97319a2045b8a8ef1e7">PRGLMouseCaptureMode</a></div><div class="ttdeci">PRGLMouseCaptureMode</div><div class="ttdef"><b>Definition:</b> <a href="screen_8h_source.html#l00007">screen.h:8</a></div></div>
+<div class="ttc" id="ascreen_8h_html_abf549066deedd97319a2045b8a8ef1e7aaa5b997bf6b9ea10cccc362f03d46ad6"><div class="ttname"><a href="screen_8h.html#abf549066deedd97319a2045b8a8ef1e7aaa5b997bf6b9ea10cccc362f03d46ad6">PRGL_MOUSE_DISABLED</a></div><div class="ttdeci">@ PRGL_MOUSE_DISABLED</div><div class="ttdef"><b>Definition:</b> <a href="screen_8h_source.html#l00009">screen.h:9</a></div></div>
+<div class="ttc" id="ascreen_8h_html_abf549066deedd97319a2045b8a8ef1e7ae8f9e9b357cc4a00a8c496d69a9ab284"><div class="ttname"><a href="screen_8h.html#abf549066deedd97319a2045b8a8ef1e7ae8f9e9b357cc4a00a8c496d69a9ab284">PRGL_MOUSE_CAPTURED</a></div><div class="ttdeci">@ PRGL_MOUSE_CAPTURED</div><div class="ttdef"><b>Definition:</b> <a href="screen_8h_source.html#l00011">screen.h:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

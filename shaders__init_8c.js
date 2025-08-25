@@ -1,7 +1,7 @@
 var shaders__init_8c =
 [
-    [ "pr3d_init_shader_2d", "shaders__init_8c.html#aeab6c439edaa05ed3ab89365bbe0bb78", null ],
-    [ "pr3d_init_shader_3d", "shaders__init_8c.html#a76676bb83b2464ad1d628dac95d6f39c", null ],
-    [ "pr3d_init_shader_screen", "shaders__init_8c.html#a9b2c6c091066fe2e49f2e0b246dbf8e0", null ],
-    [ "pr3d_init_shader_unlit", "shaders__init_8c.html#af7bdc195834a7a17aa9e463fcc5677c0", null ]
+    [ "prgl_init_shader_2d", "shaders__init_8c.html#ae793da48e02d10ff978652ccd0c813e0", null ],
+    [ "prgl_init_shader_3d", "shaders__init_8c.html#a03c893d2b63f9434d0764fb12b8af5f5", null ],
+    [ "prgl_init_shader_screen", "shaders__init_8c.html#a48eed55fa57ad8a38ca7c65cd47ca5bc", null ],
+    [ "prgl_init_shader_unlit", "shaders__init_8c.html#a613792957b6ba895a8b305ee3c892794", null ]
 ];

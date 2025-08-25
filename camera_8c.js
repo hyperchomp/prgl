@@ -1,9 +1,9 @@
 var camera_8c =
 [
-    [ "pr3d_active_camera", "camera_8c.html#a6ce2f119a9d9622b9bb6f7a1384511f0", null ],
-    [ "pr3d_init_camera", "camera_8c.html#a115663dca8fd23fe4c18fb8f3c02a737", null ],
-    [ "pr3d_move_camera_fly", "camera_8c.html#a652209016ea1d56e269a5f5cbd4fd6d3", null ],
-    [ "pr3d_move_camera_look", "camera_8c.html#a7b001f96c8920ed1ade739e6c8dde3c0", null ],
-    [ "pr3d_set_camera_projection", "camera_8c.html#aacfb350111dea1cf1e15454067c36ca4", null ],
-    [ "pr3d_update_camera", "camera_8c.html#ad45ae0f84c51f7800ee9dd4e06962750", null ]
+    [ "prgl_active_camera", "camera_8c.html#adf735198a3de77943028c920e7d6b7dd", null ],
+    [ "prgl_init_camera", "camera_8c.html#abfd6e1c6df42bef73ea7ba061c803346", null ],
+    [ "prgl_move_camera_fly", "camera_8c.html#ade1aaa4aa862978e23756e5d796c1c76", null ],
+    [ "prgl_move_camera_look", "camera_8c.html#adbda052313d2c37f1d001e075bfa16e6", null ],
+    [ "prgl_set_camera_projection", "camera_8c.html#a8ace16a16c884442b1a487be32c6c8df", null ],
+    [ "prgl_update_camera", "camera_8c.html#a924f1e5e7c7a5a02d83f5893a762d472", null ]
 ];

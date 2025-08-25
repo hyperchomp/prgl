@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>pr3d: src/input.c File Reference</title>
+<title>prgl: src/input.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">pr3d
+   <div id="projectname">prgl
    </div>
-   <div id="projectbrief">Pixel Retro 3D Game Framework</div>
+   <div id="projectbrief">Pixel Retro Game Library</div>
   </td>
  </tr>
  </tbody>
@@ -103,20 +103,20 @@ $(document).ready(function(){initNavTree('input_8c.html',''); initResizable(); }
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ab8a5e9c0a917b40ec24988885cb500d5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#ab8a5e9c0a917b40ec24988885cb500d5">pr3d_key_pressed</a> (int key)</td></tr>
-<tr class="separator:ab8a5e9c0a917b40ec24988885cb500d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab790f2ee8edf1adab7ce6a7684d03eba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#ab790f2ee8edf1adab7ce6a7684d03eba">pr3d_mouse_position</a> (double *x_pos, double *y_pos)</td></tr>
-<tr class="separator:ab790f2ee8edf1adab7ce6a7684d03eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c36f160e4d1901747426a393a01475a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a9c36f160e4d1901747426a393a01475a">prgl_key_pressed</a> (int key)</td></tr>
+<tr class="separator:a9c36f160e4d1901747426a393a01475a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4120acefa5b42f97b6fd3f06e7bd85a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input_8c.html#a4120acefa5b42f97b6fd3f06e7bd85a6">prgl_mouse_position</a> (double *x_pos, double *y_pos)</td></tr>
+<tr class="separator:a4120acefa5b42f97b6fd3f06e7bd85a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ab8a5e9c0a917b40ec24988885cb500d5" name="ab8a5e9c0a917b40ec24988885cb500d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8a5e9c0a917b40ec24988885cb500d5">&#9670;&#160;</a></span>pr3d_key_pressed()</h2>
+<a id="a9c36f160e4d1901747426a393a01475a" name="a9c36f160e4d1901747426a393a01475a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c36f160e4d1901747426a393a01475a">&#9670;&#160;</a></span>prgl_key_pressed()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool pr3d_key_pressed </td>
+          <td class="memname">bool prgl_key_pressed </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>key</em></td><td>)</td>
@@ -129,14 +129,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab790f2ee8edf1adab7ce6a7684d03eba" name="ab790f2ee8edf1adab7ce6a7684d03eba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab790f2ee8edf1adab7ce6a7684d03eba">&#9670;&#160;</a></span>pr3d_mouse_position()</h2>
+<a id="a4120acefa5b42f97b6fd3f06e7bd85a6" name="a4120acefa5b42f97b6fd3f06e7bd85a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4120acefa5b42f97b6fd3f06e7bd85a6">&#9670;&#160;</a></span>prgl_mouse_position()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pr3d_mouse_position </td>
+          <td class="memname">void prgl_mouse_position </td>
           <td>(</td>
           <td class="paramtype">double *&#160;</td>
           <td class="paramname"><em>x_pos</em>, </td>
@@ -155,7 +155,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Gets the mouse cursor x,y positions and stores them in x_pos and y_pos.</p>
-<p>Will return a screen position with 0,0 in the upper left if mouse capture mode is PR3D_MOUSE_CAPTURED, or an unbounded double if capture mode is PR3D_MOUSE_DISABLED.</p>
+<p>Will return a screen position with 0,0 in the upper left if mouse capture mode is PRGL_MOUSE_CAPTURED, or an unbounded double if capture mode is PRGL_MOUSE_DISABLED.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">x_pos</td><td></td></tr>

@@ -1,4 +1,4 @@
 var texture_8h =
 [
-    [ "pr3d_load_texture", "texture_8h.html#a8a5044a5fef0c40782bcb6908d686463", null ]
+    [ "prgl_load_texture", "texture_8h.html#ac14afd6796af7138e3bb88749c832e99", null ]
 ];

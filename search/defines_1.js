@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pr3d_5fmax_5fpoint_5flights_0',['PR3D_MAX_POINT_LIGHTS',['../shaders_8h.html#a73855faadb010437853e87546d5689ed',1,'shaders.h']]]
+  ['prgl_5fmax_5fpoint_5flights_0',['PRGL_MAX_POINT_LIGHTS',['../shaders_8h.html#a8f7edcdfc9cc3346cf40b66646ecf920',1,'shaders.h']]]
 ];

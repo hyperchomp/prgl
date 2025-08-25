@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['pr3dcamera_0',['PR3DCamera',['../structPR3DCamera.html',1,'']]],
-  ['pr3dmesh_1',['PR3DMesh',['../structPR3DMesh.html',1,'']]],
-  ['pr3dpointlight_2',['PR3DPointLight',['../structPR3DPointLight.html',1,'']]],
-  ['pr3drendertexture_3',['PR3DRenderTexture',['../structPR3DRenderTexture.html',1,'']]],
-  ['pr3dscreen_4',['PR3DScreen',['../structPR3DScreen.html',1,'']]]
+  ['prglcamera_0',['PRGLCamera',['../structPRGLCamera.html',1,'']]],
+  ['prglmesh_1',['PRGLMesh',['../structPRGLMesh.html',1,'']]],
+  ['prglpointlight_2',['PRGLPointLight',['../structPRGLPointLight.html',1,'']]],
+  ['prglrendertexture_3',['PRGLRenderTexture',['../structPRGLRenderTexture.html',1,'']]],
+  ['prglscreen_4',['PRGLScreen',['../structPRGLScreen.html',1,'']]]
 ];

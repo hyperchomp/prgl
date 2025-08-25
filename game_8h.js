@@ -1,5 +1,5 @@
 var game_8h =
 [
-    [ "pr3d_delta_time", "game_8h.html#a098fb703b539a170740e7850016af4a6", null ],
-    [ "pr3d_run_game", "game_8h.html#a019db917c35115dc11413b1462b43979", null ]
+    [ "prgl_delta_time", "game_8h.html#a157b31b69e21c0add3f3f9616ce7eeea", null ],
+    [ "prgl_run_game", "game_8h.html#aced253d3a99c0224e4c6b3cec16e1016", null ]
 ];

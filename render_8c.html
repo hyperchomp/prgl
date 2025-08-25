@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>pr3d: src/render.c File Reference</title>
+<title>prgl: src/render.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">pr3d
+   <div id="projectname">prgl
    </div>
-   <div id="projectbrief">Pixel Retro 3D Game Framework</div>
+   <div id="projectbrief">Pixel Retro Game Library</div>
   </td>
  </tr>
  </tbody>
@@ -118,35 +118,35 @@ $(document).ready(function(){initNavTree('render_8c.html',''); initResizable(); 
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4c8390e54cd21087f02961f292abab02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a4c8390e54cd21087f02961f292abab02">pr3d_clear_screen</a> (float r, float g, float b, float a)</td></tr>
-<tr class="separator:a4c8390e54cd21087f02961f292abab02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f5987b4b464a2778ed64133f8fb4e70"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a3f5987b4b464a2778ed64133f8fb4e70">pr3d_create_screen_quad</a> (void)</td></tr>
-<tr class="separator:a3f5987b4b464a2778ed64133f8fb4e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c3c6351ac03485f63485d220ba69ce2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a2c3c6351ac03485f63485d220ba69ce2">pr3d_render_mesh</a> (struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *mesh, vec3 position, vec3 rotation_axis, float degrees, vec3 scale)</td></tr>
-<tr class="separator:a2c3c6351ac03485f63485d220ba69ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a2b878f2f08c87cd356780d382e4959"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a8a2b878f2f08c87cd356780d382e4959">pr3d_render_mesh_2d</a> (struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *mesh, vec2 position, float rotation_degrees, vec2 scale)</td></tr>
-<tr class="separator:a8a2b878f2f08c87cd356780d382e4959"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafd45e837fc668338f07ba6c4d62aecb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#aafd45e837fc668338f07ba6c4d62aecb">pr3d_update_lighting</a> (struct <a class="el" href="structPR3DPointLight.html">PR3DPointLight</a> point_lights[], int num_lights)</td></tr>
-<tr class="separator:aafd45e837fc668338f07ba6c4d62aecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d859837e508a37fd7fa54f028f3231d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a4d859837e508a37fd7fa54f028f3231d">pr3d_enable_render_texture</a> (unsigned int fbo)</td></tr>
-<tr class="separator:a4d859837e508a37fd7fa54f028f3231d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9de061243608767ae2bc02eadab08b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#ac9de061243608767ae2bc02eadab08b2">pr3d_render_render_texture</a> (unsigned int <a class="el" href="game_8c.html#a7b0639c14543450dbafa41d5881f17aa">render_texture</a>, struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *screen_quad)</td></tr>
-<tr class="separator:ac9de061243608767ae2bc02eadab08b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6be9b8ca983e7efddcd062bf9410832e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a6be9b8ca983e7efddcd062bf9410832e">prgl_clear_screen</a> (float r, float g, float b, float a)</td></tr>
+<tr class="separator:a6be9b8ca983e7efddcd062bf9410832e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc7c5681e3be2ca05f23f120bbb1c685"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#abc7c5681e3be2ca05f23f120bbb1c685">prgl_create_screen_quad</a> (void)</td></tr>
+<tr class="separator:abc7c5681e3be2ca05f23f120bbb1c685"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adea9fc613c73000a611de4b59f64e950"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#adea9fc613c73000a611de4b59f64e950">prgl_render_mesh</a> (struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *mesh, vec3 position, vec3 rotation_axis, float degrees, vec3 scale)</td></tr>
+<tr class="separator:adea9fc613c73000a611de4b59f64e950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1510a95e1e328a16d58f741b2daf23f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#aa1510a95e1e328a16d58f741b2daf23f">prgl_render_mesh_2d</a> (struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *mesh, vec2 position, float rotation_degrees, vec2 scale)</td></tr>
+<tr class="separator:aa1510a95e1e328a16d58f741b2daf23f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46e1eaa4c4dc1808365fa60a09f3f3db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a46e1eaa4c4dc1808365fa60a09f3f3db">prgl_update_lighting</a> (struct <a class="el" href="structPRGLPointLight.html">PRGLPointLight</a> point_lights[], int num_lights)</td></tr>
+<tr class="separator:a46e1eaa4c4dc1808365fa60a09f3f3db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac62cc4254c291ed5ed40af78460f89fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#ac62cc4254c291ed5ed40af78460f89fe">prgl_enable_render_texture</a> (unsigned int fbo)</td></tr>
+<tr class="separator:ac62cc4254c291ed5ed40af78460f89fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a446b319ff45444f8f9f5af807ca6e4f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a446b319ff45444f8f9f5af807ca6e4f6">prgl_render_render_texture</a> (unsigned int <a class="el" href="game_8c.html#a373f5884865a5eefc0ef2c33ffa8c6b8">render_texture</a>, struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *screen_quad)</td></tr>
+<tr class="separator:a446b319ff45444f8f9f5af807ca6e4f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a5ec40499fe362090894297fca8fba82e"><td class="memItemLeft" align="right" valign="top">const vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a5ec40499fe362090894297fca8fba82e">PR3D_RENDER_RESOLUTION</a> = {320.0f, 180.0f}</td></tr>
-<tr class="separator:a5ec40499fe362090894297fca8fba82e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a282e8651627ae92b28f86c43538cf695"><td class="memItemLeft" align="right" valign="top">const vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a282e8651627ae92b28f86c43538cf695">PRGL_RENDER_RESOLUTION</a> = {320.0f, 180.0f}</td></tr>
+<tr class="separator:a282e8651627ae92b28f86c43538cf695"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a4c8390e54cd21087f02961f292abab02" name="a4c8390e54cd21087f02961f292abab02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c8390e54cd21087f02961f292abab02">&#9670;&#160;</a></span>pr3d_clear_screen()</h2>
+<a id="a6be9b8ca983e7efddcd062bf9410832e" name="a6be9b8ca983e7efddcd062bf9410832e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6be9b8ca983e7efddcd062bf9410832e">&#9670;&#160;</a></span>prgl_clear_screen()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pr3d_clear_screen </td>
+          <td class="memname">void prgl_clear_screen </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>r</em>, </td>
@@ -191,14 +191,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a3f5987b4b464a2778ed64133f8fb4e70" name="a3f5987b4b464a2778ed64133f8fb4e70"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3f5987b4b464a2778ed64133f8fb4e70">&#9670;&#160;</a></span>pr3d_create_screen_quad()</h2>
+<a id="abc7c5681e3be2ca05f23f120bbb1c685" name="abc7c5681e3be2ca05f23f120bbb1c685"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc7c5681e3be2ca05f23f120bbb1c685">&#9670;&#160;</a></span>prgl_create_screen_quad()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> * pr3d_create_screen_quad </td>
+          <td class="memname">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> * prgl_create_screen_quad </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -212,14 +212,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a4d859837e508a37fd7fa54f028f3231d" name="a4d859837e508a37fd7fa54f028f3231d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d859837e508a37fd7fa54f028f3231d">&#9670;&#160;</a></span>pr3d_enable_render_texture()</h2>
+<a id="ac62cc4254c291ed5ed40af78460f89fe" name="ac62cc4254c291ed5ed40af78460f89fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac62cc4254c291ed5ed40af78460f89fe">&#9670;&#160;</a></span>prgl_enable_render_texture()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pr3d_enable_render_texture </td>
+          <td class="memname">void prgl_enable_render_texture </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>fbo</em></td><td>)</td>
@@ -228,22 +228,22 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Enables the render texture fbo for rendering. This should be called before doing any rendering to ensure everything is drawn to the internal resolution.</p>
-<p>The screen should be cleared after calling this using <a class="el" href="render_8c.html#a4c8390e54cd21087f02961f292abab02">pr3d_clear_screen()</a>. </p>
+<p>The screen should be cleared after calling this using <a class="el" href="render_8c.html#a6be9b8ca983e7efddcd062bf9410832e">prgl_clear_screen()</a>. </p>
 
 <p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00224">224</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
-<a id="a2c3c6351ac03485f63485d220ba69ce2" name="a2c3c6351ac03485f63485d220ba69ce2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c3c6351ac03485f63485d220ba69ce2">&#9670;&#160;</a></span>pr3d_render_mesh()</h2>
+<a id="adea9fc613c73000a611de4b59f64e950" name="adea9fc613c73000a611de4b59f64e950"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adea9fc613c73000a611de4b59f64e950">&#9670;&#160;</a></span>prgl_render_mesh()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pr3d_render_mesh </td>
+          <td class="memname">void prgl_render_mesh </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td>
           <td class="paramname"><em>mesh</em>, </td>
         </tr>
         <tr>
@@ -293,16 +293,16 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a8a2b878f2f08c87cd356780d382e4959" name="a8a2b878f2f08c87cd356780d382e4959"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a2b878f2f08c87cd356780d382e4959">&#9670;&#160;</a></span>pr3d_render_mesh_2d()</h2>
+<a id="aa1510a95e1e328a16d58f741b2daf23f" name="aa1510a95e1e328a16d58f741b2daf23f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1510a95e1e328a16d58f741b2daf23f">&#9670;&#160;</a></span>prgl_render_mesh_2d()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pr3d_render_mesh_2d </td>
+          <td class="memname">void prgl_render_mesh_2d </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td>
           <td class="paramname"><em>mesh</em>, </td>
         </tr>
         <tr>
@@ -345,14 +345,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ac9de061243608767ae2bc02eadab08b2" name="ac9de061243608767ae2bc02eadab08b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9de061243608767ae2bc02eadab08b2">&#9670;&#160;</a></span>pr3d_render_render_texture()</h2>
+<a id="a446b319ff45444f8f9f5af807ca6e4f6" name="a446b319ff45444f8f9f5af807ca6e4f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a446b319ff45444f8f9f5af807ca6e4f6">&#9670;&#160;</a></span>prgl_render_render_texture()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pr3d_render_render_texture </td>
+          <td class="memname">void prgl_render_render_texture </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>render_texture</em>, </td>
@@ -360,7 +360,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">struct <a class="el" href="structPR3DMesh.html">PR3DMesh</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td>
           <td class="paramname"><em>screen_quad</em>&#160;</td>
         </tr>
         <tr>
@@ -383,16 +383,16 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aafd45e837fc668338f07ba6c4d62aecb" name="aafd45e837fc668338f07ba6c4d62aecb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aafd45e837fc668338f07ba6c4d62aecb">&#9670;&#160;</a></span>pr3d_update_lighting()</h2>
+<a id="a46e1eaa4c4dc1808365fa60a09f3f3db" name="a46e1eaa4c4dc1808365fa60a09f3f3db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46e1eaa4c4dc1808365fa60a09f3f3db">&#9670;&#160;</a></span>prgl_update_lighting()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pr3d_update_lighting </td>
+          <td class="memname">void prgl_update_lighting </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPR3DPointLight.html">PR3DPointLight</a>&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structPRGLPointLight.html">PRGLPointLight</a>&#160;</td>
           <td class="paramname"><em>point_lights</em>[], </td>
         </tr>
         <tr>
@@ -411,7 +411,7 @@ Variables</h2></td></tr>
 <p>Passes lighting data from lights to the active shader.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">struct[in]</td><td><a class="el" href="structPR3DPointLight.html">PR3DPointLight</a>[] The point lights for the scene. </td></tr>
+    <tr><td class="paramname">struct[in]</td><td><a class="el" href="structPRGLPointLight.html">PRGLPointLight</a>[] The point lights for the scene. </td></tr>
   </table>
   </dd>
 </dl>
@@ -421,14 +421,14 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a5ec40499fe362090894297fca8fba82e" name="a5ec40499fe362090894297fca8fba82e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ec40499fe362090894297fca8fba82e">&#9670;&#160;</a></span>PR3D_RENDER_RESOLUTION</h2>
+<a id="a282e8651627ae92b28f86c43538cf695" name="a282e8651627ae92b28f86c43538cf695"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a282e8651627ae92b28f86c43538cf695">&#9670;&#160;</a></span>PRGL_RENDER_RESOLUTION</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const vec2 PR3D_RENDER_RESOLUTION = {320.0f, 180.0f}</td>
+          <td class="memname">const vec2 PRGL_RENDER_RESOLUTION = {320.0f, 180.0f}</td>
         </tr>
       </table>
 </div><div class="memdoc">
