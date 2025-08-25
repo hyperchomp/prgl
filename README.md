@@ -1,8 +1,8 @@
-# Pixel Retro 3D Game Framework (pr3d)
+# Pixel Retro 3D Game Framework
 
-## What is pr3d?
+![pr3d version](https://img.shields.io/badge/pr3d-0.1.0-orange)
 
-**pr3d is made for me, by me first and foremost. I have made the code open source so anyone can re-use it, analyze it, and benefit from it but above all things it is made by me to make my own games. It is not a one size fits all framework and it does not aim to be.**
+**pr3d is a personal project created to build my own games. I've made the code open source so anyone can re-use it, analyze it, and benefit from it.**
 
 pr3d is a code driven framework for making 3D games in a retro style similar to games made in the 80s and 90s, built from the ground up to natively render clean, chunky pixelated 3D graphics to modern displays.
 
@@ -33,17 +33,20 @@ Libraries used within pr3d may have differing licenses that are useable alongsid
 ## Goal Features
 
 ### Game
-* FPS camera
+* Configurable Camera Modes (FPS, Third Person, top down, fixed)
 * Box collisions
 
 ### Rendering
 * glTF 3D model loading
 * Text rendering
+* Fog
+* Billboard sprites
 
 ### Input
 * Gamepad support
 
-This list will be updated with time, right now the focus is on getting basic features in before thinking too far ahead.
+### Sound
+* Audio loading and playback
 
 ## Installation
 
@@ -95,9 +98,3 @@ These dependencies are bundled in the project source code and don't require inst
 * [Glad](https://github.com/Dav1dde/glad) (MIT) for **glad1** as a GL loader.
 * [stb](https://github.com/nothings/stb) (MIT) for stb_image as a loader for things like textures.
 * [cglm](https://github.com/recp/cglm) (MIT) For linear algebra (2D/3D math). This is what pr3d leverages for vectors, matrices, and all the math that goes along with them. This library is meant to be used directly when developing with pr3d for the data structures and supporting math it provides.
-
-## Contributing
-
-As of right now I'm not looking for contributors. This is a passion project of mine which I'm making for my own games and I want to maintain control over it. If I ever decide to take contributions I will update this section accordingly.
-
-pr3d is open source under the zlib license and as such you are more than welcome to fork the project and use it for your own devilry as you see fit under the minimal stipulations of the license.

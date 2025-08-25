@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.30)
-project(pr3d VERSION 0.0.1
+project(pr3d VERSION 0.1.0
         DESCRIPTION "Pixel Retro 3D Game Framework"
         LANGUAGES C)
 set(CMAKE_C_STANDARD 99)
