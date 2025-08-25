@@ -1,34 +1,10 @@
 #ifndef PR3D_RENDER_H
 #define PR3D_RENDER_H
 
+#include "mesh.h"
 #include "cglm/types.h"
 
 extern const vec2 PR3D_RENDER_RESOLUTION;
-
-/**
- * Defines the geometry of a 3D object. Only one Mesh is needed to draw many
- * of the same object.
- * Any IDs which are optional should be set to 0 if unused.
- */
-struct PR3DMesh
-{
-    vec3 min_bounds;
-    vec3 max_bounds;
-
-    int num_vertices;
-
-    // Vertex Buffer Object stores raw vertex data.
-    unsigned int vbo;
-
-    // Vertex Array Object stores vertex data state for how to render objects.
-    unsigned int vao;
-
-    // Optional - Element Buffer Object to draw vertices with indices.
-    unsigned int ebo;
-
-    // Optional - Stores the texture image if the mesh is textured.
-    unsigned int texture;
-};
 
 /**
  * A light which can be positioned in the world and emits a color.
@@ -50,30 +26,9 @@ struct PR3DPointLight
 void pr3d_clear_screen(float r, float g, float b, float a);
 
 /**
- * Creates a triangle mesh with the given vertex positions.
- *
- * @param[in] vertices
- */
-struct PR3DMesh *pr3d_create_triangle(mat3 vertices);
-
-/**
  * Creates a quad for drawing the screen's render texture to.
  */
 struct PR3DMesh *pr3d_create_screen_quad(void);
-
-/**
- * Creates a rectangle mesh.
- * Make sure to attach a texture to the returned mesh struct after creating it.
- *
- * @param[in] vertices
- */
-struct PR3DMesh *pr3d_create_rectangle(mat4 vertices);
-
-/**
- * Creates a cube mesh.
- * Make sure to attach a texture to the returned mesh struct after creating it.
- */
-struct PR3DMesh *pr3d_create_cube(void);
 
 /**
  * Renders a mesh to the screen at a position.
@@ -101,11 +56,6 @@ void pr3d_render_mesh(
 void pr3d_render_mesh_2d(
     struct PR3DMesh *mesh, vec2 position, float rotation_degrees, vec2 scale
 );
-
-/**
- * Cleans up the GL objects associated with the mesh and then frees it.
- */
-void pr3d_delete_mesh(struct PR3DMesh *mesh);
 
 /**
  * Passes lighting data from lights to the active shader.

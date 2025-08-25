@@ -1,20 +1,7 @@
 #ifndef PR3D_RENDER_INTERNAL_H
 #define PR3D_RENDER_INTERNAL_H
 
-#include "render.h"
-
-struct PR3DRenderTexture
-{
-    unsigned int fbo;
-    unsigned int texture;
-};
-
-/**
- * Creates a 320x180 render texture to draw the game to.
- *
- * @return The render texture struct.
- */
-struct PR3DRenderTexture pr3d_create_render_texture(void);
+#include "mesh.h"
 
 /**
  * Enables the render texture fbo for rendering. This should be called before

@@ -1,9 +1,11 @@
-#include "camera.h"
 #include "glad.h"
 #include "game.h"
+#include "camera.h"
+#include "mesh.h"
 #include "render.h"
 #include "render_internal.h"
 #include "shaders.h"
+#include "texture_internal.h"
 #include "screen_internal.h"
 #include "shaders_internal.h"
 #include <stdlib.h>
