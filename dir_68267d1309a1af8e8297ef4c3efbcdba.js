@@ -14,6 +14,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "shaders_init_internal.h", "shaders__init__internal_8h.html", "shaders__init__internal_8h" ],
     [ "shaders_internal.h", "shaders__internal_8h.html", "shaders__internal_8h" ],
     [ "texture.c", "texture_8c.html", "texture_8c" ],
+    [ "texture_internal.h", "texture__internal_8h.html", "texture__internal_8h" ],
     [ "transform.c", "transform_8c.html", "transform_8c" ],
     [ "transform_internal.h", "transform__internal_8h.html", "transform__internal_8h" ]
 ];
