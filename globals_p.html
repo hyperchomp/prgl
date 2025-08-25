@@ -94,6 +94,7 @@ $(document).ready(function(){initNavTree('globals_p.html',''); initResizable(); 
 
 <h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
 <li>pr3d_active_camera()&#160;:&#160;<a class="el" href="camera_8h.html#a6ce2f119a9d9622b9bb6f7a1384511f0">camera.h</a>, <a class="el" href="camera_8c.html#a6ce2f119a9d9622b9bb6f7a1384511f0">camera.c</a></li>
+<li>pr3d_calculate_aabb()&#160;:&#160;<a class="el" href="mesh_8h.html#a25f8b0c69be593e730626f6b514827bc">mesh.h</a>, <a class="el" href="mesh_8c.html#a25f8b0c69be593e730626f6b514827bc">mesh.c</a></li>
 <li>PR3D_CAMERA_MOVE_DIR_BACKWARD&#160;:&#160;<a class="el" href="camera_8h.html#a40cb7884b7a762980daf56d10a55e5e8ad2363ecfec29dc2ead85b3fefe30b018">camera.h</a></li>
 <li>PR3D_CAMERA_MOVE_DIR_FORWARD&#160;:&#160;<a class="el" href="camera_8h.html#a40cb7884b7a762980daf56d10a55e5e8adcd31b7914b899476f872e69b123f8ea">camera.h</a></li>
 <li>PR3D_CAMERA_MOVE_DIR_LEFT&#160;:&#160;<a class="el" href="camera_8h.html#a40cb7884b7a762980daf56d10a55e5e8a1e2b75b4016f089835bca96882bd8313">camera.h</a></li>
@@ -104,6 +105,7 @@ $(document).ready(function(){initNavTree('globals_p.html',''); initResizable(); 
 <li>pr3d_clear_screen()&#160;:&#160;<a class="el" href="render_8c.html#a4c8390e54cd21087f02961f292abab02">render.c</a>, <a class="el" href="render_8h.html#a4c8390e54cd21087f02961f292abab02">render.h</a></li>
 <li>pr3d_close_game()&#160;:&#160;<a class="el" href="screen_8c.html#a370cdf626acb41a5653c90056c765703">screen.c</a>, <a class="el" href="screen_8h.html#a370cdf626acb41a5653c90056c765703">screen.h</a></li>
 <li>pr3d_create_cube()&#160;:&#160;<a class="el" href="render_8c.html#a196141e1b4bb71847f218c9f2870e233">render.c</a>, <a class="el" href="render_8h.html#a196141e1b4bb71847f218c9f2870e233">render.h</a></li>
+<li>pr3d_create_model_matrix()&#160;:&#160;<a class="el" href="transform_8c.html#ae7557b4e7c9725f3db154ca1a1d27ba9">transform.c</a>, <a class="el" href="transform__internal_8h.html#ae7557b4e7c9725f3db154ca1a1d27ba9">transform_internal.h</a></li>
 <li>pr3d_create_rectangle()&#160;:&#160;<a class="el" href="render_8c.html#a6012977a189847a4a83c2d27843a54ed">render.c</a>, <a class="el" href="render_8h.html#a6012977a189847a4a83c2d27843a54ed">render.h</a></li>
 <li>pr3d_create_render_texture()&#160;:&#160;<a class="el" href="render_8c.html#a04509246bbe83d1cb1db71b8464a316e">render.c</a>, <a class="el" href="render__internal_8h.html#a04509246bbe83d1cb1db71b8464a316e">render_internal.h</a></li>
 <li>pr3d_create_screen_quad()&#160;:&#160;<a class="el" href="render_8c.html#a3f5987b4b464a2778ed64133f8fb4e70">render.c</a>, <a class="el" href="render_8h.html#a3f5987b4b464a2778ed64133f8fb4e70">render.h</a></li>
@@ -111,15 +113,15 @@ $(document).ready(function(){initNavTree('globals_p.html',''); initResizable(); 
 <li>pr3d_create_triangle()&#160;:&#160;<a class="el" href="render_8c.html#a331cc7b8d6872db50536ac46504dafc8">render.c</a>, <a class="el" href="render_8h.html#a331cc7b8d6872db50536ac46504dafc8">render.h</a></li>
 <li>pr3d_create_window()&#160;:&#160;<a class="el" href="screen_8c.html#a1f404ea2d0aef0bff7f5c5747cfaad4b">screen.c</a>, <a class="el" href="screen__internal_8h.html#a1f404ea2d0aef0bff7f5c5747cfaad4b">screen_internal.h</a></li>
 <li>pr3d_current_shader()&#160;:&#160;<a class="el" href="shaders_8c.html#af97fd0c06e4d1e4e88b94ed246b95972">shaders.c</a>, <a class="el" href="shaders_8h.html#af97fd0c06e4d1e4e88b94ed246b95972">shaders.h</a></li>
-<li>pr3d_delete_mesh()&#160;:&#160;<a class="el" href="render_8c.html#a2e2eae802cf220b32b263c65a4ea8823">render.c</a>, <a class="el" href="render_8h.html#a2e2eae802cf220b32b263c65a4ea8823">render.h</a></li>
+<li>pr3d_delete_mesh()&#160;:&#160;<a class="el" href="render_8h.html#a2e2eae802cf220b32b263c65a4ea8823">render.h</a>, <a class="el" href="render_8c.html#a2e2eae802cf220b32b263c65a4ea8823">render.c</a></li>
 <li>pr3d_delete_shader()&#160;:&#160;<a class="el" href="shaders_8c.html#a5d20e50f82710d11f110f10995b7ad71">shaders.c</a>, <a class="el" href="shaders_8h.html#a5d20e50f82710d11f110f10995b7ad71">shaders.h</a></li>
-<li>pr3d_delete_shader_pool()&#160;:&#160;<a class="el" href="shaders__internal_8h.html#a2b2c917addf34e5b514f30cf976450d1">shaders_internal.h</a>, <a class="el" href="shaders_8c.html#a2b2c917addf34e5b514f30cf976450d1">shaders.c</a></li>
+<li>pr3d_delete_shader_pool()&#160;:&#160;<a class="el" href="shaders_8c.html#a2b2c917addf34e5b514f30cf976450d1">shaders.c</a>, <a class="el" href="shaders__internal_8h.html#a2b2c917addf34e5b514f30cf976450d1">shaders_internal.h</a></li>
 <li>pr3d_delta_time()&#160;:&#160;<a class="el" href="game_8c.html#a098fb703b539a170740e7850016af4a6">game.c</a>, <a class="el" href="game_8h.html#a098fb703b539a170740e7850016af4a6">game.h</a></li>
 <li>pr3d_destroy_window()&#160;:&#160;<a class="el" href="screen_8c.html#ac9c3587eee67b1c8aedd71b9ced41a0a">screen.c</a>, <a class="el" href="screen__internal_8h.html#ac9c3587eee67b1c8aedd71b9ced41a0a">screen_internal.h</a></li>
 <li>pr3d_enable_render_texture()&#160;:&#160;<a class="el" href="render_8c.html#a4d859837e508a37fd7fa54f028f3231d">render.c</a>, <a class="el" href="render__internal_8h.html#a4d859837e508a37fd7fa54f028f3231d">render_internal.h</a></li>
 <li>pr3d_init_camera()&#160;:&#160;<a class="el" href="camera_8c.html#a115663dca8fd23fe4c18fb8f3c02a737">camera.c</a>, <a class="el" href="camera_8h.html#a115663dca8fd23fe4c18fb8f3c02a737">camera.h</a></li>
 <li>pr3d_init_shader_2d()&#160;:&#160;<a class="el" href="shaders__init_8c.html#aeab6c439edaa05ed3ab89365bbe0bb78">shaders_init.c</a>, <a class="el" href="shaders__init__internal_8h.html#aeab6c439edaa05ed3ab89365bbe0bb78">shaders_init_internal.h</a></li>
-<li>pr3d_init_shader_3d()&#160;:&#160;<a class="el" href="shaders__init_8c.html#a76676bb83b2464ad1d628dac95d6f39c">shaders_init.c</a>, <a class="el" href="shaders__init__internal_8h.html#a76676bb83b2464ad1d628dac95d6f39c">shaders_init_internal.h</a></li>
+<li>pr3d_init_shader_3d()&#160;:&#160;<a class="el" href="shaders__init__internal_8h.html#a76676bb83b2464ad1d628dac95d6f39c">shaders_init_internal.h</a>, <a class="el" href="shaders__init_8c.html#a76676bb83b2464ad1d628dac95d6f39c">shaders_init.c</a></li>
 <li>pr3d_init_shader_pool()&#160;:&#160;<a class="el" href="shaders_8c.html#a3ca6d0c449e975ce83cbc31cf89c2f2b">shaders.c</a>, <a class="el" href="shaders__internal_8h.html#a3ca6d0c449e975ce83cbc31cf89c2f2b">shaders_internal.h</a></li>
 <li>pr3d_init_shader_screen()&#160;:&#160;<a class="el" href="shaders__init_8c.html#a9b2c6c091066fe2e49f2e0b246dbf8e0">shaders_init.c</a>, <a class="el" href="shaders__init__internal_8h.html#a9b2c6c091066fe2e49f2e0b246dbf8e0">shaders_init_internal.h</a></li>
 <li>pr3d_init_shader_unlit()&#160;:&#160;<a class="el" href="shaders__init_8c.html#af7bdc195834a7a17aa9e463fcc5677c0">shaders_init.c</a>, <a class="el" href="shaders__init__internal_8h.html#af7bdc195834a7a17aa9e463fcc5677c0">shaders_init_internal.h</a></li>
@@ -250,9 +252,10 @@ $(document).ready(function(){initNavTree('globals_p.html',''); initResizable(); 
 <li>PR3D_LIGHT_QUADRATIC_UNIFORM&#160;:&#160;<a class="el" href="shaders_8c.html#af1fec3fdee129a4146183052e19e6ebe">shaders.c</a>, <a class="el" href="shaders_8h.html#af1fec3fdee129a4146183052e19e6ebe">shaders.h</a></li>
 <li>pr3d_load_texture()&#160;:&#160;<a class="el" href="texture_8c.html#a8a5044a5fef0c40782bcb6908d686463">texture.c</a>, <a class="el" href="texture_8h.html#a8a5044a5fef0c40782bcb6908d686463">texture.h</a></li>
 <li>PR3D_MAX_POINT_LIGHTS&#160;:&#160;<a class="el" href="shaders_8h.html#a73855faadb010437853e87546d5689ed">shaders.h</a></li>
+<li>PR3D_MODEL_UNIFORM&#160;:&#160;<a class="el" href="shaders_8c.html#ad09f98c1715b10754eb0e38dd2ef31b3">shaders.c</a>, <a class="el" href="shaders_8h.html#ad09f98c1715b10754eb0e38dd2ef31b3">shaders.h</a></li>
 <li>PR3D_MOUSE_CAPTURED&#160;:&#160;<a class="el" href="screen_8h.html#a42883193c4119e2822d46c3fee2e2e47aeb4a861f36c75ea9f330443aac7e858b">screen.h</a></li>
 <li>PR3D_MOUSE_DISABLED&#160;:&#160;<a class="el" href="screen_8h.html#a42883193c4119e2822d46c3fee2e2e47ab714ba5f92a01cd09dd3949c617774e3">screen.h</a></li>
-<li>pr3d_mouse_position()&#160;:&#160;<a class="el" href="input_8c.html#ab790f2ee8edf1adab7ce6a7684d03eba">input.c</a>, <a class="el" href="input_8h.html#ab790f2ee8edf1adab7ce6a7684d03eba">input.h</a></li>
+<li>pr3d_mouse_position()&#160;:&#160;<a class="el" href="input_8h.html#ab790f2ee8edf1adab7ce6a7684d03eba">input.h</a>, <a class="el" href="input_8c.html#ab790f2ee8edf1adab7ce6a7684d03eba">input.c</a></li>
 <li>pr3d_move_camera_fly()&#160;:&#160;<a class="el" href="camera_8c.html#a652209016ea1d56e269a5f5cbd4fd6d3">camera.c</a>, <a class="el" href="camera_8h.html#a9a88bcddf6d0297e58b0c84c85fd61aa">camera.h</a></li>
 <li>pr3d_move_camera_look()&#160;:&#160;<a class="el" href="camera_8c.html#a7b001f96c8920ed1ade739e6c8dde3c0">camera.c</a>, <a class="el" href="camera_8h.html#a7b001f96c8920ed1ade739e6c8dde3c0">camera.h</a></li>
 <li>pr3d_render_mesh()&#160;:&#160;<a class="el" href="render_8c.html#a2c3c6351ac03485f63485d220ba69ce2">render.c</a>, <a class="el" href="render_8h.html#a2c3c6351ac03485f63485d220ba69ce2">render.h</a></li>
@@ -268,7 +271,7 @@ $(document).ready(function(){initNavTree('globals_p.html',''); initResizable(); 
 <li>pr3d_set_shader_uniform_bool()&#160;:&#160;<a class="el" href="shaders_8c.html#a5209a8b4a4c398a644a9f93135f6cec1">shaders.c</a>, <a class="el" href="shaders_8h.html#a5209a8b4a4c398a644a9f93135f6cec1">shaders.h</a></li>
 <li>pr3d_set_shader_uniform_float()&#160;:&#160;<a class="el" href="shaders_8c.html#a55b4c148e8e88576dadc204bfd8a39a7">shaders.c</a>, <a class="el" href="shaders_8h.html#a55b4c148e8e88576dadc204bfd8a39a7">shaders.h</a></li>
 <li>pr3d_set_shader_uniform_int()&#160;:&#160;<a class="el" href="shaders_8c.html#a69cfdad79b9a9324b578832d1de007ca">shaders.c</a>, <a class="el" href="shaders_8h.html#a69cfdad79b9a9324b578832d1de007ca">shaders.h</a></li>
-<li>pr3d_set_shader_uniform_mat4()&#160;:&#160;<a class="el" href="shaders_8c.html#a200d492131d3e880a2686c4eaf533e15">shaders.c</a>, <a class="el" href="shaders_8h.html#a200d492131d3e880a2686c4eaf533e15">shaders.h</a></li>
+<li>pr3d_set_shader_uniform_mat4()&#160;:&#160;<a class="el" href="shaders_8h.html#a200d492131d3e880a2686c4eaf533e15">shaders.h</a>, <a class="el" href="shaders_8c.html#a200d492131d3e880a2686c4eaf533e15">shaders.c</a></li>
 <li>pr3d_set_shader_uniform_vec2()&#160;:&#160;<a class="el" href="shaders_8c.html#a85235b836cdf423797900a52c98c9bd9">shaders.c</a>, <a class="el" href="shaders_8h.html#a85235b836cdf423797900a52c98c9bd9">shaders.h</a></li>
 <li>pr3d_set_shader_uniform_vec3()&#160;:&#160;<a class="el" href="shaders_8c.html#aced98f5cc9a1b8d38cb85d58c8525b39">shaders.c</a>, <a class="el" href="shaders_8h.html#aced98f5cc9a1b8d38cb85d58c8525b39">shaders.h</a></li>
 <li>pr3d_set_vsync()&#160;:&#160;<a class="el" href="screen_8c.html#a59c62b084ad7e18b989cdffa353c5b07">screen.c</a>, <a class="el" href="screen_8h.html#a59c62b084ad7e18b989cdffa353c5b07">screen.h</a></li>
@@ -279,8 +282,7 @@ $(document).ready(function(){initNavTree('globals_p.html',''); initResizable(); 
 <li>PR3D_SHADER_SCREEN&#160;:&#160;<a class="el" href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823acba1ffa699e7482a1fafc314075dadce">shaders.h</a></li>
 <li>PR3D_SHADER_UNLIT&#160;:&#160;<a class="el" href="shaders_8h.html#a8e130506c1b4de48cf2b75e9d73ee823aa9cb3f760d074308715cad31954085be">shaders.h</a></li>
 <li>pr3d_toggle_fullscreen()&#160;:&#160;<a class="el" href="screen_8c.html#a9916549195029d0621a17747bca01b3c">screen.c</a>, <a class="el" href="screen_8h.html#a9916549195029d0621a17747bca01b3c">screen.h</a></li>
-<li>PR3D_TRANSFORM_UNIFORM&#160;:&#160;<a class="el" href="shaders_8c.html#aa6002123e219037103b11a30164e168c">shaders.c</a>, <a class="el" href="shaders_8h.html#aa6002123e219037103b11a30164e168c">shaders.h</a></li>
-<li>pr3d_update_camera()&#160;:&#160;<a class="el" href="camera_8h.html#ad45ae0f84c51f7800ee9dd4e06962750">camera.h</a>, <a class="el" href="camera_8c.html#ad45ae0f84c51f7800ee9dd4e06962750">camera.c</a></li>
+<li>pr3d_update_camera()&#160;:&#160;<a class="el" href="camera_8c.html#ad45ae0f84c51f7800ee9dd4e06962750">camera.c</a>, <a class="el" href="camera_8h.html#ad45ae0f84c51f7800ee9dd4e06962750">camera.h</a></li>
 <li>pr3d_update_lighting()&#160;:&#160;<a class="el" href="render_8c.html#aafd45e837fc668338f07ba6c4d62aecb">render.c</a>, <a class="el" href="render_8h.html#aafd45e837fc668338f07ba6c4d62aecb">render.h</a></li>
 <li>pr3d_use_shader()&#160;:&#160;<a class="el" href="shaders_8c.html#afc5c01a6c96b481c4ec1628ad1db98b2">shaders.c</a>, <a class="el" href="shaders_8h.html#afc5c01a6c96b481c4ec1628ad1db98b2">shaders.h</a></li>
 <li>pr3d_use_shader_2d()&#160;:&#160;<a class="el" href="shaders_8c.html#ab691a75f431938ad2516d5e6a54aa353">shaders.c</a>, <a class="el" href="shaders_8h.html#ab691a75f431938ad2516d5e6a54aa353">shaders.h</a></li>
