@@ -4,6 +4,8 @@
 
 **prgl is a personal project created to build my own games. I've made the code open source so anyone can re-use, analyze, and/or build their own projects with it.
 
+https://github.com/user-attachments/assets/2dea8636-c0ae-4bc7-9748-15f0225971ee
+
 prgl is a code driven library for making 3D games in a retro style similar to games made in the 80s and 90s, built from the ground up to natively render clean, chunky pixelated 3D graphics to modern displays.
 
 ## Licensing
