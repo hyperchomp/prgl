@@ -1,9 +1,14 @@
 var searchData=
 [
-  ['texture_0',['texture',['../structPRGLRenderTexture.html#a9b08d4c2ab8a02835f60165f65621131',1,'PRGLRenderTexture::texture()'],['../structPRGLMesh.html#a9b08d4c2ab8a02835f60165f65621131',1,'PRGLMesh::texture()']]],
-  ['texture_2ec_1',['texture.c',['../texture_8c.html',1,'']]],
-  ['texture_2eh_2',['texture.h',['../texture_8h.html',1,'']]],
-  ['texture_5finternal_2eh_3',['texture_internal.h',['../texture__internal_8h.html',1,'']]],
-  ['transform_2ec_4',['transform.c',['../transform_8c.html',1,'']]],
-  ['transform_5finternal_2eh_5',['transform_internal.h',['../transform__internal_8h.html',1,'']]]
+  ['screen_2ec_0',['screen.c',['../screen_8c.html',1,'']]],
+  ['screen_2eh_1',['screen.h',['../screen_8h.html',1,'']]],
+  ['screen_5finternal_2eh_2',['screen_internal.h',['../screen__internal_8h.html',1,'']]],
+  ['screen_5frender_5fquad_3',['screen_render_quad',['../game_8c.html#a4d74b20a8ca15b0b1b7d9822ee585fec',1,'game.c']]],
+  ['shaders_2ec_4',['shaders.c',['../shaders_8c.html',1,'']]],
+  ['shaders_2eh_5',['shaders.h',['../shaders_8h.html',1,'']]],
+  ['shaders_5finit_2ec_6',['shaders_init.c',['../shaders__init_8c.html',1,'']]],
+  ['shaders_5finit_5finternal_2eh_7',['shaders_init_internal.h',['../shaders__init__internal_8h.html',1,'']]],
+  ['shaders_5finternal_2eh_8',['shaders_internal.h',['../shaders__internal_8h.html',1,'']]],
+  ['stringify_9',['STRINGIFY',['../common__macros_8h.html#a6df1d22fb5f09eccc23b9f399670cfd7',1,'common_macros.h']]],
+  ['stringify_5fstage1_10',['STRINGIFY_STAGE1',['../common__macros_8h.html#a4d91b1baec1dcaf7337ee9db651a7a7e',1,'common_macros.h']]]
 ];

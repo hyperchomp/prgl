@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['texture_0',['texture',['../structPRGLRenderTexture.html#a9b08d4c2ab8a02835f60165f65621131',1,'PRGLRenderTexture::texture()'],['../structPRGLMesh.html#a9b08d4c2ab8a02835f60165f65621131',1,'PRGLMesh::texture()']]]
+  ['screen_5frender_5fquad_0',['screen_render_quad',['../game_8c.html#a4d74b20a8ca15b0b1b7d9822ee585fec',1,'game.c']]]
 ];
