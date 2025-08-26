@@ -1,4 +1,4 @@
-# Pixel Retro Game Library
+# Pixel Retro GL Framework
 
 ![prgl version](https://img.shields.io/badge/prgl-0.1.0-orange)
 
@@ -6,7 +6,7 @@
 
 https://github.com/user-attachments/assets/2dea8636-c0ae-4bc7-9748-15f0225971ee
 
-prgl is a code driven library for making 3D games in a retro style similar to games made in the 80s and 90s, built from the ground up to natively render clean, chunky pixelated 3D graphics to modern displays.
+prgl is a code driven framework for making 3D games in a retro style similar to games made in the 80s and 90s, built from the ground up to natively render clean, chunky pixelated 3D graphics to modern displays.
 
 ## Licensing
 
@@ -118,12 +118,12 @@ After installing simply include any necessary prgl modules into your project lik
 
 ## Dependencies
 ### Install
-These dependencies must be installed separately as the library relies on them.
+These dependencies must be installed separately as the framework relies on them.
 * [GLFW](https://github.com/glfw/glfw) (zlib) for a multitude of functionality, for example rendering and input. prgl wraps a lot of GLFW functionality so you shouldn't normally need to call it directly.
-    * I recommend building GLFW from source as a static library. The directions can be found [in the GLFW documentation](https://www.glfw.org/docs/latest/compile.html).
+    * I recommend building GLFW from source as a static framework. The directions can be found [in the GLFW documentation](https://www.glfw.org/docs/latest/compile.html).
 
 #### Linking
-You can easily link prgl to your project in your `CMakeLists.txt`. Note that although you need GLFW installed to compile prgl you aren't required to link it in a project using the library as prgl provides wrapper methods for needed GLFW functionality.
+You can easily link prgl to your project in your `CMakeLists.txt`. Note that although you need GLFW installed to compile prgl you aren't required to link it in a project using the framework as prgl provides wrapper methods for needed GLFW functionality.
 ```
 find_package(prgl REQUIRED)
 
@@ -134,4 +134,4 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE prgl)
 These dependencies are bundled in the project source code and don't require separate installation.
 * [Glad](https://github.com/Dav1dde/glad) (MIT) for **glad1** as a GL loader.
 * [stb](https://github.com/nothings/stb) (MIT) for stb_image as a loader for things like textures.
-* [cglm](https://github.com/recp/cglm) (MIT) For linear algebra (2D/3D math). This is what prgl leverages for vectors, matrices, and all the math that goes along with them. This library is meant to be used directly when developing with prgl for the data structures and supporting math it provides.
+* [cglm](https://github.com/recp/cglm) (MIT) For linear algebra (2D/3D math). This is what prgl leverages for vectors, matrices, and all the math that goes along with them. This framework is meant to be used directly when developing with prgl for the data structures and supporting math it provides.
