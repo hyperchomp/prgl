@@ -54,6 +54,7 @@ set(
                         "${CMAKE_SOURCE_DIR}/include/camera.h"
                         "${CMAKE_SOURCE_DIR}/include/mathx.h"
                         "${CMAKE_SOURCE_DIR}/include/mesh.h"
+                        "${CMAKE_SOURCE_DIR}/include/game_object.h"
                         "${CMAKE_SOURCE_DIR}/include/common_macros.h"
 )
 set_target_properties(
