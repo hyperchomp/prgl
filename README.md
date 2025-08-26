@@ -2,9 +2,9 @@
 
 ![prgl version](https://img.shields.io/badge/prgl-0.1.0-orange)
 
-**prgl is a personal project created to build my own games. I've made the code open source so anyone can re-use it, analyze it, and benefit from it.**
+**prgl is a personal project created to build my own games. I've made the code open source so anyone can re-use, analyze, and/or build their own projects with it.
 
-prgl is a code driven framework for making 3D games in a retro style similar to games made in the 80s and 90s, built from the ground up to natively render clean, chunky pixelated 3D graphics to modern displays.
+prgl is a code driven library for making 3D games in a retro style similar to games made in the 80s and 90s, built from the ground up to natively render clean, chunky pixelated 3D graphics to modern displays.
 
 ## Licensing
 
@@ -48,11 +48,15 @@ Libraries used within prgl may have differing licenses that are useable alongsid
 ### Sound
 * Audio loading and playback
 
-## Installation
+## Getting Started
 
-At this point it is not recommended to start development using the framework, but if you are interested in how it is being developed or would like to fork the project for something you are working on you are more than welcome to. You can install prgl on Linux systems very simply with the below steps:
+If you want to dive into the code or adapt it for your own project you are more than welcome to. You can install prgl on Linux systems very simply with the below steps:
 
-```
+### Method 1: System level install (requires sudo)
+
+Use this method if you want to install prgl to the default system path, usually something like `/usr/local/`
+
+```sh
 git clone git@github.com:hyperchomp/prgl.git
 cd prgl
 mkdir build-debug
@@ -61,19 +65,50 @@ make
 sudo make install
 ```
 
-You don't strictly need to compile it with clang, but that's how I build it during development so I can't guarantee it will work with other compilers - although I'd expect it should if it's a well known compiler like gcc.
+Note: I use clang for development so I include that in the commands, but I'd expect it should work with other well known compilers like gcc.
 
-After running the above if you need to rebuild and haven't cleaned or deleted the build directory you can simply do the following from within the build directory:
+### Method 2: User local installation (no sudo)
 
+If you'd rather install somewhere like the home directory where root is not required you can use this method.
+
+```sh
+git clone git@github.com:hyperchomp/prgl.git
+cd prgl
+mkdir build-debug
+cd build-debug
+CC=clang cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$HOME/.local ..
+make
+make install
 ```
+
+#### Finding a local installation with CMake
+
+Because prgl's CMake generates a compile_commands.json file, your chosen IDE or LSP compatible editor should automatically detect the correct include paths.
+
+For your own project's CMakeLists.txt to find prgl, simply set CMAKE_PREFIX_PATH when running the cmake command:
+
+```sh
+cmake -DCMAKE_PREFIX_PATH=$HOME/.local ..
+```
+
+### Rebuilding
+
+To rebuild and reinstall you can go back into your build directory and run:
+
+```sh
 cmake ..
 make
+# System install
 sudo make install
+# User install
+make install
 ```
 
-After this (and the dependencies below!) simply include any necessary prgl modules into your project. They are in a subfolder structure so you should include them like so:
+### Usage
 
-```
+After installing simply include any necessary prgl modules into your project like so:
+
+```C
 #include <prgl/game.h>
 #include <prgl/screen.h>
 // etc...
@@ -81,12 +116,12 @@ After this (and the dependencies below!) simply include any necessary prgl modul
 
 ## Dependencies
 ### Install
-These dependencies must be installed separately from prgl as the framework relies on them.
+These dependencies must be installed separately as the library relies on them.
 * [GLFW](https://github.com/glfw/glfw) (zlib) for a multitude of functionality, for example rendering and input. prgl wraps a lot of GLFW functionality so you shouldn't normally need to call it directly.
-    * I recommend building GLFW from source as a static library, this process is very similar to installing prgl. The directions can be found [in the GLFW documentation](https://www.glfw.org/docs/latest/compile.html).
+    * I recommend building GLFW from source as a static library. The directions can be found [in the GLFW documentation](https://www.glfw.org/docs/latest/compile.html).
 
 #### Linking
-You can easily link prgl to your project in CMakeLists.txt. Note that for GLFW although you need it installed to compile prgl itself you aren't required to link it in another project using the framework as prgl aims to provide wrapper methods for any needed GLFW functionality.
+You can easily link prgl to your project in your `CMakeLists.txt`. Note that although you need GLFW installed to compile prgl you aren't required to link it in a project using the library as prgl provides wrapper methods for needed GLFW functionality.
 ```
 find_package(prgl REQUIRED)
 
@@ -94,7 +129,7 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE prgl)
 ```
 
 ### Bundled
-These dependencies are bundled in the project source code and don't require installation.
+These dependencies are bundled in the project source code and don't require separate installation.
 * [Glad](https://github.com/Dav1dde/glad) (MIT) for **glad1** as a GL loader.
 * [stb](https://github.com/nothings/stb) (MIT) for stb_image as a loader for things like textures.
 * [cglm](https://github.com/recp/cglm) (MIT) For linear algebra (2D/3D math). This is what prgl leverages for vectors, matrices, and all the math that goes along with them. This library is meant to be used directly when developing with prgl for the data structures and supporting math it provides.
