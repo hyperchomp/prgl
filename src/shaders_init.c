@@ -97,8 +97,7 @@ unsigned int prgl_init_shader_3d(void)
         // Affine texture mapping - we need both regular and noperspective 
         // texture coordinates to prevent problems with polygon warping.
         "out vec2 texCoord;\n"
-        "out float originalW;\n"
-        "noperspective out vec2 affineTexCoord;\n"
+        "noperspective out vec3 affineTexCoord;\n"
 
         // Flat is so the flag is constant across the triangle
         "flat out int useAffineFlag;\n"
@@ -120,9 +119,6 @@ unsigned int prgl_init_shader_3d(void)
         // transforms to clip space.
         "    vec4 pos = projection * view * model * vec4(aPos, 1.0);\n"
 
-        // Store non-wobbled w for texture mapping or textures slide around
-        "    originalW = pos.w;\n"
-
         // Pixel wobble - redo the perspective divide and floor it to int value
         "    vec3 perspective_divide = pos.xyz / vec3(pos.w);\n"
         "    vec2 render_coords = (perspective_divide.xy + vec2(1.0, 1.0)) * renderResolution * 0.5;\n"
@@ -134,19 +130,25 @@ unsigned int prgl_init_shader_3d(void)
 
         // Frustum check for affine texture mapping
         "    bool outsideFrustum =\n"
-        "        wobble_pos.x < -wobble_pos.w || wobble_pos.x > wobble_pos.w || \n"
-        "        wobble_pos.y < -wobble_pos.w || wobble_pos.y > wobble_pos.w || \n"
-        "        wobble_pos.z < -wobble_pos.w || wobble_pos.z > wobble_pos.w;\n"
-        "    useAffineFlag = !outsideFrustum ? 1 : 0;\n"
+        "        wobble_pos.x < -pos.w || wobble_pos.x > pos.w || \n"
+        "        wobble_pos.y < -pos.w || wobble_pos.y > pos.w || \n"
+        "        wobble_pos.z < -pos.w || wobble_pos.z > pos.w;\n"
 
+        // Use perspective correct mapping outside a set distance. Fixes extreme 
+        // warping on large quads/polygons. Threshold can be tweaked to the size
+        // of the polygons which need disabled, 5 and 10 seem to be good values. 
+        // Could be used to disable affine if set very low. May expose later.
+        "    float distance = length(vec3(model * vec4(aPos, 1.0)));\n"
+        "    bool isFarFromCamera = distance > 10.0;\n"
+        "    useAffineFlag = !outsideFrustum && !isFarFromCamera ? 1 : 0;\n"
         // Align pixels
         "    vec2 half_pixel_offset = 0.5 / renderResolution;\n"
         "    wobble_pos.xy += half_pixel_offset * wobble_pos.w;\n"
         "    gl_Position = wobble_pos;\n"
 
-        // For affine we need to divide out w, we'll multiply it back in later
+        // Affine causes textures sliding, store w to fix in frag shader
         "    texCoord = aTexCoord;\n"
-        "    affineTexCoord = aTexCoord / pos.w;\n"
+        "    affineTexCoord = vec3(aTexCoord * pos.w, wobble_pos.w);\n"
 
         // For non-uniform scaling need to multiply by the normal matrix.
         "    mat4 wobbleModel = model;\n"
@@ -184,9 +186,8 @@ unsigned int prgl_init_shader_3d(void)
         "#version 330 core\n"
         "out vec4 FragColor;\n"
         "in vec2 texCoord;\n"
-        "noperspective in vec2 affineTexCoord;\n"
+        "noperspective in vec3 affineTexCoord;\n"
         "flat in int useAffineFlag;\n"
-        "in float originalW;\n"
         "in vec3 vertexColor;\n"
 
         "uniform float alpha;\n"
@@ -199,7 +200,7 @@ unsigned int prgl_init_shader_3d(void)
         "   if (useAffineFlag > 0)\n"
         "   {\n"
         // Reapply the w coordinate here, has to do with perspective correction
-        "       texCoordFinal = affineTexCoord * originalW;\n"
+        "       texCoordFinal = affineTexCoord.xy / affineTexCoord.z;\n"
         "   }\n"
         "   FragColor = texture(imageTexture, texCoordFinal * tileFactor) * vec4(vertexColor, "
         "alpha);\n"
