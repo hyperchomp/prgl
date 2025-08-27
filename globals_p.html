@@ -94,6 +94,7 @@ $(document).ready(function(){initNavTree('globals_p.html',''); initResizable(); 
 
 <h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
 <li>prgl_active_camera()&#160;:&#160;<a class="el" href="camera_8h.html#adf735198a3de77943028c920e7d6b7dd">camera.h</a>, <a class="el" href="camera_8c.html#adf735198a3de77943028c920e7d6b7dd">camera.c</a></li>
+<li>prgl_calculate_aabb()&#160;:&#160;<a class="el" href="mesh_8h.html#a0f735afc3b1e8614b807c67f6fadeedb">mesh.h</a>, <a class="el" href="mesh_8c.html#a0f735afc3b1e8614b807c67f6fadeedb">mesh.c</a></li>
 <li>PRGL_CAMERA_MOVE_DIR_BACKWARD&#160;:&#160;<a class="el" href="camera_8h.html#af7ec5697e0929f86a6170c7db0999d5ea7027da136e8b467b665951f9d3617388">camera.h</a></li>
 <li>PRGL_CAMERA_MOVE_DIR_FORWARD&#160;:&#160;<a class="el" href="camera_8h.html#af7ec5697e0929f86a6170c7db0999d5eaca991f1b8471a80223bd0a3cb7229593">camera.h</a></li>
 <li>PRGL_CAMERA_MOVE_DIR_LEFT&#160;:&#160;<a class="el" href="camera_8h.html#af7ec5697e0929f86a6170c7db0999d5ea2fb855623c660dc78d3acf76818895d8">camera.h</a></li>
@@ -103,10 +104,14 @@ $(document).ready(function(){initNavTree('globals_p.html',''); initResizable(); 
 <li>prgl_clampf()&#160;:&#160;<a class="el" href="mathx_8c.html#a71c7c447e1dd96624941d5d33189236d">mathx.c</a>, <a class="el" href="mathx_8h.html#a71c7c447e1dd96624941d5d33189236d">mathx.h</a></li>
 <li>prgl_clear_screen()&#160;:&#160;<a class="el" href="render_8c.html#a6be9b8ca983e7efddcd062bf9410832e">render.c</a>, <a class="el" href="render_8h.html#a6be9b8ca983e7efddcd062bf9410832e">render.h</a></li>
 <li>prgl_close_game()&#160;:&#160;<a class="el" href="screen_8c.html#a985689302236428da21110d9d44cbd96">screen.c</a>, <a class="el" href="screen_8h.html#a985689302236428da21110d9d44cbd96">screen.h</a></li>
+<li>prgl_create_cube()&#160;:&#160;<a class="el" href="mesh_8c.html#a9d0039abe86fe2e016e92f9ca072f15e">mesh.c</a>, <a class="el" href="mesh_8h.html#a9d0039abe86fe2e016e92f9ca072f15e">mesh.h</a></li>
 <li>prgl_create_model_matrix()&#160;:&#160;<a class="el" href="transform_8c.html#a31a7fec3bf9962ba7eb7bb292e3a40cc">transform.c</a>, <a class="el" href="transform__internal_8h.html#a31a7fec3bf9962ba7eb7bb292e3a40cc">transform_internal.h</a></li>
+<li>prgl_create_quad()&#160;:&#160;<a class="el" href="mesh_8h.html#a9f24206e70f4714a64315459007cf0f7">mesh.h</a>, <a class="el" href="mesh_8c.html#a9f24206e70f4714a64315459007cf0f7">mesh.c</a></li>
 <li>prgl_create_render_texture()&#160;:&#160;<a class="el" href="texture_8c.html#a9e568bdfd26fbb50bd5ceaaf9b7de082">texture.c</a>, <a class="el" href="texture__internal_8h.html#a9e568bdfd26fbb50bd5ceaaf9b7de082">texture_internal.h</a></li>
+<li>prgl_create_screen_quad()&#160;:&#160;<a class="el" href="mesh_8c.html#abc7c5681e3be2ca05f23f120bbb1c685">mesh.c</a>, <a class="el" href="mesh_8h.html#abc7c5681e3be2ca05f23f120bbb1c685">mesh.h</a></li>
 <li>prgl_create_shader()&#160;:&#160;<a class="el" href="shaders_8c.html#ac27d6c3b47f991ad7449990d1510b557">shaders.c</a>, <a class="el" href="shaders_8h.html#ac27d6c3b47f991ad7449990d1510b557">shaders.h</a></li>
-<li>prgl_create_window()&#160;:&#160;<a class="el" href="screen__internal_8h.html#a07e20547d5d518620ecf3fe9d5fa5853">screen_internal.h</a>, <a class="el" href="screen_8c.html#a07e20547d5d518620ecf3fe9d5fa5853">screen.c</a></li>
+<li>prgl_create_triangle()&#160;:&#160;<a class="el" href="mesh_8c.html#a6b01752c1965e9febb1c288f55c8b7f2">mesh.c</a>, <a class="el" href="mesh_8h.html#a6b01752c1965e9febb1c288f55c8b7f2">mesh.h</a></li>
+<li>prgl_create_window()&#160;:&#160;<a class="el" href="screen_8c.html#a07e20547d5d518620ecf3fe9d5fa5853">screen.c</a>, <a class="el" href="screen__internal_8h.html#a07e20547d5d518620ecf3fe9d5fa5853">screen_internal.h</a></li>
 <li>prgl_current_shader()&#160;:&#160;<a class="el" href="shaders_8c.html#a4546429db70e0a039d4de91f85beaa62">shaders.c</a>, <a class="el" href="shaders_8h.html#a4546429db70e0a039d4de91f85beaa62">shaders.h</a></li>
 <li>prgl_delete_mesh()&#160;:&#160;<a class="el" href="mesh_8c.html#af8fe164c7026bfdce0aeb2f7621454d6">mesh.c</a>, <a class="el" href="mesh_8h.html#af8fe164c7026bfdce0aeb2f7621454d6">mesh.h</a></li>
 <li>prgl_delete_shader()&#160;:&#160;<a class="el" href="shaders_8c.html#ac0ab9e8e85e75d20b24f9c2bc7ab8324">shaders.c</a>, <a class="el" href="shaders_8h.html#ac0ab9e8e85e75d20b24f9c2bc7ab8324">shaders.h</a></li>
@@ -115,16 +120,11 @@ $(document).ready(function(){initNavTree('globals_p.html',''); initResizable(); 
 <li>prgl_destroy_window()&#160;:&#160;<a class="el" href="screen_8c.html#a8598f061fb44d49fcc8032a55bd7cddd">screen.c</a>, <a class="el" href="screen__internal_8h.html#a8598f061fb44d49fcc8032a55bd7cddd">screen_internal.h</a></li>
 <li>prgl_enable_render_texture()&#160;:&#160;<a class="el" href="render_8c.html#ac62cc4254c291ed5ed40af78460f89fe">render.c</a>, <a class="el" href="render__internal_8h.html#ac62cc4254c291ed5ed40af78460f89fe">render_internal.h</a></li>
 <li>prgl_init_camera()&#160;:&#160;<a class="el" href="camera_8c.html#abfd6e1c6df42bef73ea7ba061c803346">camera.c</a>, <a class="el" href="camera_8h.html#abfd6e1c6df42bef73ea7ba061c803346">camera.h</a></li>
-<li>prgl_init_cube()&#160;:&#160;<a class="el" href="mesh_8c.html#ae8a03731de9099092c60f1093cc9e956">mesh.c</a>, <a class="el" href="mesh_8h.html#ae8a03731de9099092c60f1093cc9e956">mesh.h</a></li>
-<li>prgl_init_mesh()&#160;:&#160;<a class="el" href="mesh_8c.html#a88c02fbd7fa229fdd9dd37cb3772bd15">mesh.c</a>, <a class="el" href="mesh_8h.html#a88c02fbd7fa229fdd9dd37cb3772bd15">mesh.h</a></li>
-<li>prgl_init_quad()&#160;:&#160;<a class="el" href="mesh_8c.html#a1de3617a449089a84e3c101345fb5448">mesh.c</a>, <a class="el" href="mesh_8h.html#a1de3617a449089a84e3c101345fb5448">mesh.h</a></li>
-<li>prgl_init_screen_quad()&#160;:&#160;<a class="el" href="mesh_8c.html#a2a578c3c6076faca338ab46a8e9993af">mesh.c</a>, <a class="el" href="mesh_8h.html#a2a578c3c6076faca338ab46a8e9993af">mesh.h</a></li>
 <li>prgl_init_shader_2d()&#160;:&#160;<a class="el" href="shaders__init_8c.html#ae793da48e02d10ff978652ccd0c813e0">shaders_init.c</a>, <a class="el" href="shaders__init__internal_8h.html#ae793da48e02d10ff978652ccd0c813e0">shaders_init_internal.h</a></li>
 <li>prgl_init_shader_3d()&#160;:&#160;<a class="el" href="shaders__init_8c.html#a03c893d2b63f9434d0764fb12b8af5f5">shaders_init.c</a>, <a class="el" href="shaders__init__internal_8h.html#a03c893d2b63f9434d0764fb12b8af5f5">shaders_init_internal.h</a></li>
 <li>prgl_init_shader_pool()&#160;:&#160;<a class="el" href="shaders_8c.html#ac9c2f42b4bf4b615f3cccfd4f8ff2428">shaders.c</a>, <a class="el" href="shaders__internal_8h.html#ac9c2f42b4bf4b615f3cccfd4f8ff2428">shaders_internal.h</a></li>
 <li>prgl_init_shader_screen()&#160;:&#160;<a class="el" href="shaders__init_8c.html#a48eed55fa57ad8a38ca7c65cd47ca5bc">shaders_init.c</a>, <a class="el" href="shaders__init__internal_8h.html#a48eed55fa57ad8a38ca7c65cd47ca5bc">shaders_init_internal.h</a></li>
 <li>prgl_init_shader_unlit()&#160;:&#160;<a class="el" href="shaders__init_8c.html#a613792957b6ba895a8b305ee3c892794">shaders_init.c</a>, <a class="el" href="shaders__init__internal_8h.html#a613792957b6ba895a8b305ee3c892794">shaders_init_internal.h</a></li>
-<li>prgl_init_triangle()&#160;:&#160;<a class="el" href="mesh_8c.html#a61c911d9c298d1ff32c12bee484e44d9">mesh.c</a>, <a class="el" href="mesh_8h.html#a61c911d9c298d1ff32c12bee484e44d9">mesh.h</a></li>
 <li>PRGL_KEY_0&#160;:&#160;<a class="el" href="input_8h.html#a173a7a96e85803a4a3e152e2f6ff94eba915978e5946505c04fa320885bccb6c2">input.h</a></li>
 <li>PRGL_KEY_1&#160;:&#160;<a class="el" href="input_8h.html#a173a7a96e85803a4a3e152e2f6ff94ebac39a5d87d4ec61000d938cf21ea097b5">input.h</a></li>
 <li>PRGL_KEY_2&#160;:&#160;<a class="el" href="input_8h.html#a173a7a96e85803a4a3e152e2f6ff94eba7c675cc53833cd85ba9961354d8fc4c9">input.h</a></li>

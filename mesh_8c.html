@@ -99,26 +99,175 @@ $(document).ready(function(){initNavTree('mesh_8c.html',''); initResizable(); })
 <code>#include &quot;<a class="el" href="common__macros_8h_source.html">common_macros.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="mesh_8h_source.html">mesh.h</a>&quot;</code><br />
 <code>#include &quot;cglm/types.h&quot;</code><br />
-<code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
 </div>
 <p><a href="mesh_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a88c02fbd7fa229fdd9dd37cb3772bd15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#a88c02fbd7fa229fdd9dd37cb3772bd15">prgl_init_mesh</a> (struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *mesh, int num_vertices, unsigned int vao, unsigned int vbo, unsigned int ebo)</td></tr>
-<tr class="separator:a88c02fbd7fa229fdd9dd37cb3772bd15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a578c3c6076faca338ab46a8e9993af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#a2a578c3c6076faca338ab46a8e9993af">prgl_init_screen_quad</a> (struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *mesh)</td></tr>
-<tr class="separator:a2a578c3c6076faca338ab46a8e9993af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61c911d9c298d1ff32c12bee484e44d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#a61c911d9c298d1ff32c12bee484e44d9">prgl_init_triangle</a> (mat3 vertices, struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *mesh)</td></tr>
-<tr class="separator:a61c911d9c298d1ff32c12bee484e44d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1de3617a449089a84e3c101345fb5448"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#a1de3617a449089a84e3c101345fb5448">prgl_init_quad</a> (mat4 vertices, struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *mesh)</td></tr>
-<tr class="separator:a1de3617a449089a84e3c101345fb5448"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8a03731de9099092c60f1093cc9e956"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#ae8a03731de9099092c60f1093cc9e956">prgl_init_cube</a> (struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *mesh)</td></tr>
-<tr class="separator:ae8a03731de9099092c60f1093cc9e956"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc7c5681e3be2ca05f23f120bbb1c685"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#abc7c5681e3be2ca05f23f120bbb1c685">prgl_create_screen_quad</a> (void)</td></tr>
+<tr class="separator:abc7c5681e3be2ca05f23f120bbb1c685"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b01752c1965e9febb1c288f55c8b7f2"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#a6b01752c1965e9febb1c288f55c8b7f2">prgl_create_triangle</a> (mat3 vertices)</td></tr>
+<tr class="separator:a6b01752c1965e9febb1c288f55c8b7f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f24206e70f4714a64315459007cf0f7"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#a9f24206e70f4714a64315459007cf0f7">prgl_create_quad</a> (mat4 vertices)</td></tr>
+<tr class="separator:a9f24206e70f4714a64315459007cf0f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d0039abe86fe2e016e92f9ca072f15e"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#a9d0039abe86fe2e016e92f9ca072f15e">prgl_create_cube</a> (void)</td></tr>
+<tr class="separator:a9d0039abe86fe2e016e92f9ca072f15e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8fe164c7026bfdce0aeb2f7621454d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#af8fe164c7026bfdce0aeb2f7621454d6">prgl_delete_mesh</a> (struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *mesh)</td></tr>
 <tr class="separator:af8fe164c7026bfdce0aeb2f7621454d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f735afc3b1e8614b807c67f6fadeedb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#a0f735afc3b1e8614b807c67f6fadeedb">prgl_calculate_aabb</a> (const float *vertices, int num_vertices, vec3 min_bounds, vec3 max_bounds)</td></tr>
+<tr class="separator:a0f735afc3b1e8614b807c67f6fadeedb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a0f735afc3b1e8614b807c67f6fadeedb" name="a0f735afc3b1e8614b807c67f6fadeedb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f735afc3b1e8614b807c67f6fadeedb">&#9670;&#160;</a></span>prgl_calculate_aabb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void prgl_calculate_aabb </td>
+          <td>(</td>
+          <td class="paramtype">const float *&#160;</td>
+          <td class="paramname"><em>vertices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_vertices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec3&#160;</td>
+          <td class="paramname"><em>min_bounds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec3&#160;</td>
+          <td class="paramname"><em>max_bounds</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calculates a 3D AABB bounding box from the vertices of a mesh.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*vertices</td><td></td></tr>
+    <tr><td class="paramname">num_vertices</td><td></td></tr>
+    <tr><td class="paramname">min_bounds</td><td></td></tr>
+    <tr><td class="paramname">max_bounds</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="mesh_8c_source.html#l00370">370</a> of file <a class="el" href="mesh_8c_source.html">mesh.c</a>.</p>
+
+</div>
+</div>
+<a id="a9d0039abe86fe2e016e92f9ca072f15e" name="a9d0039abe86fe2e016e92f9ca072f15e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d0039abe86fe2e016e92f9ca072f15e">&#9670;&#160;</a></span>prgl_create_cube()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> * prgl_create_cube </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates a cube mesh. Make sure to attach a texture to the returned mesh struct after creating it. </p>
+
+<p class="definition">Definition at line <a class="el" href="mesh_8c_source.html#l00251">251</a> of file <a class="el" href="mesh_8c_source.html">mesh.c</a>.</p>
+
+</div>
+</div>
+<a id="a9f24206e70f4714a64315459007cf0f7" name="a9f24206e70f4714a64315459007cf0f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f24206e70f4714a64315459007cf0f7">&#9670;&#160;</a></span>prgl_create_quad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> * prgl_create_quad </td>
+          <td>(</td>
+          <td class="paramtype">mat4&#160;</td>
+          <td class="paramname"><em>vertices</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates a quad mesh. For 3D the normals assume XY orientation. Make sure to attach a texture to the returned mesh struct after creating it.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">vertices</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="mesh_8c_source.html#l00156">156</a> of file <a class="el" href="mesh_8c_source.html">mesh.c</a>.</p>
+
+</div>
+</div>
+<a id="abc7c5681e3be2ca05f23f120bbb1c685" name="abc7c5681e3be2ca05f23f120bbb1c685"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc7c5681e3be2ca05f23f120bbb1c685">&#9670;&#160;</a></span>prgl_create_screen_quad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> * prgl_create_screen_quad </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates a quad for drawing the screen's render texture to. </p>
+
+<p class="definition">Definition at line <a class="el" href="mesh_8c_source.html#l00008">8</a> of file <a class="el" href="mesh_8c_source.html">mesh.c</a>.</p>
+
+</div>
+</div>
+<a id="a6b01752c1965e9febb1c288f55c8b7f2" name="a6b01752c1965e9febb1c288f55c8b7f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b01752c1965e9febb1c288f55c8b7f2">&#9670;&#160;</a></span>prgl_create_triangle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> * prgl_create_triangle </td>
+          <td>(</td>
+          <td class="paramtype">mat3&#160;</td>
+          <td class="paramname"><em>vertices</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates a triangle mesh with the given vertex positions.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">vertices</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="mesh_8c_source.html#l00094">94</a> of file <a class="el" href="mesh_8c_source.html">mesh.c</a>.</p>
+
+</div>
+</div>
 <a id="af8fe164c7026bfdce0aeb2f7621454d6" name="af8fe164c7026bfdce0aeb2f7621454d6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af8fe164c7026bfdce0aeb2f7621454d6">&#9670;&#160;</a></span>prgl_delete_mesh()</h2>
 
@@ -134,204 +283,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Cleans up the GL objects associated with the mesh.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">mesh</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Cleans up the GL objects associated with the mesh, call before freeing. </p>
 
-<p class="definition">Definition at line <a class="el" href="mesh_8c_source.html#l00297">297</a> of file <a class="el" href="mesh_8c_source.html">mesh.c</a>.</p>
-
-</div>
-</div>
-<a id="ae8a03731de9099092c60f1093cc9e956" name="ae8a03731de9099092c60f1093cc9e956"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8a03731de9099092c60f1093cc9e956">&#9670;&#160;</a></span>prgl_init_cube()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void prgl_init_cube </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td>
-          <td class="paramname"><em>mesh</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Creates a cube mesh. Make sure to attach a texture to the returned mesh struct after creating it.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">mesh</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="mesh_8c_source.html#l00218">218</a> of file <a class="el" href="mesh_8c_source.html">mesh.c</a>.</p>
-
-</div>
-</div>
-<a id="a88c02fbd7fa229fdd9dd37cb3772bd15" name="a88c02fbd7fa229fdd9dd37cb3772bd15"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88c02fbd7fa229fdd9dd37cb3772bd15">&#9670;&#160;</a></span>prgl_init_mesh()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void prgl_init_mesh </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td>
-          <td class="paramname"><em>mesh</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>num_vertices</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>vao</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>vbo</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>ebo</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Initializes a given mesh struct with the values passed in. Sets the texture_id to 0, that must be set after loading the texture image.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">mesh</td><td></td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">num_vertices</td><td></td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">vao</td><td></td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">vbo</td><td></td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">ebo</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="mesh_8c_source.html#l00007">7</a> of file <a class="el" href="mesh_8c_source.html">mesh.c</a>.</p>
-
-</div>
-</div>
-<a id="a1de3617a449089a84e3c101345fb5448" name="a1de3617a449089a84e3c101345fb5448"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1de3617a449089a84e3c101345fb5448">&#9670;&#160;</a></span>prgl_init_quad()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void prgl_init_quad </td>
-          <td>(</td>
-          <td class="paramtype">mat4&#160;</td>
-          <td class="paramname"><em>vertices</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td>
-          <td class="paramname"><em>mesh</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Creates a quad mesh. For 3D the normals assume XY orientation. Make sure to attach a texture to the returned mesh struct after creating it.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">vertices</td><td></td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">mesh</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="mesh_8c_source.html#l00139">139</a> of file <a class="el" href="mesh_8c_source.html">mesh.c</a>.</p>
-
-</div>
-</div>
-<a id="a2a578c3c6076faca338ab46a8e9993af" name="a2a578c3c6076faca338ab46a8e9993af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a578c3c6076faca338ab46a8e9993af">&#9670;&#160;</a></span>prgl_init_screen_quad()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void prgl_init_screen_quad </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td>
-          <td class="paramname"><em>mesh</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Creates a quad for drawing the screen's render texture to.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">mesh</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="mesh_8c_source.html#l00019">19</a> of file <a class="el" href="mesh_8c_source.html">mesh.c</a>.</p>
-
-</div>
-</div>
-<a id="a61c911d9c298d1ff32c12bee484e44d9" name="a61c911d9c298d1ff32c12bee484e44d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61c911d9c298d1ff32c12bee484e44d9">&#9670;&#160;</a></span>prgl_init_triangle()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void prgl_init_triangle </td>
-          <td>(</td>
-          <td class="paramtype">mat3&#160;</td>
-          <td class="paramname"><em>vertices</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td>
-          <td class="paramname"><em>mesh</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Creates a triangle mesh with the given vertex positions.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">vertices</td><td></td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">mesh</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="mesh_8c_source.html#l00090">90</a> of file <a class="el" href="mesh_8c_source.html">mesh.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mesh_8c_source.html#l00359">359</a> of file <a class="el" href="mesh_8c_source.html">mesh.c</a>.</p>
 
 </div>
 </div>
