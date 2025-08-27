@@ -26,11 +26,6 @@ struct PRGLPointLight
 void prgl_clear_screen(float r, float g, float b, float a);
 
 /**
- * Creates a quad for drawing the screen's render texture to.
- */
-struct PRGLMesh *prgl_create_screen_quad(void);
-
-/**
  * Renders a mesh to the screen at a position.
  *
  * @param[in] mesh

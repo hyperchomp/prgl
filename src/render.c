@@ -1,5 +1,4 @@
 #include "glad.h"
-#include "common_macros.h"
 #include "screen_internal.h"
 #include "shaders.h"
 #include "render.h"
@@ -12,8 +11,6 @@
 #include <complex.h>
 #include <stddef.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <GLFW/glfw3.h>
 
 const vec2 PRGL_RENDER_RESOLUTION = {320.0f, 180.0f};
@@ -24,92 +21,6 @@ void prgl_clear_screen(float r, float g, float b, float a)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-struct PRGLMesh *prgl_create_screen_quad(void)
-{
-    // clang-format off
-    mat4 vertices = {
-        {-1.0f,  1.0f, 0.0f}, // Top-left
-        { 1.0f,  1.0f, 0.0f}, // Top-right
-        { 1.0f, -1.0f, 0.0f}, // Bottom-right
-        {-1.0f, -1.0f, 0.0f}  // Bottom-left
-    };
-    mat4x2 texture_coords = {
-        {0.0f, 1.0f}, // Top-left
-        {1.0f, 1.0f}, // Top-right
-        {1.0f, 0.0f}, // Bottom-right
-        {0.0f, 0.0f}  // Bottom-left
-    };
-    
-    float combined_data[20] = {
-              vertices[0][0],       vertices[0][1], vertices[0][2], 
-        texture_coords[0][0], texture_coords[0][1],
-              vertices[1][0],       vertices[1][1], vertices[1][2], 
-        texture_coords[1][0], texture_coords[1][1],
-              vertices[2][0],       vertices[2][1], vertices[2][2], 
-        texture_coords[2][0], texture_coords[2][1],
-              vertices[3][0],       vertices[3][1], vertices[3][2], 
-        texture_coords[3][0], texture_coords[3][1]
-    };
-    // clang-format on
-
-    // EBO stops us from needing overlapping vertices, but we need to tell
-    // OpenGL the order to go over the existing ones again to create enough
-    // triangles to create our mesh (in this case 2 triangles, 6 indices)
-    unsigned int indices[] = {
-        0, 1, 3, // First triangle
-        1, 2, 3  // Second triangle
-    };
-
-    // Create a vertex buffer object and vertex array object, the VBO is to
-    // generate the initial data, the VAO is so we can re-use it later
-    unsigned int vbo;
-    unsigned int vao;
-    unsigned int ebo;
-    glGenBuffers(1, &vbo);
-    glGenBuffers(1, &ebo);
-    glGenVertexArrays(1, &vao);
-
-    // Bind VAO, then bind and set buffers, then configure the vertex attributes
-    glBindVertexArray(vao);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(
-        GL_ARRAY_BUFFER, sizeof(combined_data), combined_data, GL_STATIC_DRAW
-    );
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-    glBufferData(
-        GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW
-    );
-
-    // Tell OpenGL how to interpret the vertex data
-    glVertexAttribPointer(
-        0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0
-    );
-    glEnableVertexAttribArray(0);
-
-    // Tell OpenGL how to interpret the texture coordinate data
-    glVertexAttribPointer(
-        2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float))
-    );
-    glEnableVertexAttribArray(2);
-
-    struct PRGLMesh *mesh_pointer = malloc(sizeof(struct PRGLMesh));
-    if (mesh_pointer == NULL)
-    {
-        printf("prgl_create_screen_quad: Error allocating mesh "
-               "pointer memory!");
-    }
-
-    // Texture zero'd, must be set after using load_texture()
-    *mesh_pointer = (struct PRGLMesh){
-        .num_vertices = ARR_LEN(indices),
-        .vao = vao,
-        .vbo = vbo,
-        .ebo = ebo,
-        .texture = 0,
-    };
-    return mesh_pointer;
-}
-
 void prgl_render_mesh(
     struct PRGLMesh *mesh, vec3 position, vec3 rotation_axis, float degrees,
     vec3 scale
@@ -117,9 +28,9 @@ void prgl_render_mesh(
 {
     glBindVertexArray(mesh->vao);
 
-    if (mesh->texture != 0)
+    if (mesh->texture_id != 0)
     {
-        glBindTexture(GL_TEXTURE_2D, mesh->texture);
+        glBindTexture(GL_TEXTURE_2D, mesh->texture_id);
     }
 
     // Transform the mesh to the render position.
@@ -145,9 +56,9 @@ void prgl_render_mesh_2d(
 {
     glBindVertexArray(mesh->vao);
 
-    if (mesh->texture != 0)
+    if (mesh->texture_id != 0)
     {
-        glBindTexture(GL_TEXTURE_2D, mesh->texture);
+        glBindTexture(GL_TEXTURE_2D, mesh->texture_id);
     }
 
     // Transform the mesh to the render position.

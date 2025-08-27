@@ -10,9 +10,6 @@
  */
 struct PRGLMesh
 {
-    vec3 min_bounds;
-    vec3 max_bounds;
-
     int num_vertices;
 
     // Vertex Buffer Object stores raw vertex data.
@@ -24,9 +21,14 @@ struct PRGLMesh
     // Optional - Element Buffer Object to draw vertices with indices.
     unsigned int ebo;
 
-    // Optional - Stores the texture image if the mesh is textured.
-    unsigned int texture;
+    // Optional - Stores the texture ID for the mesh.
+    unsigned int texture_id;
 };
+
+/**
+ * Creates a quad for drawing the screen's render texture to.
+ */
+struct PRGLMesh *prgl_create_screen_quad(void);
 
 /**
  * Creates a triangle mesh with the given vertex positions.
