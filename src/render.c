@@ -1,8 +1,10 @@
+#include "game_object.h"
 #include "glad.h"
 #include "screen_internal.h"
 #include "shaders.h"
 #include "render.h"
 #include "render_internal.h"
+#include "cglm/quat.h"
 #include "cglm/affine.h"
 #include "cglm/mat4.h"
 #include "cglm/types.h"
@@ -21,67 +23,72 @@ void prgl_clear_screen(float r, float g, float b, float a)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void prgl_render_mesh(
-    struct PRGLMesh *mesh, vec3 position, vec3 rotation_axis, float degrees,
-    vec3 scale
-)
+void prgl_render_game_object_3d(struct PRGLGameObject *game_obj)
 {
-    glBindVertexArray(mesh->vao);
+    glBindVertexArray(game_obj->mesh->vao);
 
-    if (mesh->texture_id != 0)
+    if (game_obj->mesh->texture_id != 0)
     {
-        glBindTexture(GL_TEXTURE_2D, mesh->texture_id);
+        glBindTexture(GL_TEXTURE_2D, game_obj->mesh->texture_id);
     }
 
     // Transform the mesh to the render position.
     mat4 model;
-    prgl_create_model_matrix(model, position, rotation_axis, degrees, scale);
+    prgl_create_model_matrix(&model, game_obj);
     prgl_set_shader_uniform_mat4(
         prgl_current_shader(), PRGL_MODEL_UNIFORM, model
     );
 
-    if (mesh->ebo == 0)
+    if (game_obj->mesh->ebo == 0)
     {
-        glDrawArrays(GL_TRIANGLES, 0, mesh->num_vertices);
+        glDrawArrays(GL_TRIANGLES, 0, game_obj->mesh->num_vertices);
     }
     else
     {
-        glDrawElements(GL_TRIANGLES, mesh->num_vertices, GL_UNSIGNED_INT, 0);
+        glDrawElements(
+            GL_TRIANGLES, game_obj->mesh->num_vertices, GL_UNSIGNED_INT, 0
+        );
     }
 }
 
-void prgl_render_mesh_2d(
-    struct PRGLMesh *mesh, vec2 position, float rotation_degrees, vec2 scale
-)
+void prgl_render_game_object_2d(struct PRGLGameObject *game_obj)
 {
-    glBindVertexArray(mesh->vao);
+    glBindVertexArray(game_obj->mesh->vao);
 
-    if (mesh->texture_id != 0)
+    if (game_obj->mesh->texture_id != 0)
     {
-        glBindTexture(GL_TEXTURE_2D, mesh->texture_id);
+        glBindTexture(GL_TEXTURE_2D, game_obj->mesh->texture_id);
     }
 
     // Transform the mesh to the render position.
     mat4 trans;
+    vec2 position = {game_obj->position[0], game_obj->position[1]};
+    vec2 scale = {game_obj->scale[0], game_obj->scale[1]};
+
     glm_mat4_identity(trans);
     glm_translate(trans, (vec3){position[0], position[1], 0.0f});
 
+    // Perform the rotation about the center of the game object
     glm_translate(trans, (vec3){0.5f * scale[0], 0.5f * scale[1], 0.0f});
-    glm_rotate(trans, glm_rad(rotation_degrees), (vec3){0.0f, 0.0f, 1.0f});
+    glm_quat_rotate(trans, game_obj->orientation, trans);
     glm_translate(trans, (vec3){-0.5f * scale[0], -0.5f * scale[1], 0.0f});
 
-    glm_scale(trans, (vec3){scale[0], scale[1], 1.0f});
+    // Negate y-axis scale, cglm quats expects 3D right hand coordinate with +y
+    // up, but our 2D orthogonal projection has 0,0 at top left so -y is up
+    glm_scale(trans, (vec3){scale[0], -scale[1], 1.0f});
     prgl_set_shader_uniform_mat4(
         prgl_shader(PRGL_SHADER_2D), PRGL_MODEL_UNIFORM, trans
     );
 
-    if (mesh->ebo == 0)
+    if (game_obj->mesh->ebo == 0)
     {
-        glDrawArrays(GL_TRIANGLES, 0, mesh->num_vertices);
+        glDrawArrays(GL_TRIANGLES, 0, game_obj->mesh->num_vertices);
     }
     else
     {
-        glDrawElements(GL_TRIANGLES, mesh->num_vertices, GL_UNSIGNED_INT, 0);
+        glDrawElements(
+            GL_TRIANGLES, game_obj->mesh->num_vertices, GL_UNSIGNED_INT, 0
+        );
     }
 }
 

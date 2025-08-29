@@ -3,17 +3,14 @@
 
 #include "cglm/types.h"
 
+struct PRGLGameObject;
+
 /**
  * Creates a model matrix which can be passed to a shader transform uniform.
  *
  * @param[in,out] dest
- * @param[in] position
- * @param[in] rotation_axis
- * @param degrees
- * @param[in] scale
+ * @param[in] game_obj The game object to create the model matrix from.
  */
-void prgl_create_model_matrix(
-    mat4 dest, vec3 position, vec3 rotation_axis, float degrees, vec3 scale
-);
+void prgl_create_model_matrix(mat4 *dest, struct PRGLGameObject *game_obj);
 
 #endif

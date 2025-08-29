@@ -1,8 +1,9 @@
 #ifndef PRGL_RENDER_H
 #define PRGL_RENDER_H
 
-#include "mesh.h"
 #include "cglm/types.h"
+
+struct PRGLGameObject;
 
 extern const vec2 PRGL_RENDER_RESOLUTION;
 
@@ -26,31 +27,19 @@ struct PRGLPointLight
 void prgl_clear_screen(float r, float g, float b, float a);
 
 /**
- * Renders a mesh to the screen at a position.
+ * Renders a game object to the screen.
  *
- * @param[in] mesh
- * @param vec3 position The XYZ position to render the mesh at.
- * @param vec3 rotation_axis The XYZ axis of the rotation.
- * @param float degrees The angle of rotation in degrees.
- * @param vec3 scale The XYZ scale to apply to the mesh.
+ * @param[in] game_obj
  */
-void prgl_render_mesh(
-    struct PRGLMesh *mesh, vec3 position, vec3 rotation_axis, float degrees,
-    vec3 scale
-);
+void prgl_render_game_object_3d(struct PRGLGameObject *game_obj);
 
 /**
- * Renders a mesh to the screen at a 2D position.
+ * Renders a game object to the screen at a 2D position.
  * Rotation will be about the Z axis.
  *
- * @param[in] mesh
- * @param vec2 position The XY position to render the mesh at.
- * @param float degrees The angle of rotation in degrees.
- * @param vec2 scale The XY scale to apply to the mesh.
+ * @param[in] game_obj
  */
-void prgl_render_mesh_2d(
-    struct PRGLMesh *mesh, vec2 position, float rotation_degrees, vec2 scale
-);
+void prgl_render_game_object_2d(struct PRGLGameObject *game_obj);
 
 /**
  * Passes lighting data from lights to the active shader.
