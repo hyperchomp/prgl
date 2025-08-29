@@ -2,6 +2,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
 [
     [ "camera.c", "camera_8c.html", "camera_8c" ],
     [ "game.c", "game_8c.html", "game_8c" ],
+    [ "game_object.c", "game__object_8c.html", "game__object_8c" ],
     [ "input.c", "input_8c.html", "input_8c" ],
     [ "mathx.c", "mathx_8c.html", "mathx_8c" ],
     [ "mesh.c", "mesh_8c.html", "mesh_8c" ],

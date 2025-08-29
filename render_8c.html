@@ -96,11 +96,13 @@ $(document).ready(function(){initNavTree('render_8c.html',''); initResizable(); 
   <div class="headertitle"><div class="title">render.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;glad.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="game__object_8h_source.html">game_object.h</a>&quot;</code><br />
+<code>#include &quot;glad.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="screen__internal_8h_source.html">screen_internal.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="shaders_8h_source.html">shaders.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="render_8h_source.html">render.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="render__internal_8h_source.html">render_internal.h</a>&quot;</code><br />
+<code>#include &quot;cglm/quat.h&quot;</code><br />
 <code>#include &quot;cglm/affine.h&quot;</code><br />
 <code>#include &quot;cglm/mat4.h&quot;</code><br />
 <code>#include &quot;cglm/types.h&quot;</code><br />
@@ -117,10 +119,10 @@ $(document).ready(function(){initNavTree('render_8c.html',''); initResizable(); 
 Functions</h2></td></tr>
 <tr class="memitem:a6be9b8ca983e7efddcd062bf9410832e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a6be9b8ca983e7efddcd062bf9410832e">prgl_clear_screen</a> (float r, float g, float b, float a)</td></tr>
 <tr class="separator:a6be9b8ca983e7efddcd062bf9410832e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adea9fc613c73000a611de4b59f64e950"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#adea9fc613c73000a611de4b59f64e950">prgl_render_mesh</a> (struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *mesh, vec3 position, vec3 rotation_axis, float degrees, vec3 scale)</td></tr>
-<tr class="separator:adea9fc613c73000a611de4b59f64e950"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1510a95e1e328a16d58f741b2daf23f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#aa1510a95e1e328a16d58f741b2daf23f">prgl_render_mesh_2d</a> (struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *mesh, vec2 position, float rotation_degrees, vec2 scale)</td></tr>
-<tr class="separator:aa1510a95e1e328a16d58f741b2daf23f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8b44acec363c7fd9290052b5223720a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#ae8b44acec363c7fd9290052b5223720a">prgl_render_game_object_3d</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *game_obj)</td></tr>
+<tr class="separator:ae8b44acec363c7fd9290052b5223720a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83efa20ac0806d48753c575015432c30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a83efa20ac0806d48753c575015432c30">prgl_render_game_object_2d</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *game_obj)</td></tr>
+<tr class="separator:a83efa20ac0806d48753c575015432c30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46e1eaa4c4dc1808365fa60a09f3f3db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a46e1eaa4c4dc1808365fa60a09f3f3db">prgl_update_lighting</a> (struct <a class="el" href="structPRGLPointLight.html">PRGLPointLight</a> point_lights[], int num_lights)</td></tr>
 <tr class="separator:a46e1eaa4c4dc1808365fa60a09f3f3db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac62cc4254c291ed5ed40af78460f89fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#ac62cc4254c291ed5ed40af78460f89fe">prgl_enable_render_texture</a> (unsigned int fbo)</td></tr>
@@ -182,7 +184,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00018">18</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00020">20</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -204,118 +206,61 @@ Variables</h2></td></tr>
 <p>Enables the render texture fbo for rendering. This should be called before doing any rendering to ensure everything is drawn to the internal resolution.</p>
 <p>The screen should be cleared after calling this using <a class="el" href="render_8c.html#a6be9b8ca983e7efddcd062bf9410832e">prgl_clear_screen()</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00135">135</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00142">142</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
-<a id="adea9fc613c73000a611de4b59f64e950" name="adea9fc613c73000a611de4b59f64e950"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adea9fc613c73000a611de4b59f64e950">&#9670;&#160;</a></span>prgl_render_mesh()</h2>
+<a id="a83efa20ac0806d48753c575015432c30" name="a83efa20ac0806d48753c575015432c30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83efa20ac0806d48753c575015432c30">&#9670;&#160;</a></span>prgl_render_game_object_2d()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void prgl_render_mesh </td>
+          <td class="memname">void prgl_render_game_object_2d </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td>
-          <td class="paramname"><em>mesh</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *&#160;</td>
+          <td class="paramname"><em>game_obj</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">vec3&#160;</td>
-          <td class="paramname"><em>position</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">vec3&#160;</td>
-          <td class="paramname"><em>rotation_axis</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>degrees</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">vec3&#160;</td>
-          <td class="paramname"><em>scale</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Renders a mesh to the screen at a position.</p>
+<p>Renders a game object to the screen at a 2D position. Rotation will be about the Z axis.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">mesh</td><td></td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">vec3</td><td>position The XYZ position to render the mesh at. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">vec3</td><td>rotation_axis The XYZ axis of the rotation. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">float</td><td>degrees The angle of rotation in degrees. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">vec3</td><td>scale The XYZ scale to apply to the mesh. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">game_obj</td><td></td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00024">24</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00054">54</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
-<a id="aa1510a95e1e328a16d58f741b2daf23f" name="aa1510a95e1e328a16d58f741b2daf23f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1510a95e1e328a16d58f741b2daf23f">&#9670;&#160;</a></span>prgl_render_mesh_2d()</h2>
+<a id="ae8b44acec363c7fd9290052b5223720a" name="ae8b44acec363c7fd9290052b5223720a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8b44acec363c7fd9290052b5223720a">&#9670;&#160;</a></span>prgl_render_game_object_3d()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void prgl_render_mesh_2d </td>
+          <td class="memname">void prgl_render_game_object_3d </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td>
-          <td class="paramname"><em>mesh</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *&#160;</td>
+          <td class="paramname"><em>game_obj</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">vec2&#160;</td>
-          <td class="paramname"><em>position</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>rotation_degrees</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">vec2&#160;</td>
-          <td class="paramname"><em>scale</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Renders a mesh to the screen at a 2D position. Rotation will be about the Z axis.</p>
+<p>Renders a game object to the screen.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">mesh</td><td></td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">vec2</td><td>position The XY position to render the mesh at. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">float</td><td>degrees The angle of rotation in degrees. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">vec2</td><td>scale The XY scale to apply to the mesh. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">game_obj</td><td></td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00053">53</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00026">26</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -353,7 +298,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00142">142</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00149">149</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -390,7 +335,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00088">88</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00095">95</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -407,7 +352,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00016">16</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00018">18</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
