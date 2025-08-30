@@ -30,7 +30,7 @@ void prgl_run_game(
  * Gets the time elapsed in seconds from the start of the last update until the
  * start of the current update.
  *
- * @param[out] delta_time
+ * @return The delta time of the previous frame.
  */
 double prgl_delta_time(void);
 
