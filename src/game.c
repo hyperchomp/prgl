@@ -8,7 +8,6 @@
 #include "texture_internal.h"
 #include "screen_internal.h"
 #include "shaders_internal.h"
-#include <stdlib.h>
 #include <GLFW/glfw3.h>
 
 static double last_update_start = 0;
@@ -19,7 +18,7 @@ struct PRGLMesh *screen_render_quad;
 void prgl_run_game(
     const char *const title, void (*prgl_init)(void),
     void (*prgl_update)(double delta_time), void (*prgl_render)(void),
-    void (*prgl_render_gui)(void)
+    void (*prgl_render_gui)(void), void (*prgl_cleanup)(void)
 )
 {
     glfwInit();
@@ -68,6 +67,8 @@ void prgl_run_game(
         prgl_render_gui();
 
         prgl_render_render_texture(render_texture.texture, screen_render_quad);
+
+        prgl_cleanup();
 
         glfwSwapBuffers(screen.window);
         glfwPollEvents();
