@@ -9,6 +9,8 @@ set(CMAKE_PREFIX_PATH "/usr/local" ${CMAKE_PREFIX_PATH})
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+option(PRGL_ENABLE_ASAN "Enable Address Sanitizer for memory issues" OFF)
+
 add_library(${CMAKE_PROJECT_NAME})
 
 # BUILD_INTERFACE is for the files in the source tree
@@ -38,27 +40,27 @@ set(PRGL_SOURCES
     "${CMAKE_SOURCE_DIR}/src/game_object.c"
 )
 
-set(EXTERN_SOURCES
+set(PRGL_EXTERN_SOURCES
     "${CMAKE_SOURCE_DIR}/extern/glad.c"
     "${CMAKE_SOURCE_DIR}/extern/stb_image.c"
 )
 
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${PRGL_SOURCES} ${EXTERN_SOURCES})
+target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${PRGL_SOURCES} ${PRGL_EXTERN_SOURCES})
 
 # Compiler flags for extra warnings/errors
-set(C_FLAGS -pedantic -Wall -Wextra -Werror)
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+set(PRGL_ERROR_FLAGS -pedantic -Wall -Wextra -Werror)
+if (CMAKE_BUILD_TYPE STREQUAL "Debug" AND PRGL_ENABLE_ASAN)
     message(STATUS "Enabling Debug build flags...")
     set(ASAN_FLAGS -fsanitize=address -g -fno-omit-frame-pointer)
-    target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE ${C_FLAGS} ${ASAN_FLAGS})
+    target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE ${PRGL_ERROR_FLAGS} ${ASAN_FLAGS})
     target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE -fsanitize=address)
 else()
-    target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE ${C_FLAGS})
+    target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE ${PRGL_ERROR_FLAGS})
 endif()
 
 # Don't set extra flags for external libraries
 set_source_files_properties(
-    ${EXTERN_SOURCES} PROPERTIES COMPILE_FLAGS ""
+    ${PRGL_EXTERN_SOURCES} PROPERTIES COMPILE_FLAGS ""
 )
 
 include(GNUInstallDirs)
