@@ -2,24 +2,28 @@
 #define PRGL_GAME_H
 
 /**
- * Runs the main loop of the game. This should be called first in any game.
+ * @brief Runs the core loop of the game.
  *
- * Callbacks are called in the same order as the arguments. All callbacks except
- * init are called every game loop, init is called once before the game loop
- * starts the first time.
+ * Handles the core game loop, and calls the given callback functions at the
+ * appropriate times. This should be the first function called in your game's
+ * main function to ensure prgl is initialized before using it.
+ *
+ * `prgl_init` is called one time before the core game loop starts.
+ * All other callbacks are called once per frame in the following order:
+ * `prgl_update` -> `prgl_render_3d` -> `prgl_render_2d -> `prgl_cleanup`
  *
  * @param[in] title Title of the game, this will be used as the window header
- * @param[in] prgl_init Initialize callback function, runs before the main game
- * loop starts.
- * @param[in] prgl_update The update callback function, must accept a delta time
- * @param[in] prgl_render Render callback function
- * @param[in] prgl_render_gui Render GUI callback function
- * @param[in] prgl_cleanup Cleanup callback for handling memory, etc.
+ * @param[in] prgl_init Initialize callback, runs one time before the
+ * game loop starts.
+ * @param[in] prgl_update Update callback.
+ * @param[in] prgl_render_3d Renders the 3D scene.
+ * @param[in] prgl_render_2d Renders a 2D scene on top of the 3D scene.
+ * @param[in] prgl_cleanup Cleanup callback for handling memory at end of frame.
  */
 void prgl_run_game(
-    const char *const title, void (*prgl_init)(void),
-    void (*prgl_update)(double delta_time), void (*prgl_render)(void),
-    void (*prgl_render_gui)(void), void (*prgl_cleanup)(void)
+    const char *const title, void (*prgl_init)(void), void (*prgl_update)(void),
+    void (*prgl_render_3d)(void), void (*prgl_render_2d)(void),
+    void (*prgl_cleanup)(void)
 );
 
 /**

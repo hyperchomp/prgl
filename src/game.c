@@ -16,9 +16,9 @@ struct PRGLRenderTexture render_texture;
 struct PRGLMesh *screen_render_quad;
 
 void prgl_run_game(
-    const char *const title, void (*prgl_init)(void),
-    void (*prgl_update)(double delta_time), void (*prgl_render)(void),
-    void (*prgl_render_gui)(void), void (*prgl_cleanup)(void)
+    const char *const title, void (*prgl_init)(void), void (*prgl_update)(void),
+    void (*prgl_render_3d)(void), void (*prgl_render_2d)(void),
+    void (*prgl_cleanup)(void)
 )
 {
     glfwInit();
@@ -52,9 +52,9 @@ void prgl_run_game(
             prgl_active_camera(), prgl_active_camera()->fov,
             PRGL_CAMERA_PROJECTION_PERSPECTIVE
         );
-        prgl_update(dt);
+        prgl_update();
 
-        prgl_render();
+        prgl_render_3d();
 
         glDisable(GL_DEPTH_TEST);
         prgl_use_shader_2d();
@@ -64,7 +64,7 @@ void prgl_run_game(
         prgl_set_camera_projection(
             prgl_active_camera(), 0.0f, PRGL_CAMERA_PROJECTION_ORTHOGONAL
         );
-        prgl_render_gui();
+        prgl_render_2d();
 
         prgl_render_render_texture(render_texture.texture, screen_render_quad);
 
