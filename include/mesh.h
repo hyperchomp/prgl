@@ -26,11 +26,6 @@ struct PRGLMesh
 };
 
 /**
- * Creates a quad for drawing the screen's render texture to.
- */
-struct PRGLMesh *prgl_create_screen_quad(void);
-
-/**
  * Creates a triangle mesh with the given vertex positions.
  *
  * @param[in] vertices

@@ -2,6 +2,7 @@
 #include "game.h"
 #include "camera.h"
 #include "mesh.h"
+#include "mesh_internal.h"
 #include "render.h"
 #include "render_internal.h"
 #include "shaders.h"

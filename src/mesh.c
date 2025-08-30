@@ -1,9 +1,24 @@
+#include "mesh.h"
+#include "mesh_internal.h"
 #include "glad.h"
 #include "common_macros.h"
-#include "mesh.h"
 #include "cglm/types.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+void prgl_init_mesh(
+    struct PRGLMesh *mesh, int num_vertices, unsigned int vao, unsigned int vbo,
+    unsigned int ebo
+)
+{
+    *mesh = (struct PRGLMesh){
+        .num_vertices = num_vertices,
+        .vao = vao,
+        .vbo = vbo,
+        .ebo = ebo,
+        .texture_id = 0,
+    };
+}
 
 struct PRGLMesh *prgl_create_screen_quad(void)
 {
@@ -73,22 +88,15 @@ struct PRGLMesh *prgl_create_screen_quad(void)
     );
     glEnableVertexAttribArray(2);
 
-    struct PRGLMesh *mesh_pointer = malloc(sizeof(struct PRGLMesh));
-    if (mesh_pointer == NULL)
+    struct PRGLMesh *mesh = malloc(sizeof(struct PRGLMesh));
+    if (mesh == NULL)
     {
         printf("prgl_create_screen_quad: Error allocating mesh "
                "pointer memory!");
     }
 
-    // Texture zero'd, must be set after using load_texture()
-    *mesh_pointer = (struct PRGLMesh){
-        .num_vertices = ARR_LEN(indices),
-        .vao = vao,
-        .vbo = vbo,
-        .ebo = ebo,
-        .texture_id = 0,
-    };
-    return mesh_pointer;
+    prgl_init_mesh(mesh, ARR_LEN(indices), vao, vbo, ebo);
+    return mesh;
 }
 
 struct PRGLMesh *prgl_create_triangle(mat3 vertices)
@@ -137,20 +145,14 @@ struct PRGLMesh *prgl_create_triangle(mat3 vertices)
     );
     glEnableVertexAttribArray(2);
 
-    struct PRGLMesh *mesh_pointer = malloc(sizeof(struct PRGLMesh));
-    if (mesh_pointer == NULL)
+    struct PRGLMesh *mesh = malloc(sizeof(struct PRGLMesh));
+    if (mesh == NULL)
     {
         printf("prgl_create_triangle: Error allocating mesh pointer memory!");
     }
 
-    *mesh_pointer = (struct PRGLMesh){
-        .num_vertices = 3,
-        .vao = vao,
-        .vbo = vbo,
-        .ebo = 0,
-        .texture_id = 0,
-    };
-    return mesh_pointer;
+    prgl_init_mesh(mesh, 3, vao, vbo, 0);
+    return mesh;
 }
 
 struct PRGLMesh *prgl_create_quad(mat4 vertices)
@@ -228,24 +230,15 @@ struct PRGLMesh *prgl_create_quad(mat4 vertices)
     );
     glEnableVertexAttribArray(2);
 
-    struct PRGLMesh *mesh_pointer = malloc(sizeof(struct PRGLMesh));
-    if (mesh_pointer == NULL)
+    struct PRGLMesh *mesh = malloc(sizeof(struct PRGLMesh));
+    if (mesh == NULL)
     {
         printf("prgl_create_rectangle: Error allocating mesh "
                "pointer memory!");
     }
 
-    int num_vertices = ARR_LEN(indices);
-
-    // Texture zero'd, must be set after using load_texture()
-    *mesh_pointer = (struct PRGLMesh){
-        .num_vertices = num_vertices,
-        .vao = vao,
-        .vbo = vbo,
-        .ebo = ebo,
-        .texture_id = 0,
-    };
-    return mesh_pointer;
+    prgl_init_mesh(mesh, ARR_LEN(indices), vao, vbo, ebo);
+    return mesh;
 }
 
 struct PRGLMesh *prgl_create_cube(void)
@@ -324,21 +317,14 @@ struct PRGLMesh *prgl_create_cube(void)
     );
     glEnableVertexAttribArray(2);
 
-    struct PRGLMesh *mesh_pointer = malloc(sizeof(struct PRGLMesh));
-    if (mesh_pointer == NULL)
+    struct PRGLMesh *mesh = malloc(sizeof(struct PRGLMesh));
+    if (mesh == NULL)
     {
         printf("prgl_create_cube: Error allocating mesh pointer memory!");
     }
 
-    // Texture zero'd, must be set after using load_texture()
-    *mesh_pointer = (struct PRGLMesh){
-        .num_vertices = 36,
-        .vao = vao,
-        .vbo = vbo,
-        .ebo = 0,
-        .texture_id = 0,
-    };
-    return mesh_pointer;
+    prgl_init_mesh(mesh, 36, vao, vbo, 0);
+    return mesh;
 }
 
 void prgl_delete_mesh(struct PRGLMesh *mesh)
