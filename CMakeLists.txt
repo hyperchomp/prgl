@@ -23,26 +23,43 @@ target_include_directories(${CMAKE_PROJECT_NAME}
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/extern>
 )
 
-target_sources(${CMAKE_PROJECT_NAME}
-    PRIVATE "${CMAKE_SOURCE_DIR}/src/screen.c"
-            "${CMAKE_SOURCE_DIR}/src/input.c"
-            "${CMAKE_SOURCE_DIR}/src/game.c"
-            "${CMAKE_SOURCE_DIR}/src/render.c"
-            "${CMAKE_SOURCE_DIR}/src/shaders.c"
-            "${CMAKE_SOURCE_DIR}/src/shaders_init.c"
-            "${CMAKE_SOURCE_DIR}/src/texture.c"
-            "${CMAKE_SOURCE_DIR}/src/camera.c"
-            "${CMAKE_SOURCE_DIR}/src/mathx.c"
-            "${CMAKE_SOURCE_DIR}/src/mesh.c"
-            "${CMAKE_SOURCE_DIR}/src/transform.c"
-            "${CMAKE_SOURCE_DIR}/src/game_object.c"
-            "${CMAKE_SOURCE_DIR}/extern/glad.c"
-            "${CMAKE_SOURCE_DIR}/extern/stb_image.c"
+set(PRGL_SOURCES
+    "${CMAKE_SOURCE_DIR}/src/screen.c"
+    "${CMAKE_SOURCE_DIR}/src/input.c"
+    "${CMAKE_SOURCE_DIR}/src/game.c"
+    "${CMAKE_SOURCE_DIR}/src/render.c"
+    "${CMAKE_SOURCE_DIR}/src/shaders.c"
+    "${CMAKE_SOURCE_DIR}/src/shaders_init.c"
+    "${CMAKE_SOURCE_DIR}/src/texture.c"
+    "${CMAKE_SOURCE_DIR}/src/camera.c"
+    "${CMAKE_SOURCE_DIR}/src/mathx.c"
+    "${CMAKE_SOURCE_DIR}/src/mesh.c"
+    "${CMAKE_SOURCE_DIR}/src/transform.c"
+    "${CMAKE_SOURCE_DIR}/src/game_object.c"
 )
+
+set(EXTERN_SOURCES
+    "${CMAKE_SOURCE_DIR}/extern/glad.c"
+    "${CMAKE_SOURCE_DIR}/extern/stb_image.c"
+)
+
+target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${PRGL_SOURCES} ${EXTERN_SOURCES})
 
 # Compiler flags for extra warnings/errors
 set(C_FLAGS -pedantic -Wall -Wextra -Werror)
-target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE ${C_FLAGS})
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    message(STATUS "Enabling Debug build flags...")
+    set(ASAN_FLAGS -fsanitize=address -g -fno-omit-frame-pointer)
+    target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE ${C_FLAGS} ${ASAN_FLAGS})
+    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE -fsanitize=address)
+else()
+    target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE ${C_FLAGS})
+endif()
+
+# Don't set extra flags for external libraries
+set_source_files_properties(
+    ${EXTERN_SOURCES} PROPERTIES COMPILE_FLAGS ""
+)
 
 include(GNUInstallDirs)
 set(
