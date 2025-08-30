@@ -106,15 +106,14 @@ $(document).ready(function(){initNavTree('game_8c.html',''); initResizable(); })
 <code>#include &quot;<a class="el" href="texture__internal_8h_source.html">texture_internal.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="screen__internal_8h_source.html">screen_internal.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="shaders__internal_8h_source.html">shaders_internal.h</a>&quot;</code><br />
-<code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;GLFW/glfw3.h&gt;</code><br />
 </div>
 <p><a href="game_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:acddb7017dceb9e3bfc9bc7b5ac66318e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#acddb7017dceb9e3bfc9bc7b5ac66318e">prgl_run_game</a> (const char *const title, void(*prgl_init)(void), void(*prgl_update)(double delta_time), void(*prgl_render)(void), void(*prgl_render_gui)(void))</td></tr>
-<tr class="separator:acddb7017dceb9e3bfc9bc7b5ac66318e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade7c2bc974a3632ad521b2f6c889ed8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#ade7c2bc974a3632ad521b2f6c889ed8d">prgl_run_game</a> (const char *const title, void(*prgl_init)(void), void(*prgl_update)(double delta_time), void(*prgl_render)(void), void(*prgl_render_gui)(void), void(*prgl_cleanup)(void))</td></tr>
+<tr class="separator:ade7c2bc974a3632ad521b2f6c889ed8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a157b31b69e21c0add3f3f9616ce7eeea"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#a157b31b69e21c0add3f3f9616ce7eeea">prgl_delta_time</a> (void)</td></tr>
 <tr class="separator:a157b31b69e21c0add3f3f9616ce7eeea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -149,12 +148,12 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00082">82</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00083">83</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
 
 </div>
 </div>
-<a id="acddb7017dceb9e3bfc9bc7b5ac66318e" name="acddb7017dceb9e3bfc9bc7b5ac66318e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acddb7017dceb9e3bfc9bc7b5ac66318e">&#9670;&#160;</a></span>prgl_run_game()</h2>
+<a id="ade7c2bc974a3632ad521b2f6c889ed8d" name="ade7c2bc974a3632ad521b2f6c889ed8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade7c2bc974a3632ad521b2f6c889ed8d">&#9670;&#160;</a></span>prgl_run_game()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -187,7 +186,13 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">void(*)(void)&#160;</td>
-          <td class="paramname"><em>prgl_render_gui</em>&#160;</td>
+          <td class="paramname"><em>prgl_render_gui</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*)(void)&#160;</td>
+          <td class="paramname"><em>prgl_cleanup</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -197,19 +202,20 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Runs the main loop of the game. This should be called first in any game.</p>
-<p>Callbacks are called in the same order as the arguments.</p>
+<p>Callbacks are called in the same order as the arguments. All callbacks except init are called every game loop, init is called once before the game loop starts the first time.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">title</td><td>Title of the game, this will be used as the window header </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">prgl_init</td><td>Initialize callback function, runs before the main game loop starts. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">prgl_update</td><td>The update callback function, must accept a delta time </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">prgl_render</td><td>Render callback function </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">prgl_render_gui</td><td>Render gui callback function </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">prgl_render_gui</td><td>Render GUI callback function </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">prgl_cleanup</td><td>Cleanup callback for handling memory, etc. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00019">19</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00018">18</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
 
 </div>
 </div>
@@ -226,7 +232,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00016">16</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00015">15</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
 
 </div>
 </div>
@@ -242,7 +248,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00017">17</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00016">16</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
 
 </div>
 </div>

@@ -96,17 +96,17 @@ $(document).ready(function(){initNavTree('game_8h_source.html',''); initResizabl
 <a href="game_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef PRGL_GAME_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define PRGL_GAME_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keywordtype">void</span> <a class="code hl_function" href="game_8h.html#acddb7017dceb9e3bfc9bc7b5ac66318e">prgl_run_game</a>(</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> title, <span class="keywordtype">void</span> (*prgl_init)(<span class="keywordtype">void</span>),</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">void</span> (*prgl_update)(<span class="keywordtype">double</span> delta_time), <span class="keywordtype">void</span> (*prgl_render)(<span class="keywordtype">void</span>),</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">void</span> (*prgl_render_gui)(<span class="keywordtype">void</span>)</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keywordtype">double</span> <a class="code hl_function" href="game_8h.html#a157b31b69e21c0add3f3f9616ce7eeea">prgl_delta_time</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="agame_8h_html_a157b31b69e21c0add3f3f9616ce7eeea"><div class="ttname"><a href="game_8h.html#a157b31b69e21c0add3f3f9616ce7eeea">prgl_delta_time</a></div><div class="ttdeci">double prgl_delta_time(void)</div><div class="ttdef"><b>Definition:</b> <a href="game_8c_source.html#l00082">game.c:82</a></div></div>
-<div class="ttc" id="agame_8h_html_acddb7017dceb9e3bfc9bc7b5ac66318e"><div class="ttname"><a href="game_8h.html#acddb7017dceb9e3bfc9bc7b5ac66318e">prgl_run_game</a></div><div class="ttdeci">void prgl_run_game(const char *const title, void(*prgl_init)(void), void(*prgl_update)(double delta_time), void(*prgl_render)(void), void(*prgl_render_gui)(void))</div><div class="ttdef"><b>Definition:</b> <a href="game_8c_source.html#l00019">game.c:19</a></div></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keywordtype">void</span> <a class="code hl_function" href="game_8h.html#ade7c2bc974a3632ad521b2f6c889ed8d">prgl_run_game</a>(</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> title, <span class="keywordtype">void</span> (*prgl_init)(<span class="keywordtype">void</span>),</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">void</span> (*prgl_update)(<span class="keywordtype">double</span> delta_time), <span class="keywordtype">void</span> (*prgl_render)(<span class="keywordtype">void</span>),</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">void</span> (*prgl_render_gui)(<span class="keywordtype">void</span>), <span class="keywordtype">void</span> (*prgl_cleanup)(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keywordtype">double</span> <a class="code hl_function" href="game_8h.html#a157b31b69e21c0add3f3f9616ce7eeea">prgl_delta_time</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="agame_8h_html_a157b31b69e21c0add3f3f9616ce7eeea"><div class="ttname"><a href="game_8h.html#a157b31b69e21c0add3f3f9616ce7eeea">prgl_delta_time</a></div><div class="ttdeci">double prgl_delta_time(void)</div><div class="ttdef"><b>Definition:</b> <a href="game_8c_source.html#l00083">game.c:83</a></div></div>
+<div class="ttc" id="agame_8h_html_ade7c2bc974a3632ad521b2f6c889ed8d"><div class="ttname"><a href="game_8h.html#ade7c2bc974a3632ad521b2f6c889ed8d">prgl_run_game</a></div><div class="ttdeci">void prgl_run_game(const char *const title, void(*prgl_init)(void), void(*prgl_update)(double delta_time), void(*prgl_render)(void), void(*prgl_render_gui)(void), void(*prgl_cleanup)(void))</div><div class="ttdef"><b>Definition:</b> <a href="game_8c_source.html#l00018">game.c:18</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
