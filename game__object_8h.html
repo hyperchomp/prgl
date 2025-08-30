@@ -107,16 +107,16 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a84005fb34ddef0397220498ab1f4aa89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__object_8h.html#a84005fb34ddef0397220498ab1f4aa89">prgl_init_game_object</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *game_obj, struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *mesh, vec3 position)</td></tr>
-<tr class="separator:a84005fb34ddef0397220498ab1f4aa89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4447e206d981e4ba27bdba099462d337"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__object_8h.html#a4447e206d981e4ba27bdba099462d337">prgl_rotate_game_object</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *game_obj, float yaw_d, float pitch_d, float roll_d)</td></tr>
-<tr class="separator:a4447e206d981e4ba27bdba099462d337"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2eadf9f5ee7394f66e8723f977185eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__object_8h.html#ad2eadf9f5ee7394f66e8723f977185eb">prgl_set_orientation_axis_angle</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *game_obj, vec3 axis, float angle_d)</td></tr>
-<tr class="separator:ad2eadf9f5ee7394f66e8723f977185eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf1749e927c1497ae32c80dd2c12df65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__object_8h.html#acf1749e927c1497ae32c80dd2c12df65">prgl_init_game_object</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const game_obj, struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *const mesh, vec3 position)</td></tr>
+<tr class="separator:acf1749e927c1497ae32c80dd2c12df65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c94fffeb4df58d320b6988b5297e5ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__object_8h.html#a5c94fffeb4df58d320b6988b5297e5ea">prgl_rotate_game_object</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const game_obj, float yaw_d, float pitch_d, float roll_d)</td></tr>
+<tr class="separator:a5c94fffeb4df58d320b6988b5297e5ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3e64c275dd17636d4c8be52f6b221a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__object_8h.html#ac3e64c275dd17636d4c8be52f6b221a0">prgl_set_orientation_axis_angle</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const game_obj, vec3 axis, float angle_d)</td></tr>
+<tr class="separator:ac3e64c275dd17636d4c8be52f6b221a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a84005fb34ddef0397220498ab1f4aa89" name="a84005fb34ddef0397220498ab1f4aa89"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84005fb34ddef0397220498ab1f4aa89">&#9670;&#160;</a></span>prgl_init_game_object()</h2>
+<a id="acf1749e927c1497ae32c80dd2c12df65" name="acf1749e927c1497ae32c80dd2c12df65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf1749e927c1497ae32c80dd2c12df65">&#9670;&#160;</a></span>prgl_init_game_object()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -124,13 +124,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void prgl_init_game_object </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const&#160;</td>
           <td class="paramname"><em>game_obj</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *const&#160;</td>
           <td class="paramname"><em>mesh</em>, </td>
         </tr>
         <tr>
@@ -160,8 +160,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4447e206d981e4ba27bdba099462d337" name="a4447e206d981e4ba27bdba099462d337"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4447e206d981e4ba27bdba099462d337">&#9670;&#160;</a></span>prgl_rotate_game_object()</h2>
+<a id="a5c94fffeb4df58d320b6988b5297e5ea" name="a5c94fffeb4df58d320b6988b5297e5ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c94fffeb4df58d320b6988b5297e5ea">&#9670;&#160;</a></span>prgl_rotate_game_object()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -169,7 +169,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void prgl_rotate_game_object </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const&#160;</td>
           <td class="paramname"><em>game_obj</em>, </td>
         </tr>
         <tr>
@@ -208,12 +208,12 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8c_source.html#l00015">15</a> of file <a class="el" href="game__object_8c_source.html">game_object.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__object_8c_source.html#l00016">16</a> of file <a class="el" href="game__object_8c_source.html">game_object.c</a>.</p>
 
 </div>
 </div>
-<a id="ad2eadf9f5ee7394f66e8723f977185eb" name="ad2eadf9f5ee7394f66e8723f977185eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad2eadf9f5ee7394f66e8723f977185eb">&#9670;&#160;</a></span>prgl_set_orientation_axis_angle()</h2>
+<a id="ac3e64c275dd17636d4c8be52f6b221a0" name="ac3e64c275dd17636d4c8be52f6b221a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3e64c275dd17636d4c8be52f6b221a0">&#9670;&#160;</a></span>prgl_set_orientation_axis_angle()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -221,7 +221,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void prgl_set_orientation_axis_angle </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const&#160;</td>
           <td class="paramname"><em>game_obj</em>, </td>
         </tr>
         <tr>
@@ -253,7 +253,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8c_source.html#l00034">34</a> of file <a class="el" href="game__object_8c_source.html">game_object.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__object_8c_source.html#l00036">36</a> of file <a class="el" href="game__object_8c_source.html">game_object.c</a>.</p>
 
 </div>
 </div>

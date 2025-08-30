@@ -110,12 +110,12 @@ Data Structures</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a6be9b8ca983e7efddcd062bf9410832e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8h.html#a6be9b8ca983e7efddcd062bf9410832e">prgl_clear_screen</a> (float r, float g, float b, float a)</td></tr>
 <tr class="separator:a6be9b8ca983e7efddcd062bf9410832e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8b44acec363c7fd9290052b5223720a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8h.html#ae8b44acec363c7fd9290052b5223720a">prgl_render_game_object_3d</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *game_obj)</td></tr>
-<tr class="separator:ae8b44acec363c7fd9290052b5223720a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83efa20ac0806d48753c575015432c30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8h.html#a83efa20ac0806d48753c575015432c30">prgl_render_game_object_2d</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *game_obj)</td></tr>
-<tr class="separator:a83efa20ac0806d48753c575015432c30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46e1eaa4c4dc1808365fa60a09f3f3db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8h.html#a46e1eaa4c4dc1808365fa60a09f3f3db">prgl_update_lighting</a> (struct <a class="el" href="structPRGLPointLight.html">PRGLPointLight</a> point_lights[], int num_lights)</td></tr>
-<tr class="separator:a46e1eaa4c4dc1808365fa60a09f3f3db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f1916d5f46fe024e79398badadd2d3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8h.html#a4f1916d5f46fe024e79398badadd2d3e">prgl_render_game_object_3d</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const game_obj)</td></tr>
+<tr class="separator:a4f1916d5f46fe024e79398badadd2d3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65b6eee1f7533c07ff7b3a9ec26bfe82"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8h.html#a65b6eee1f7533c07ff7b3a9ec26bfe82">prgl_render_game_object_2d</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const game_obj)</td></tr>
+<tr class="separator:a65b6eee1f7533c07ff7b3a9ec26bfe82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1696d48ecf2079771d24d8639931c7d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8h.html#a1696d48ecf2079771d24d8639931c7d7">prgl_update_lighting</a> (struct <a class="el" href="structPRGLPointLight.html">PRGLPointLight</a> *const point_lights, int num_lights)</td></tr>
+<tr class="separator:a1696d48ecf2079771d24d8639931c7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -175,8 +175,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a83efa20ac0806d48753c575015432c30" name="a83efa20ac0806d48753c575015432c30"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83efa20ac0806d48753c575015432c30">&#9670;&#160;</a></span>prgl_render_game_object_2d()</h2>
+<a id="a65b6eee1f7533c07ff7b3a9ec26bfe82" name="a65b6eee1f7533c07ff7b3a9ec26bfe82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65b6eee1f7533c07ff7b3a9ec26bfe82">&#9670;&#160;</a></span>prgl_render_game_object_2d()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -184,7 +184,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void prgl_render_game_object_2d </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const&#160;</td>
           <td class="paramname"><em>game_obj</em></td><td>)</td>
           <td></td>
         </tr>
@@ -202,8 +202,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ae8b44acec363c7fd9290052b5223720a" name="ae8b44acec363c7fd9290052b5223720a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8b44acec363c7fd9290052b5223720a">&#9670;&#160;</a></span>prgl_render_game_object_3d()</h2>
+<a id="a4f1916d5f46fe024e79398badadd2d3e" name="a4f1916d5f46fe024e79398badadd2d3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f1916d5f46fe024e79398badadd2d3e">&#9670;&#160;</a></span>prgl_render_game_object_3d()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -211,7 +211,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void prgl_render_game_object_3d </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const&#160;</td>
           <td class="paramname"><em>game_obj</em></td><td>)</td>
           <td></td>
         </tr>
@@ -229,8 +229,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a46e1eaa4c4dc1808365fa60a09f3f3db" name="a46e1eaa4c4dc1808365fa60a09f3f3db"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a46e1eaa4c4dc1808365fa60a09f3f3db">&#9670;&#160;</a></span>prgl_update_lighting()</h2>
+<a id="a1696d48ecf2079771d24d8639931c7d7" name="a1696d48ecf2079771d24d8639931c7d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1696d48ecf2079771d24d8639931c7d7">&#9670;&#160;</a></span>prgl_update_lighting()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -238,8 +238,8 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void prgl_update_lighting </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structPRGLPointLight.html">PRGLPointLight</a>&#160;</td>
-          <td class="paramname"><em>point_lights</em>[], </td>
+          <td class="paramtype">struct <a class="el" href="structPRGLPointLight.html">PRGLPointLight</a> *const&#160;</td>
+          <td class="paramname"><em>point_lights</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -257,7 +257,7 @@ Variables</h2></td></tr>
 <p>Passes lighting data from lights to the active shader.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">struct[in]</td><td><a class="el" href="structPRGLPointLight.html">PRGLPointLight</a>[] The point lights for the scene. </td></tr>
+    <tr><td class="paramname">struct[in]</td><td><a class="el" href="structPRGLPointLight.html">PRGLPointLight</a> The point lights for the scene. </td></tr>
   </table>
   </dd>
 </dl>

@@ -109,8 +109,8 @@ $(document).ready(function(){initNavTree('screen_8c.html',''); initResizable(); 
 Functions</h2></td></tr>
 <tr class="memitem:a77e508480827923d72113b1097a4e79c"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPRGLScreen.html">PRGLScreen</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="screen_8c.html#a77e508480827923d72113b1097a4e79c">prgl_screen</a> (void)</td></tr>
 <tr class="separator:a77e508480827923d72113b1097a4e79c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07e20547d5d518620ecf3fe9d5fa5853"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="screen_8c.html#a07e20547d5d518620ecf3fe9d5fa5853">prgl_create_window</a> (char *name)</td></tr>
-<tr class="separator:a07e20547d5d518620ecf3fe9d5fa5853"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03c2703ccb93999ae7695910ed0ccfe4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="screen_8c.html#a03c2703ccb93999ae7695910ed0ccfe4">prgl_create_window</a> (const char *const name)</td></tr>
+<tr class="separator:a03c2703ccb93999ae7695910ed0ccfe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8598f061fb44d49fcc8032a55bd7cddd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="screen_8c.html#a8598f061fb44d49fcc8032a55bd7cddd">prgl_destroy_window</a> (void)</td></tr>
 <tr class="separator:a8598f061fb44d49fcc8032a55bd7cddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a985689302236428da21110d9d44cbd96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="screen_8c.html#a985689302236428da21110d9d44cbd96">prgl_close_game</a> (void)</td></tr>
@@ -146,8 +146,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a07e20547d5d518620ecf3fe9d5fa5853" name="a07e20547d5d518620ecf3fe9d5fa5853"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07e20547d5d518620ecf3fe9d5fa5853">&#9670;&#160;</a></span>prgl_create_window()</h2>
+<a id="a03c2703ccb93999ae7695910ed0ccfe4" name="a03c2703ccb93999ae7695910ed0ccfe4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03c2703ccb93999ae7695910ed0ccfe4">&#9670;&#160;</a></span>prgl_create_window()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -155,14 +155,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void prgl_create_window </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *const&#160;</td>
           <td class="paramname"><em>name</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Creates a new window with the given name and saves it to a <a class="el" href="structPRGLScreen.html">PRGLScreen</a> struct.</p>
-<p>The window needs to be freed by calling <a class="el" href="screen__internal_8h.html#a8598f061fb44d49fcc8032a55bd7cddd">prgl_destroy_window()</a>. </p>
+<p>The window needs to be freed by calling <a class="el" href="screen__internal_8h.html#a8598f061fb44d49fcc8032a55bd7cddd">prgl_destroy_window()</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The title to give the window. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="screen_8c_source.html#l00013">13</a> of file <a class="el" href="screen_8c_source.html">screen.c</a>.</p>
 

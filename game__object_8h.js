@@ -1,7 +1,7 @@
 var game__object_8h =
 [
     [ "PRGLGameObject", "structPRGLGameObject.html", "structPRGLGameObject" ],
-    [ "prgl_init_game_object", "game__object_8h.html#a84005fb34ddef0397220498ab1f4aa89", null ],
-    [ "prgl_rotate_game_object", "game__object_8h.html#a4447e206d981e4ba27bdba099462d337", null ],
-    [ "prgl_set_orientation_axis_angle", "game__object_8h.html#ad2eadf9f5ee7394f66e8723f977185eb", null ]
+    [ "prgl_init_game_object", "game__object_8h.html#acf1749e927c1497ae32c80dd2c12df65", null ],
+    [ "prgl_rotate_game_object", "game__object_8h.html#a5c94fffeb4df58d320b6988b5297e5ea", null ],
+    [ "prgl_set_orientation_axis_angle", "game__object_8h.html#ac3e64c275dd17636d4c8be52f6b221a0", null ]
 ];

@@ -103,8 +103,8 @@ $(document).ready(function(){initNavTree('render__internal_8h.html',''); initRes
 Functions</h2></td></tr>
 <tr class="memitem:ac62cc4254c291ed5ed40af78460f89fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render__internal_8h.html#ac62cc4254c291ed5ed40af78460f89fe">prgl_enable_render_texture</a> (unsigned int fbo)</td></tr>
 <tr class="separator:ac62cc4254c291ed5ed40af78460f89fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a446b319ff45444f8f9f5af807ca6e4f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render__internal_8h.html#a446b319ff45444f8f9f5af807ca6e4f6">prgl_render_render_texture</a> (unsigned int <a class="el" href="game_8c.html#a373f5884865a5eefc0ef2c33ffa8c6b8">render_texture</a>, struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *screen_quad)</td></tr>
-<tr class="separator:a446b319ff45444f8f9f5af807ca6e4f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7e0425ef6e1a74a0950e79893e33213"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render__internal_8h.html#ab7e0425ef6e1a74a0950e79893e33213">prgl_render_render_texture</a> (unsigned int <a class="el" href="game_8c.html#a373f5884865a5eefc0ef2c33ffa8c6b8">render_texture</a>, struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *const screen_quad)</td></tr>
+<tr class="separator:ab7e0425ef6e1a74a0950e79893e33213"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ac62cc4254c291ed5ed40af78460f89fe" name="ac62cc4254c291ed5ed40af78460f89fe"></a>
@@ -125,12 +125,12 @@ Functions</h2></td></tr>
 <p>Enables the render texture fbo for rendering. This should be called before doing any rendering to ensure everything is drawn to the internal resolution.</p>
 <p>The screen should be cleared after calling this using <a class="el" href="render_8c.html#a6be9b8ca983e7efddcd062bf9410832e">prgl_clear_screen()</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00142">142</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00144">144</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
-<a id="a446b319ff45444f8f9f5af807ca6e4f6" name="a446b319ff45444f8f9f5af807ca6e4f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a446b319ff45444f8f9f5af807ca6e4f6">&#9670;&#160;</a></span>prgl_render_render_texture()</h2>
+<a id="ab7e0425ef6e1a74a0950e79893e33213" name="ab7e0425ef6e1a74a0950e79893e33213"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7e0425ef6e1a74a0950e79893e33213">&#9670;&#160;</a></span>prgl_render_render_texture()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -144,7 +144,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *const&#160;</td>
           <td class="paramname"><em>screen_quad</em>&#160;</td>
         </tr>
         <tr>
@@ -163,7 +163,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00149">149</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00151">151</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
