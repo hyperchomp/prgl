@@ -52,20 +52,10 @@ struct PRGLMesh *prgl_create_quad(mat4 vertices);
 struct PRGLMesh *prgl_create_cube(void);
 
 /**
- * Cleans up the GL objects associated with the mesh, call before freeing.
+ * Cleans up the GL objects associated with the mesh and frees it.
+ *
+ * @param mesh[in,out]
  */
 void prgl_delete_mesh(struct PRGLMesh *mesh);
-
-/**
- * Calculates a 3D AABB bounding box from the vertices of a mesh.
- *
- * @param *vertices
- * @param num_vertices
- * @param min_bounds
- * @param max_bounds
- */
-void prgl_calculate_aabb(
-    const float *vertices, int num_vertices, vec3 min_bounds, vec3 max_bounds
-);
 
 #endif

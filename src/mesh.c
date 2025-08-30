@@ -324,21 +324,6 @@ struct PRGLMesh *prgl_create_cube(void)
     );
     glEnableVertexAttribArray(2);
 
-    // Bounding box
-    vec3 min_bounds;
-    vec3 max_bounds;
-    int num_vertices = 36;
-
-    // Create array of just vertex positions without the other data
-    float positions[num_vertices * 3];
-    for (int i = 0; i < 36; ++i)
-    {
-        positions[i * 3 + 0] = vertices[i * 8 + 0];
-        positions[i * 3 + 1] = vertices[i * 8 + 1];
-        positions[i * 3 + 2] = vertices[i * 8 + 2];
-    }
-    prgl_calculate_aabb(vertices, num_vertices, min_bounds, max_bounds);
-
     struct PRGLMesh *mesh_pointer = malloc(sizeof(struct PRGLMesh));
     if (mesh_pointer == NULL)
     {
@@ -347,7 +332,7 @@ struct PRGLMesh *prgl_create_cube(void)
 
     // Texture zero'd, must be set after using load_texture()
     *mesh_pointer = (struct PRGLMesh){
-        .num_vertices = num_vertices,
+        .num_vertices = 36,
         .vao = vao,
         .vbo = vbo,
         .ebo = 0,
@@ -365,39 +350,6 @@ void prgl_delete_mesh(struct PRGLMesh *mesh)
     {
         glDeleteBuffers(1, &mesh->ebo);
     }
-}
 
-void prgl_calculate_aabb(
-    const float *vertices, int num_vertices, vec3 min_bounds, vec3 max_bounds
-)
-{
-    // Initialize bounds using first vertex
-    min_bounds[0] = vertices[0];
-    min_bounds[1] = vertices[1];
-    min_bounds[2] = vertices[2];
-
-    max_bounds[0] = vertices[0];
-    max_bounds[1] = vertices[1];
-    max_bounds[2] = vertices[2];
-
-    for (int i = 0; i < num_vertices; i++)
-    {
-        // Find min bounds from the points in the vertices
-        for (int p = 0; p < 3; p++)
-        {
-            if (vertices[i * 3 + p] < min_bounds[p])
-            {
-                min_bounds[p] = vertices[i * 3 + p];
-            }
-        }
-
-        // Find max bounds
-        for (int p = 0; p < 3; p++)
-        {
-            if (vertices[i * 3 + p] > max_bounds[p])
-            {
-                max_bounds[p] = vertices[i * 3 + p];
-            }
-        }
-    }
+    free(mesh);
 }

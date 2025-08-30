@@ -74,7 +74,6 @@ void prgl_run_game(
     }
 
     prgl_delete_mesh(screen_render_quad);
-    free(screen_render_quad);
 
     prgl_delete_shader_pool();
     prgl_destroy_window();
