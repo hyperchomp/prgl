@@ -3,7 +3,8 @@
 #include "cglm/vec3.h"
 
 void prgl_init_game_object(
-    struct PRGLGameObject *game_obj, struct PRGLMesh *mesh, vec3 position
+    struct PRGLGameObject *const game_obj, struct PRGLMesh *const mesh,
+    vec3 position
 )
 {
     glm_quat_identity(game_obj->orientation);
@@ -13,7 +14,8 @@ void prgl_init_game_object(
 }
 
 void prgl_rotate_game_object(
-    struct PRGLGameObject *game_obj, float yaw_d, float pitch_d, float roll_d
+    struct PRGLGameObject *const game_obj, float yaw_d, float pitch_d,
+    float roll_d
 )
 {
     versor yaw_quat;
@@ -32,7 +34,7 @@ void prgl_rotate_game_object(
 }
 
 void prgl_set_orientation_axis_angle(
-    struct PRGLGameObject *game_obj, vec3 axis, float angle_d
+    struct PRGLGameObject *const game_obj, vec3 axis, float angle_d
 )
 {
     glm_quatv(game_obj->orientation, glm_rad(angle_d), axis);

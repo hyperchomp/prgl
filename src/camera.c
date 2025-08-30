@@ -14,7 +14,7 @@ static vec3 PRGL_WORLD_UP = {0.0f, 1.0f, 0.0f};
 static struct PRGLCamera *prgl_active_camera_ref = NULL;
 
 void prgl_init_camera(
-    struct PRGLCamera *cam, float fov_degrees, float move_speed,
+    struct PRGLCamera *const cam, float fov_degrees, float move_speed,
     enum PRGLCameraProjectionType projection_type
 )
 {
@@ -41,7 +41,7 @@ void prgl_init_camera(
     prgl_set_camera_projection(cam, fov_degrees, projection_type);
 }
 
-void prgl_update_camera(struct PRGLCamera *cam)
+void prgl_update_camera(struct PRGLCamera *const cam)
 {
     // Calculate front vector, this is the z-axis
     vec3 front;
@@ -71,8 +71,8 @@ void prgl_update_camera(struct PRGLCamera *cam)
 }
 
 void prgl_move_camera_fly(
-    struct PRGLCamera *cam, const enum PRGLCameraMoveDirection move_dir,
-    const double delta_time
+    struct PRGLCamera *const cam, enum PRGLCameraMoveDirection move_dir,
+    double delta_time
 )
 {
     const float velocity = cam->move_speed * (float)delta_time;
@@ -104,7 +104,7 @@ void prgl_move_camera_fly(
     }
 }
 
-void prgl_move_camera_look(struct PRGLCamera *cam, float yaw, float pitch)
+void prgl_move_camera_look(struct PRGLCamera *const cam, float yaw, float pitch)
 {
     yaw *= cam->look_sensitivity;
     pitch *= cam->look_sensitivity;
@@ -117,18 +117,18 @@ void prgl_move_camera_look(struct PRGLCamera *cam, float yaw, float pitch)
 }
 
 void prgl_set_camera_projection(
-    struct PRGLCamera *cam, float fov_degrees,
+    struct PRGLCamera *const cam, float fov_degrees,
     enum PRGLCameraProjectionType projection_type
 )
 {
-    struct PRGLScreen *screen = prgl_screen();
+    struct PRGLScreen *const screen = prgl_screen();
     if (projection_type == PRGL_CAMERA_PROJECTION_PERSPECTIVE)
     {
         // Perspective needs fov in radians, aspect, and near/far clip
         cam->fov = fov_degrees;
-        float fov = glm_rad(fov_degrees);
+        const float fov = glm_rad(fov_degrees);
 
-        float aspect_ratio = screen->aspect_ratio;
+        const float aspect_ratio = screen->aspect_ratio;
 
         glm_perspective(
             fov, aspect_ratio, 0.1f, 100.0f, cam->projection_perspective

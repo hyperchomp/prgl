@@ -53,7 +53,7 @@ enum PRGLCameraProjectionType
  * @param move_speed Speed value to use when moving the camera.
  */
 void prgl_init_camera(
-    struct PRGLCamera *cam, float fov_degrees, float move_speed,
+    struct PRGLCamera *const cam, float fov_degrees, float move_speed,
     enum PRGLCameraProjectionType projection_type
 );
 
@@ -64,7 +64,7 @@ void prgl_init_camera(
  *
  * @param cam[in,out]
  */
-void prgl_update_camera(struct PRGLCamera *cam);
+void prgl_update_camera(struct PRGLCamera *const cam);
 
 /**
  * Smoothly moves the camera in a given direction using its speed.
@@ -76,7 +76,7 @@ void prgl_update_camera(struct PRGLCamera *cam);
  * @param delta_time
  */
 void prgl_move_camera_fly(
-    struct PRGLCamera *cam, enum PRGLCameraMoveDirection move_dir,
+    struct PRGLCamera *const cam, enum PRGLCameraMoveDirection move_dir,
     double delta_time
 );
 
@@ -87,7 +87,9 @@ void prgl_move_camera_fly(
  * @param yaw The amount to move the camera in yaw.
  * @param pitch The amount to move the camera in pitch.
  */
-void prgl_move_camera_look(struct PRGLCamera *cam, float yaw, float pitch);
+void prgl_move_camera_look(
+    struct PRGLCamera *const cam, float yaw, float pitch
+);
 
 /**
  * Updates the camera's vertical fov.
@@ -96,7 +98,7 @@ void prgl_move_camera_look(struct PRGLCamera *cam, float yaw, float pitch);
  * @param fov_degrees The vertical fov for the camera in degrees.
  */
 void prgl_set_camera_projection(
-    struct PRGLCamera *cam, float fov_degrees,
+    struct PRGLCamera *const cam, float fov_degrees,
     enum PRGLCameraProjectionType projection_type
 );
 

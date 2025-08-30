@@ -21,7 +21,8 @@ struct PRGLGameObject
  * @param position
  */
 void prgl_init_game_object(
-    struct PRGLGameObject *game_obj, struct PRGLMesh *mesh, vec3 position
+    struct PRGLGameObject *const game_obj, struct PRGLMesh *const mesh,
+    vec3 position
 );
 
 /**
@@ -33,7 +34,8 @@ void prgl_init_game_object(
  * @param roll_d Roll in degrees.
  */
 void prgl_rotate_game_object(
-    struct PRGLGameObject *game_obj, float yaw_d, float pitch_d, float roll_d
+    struct PRGLGameObject *const game_obj, float yaw_d, float pitch_d,
+    float roll_d
 );
 
 /**
@@ -44,7 +46,7 @@ void prgl_rotate_game_object(
  * @param angle_d The rotation angle in degrees.
  */
 void prgl_set_orientation_axis_angle(
-    struct PRGLGameObject *game_obj, vec3 axis, float angle_d
+    struct PRGLGameObject *const game_obj, vec3 axis, float angle_d
 );
 
 #endif

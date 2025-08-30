@@ -23,7 +23,7 @@ void prgl_clear_screen(float r, float g, float b, float a)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void prgl_render_game_object_3d(struct PRGLGameObject *game_obj)
+void prgl_render_game_object_3d(struct PRGLGameObject *const game_obj)
 {
     glBindVertexArray(game_obj->mesh->vao);
 
@@ -51,7 +51,7 @@ void prgl_render_game_object_3d(struct PRGLGameObject *game_obj)
     }
 }
 
-void prgl_render_game_object_2d(struct PRGLGameObject *game_obj)
+void prgl_render_game_object_2d(struct PRGLGameObject *const game_obj)
 {
     glBindVertexArray(game_obj->mesh->vao);
 
@@ -92,7 +92,9 @@ void prgl_render_game_object_2d(struct PRGLGameObject *game_obj)
     }
 }
 
-void prgl_update_lighting(struct PRGLPointLight point_lights[], int num_lights)
+void prgl_update_lighting(
+    struct PRGLPointLight *const point_lights, int num_lights
+)
 {
     if (num_lights > PRGL_MAX_POINT_LIGHTS)
     {
@@ -147,7 +149,7 @@ void prgl_enable_render_texture(unsigned int fbo)
 }
 
 void prgl_render_render_texture(
-    unsigned int render_texture, struct PRGLMesh *screen_quad
+    unsigned int render_texture, struct PRGLMesh *const screen_quad
 )
 {
     // Switch back to default framebuffer

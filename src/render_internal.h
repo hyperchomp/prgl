@@ -19,7 +19,7 @@ void prgl_enable_render_texture(unsigned int fbo);
  * @param[in] screen_quad The quad mesh to draw the render texture onto.
  */
 void prgl_render_render_texture(
-    unsigned int render_texture, struct PRGLMesh *screen_quad
+    unsigned int render_texture, struct PRGLMesh *const screen_quad
 );
 
 #endif

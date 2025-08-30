@@ -20,8 +20,10 @@ struct PRGLScreen
  * Creates a new window with the given name and saves it to a PRGLScreen struct.
  *
  * The window needs to be freed by calling prgl_destroy_window().
+ *
+ * @param name The title to give the window.
  */
-void prgl_create_window(char *name);
+void prgl_create_window(const char *const name);
 
 void prgl_destroy_window(void);
 

@@ -4,7 +4,9 @@
 #include "cglm/mat4.h"
 #include "cglm/quat.h"
 
-void prgl_create_model_matrix(mat4 *model, struct PRGLGameObject *game_obj)
+void prgl_create_model_matrix(
+    mat4 *model, struct PRGLGameObject *const game_obj
+)
 {
     glm_mat4_identity(*model);
     glm_translate(*model, game_obj->position);

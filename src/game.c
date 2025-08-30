@@ -17,7 +17,7 @@ struct PRGLRenderTexture render_texture;
 struct PRGLMesh *screen_render_quad;
 
 void prgl_run_game(
-    char *title, void (*prgl_init)(void),
+    const char *const title, void (*prgl_init)(void),
     void (*prgl_update)(double delta_time), void (*prgl_render)(void),
     void (*prgl_render_gui)(void)
 )

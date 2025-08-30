@@ -14,7 +14,7 @@
  * @param[in] prgl_render_gui Render gui callback function
  */
 void prgl_run_game(
-    char *title, void (*prgl_init)(void),
+    const char *const title, void (*prgl_init)(void),
     void (*prgl_update)(double delta_time), void (*prgl_render)(void),
     void (*prgl_render_gui)(void)
 );

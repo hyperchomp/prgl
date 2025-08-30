@@ -11,6 +11,8 @@ struct PRGLGameObject;
  * @param[in,out] dest
  * @param[in] game_obj The game object to create the model matrix from.
  */
-void prgl_create_model_matrix(mat4 *dest, struct PRGLGameObject *game_obj);
+void prgl_create_model_matrix(
+    mat4 *dest, struct PRGLGameObject *const game_obj
+);
 
 #endif

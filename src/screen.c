@@ -10,7 +10,7 @@ struct PRGLScreen *prgl_screen(void);
 
 static struct PRGLScreen prgl_screen_data;
 
-void prgl_create_window(char *name)
+void prgl_create_window(const char *const name)
 {
     if (prgl_screen_data.window)
     {
