@@ -116,62 +116,8 @@ Functions</h2></td></tr>
 <tr class="separator:a9d0039abe86fe2e016e92f9ca072f15e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8fe164c7026bfdce0aeb2f7621454d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#af8fe164c7026bfdce0aeb2f7621454d6">prgl_delete_mesh</a> (struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *mesh)</td></tr>
 <tr class="separator:af8fe164c7026bfdce0aeb2f7621454d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f735afc3b1e8614b807c67f6fadeedb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh_8c.html#a0f735afc3b1e8614b807c67f6fadeedb">prgl_calculate_aabb</a> (const float *vertices, int num_vertices, vec3 min_bounds, vec3 max_bounds)</td></tr>
-<tr class="separator:a0f735afc3b1e8614b807c67f6fadeedb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a0f735afc3b1e8614b807c67f6fadeedb" name="a0f735afc3b1e8614b807c67f6fadeedb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f735afc3b1e8614b807c67f6fadeedb">&#9670;&#160;</a></span>prgl_calculate_aabb()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void prgl_calculate_aabb </td>
-          <td>(</td>
-          <td class="paramtype">const float *&#160;</td>
-          <td class="paramname"><em>vertices</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>num_vertices</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">vec3&#160;</td>
-          <td class="paramname"><em>min_bounds</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">vec3&#160;</td>
-          <td class="paramname"><em>max_bounds</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Calculates a 3D AABB bounding box from the vertices of a mesh.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">*vertices</td><td></td></tr>
-    <tr><td class="paramname">num_vertices</td><td></td></tr>
-    <tr><td class="paramname">min_bounds</td><td></td></tr>
-    <tr><td class="paramname">max_bounds</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="mesh_8c_source.html#l00370">370</a> of file <a class="el" href="mesh_8c_source.html">mesh.c</a>.</p>
-
-</div>
-</div>
 <a id="a9d0039abe86fe2e016e92f9ca072f15e" name="a9d0039abe86fe2e016e92f9ca072f15e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9d0039abe86fe2e016e92f9ca072f15e">&#9670;&#160;</a></span>prgl_create_cube()</h2>
 
@@ -283,9 +229,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Cleans up the GL objects associated with the mesh, call before freeing. </p>
+<p>Cleans up the GL objects associated with the mesh and frees it.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mesh[in,out]</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="mesh_8c_source.html#l00359">359</a> of file <a class="el" href="mesh_8c_source.html">mesh.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mesh_8c_source.html#l00344">344</a> of file <a class="el" href="mesh_8c_source.html">mesh.c</a>.</p>
 
 </div>
 </div>
