@@ -1,6 +1,6 @@
 # Pixel Retro GL Framework
 
-![prgl version](https://img.shields.io/badge/prgl-0.1.0-orange)
+![prgl version](https://img.shields.io/badge/prgl-0.2.0-orange)
 
 **prgl is a personal project created to build my own games. I've made the code open source so anyone can re-use, analyze, and/or build their own projects with it.
 
