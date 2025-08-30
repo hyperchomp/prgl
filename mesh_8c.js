@@ -4,5 +4,6 @@ var mesh_8c =
     [ "prgl_create_quad", "mesh_8c.html#a9f24206e70f4714a64315459007cf0f7", null ],
     [ "prgl_create_screen_quad", "mesh_8c.html#abc7c5681e3be2ca05f23f120bbb1c685", null ],
     [ "prgl_create_triangle", "mesh_8c.html#a6b01752c1965e9febb1c288f55c8b7f2", null ],
-    [ "prgl_delete_mesh", "mesh_8c.html#af8fe164c7026bfdce0aeb2f7621454d6", null ]
+    [ "prgl_delete_mesh", "mesh_8c.html#af8fe164c7026bfdce0aeb2f7621454d6", null ],
+    [ "prgl_init_mesh", "mesh_8c.html#a88c02fbd7fa229fdd9dd37cb3772bd15", null ]
 ];
