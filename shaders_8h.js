@@ -8,7 +8,7 @@ var shaders_8h =
       [ "PRGL_SHADER_UNLIT", "shaders_8h.html#a8d772e21c5960b33e87ad473f8248ea7afd1e243b1481bfde9a82641b64dffcb0", null ],
       [ "PRGL_SHADER_COUNT", "shaders_8h.html#a8d772e21c5960b33e87ad473f8248ea7a9e7cd38ddee6b461441ffa09c88c8d75", null ]
     ] ],
-    [ "prgl_create_shader", "shaders_8h.html#ac27d6c3b47f991ad7449990d1510b557", null ],
+    [ "prgl_create_shader", "shaders_8h.html#a6540068167cf4e68f416befed55237cb", null ],
     [ "prgl_current_shader", "shaders_8h.html#a4546429db70e0a039d4de91f85beaa62", null ],
     [ "prgl_delete_shader", "shaders_8h.html#ac0ab9e8e85e75d20b24f9c2bc7ab8324", null ],
     [ "prgl_set_shader_uniform_4f", "shaders_8h.html#a9ea1ac02cd892631f642d8b5a7f35b6f", null ],
