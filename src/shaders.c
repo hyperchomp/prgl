@@ -34,7 +34,8 @@ unsigned int prgl_shader(enum PRGLShader type)
 unsigned int prgl_current_shader(void) { return prgl_current_shader_id; }
 
 unsigned int prgl_create_shader(
-    const char *const vertex_source, const char *const frag_source
+    const char *const vertex_source, const char *const frag_source,
+    const char *const geometry_source
 )
 {
     // Create a basic vertex shader
@@ -45,14 +46,26 @@ unsigned int prgl_create_shader(
     unsigned int fragment_shader =
         prgl_compile_shader(GL_FRAGMENT_SHADER, frag_source);
 
+    // Create geometry shader if one was passed in
+    int shader_count = 2;
+    unsigned int geometry_shader = 0;
+    if (geometry_source != NULL)
+    {
+        shader_count++;
+        geometry_shader =
+            prgl_compile_shader(GL_GEOMETRY_SHADER, geometry_source);
+    }
+
     // Use a shader program to link the shaders together
-    unsigned int shaders[] = {vertex_shader, fragment_shader};
+    unsigned int shaders[3] = {vertex_shader, fragment_shader, geometry_shader};
     unsigned int shader_program =
-        prgl_create_shader_program(shaders, ARR_LEN(shaders));
+        prgl_create_shader_program(shaders, shader_count);
 
     // Delete the shader objects, we're done with them
-    glDeleteShader(vertex_shader);
-    glDeleteShader(fragment_shader);
+    for (int i = 0; i < shader_count; i++)
+    {
+        glDeleteShader(shaders[i]);
+    }
 
     return shader_program;
 }

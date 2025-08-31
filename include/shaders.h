@@ -55,10 +55,12 @@ unsigned int prgl_current_shader(void);
  *
  * @param[in] vertex_source The GLSL code for the vertex shader.
  * @param[in] frag_source The GLSL code for the fragment shader.
+ * @param[in] geometry_source GLSL code for the geometry shader. Can be NULL.
  * @return The shader program ID.
  */
 unsigned int prgl_create_shader(
-    const char *const vertex_source, const char *const frag_source
+    const char *const vertex_source, const char *const frag_source,
+    const char *const geometry_source
 );
 
 /**
