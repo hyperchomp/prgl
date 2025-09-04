@@ -100,7 +100,6 @@ $(document).ready(function(){initNavTree('shaders_8c.html',''); initResizable();
 <code>#include &quot;<a class="el" href="shaders_8h_source.html">shaders.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="shaders__internal_8h_source.html">shaders_internal.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="shaders__init__internal_8h_source.html">shaders_init_internal.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="common__macros_8h_source.html">common_macros.h</a>&quot;</code><br />
 <code>#include &lt;GLFW/glfw3.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 </div>
@@ -130,6 +129,8 @@ Functions</h2></td></tr>
 <tr class="separator:a4a4d01902c3c98184f4dfea4955d5967"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6081eeff3c21ea154c6ccd14be12c4ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a6081eeff3c21ea154c6ccd14be12c4ab">prgl_set_shader_uniform_mat4</a> (unsigned int shader, const char *const name, mat4 matrix)</td></tr>
 <tr class="separator:a6081eeff3c21ea154c6ccd14be12c4ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0cb4b04a3fa93678205383713b9ecd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#ac0cb4b04a3fa93678205383713b9ecd3">prgl_set_shader_uniform_mat3</a> (unsigned int shader, const char *const name, mat3 matrix)</td></tr>
+<tr class="separator:ac0cb4b04a3fa93678205383713b9ecd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f34a325216857d28bf2a6218b136bbc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a8f34a325216857d28bf2a6218b136bbc">prgl_set_shader_uniform_float</a> (unsigned int shader, const char *const name, float value)</td></tr>
 <tr class="separator:a8f34a325216857d28bf2a6218b136bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5ee2ff1301a1da88794f921572c6604"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#ac5ee2ff1301a1da88794f921572c6604">prgl_set_shader_uniform_int</a> (unsigned int shader, const char *const name, int value)</td></tr>
@@ -145,6 +146,10 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:aa8e340f9fc877f619d960561a1057766"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#aa8e340f9fc877f619d960561a1057766">PRGL_MODEL_UNIFORM</a> = &quot;model&quot;</td></tr>
 <tr class="separator:aa8e340f9fc877f619d960561a1057766"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab05c51cb546c0f5ab6824723dd01a08b"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#ab05c51cb546c0f5ab6824723dd01a08b">PRGL_NORMAL_MATRIX_UNIFORM</a> = &quot;normalMatrix&quot;</td></tr>
+<tr class="separator:ab05c51cb546c0f5ab6824723dd01a08b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2164282fba66c92a60a51814fe263a92"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a2164282fba66c92a60a51814fe263a92">PRGL_NUM_POINT_LIGHTS_UNIFORM</a> = &quot;numPointLights&quot;</td></tr>
+<tr class="separator:a2164282fba66c92a60a51814fe263a92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0579b719f91df4b2cd80345caa6b19f"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#ac0579b719f91df4b2cd80345caa6b19f">PRGL_LIGHT_COLOR_UNIFORM</a> = &quot;color&quot;</td></tr>
 <tr class="separator:ac0579b719f91df4b2cd80345caa6b19f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f37ead9b36d2c1c3881d8b67f83be05"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a9f37ead9b36d2c1c3881d8b67f83be05">PRGL_LIGHT_POSITION_UNIFORM</a> = &quot;position&quot;</td></tr>
@@ -201,7 +206,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The shader program ID. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00036">36</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00037">37</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -223,7 +228,7 @@ Variables</h2></td></tr>
 <p>Gets the shader ID for the current shader in use.</p>
 <dl class="section return"><dt>Returns</dt><dd>The shader program ID for the current shader. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00034">34</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00035">35</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -250,7 +255,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00089">89</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00090">90</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -271,7 +276,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Deletes built in shaders from the shader pool. </p>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00159">159</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00169">169</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -292,7 +297,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Precompiles built in shaders and adds them to the shader pool. </p>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00143">143</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00153">153</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -358,7 +363,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00091">91</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00092">92</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -403,7 +408,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00136">136</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00146">146</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -448,7 +453,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00122">122</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00132">132</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -493,7 +498,52 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00129">129</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00139">139</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+
+</div>
+</div>
+<a id="ac0cb4b04a3fa93678205383713b9ecd3" name="ac0cb4b04a3fa93678205383713b9ecd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0cb4b04a3fa93678205383713b9ecd3">&#9670;&#160;</a></span>prgl_set_shader_uniform_mat3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void prgl_set_shader_uniform_mat3 </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>shader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">mat3&#160;</td>
+          <td class="paramname"><em>matrix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the value of shader uniform variable which takes 3x3 floats.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shader</td><td>The shader ID to set the uniform on. </td></tr>
+    <tr><td class="paramname">name[in]</td><td>The name of the uniform to set. </td></tr>
+    <tr><td class="paramname">matrix</td><td>The cglm matrix to assign to the uniform. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00123">123</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -528,7 +578,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sets the value of shader uniform variable which takes 4 floats.</p>
+<p>Sets the value of shader uniform variable which takes 4x4 floats.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">shader</td><td>The shader ID to set the uniform on. </td></tr>
@@ -538,7 +588,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00113">113</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00114">114</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -583,7 +633,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00106">106</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00107">107</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -628,7 +678,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00099">99</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00100">100</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -648,7 +698,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00029">29</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00030">30</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -675,7 +725,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00073">73</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00074">74</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -696,7 +746,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Activates the 2D shader for use. </p>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00084">84</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00085">85</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -717,7 +767,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Activates the 3D shader for use. </p>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00079">79</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00080">80</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -734,7 +784,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00010">10</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00011">11</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -750,7 +800,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00012">12</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00013">13</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -766,7 +816,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00011">11</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00012">12</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -782,7 +832,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00013">13</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00014">14</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -798,7 +848,39 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00008">8</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+
+</div>
+</div>
+<a id="ab05c51cb546c0f5ab6824723dd01a08b" name="ab05c51cb546c0f5ab6824723dd01a08b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab05c51cb546c0f5ab6824723dd01a08b">&#9670;&#160;</a></span>PRGL_NORMAL_MATRIX_UNIFORM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* const PRGL_NORMAL_MATRIX_UNIFORM = &quot;normalMatrix&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 <p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00009">9</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+
+</div>
+</div>
+<a id="a2164282fba66c92a60a51814fe263a92" name="a2164282fba66c92a60a51814fe263a92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2164282fba66c92a60a51814fe263a92">&#9670;&#160;</a></span>PRGL_NUM_POINT_LIGHTS_UNIFORM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* const PRGL_NUM_POINT_LIGHTS_UNIFORM = &quot;numPointLights&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00010">10</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -814,7 +896,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00014">14</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00015">15</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -830,7 +912,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00015">15</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00016">16</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
