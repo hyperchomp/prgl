@@ -8,7 +8,9 @@
 #define PRGL_MAX_POINT_LIGHTS 32
 
 extern const char *const PRGL_MODEL_UNIFORM;
+extern const char *const PRGL_NORMAL_MATRIX_UNIFORM;
 
+extern const char *const PRGL_NUM_POINT_LIGHTS_UNIFORM;
 extern const char *const PRGL_LIGHT_COLOR_UNIFORM;
 extern const char *const PRGL_LIGHT_POSITION_UNIFORM;
 extern const char *const PRGL_LIGHT_LINEAR_UNIFORM;
@@ -126,7 +128,7 @@ void prgl_set_shader_uniform_vec2(
 );
 
 /**
- * Sets the value of shader uniform variable which takes 4 floats.
+ * Sets the value of shader uniform variable which takes 4x4 floats.
  *
  * @param shader The shader ID to set the uniform on.
  * @param name[in] The name of the uniform to set.
@@ -134,6 +136,17 @@ void prgl_set_shader_uniform_vec2(
  */
 void prgl_set_shader_uniform_mat4(
     unsigned int shader, const char *const name, mat4 matrix
+);
+
+/**
+ * Sets the value of shader uniform variable which takes 3x3 floats.
+ *
+ * @param shader The shader ID to set the uniform on.
+ * @param name[in] The name of the uniform to set.
+ * @param matrix The cglm matrix to assign to the uniform.
+ */
+void prgl_set_shader_uniform_mat3(
+    unsigned int shader, const char *const name, mat3 matrix
 );
 
 /**

@@ -8,7 +8,7 @@
  * The struct values should be initialized and updated with the framework's
  * provided helper functions. Doing otherwise may cause undefined behavior.
  */
-struct PRGLCamera
+struct CGLM_ALIGN_MAT PRGLCamera
 {
     mat4 view; ///< The position of the camera stored as a view matrix.
     mat4 projection_perspective; ///< Projection matrix for fov, clipping, etc.

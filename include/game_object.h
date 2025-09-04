@@ -5,7 +5,7 @@
 
 struct PRGLMesh;
 
-struct PRGLGameObject
+struct CGLM_ALIGN_MAT PRGLGameObject
 {
     versor orientation; ///< Quaternion rotation.
     vec3 position;

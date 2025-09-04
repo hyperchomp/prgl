@@ -10,7 +10,7 @@ extern const vec2 PRGL_RENDER_RESOLUTION;
 /**
  * A light which can be positioned in the world and emits a color.
  */
-struct PRGLPointLight
+struct CGLM_ALIGN(8) PRGLPointLight
 {
     vec3 position;
     vec3 lightColor;

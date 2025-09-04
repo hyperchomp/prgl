@@ -2,11 +2,12 @@
 #include "shaders.h"
 #include "shaders_internal.h"
 #include "shaders_init_internal.h"
-#include "common_macros.h"
 #include <GLFW/glfw3.h>
 #include <stdio.h>
 
 const char *const PRGL_MODEL_UNIFORM = "model";
+const char *const PRGL_NORMAL_MATRIX_UNIFORM = "normalMatrix";
+const char *const PRGL_NUM_POINT_LIGHTS_UNIFORM = "numPointLights";
 const char *const PRGL_LIGHT_COLOR_UNIFORM = "color";
 const char *const PRGL_LIGHT_POSITION_UNIFORM = "position";
 const char *const PRGL_LIGHT_LINEAR_UNIFORM = "linear";
@@ -115,6 +116,15 @@ void prgl_set_shader_uniform_mat4(
 )
 {
     glUniformMatrix4fv(
+        glGetUniformLocation(shader, name), 1, GL_FALSE, (float *)matrix
+    );
+}
+
+void prgl_set_shader_uniform_mat3(
+    unsigned int shader, const char *const name, mat3 matrix
+)
+{
+    glUniformMatrix3fv(
         glGetUniformLocation(shader, name), 1, GL_FALSE, (float *)matrix
     );
 }
