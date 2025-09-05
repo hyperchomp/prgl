@@ -1,13 +1,13 @@
 #ifndef PRGL_MESH_H
 #define PRGL_MESH_H
 
-#include "cglm/types.h"
-
 /**
  * @brief Defines the geometry of a 3D object.
  *
  * One mesh can be re-used to render many of the same object.
  * Any IDs which are optional should be set to 0 if unused.
+ *
+ * The texture_id must be set manually after init to a loaded texture.
  */
 struct PRGLMesh
 {
@@ -27,23 +27,17 @@ struct PRGLMesh
 };
 
 /**
- * @brief Creates a triangle mesh with the given vertex positions.
- *
- * @param[in] vertices
+ * @brief Creates a triangle mesh.
  */
-struct PRGLMesh *prgl_create_triangle(mat3 vertices);
+struct PRGLMesh *prgl_create_triangle(void);
 
 /**
- * Creates a quad mesh. For 3D the normals assume XY orientation.
- * Make sure to attach a texture to the returned mesh struct after creating it.
- *
- * @param[in] vertices
+ * @brief Creates a quad mesh.
  */
-struct PRGLMesh *prgl_create_quad(mat4 vertices);
+struct PRGLMesh *prgl_create_quad(void);
 
 /**
  * @brief Creates a cube mesh.
- * Make sure to attach a texture to the returned mesh struct after creating it.
  */
 struct PRGLMesh *prgl_create_cube(void);
 

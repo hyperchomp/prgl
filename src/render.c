@@ -27,10 +27,8 @@ void prgl_render_game_object_3d(struct PRGLGameObject *const game_obj)
 {
     glBindVertexArray(game_obj->mesh->vao);
 
-    if (game_obj->mesh->texture_id != 0)
-    {
-        glBindTexture(GL_TEXTURE_2D, game_obj->mesh->texture_id);
-    }
+    // Don't skip this if ID is zero'd, otherwise it uses the last bound texture
+    glBindTexture(GL_TEXTURE_2D, game_obj->mesh->texture_id);
 
     // Transform the mesh to the render position.
     mat4 model;
@@ -60,10 +58,7 @@ void prgl_render_game_object_2d(struct PRGLGameObject *const game_obj)
 {
     glBindVertexArray(game_obj->mesh->vao);
 
-    if (game_obj->mesh->texture_id != 0)
-    {
-        glBindTexture(GL_TEXTURE_2D, game_obj->mesh->texture_id);
-    }
+    glBindTexture(GL_TEXTURE_2D, game_obj->mesh->texture_id);
 
     // Transform the mesh to the render position.
     mat4 trans;
@@ -71,12 +66,15 @@ void prgl_render_game_object_2d(struct PRGLGameObject *const game_obj)
     vec2 scale = {game_obj->scale[0], game_obj->scale[1]};
 
     glm_mat4_identity(trans);
+
+    // Same meshes are used for 2D/3D, and they are center aligned unit meshes.
+    // For 2D we want top left for position, so we need to offset.
+    vec2 center_offset = {scale[0] / 2.0f, scale[1] / 2.0f};
     glm_translate(trans, (vec3){position[0], position[1], 0.0f});
+    glm_translate(trans, (vec3){center_offset[0], center_offset[1], 0.0f});
 
     // Perform the rotation about the center of the game object
-    glm_translate(trans, (vec3){0.5f * scale[0], 0.5f * scale[1], 0.0f});
     glm_quat_rotate(trans, game_obj->orientation, trans);
-    glm_translate(trans, (vec3){-0.5f * scale[0], -0.5f * scale[1], 0.0f});
 
     // Negate y-axis scale, cglm quats expects 3D right hand coordinate with +y
     // up, but our 2D orthogonal projection has 0,0 at top left so -y is up
