@@ -1,4 +1,5 @@
 #include "mesh.h"
+#include "cglm/mat3.h"
 #include "mesh_internal.h"
 #include "glad.h"
 #include "common_macros.h"
@@ -14,6 +15,9 @@ static const int VERTEX_STRIDE_LENGTH = 8;
 static const GLint FLOAT_VERTEX_STRIDE = VERTEX_STRIDE_LENGTH * sizeof(float);
 static const GLint NORMALS_OFFSET = 3 * sizeof(float);
 static const GLint TEX_COORD_OFFSET = 6 * sizeof(float);
+
+// Normal for 2D shapes, assumes positioning on XY, thus +Z normal
+static const vec3 NORMAL_POS_Z = {0.0f, 0.0f, 1.0f};
 
 static void prgl_setup_vertex_attributes(void);
 static void prgl_generate_cube_sphere_point(
@@ -40,18 +44,18 @@ struct PRGLMesh *prgl_create_screen_quad(void)
     // clang-format off
     mat4 vertices = {
         {-1.0f,  1.0f, 0.0f}, // Top-left
-        { 1.0f,  1.0f, 0.0f}, // Top-right
+        {-1.0f, -1.0f, 0.0f}, // Bottom-left
         { 1.0f, -1.0f, 0.0f}, // Bottom-right
-        {-1.0f, -1.0f, 0.0f}  // Bottom-left
+        { 1.0f,  1.0f, 0.0f}, // Top-right
     };
     mat4x2 texture_coords = {
-        {0.0f, 1.0f}, // Top-left
-        {1.0f, 1.0f}, // Top-right
-        {1.0f, 0.0f}, // Bottom-right
-        {0.0f, 0.0f}  // Bottom-left
+        {0.0f, 1.0f}, // Top-left (y=1)
+        {0.0f, 0.0f}, // Bottom-left (y=0)
+        {1.0f, 0.0f}, // Bottom-right (y=0)
+        {1.0f, 1.0f}  // Top-right (y=1)
     };
     
-    float combined_data[20] = {
+    float vertex_data[20] = {
               vertices[0][0],       vertices[0][1], vertices[0][2], 
         texture_coords[0][0], texture_coords[0][1],
               vertices[1][0],       vertices[1][1], vertices[1][2], 
@@ -67,8 +71,8 @@ struct PRGLMesh *prgl_create_screen_quad(void)
     // OpenGL the order to go over the existing ones again to create enough
     // triangles to create our mesh (in this case 2 triangles, 6 indices)
     unsigned int indices[] = {
-        0, 1, 3, // First triangle
-        1, 2, 3  // Second triangle
+        0, 1, 2, // First triangle
+        0, 2, 3  // Second triangle
     };
 
     // Create a vertex buffer object and vertex array object, the VBO is to
@@ -84,7 +88,7 @@ struct PRGLMesh *prgl_create_screen_quad(void)
     glBindVertexArray(vao);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(
-        GL_ARRAY_BUFFER, sizeof(combined_data), combined_data, GL_STATIC_DRAW
+        GL_ARRAY_BUFFER, sizeof(vertex_data), vertex_data, GL_STATIC_DRAW
     );
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
     glBufferData(
@@ -117,22 +121,29 @@ struct PRGLMesh *prgl_create_screen_quad(void)
     return mesh;
 }
 
-struct PRGLMesh *prgl_create_triangle(mat3 vertices)
+struct PRGLMesh *prgl_create_triangle(void)
 {
     // clang-format off
-    
+    mat3 vertices = {
+        {-0.5f, -0.5f, 0.0f}, // Bottom left
+        { 0.5f, -0.5f, 0.0f}, // Bottom right
+        { 0.0f,  0.5f, 0.0f}, // Top center
+    };
     mat3x2 texture_coords = {
         {0.0f, 0.0f}, 
         {1.0f, 0.0f}, 
         {0.5f, 1.0f}, 
     };
     // Combine vertex position and texture coordinate data
-    float combined_data[15] = {
+    float vertex_data[24] = {
               vertices[0][0],       vertices[0][1], vertices[0][2],
+             NORMAL_POS_Z[0],      NORMAL_POS_Z[1], NORMAL_POS_Z[2],
         texture_coords[0][0], texture_coords[0][1],
               vertices[1][0],       vertices[1][1], vertices[1][2],
+             NORMAL_POS_Z[0],      NORMAL_POS_Z[1], NORMAL_POS_Z[2],
         texture_coords[1][0], texture_coords[1][1],
               vertices[2][0],       vertices[2][1], vertices[2][2],
+             NORMAL_POS_Z[0],      NORMAL_POS_Z[1], NORMAL_POS_Z[2],
         texture_coords[2][0], texture_coords[2][1],
     };
     // clang-format on
@@ -148,21 +159,10 @@ struct PRGLMesh *prgl_create_triangle(mat3 vertices)
     glBindVertexArray(vao);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(
-        GL_ARRAY_BUFFER, sizeof(combined_data), combined_data, GL_STATIC_DRAW
+        GL_ARRAY_BUFFER, sizeof(vertex_data), vertex_data, GL_STATIC_DRAW
     );
 
-    // Tell OpenGL how to interpret our vertex data
-    glVertexAttribPointer(
-        0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0
-    );
-    glEnableVertexAttribArray(0);
-
-    // texture coord attribute
-    glVertexAttribPointer(
-        2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
-        (const GLvoid *)(intptr_t)(3 * sizeof(float))
-    );
-    glEnableVertexAttribArray(2);
+    prgl_setup_vertex_attributes();
 
     struct PRGLMesh *mesh = malloc(sizeof(struct PRGLMesh));
     if (mesh == NULL)
@@ -177,31 +177,35 @@ struct PRGLMesh *prgl_create_triangle(mat3 vertices)
     return mesh;
 }
 
-struct PRGLMesh *prgl_create_quad(mat4 vertices)
+struct PRGLMesh *prgl_create_quad(void)
 {
     // clang-format off
+    mat4 vertices = {
+        {-0.5f,  0.5f, 0.0f}, // Top-left
+        {-0.5f, -0.5f, 0.0f}, // Bottom-left
+        { 0.5f, -0.5f, 0.0f}, // Bottom-right
+        { 0.5f,  0.5f, 0.0f}, // Top-right
+    };
     mat4x2 texture_coords = {
-        {1.0f, 1.0f},
-        {1.0f, 0.0f},
+        {0.0f, 1.0f},
         {0.0f, 0.0f},
-        {0.0f, 1.0f}
+        {1.0f, 0.0f},
+        {1.0f, 1.0f}
     };
 
-    // Assumes quad is oriented on XY plane
-    vec3 normal = {0.0f, 0.0f, 1.0f};
-    
-    float combined_data[32] = {
-              vertices[0][0],       vertices[0][1], vertices[0][2], 
-                   normal[0],            normal[1],      normal[2],
+    // Assumes quad is oriented on XY plane 
+    float vertex_data[32] = {
+              vertices[0][0],       vertices[0][1],  vertices[0][2], 
+             NORMAL_POS_Z[0],      NORMAL_POS_Z[1], NORMAL_POS_Z[2],
         texture_coords[0][0], texture_coords[0][1],
-              vertices[1][0],       vertices[1][1], vertices[1][2], 
-                   normal[0],            normal[1],      normal[2],
+              vertices[1][0],       vertices[1][1],  vertices[1][2], 
+             NORMAL_POS_Z[0],      NORMAL_POS_Z[1], NORMAL_POS_Z[2],
         texture_coords[1][0], texture_coords[1][1],
-              vertices[2][0],       vertices[2][1], vertices[2][2], 
-                   normal[0],            normal[1],      normal[2],
+              vertices[2][0],       vertices[2][1],  vertices[2][2], 
+             NORMAL_POS_Z[0],      NORMAL_POS_Z[1], NORMAL_POS_Z[2],
         texture_coords[2][0], texture_coords[2][1],
-              vertices[3][0],       vertices[3][1], vertices[3][2], 
-                   normal[0],            normal[1],      normal[2],
+              vertices[3][0],       vertices[3][1],  vertices[3][2], 
+             NORMAL_POS_Z[0],      NORMAL_POS_Z[1], NORMAL_POS_Z[2],
         texture_coords[3][0], texture_coords[3][1]
     };
     // clang-format on
@@ -210,8 +214,8 @@ struct PRGLMesh *prgl_create_quad(mat4 vertices)
     // OpenGL the order to go over the existing ones again to create enough
     // triangles to create our mesh (in this case 2 triangles, 6 indices)
     unsigned int indices[] = {
-        0, 1, 3, // First triangle
-        1, 2, 3  // Second triangle
+        0, 1, 2, // First triangle
+        0, 2, 3  // Second triangle
     };
 
     // Create a vertex buffer object and vertex array object, the VBO is to
@@ -227,7 +231,7 @@ struct PRGLMesh *prgl_create_quad(mat4 vertices)
     glBindVertexArray(vao);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(
-        GL_ARRAY_BUFFER, sizeof(combined_data), combined_data, GL_STATIC_DRAW
+        GL_ARRAY_BUFFER, sizeof(vertex_data), vertex_data, GL_STATIC_DRAW
     );
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
     glBufferData(
@@ -254,13 +258,7 @@ struct PRGLMesh *prgl_create_cube(void)
     // clang-format off
     const float vertices[] = {
         // vertices           // normals           // texture coords
-        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
-         0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 0.0f,
-         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 1.0f,
-         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 1.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
-
+        // Front Face 
         -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f, 0.0f,
          0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f, 0.0f,
          0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f, 1.0f,
@@ -268,20 +266,31 @@ struct PRGLMesh *prgl_create_cube(void)
         -0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f, 1.0f,
         -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f, 0.0f,
 
-        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
+        // Back Face
+        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 1.0f,
+         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 1.0f,
+         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 0.0f,
 
-         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
-         0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
-         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
-         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
-         0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
+        // Left Face
+        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
+        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
+        -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
 
+        // Right Face
+         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
+         0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
+         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
+         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
+         0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
+         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
+
+        // Bottom Face
         -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 1.0f,
          0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  1.0f, 1.0f,
          0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f, 0.0f,
@@ -289,11 +298,12 @@ struct PRGLMesh *prgl_create_cube(void)
         -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 0.0f,
         -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 1.0f,
 
+        // Top Face
         -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f,
-         0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 1.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
         -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
+         0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 1.0f,
         -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
     };
     // clang-format on
