@@ -156,79 +156,81 @@ $(document).ready(function(){initNavTree('screen_8c_source.html',''); initResiza
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    }</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    glEnable(GL_DEPTH_TEST);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    prgl_screen_data = (<span class="keyword">struct </span><a class="code hl_struct" href="structPRGLScreen.html">PRGLScreen</a></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    ){.<a class="code hl_variable" href="structPRGLScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a> = <a class="code hl_variable" href="structPRGLScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a>,</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>      .desktop_width = <a class="code hl_variable" href="structPRGLScreen.html#abfcd4a4852615fd609f3cc4a7ed98705">desktop_width</a>,</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>      .desktop_height = <a class="code hl_variable" href="structPRGLScreen.html#a4c561dfcb79a3b12565517231b571d14">desktop_height</a>,</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>      .aspect_ratio = (float)<a class="code hl_variable" href="structPRGLScreen.html#abfcd4a4852615fd609f3cc4a7ed98705">desktop_width</a> / (<span class="keywordtype">float</span>)<a class="code hl_variable" href="structPRGLScreen.html#a4c561dfcb79a3b12565517231b571d14">desktop_height</a>};</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_function" href="screen_8c.html#a07464dd5cd4ea5d8a81979eb2c1c080b">prgl_set_vsync</a>(<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="screen_8c.html#a8598f061fb44d49fcc8032a55bd7cddd">   74</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="screen_8c.html#a8598f061fb44d49fcc8032a55bd7cddd">prgl_destroy_window</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>{</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    glfwDestroyWindow(prgl_screen_data.<a class="code hl_variable" href="structPRGLScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a>);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    glfwTerminate();</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>}</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="screen_8c.html#a985689302236428da21110d9d44cbd96">   80</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="screen_8c.html#a985689302236428da21110d9d44cbd96">prgl_close_game</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>{</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    glfwSetWindowShouldClose(prgl_screen_data.<a class="code hl_variable" href="structPRGLScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a>, <span class="keyword">true</span>);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>}</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="screen_8c.html#aabccc40cc697a74ad7d45db1243db0cd">   85</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="screen_8c.html#aabccc40cc697a74ad7d45db1243db0cd">prgl_toggle_fullscreen</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>{</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="comment">// If monitor is NULL we are in fullscreen, and if glfwSetWindowMonitor</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="comment">// receives NULL for monitor it will change to window mode</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    GLFWwindow *window = prgl_screen_data.<a class="code hl_variable" href="structPRGLScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a>;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    GLFWmonitor *monitor = glfwGetWindowMonitor(window);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keyword">const</span> GLFWvidmode *mode = glfwGetVideoMode(monitor);</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    glfwSetWindowMonitor(</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        window, monitor, 0, 0, prgl_screen_data.<a class="code hl_variable" href="structPRGLScreen.html#abfcd4a4852615fd609f3cc4a7ed98705">desktop_width</a>,</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        prgl_screen_data.<a class="code hl_variable" href="structPRGLScreen.html#a4c561dfcb79a3b12565517231b571d14">desktop_height</a>, mode-&gt;refreshRate</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    );</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>}</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="screen_8c.html#a77e508480827923d72113b1097a4e79c">   98</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structPRGLScreen.html">PRGLScreen</a> *<a class="code hl_function" href="screen_8c.html#a77e508480827923d72113b1097a4e79c">prgl_screen</a>(<span class="keywordtype">void</span>) { <span class="keywordflow">return</span> &amp;prgl_screen_data; }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    glEnable(GL_CULL_FACE);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    glCullFace(GL_BACK);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    prgl_screen_data = (<span class="keyword">struct </span><a class="code hl_struct" href="structPRGLScreen.html">PRGLScreen</a></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    ){.<a class="code hl_variable" href="structPRGLScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a> = <a class="code hl_variable" href="structPRGLScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a>,</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>      .desktop_width = <a class="code hl_variable" href="structPRGLScreen.html#abfcd4a4852615fd609f3cc4a7ed98705">desktop_width</a>,</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>      .desktop_height = <a class="code hl_variable" href="structPRGLScreen.html#a4c561dfcb79a3b12565517231b571d14">desktop_height</a>,</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>      .aspect_ratio = (float)<a class="code hl_variable" href="structPRGLScreen.html#abfcd4a4852615fd609f3cc4a7ed98705">desktop_width</a> / (<span class="keywordtype">float</span>)<a class="code hl_variable" href="structPRGLScreen.html#a4c561dfcb79a3b12565517231b571d14">desktop_height</a>};</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <a class="code hl_function" href="screen_8c.html#a07464dd5cd4ea5d8a81979eb2c1c080b">prgl_set_vsync</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="screen_8c.html#a8598f061fb44d49fcc8032a55bd7cddd">   76</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="screen_8c.html#a8598f061fb44d49fcc8032a55bd7cddd">prgl_destroy_window</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>{</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    glfwDestroyWindow(prgl_screen_data.<a class="code hl_variable" href="structPRGLScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a>);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    glfwTerminate();</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>}</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="screen_8c.html#a985689302236428da21110d9d44cbd96">   82</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="screen_8c.html#a985689302236428da21110d9d44cbd96">prgl_close_game</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>{</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    glfwSetWindowShouldClose(prgl_screen_data.<a class="code hl_variable" href="structPRGLScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a>, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="screen_8c.html#aabccc40cc697a74ad7d45db1243db0cd">   87</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="screen_8c.html#aabccc40cc697a74ad7d45db1243db0cd">prgl_toggle_fullscreen</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>{</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="comment">// If monitor is NULL we are in fullscreen, and if glfwSetWindowMonitor</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="comment">// receives NULL for monitor it will change to window mode</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    GLFWwindow *window = prgl_screen_data.<a class="code hl_variable" href="structPRGLScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    GLFWmonitor *monitor = glfwGetWindowMonitor(window);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keyword">const</span> GLFWvidmode *mode = glfwGetVideoMode(monitor);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    glfwSetWindowMonitor(</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        window, monitor, 0, 0, prgl_screen_data.<a class="code hl_variable" href="structPRGLScreen.html#abfcd4a4852615fd609f3cc4a7ed98705">desktop_width</a>,</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        prgl_screen_data.<a class="code hl_variable" href="structPRGLScreen.html#a4c561dfcb79a3b12565517231b571d14">desktop_height</a>, mode-&gt;refreshRate</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    );</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>}</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="screen_8c.html#a07464dd5cd4ea5d8a81979eb2c1c080b">  100</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="screen_8c.html#a07464dd5cd4ea5d8a81979eb2c1c080b">prgl_set_vsync</a>(<span class="keywordtype">bool</span> enabled)</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>{</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    glfwSwapInterval(enabled);</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    prgl_screen_data.<a class="code hl_variable" href="structPRGLScreen.html#a71cd4a6e61389597a9599f56fee44b3b">vsync_enabled</a> = enabled;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="screen_8c.html#a548ae43bcebf8104b38cfd8bd56b2561">  106</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="screen_8c.html#a548ae43bcebf8104b38cfd8bd56b2561">prgl_vsync</a>(<span class="keywordtype">void</span>) { <span class="keywordflow">return</span> prgl_screen_data.<a class="code hl_variable" href="structPRGLScreen.html#a71cd4a6e61389597a9599f56fee44b3b">vsync_enabled</a>; }</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="screen_8c.html#a77e508480827923d72113b1097a4e79c">  100</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structPRGLScreen.html">PRGLScreen</a> *<a class="code hl_function" href="screen_8c.html#a77e508480827923d72113b1097a4e79c">prgl_screen</a>(<span class="keywordtype">void</span>) { <span class="keywordflow">return</span> &amp;prgl_screen_data; }</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="screen_8c.html#a07464dd5cd4ea5d8a81979eb2c1c080b">  102</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="screen_8c.html#a07464dd5cd4ea5d8a81979eb2c1c080b">prgl_set_vsync</a>(<span class="keywordtype">bool</span> enabled)</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>{</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    glfwSwapInterval(enabled);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    prgl_screen_data.<a class="code hl_variable" href="structPRGLScreen.html#a71cd4a6e61389597a9599f56fee44b3b">vsync_enabled</a> = enabled;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="screen_8c.html#a57e5e5ef124e05690e844b9ddbb6e5d2">  108</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="screen_8c.html#a57e5e5ef124e05690e844b9ddbb6e5d2">prgl_set_mouse_capture_mode</a>(<span class="keyword">enum</span> <a class="code hl_enumeration" href="screen_8h.html#abf549066deedd97319a2045b8a8ef1e7">PRGLMouseCaptureMode</a> mode)</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>{</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordflow">switch</span> (mode)</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    {</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="screen_8h.html#abf549066deedd97319a2045b8a8ef1e7aaa5b997bf6b9ea10cccc362f03d46ad6">PRGL_MOUSE_DISABLED</a>:</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            glfwSetInputMode(</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                prgl_screen_data.<a class="code hl_variable" href="structPRGLScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a>, GLFW_CURSOR, GLFW_CURSOR_DISABLED</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            );</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="screen_8h.html#abf549066deedd97319a2045b8a8ef1e7ae8f9e9b357cc4a00a8c496d69a9ab284">PRGL_MOUSE_CAPTURED</a>:</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            glfwSetInputMode(</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                prgl_screen_data.<a class="code hl_variable" href="structPRGLScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a>, GLFW_CURSOR, GLFW_CURSOR_CAPTURED</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            );</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keywordflow">default</span>:</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            fprintf(</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>                stderr, <span class="stringliteral">&quot;prgl_set_mouse_capture_mode: Unspecified mouse &quot;</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>                        <span class="stringliteral">&quot;capture mode type.\n&quot;</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            );</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    }</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>}</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="screen_8c.html#a548ae43bcebf8104b38cfd8bd56b2561">  108</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="screen_8c.html#a548ae43bcebf8104b38cfd8bd56b2561">prgl_vsync</a>(<span class="keywordtype">void</span>) { <span class="keywordflow">return</span> prgl_screen_data.<a class="code hl_variable" href="structPRGLScreen.html#a71cd4a6e61389597a9599f56fee44b3b">vsync_enabled</a>; }</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="screen_8c.html#a57e5e5ef124e05690e844b9ddbb6e5d2">  110</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="screen_8c.html#a57e5e5ef124e05690e844b9ddbb6e5d2">prgl_set_mouse_capture_mode</a>(<span class="keyword">enum</span> <a class="code hl_enumeration" href="screen_8h.html#abf549066deedd97319a2045b8a8ef1e7">PRGLMouseCaptureMode</a> mode)</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>{</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordflow">switch</span> (mode)</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    {</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="screen_8h.html#abf549066deedd97319a2045b8a8ef1e7aaa5b997bf6b9ea10cccc362f03d46ad6">PRGL_MOUSE_DISABLED</a>:</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            glfwSetInputMode(</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                prgl_screen_data.<a class="code hl_variable" href="structPRGLScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a>, GLFW_CURSOR, GLFW_CURSOR_DISABLED</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>            );</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="screen_8h.html#abf549066deedd97319a2045b8a8ef1e7ae8f9e9b357cc4a00a8c496d69a9ab284">PRGL_MOUSE_CAPTURED</a>:</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            glfwSetInputMode(</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>                prgl_screen_data.<a class="code hl_variable" href="structPRGLScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a>, GLFW_CURSOR, GLFW_CURSOR_CAPTURED</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>            );</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            fprintf(</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                stderr, <span class="stringliteral">&quot;prgl_set_mouse_capture_mode: Unspecified mouse &quot;</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                        <span class="stringliteral">&quot;capture mode type.\n&quot;</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            );</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    }</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>}</div>
 <div class="ttc" id="ascreen_8c_html_a03c2703ccb93999ae7695910ed0ccfe4"><div class="ttname"><a href="screen_8c.html#a03c2703ccb93999ae7695910ed0ccfe4">prgl_create_window</a></div><div class="ttdeci">void prgl_create_window(const char *const name)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00013">screen.c:13</a></div></div>
-<div class="ttc" id="ascreen_8c_html_a07464dd5cd4ea5d8a81979eb2c1c080b"><div class="ttname"><a href="screen_8c.html#a07464dd5cd4ea5d8a81979eb2c1c080b">prgl_set_vsync</a></div><div class="ttdeci">void prgl_set_vsync(bool enabled)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00100">screen.c:100</a></div></div>
-<div class="ttc" id="ascreen_8c_html_a548ae43bcebf8104b38cfd8bd56b2561"><div class="ttname"><a href="screen_8c.html#a548ae43bcebf8104b38cfd8bd56b2561">prgl_vsync</a></div><div class="ttdeci">bool prgl_vsync(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00106">screen.c:106</a></div></div>
-<div class="ttc" id="ascreen_8c_html_a57e5e5ef124e05690e844b9ddbb6e5d2"><div class="ttname"><a href="screen_8c.html#a57e5e5ef124e05690e844b9ddbb6e5d2">prgl_set_mouse_capture_mode</a></div><div class="ttdeci">void prgl_set_mouse_capture_mode(enum PRGLMouseCaptureMode mode)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00108">screen.c:108</a></div></div>
-<div class="ttc" id="ascreen_8c_html_a77e508480827923d72113b1097a4e79c"><div class="ttname"><a href="screen_8c.html#a77e508480827923d72113b1097a4e79c">prgl_screen</a></div><div class="ttdeci">struct PRGLScreen * prgl_screen(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00098">screen.c:98</a></div></div>
-<div class="ttc" id="ascreen_8c_html_a8598f061fb44d49fcc8032a55bd7cddd"><div class="ttname"><a href="screen_8c.html#a8598f061fb44d49fcc8032a55bd7cddd">prgl_destroy_window</a></div><div class="ttdeci">void prgl_destroy_window(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00074">screen.c:74</a></div></div>
-<div class="ttc" id="ascreen_8c_html_a985689302236428da21110d9d44cbd96"><div class="ttname"><a href="screen_8c.html#a985689302236428da21110d9d44cbd96">prgl_close_game</a></div><div class="ttdeci">void prgl_close_game(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00080">screen.c:80</a></div></div>
-<div class="ttc" id="ascreen_8c_html_aabccc40cc697a74ad7d45db1243db0cd"><div class="ttname"><a href="screen_8c.html#aabccc40cc697a74ad7d45db1243db0cd">prgl_toggle_fullscreen</a></div><div class="ttdeci">void prgl_toggle_fullscreen(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00085">screen.c:85</a></div></div>
+<div class="ttc" id="ascreen_8c_html_a07464dd5cd4ea5d8a81979eb2c1c080b"><div class="ttname"><a href="screen_8c.html#a07464dd5cd4ea5d8a81979eb2c1c080b">prgl_set_vsync</a></div><div class="ttdeci">void prgl_set_vsync(bool enabled)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00102">screen.c:102</a></div></div>
+<div class="ttc" id="ascreen_8c_html_a548ae43bcebf8104b38cfd8bd56b2561"><div class="ttname"><a href="screen_8c.html#a548ae43bcebf8104b38cfd8bd56b2561">prgl_vsync</a></div><div class="ttdeci">bool prgl_vsync(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00108">screen.c:108</a></div></div>
+<div class="ttc" id="ascreen_8c_html_a57e5e5ef124e05690e844b9ddbb6e5d2"><div class="ttname"><a href="screen_8c.html#a57e5e5ef124e05690e844b9ddbb6e5d2">prgl_set_mouse_capture_mode</a></div><div class="ttdeci">void prgl_set_mouse_capture_mode(enum PRGLMouseCaptureMode mode)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00110">screen.c:110</a></div></div>
+<div class="ttc" id="ascreen_8c_html_a77e508480827923d72113b1097a4e79c"><div class="ttname"><a href="screen_8c.html#a77e508480827923d72113b1097a4e79c">prgl_screen</a></div><div class="ttdeci">struct PRGLScreen * prgl_screen(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00100">screen.c:100</a></div></div>
+<div class="ttc" id="ascreen_8c_html_a8598f061fb44d49fcc8032a55bd7cddd"><div class="ttname"><a href="screen_8c.html#a8598f061fb44d49fcc8032a55bd7cddd">prgl_destroy_window</a></div><div class="ttdeci">void prgl_destroy_window(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00076">screen.c:76</a></div></div>
+<div class="ttc" id="ascreen_8c_html_a985689302236428da21110d9d44cbd96"><div class="ttname"><a href="screen_8c.html#a985689302236428da21110d9d44cbd96">prgl_close_game</a></div><div class="ttdeci">void prgl_close_game(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00082">screen.c:82</a></div></div>
+<div class="ttc" id="ascreen_8c_html_aabccc40cc697a74ad7d45db1243db0cd"><div class="ttname"><a href="screen_8c.html#aabccc40cc697a74ad7d45db1243db0cd">prgl_toggle_fullscreen</a></div><div class="ttdeci">void prgl_toggle_fullscreen(void)</div><div class="ttdef"><b>Definition:</b> <a href="screen_8c_source.html#l00087">screen.c:87</a></div></div>
 <div class="ttc" id="ascreen_8h_html"><div class="ttname"><a href="screen_8h.html">screen.h</a></div></div>
 <div class="ttc" id="ascreen_8h_html_abf549066deedd97319a2045b8a8ef1e7"><div class="ttname"><a href="screen_8h.html#abf549066deedd97319a2045b8a8ef1e7">PRGLMouseCaptureMode</a></div><div class="ttdeci">PRGLMouseCaptureMode</div><div class="ttdef"><b>Definition:</b> <a href="screen_8h_source.html#l00007">screen.h:8</a></div></div>
 <div class="ttc" id="ascreen_8h_html_abf549066deedd97319a2045b8a8ef1e7aaa5b997bf6b9ea10cccc362f03d46ad6"><div class="ttname"><a href="screen_8h.html#abf549066deedd97319a2045b8a8ef1e7aaa5b997bf6b9ea10cccc362f03d46ad6">PRGL_MOUSE_DISABLED</a></div><div class="ttdeci">@ PRGL_MOUSE_DISABLED</div><div class="ttdef"><b>Definition:</b> <a href="screen_8h_source.html#l00009">screen.h:9</a></div></div>
