@@ -414,10 +414,10 @@ struct PRGLMesh *prgl_create_cube_sphere(int resolution)
                 };
 
                 // Normalize and project the points to vertices on the sphere
-                for (int v = 0; v < 6; v++)
+                for (int vert = 0; vert < 6; vert++)
                 {
                     vec3 position;
-                    glm_vec3_normalize_to(triangle_points[v], position);
+                    glm_vec3_normalize_to(triangle_points[vert], position);
 
                     // Position XYZ coordinates
                     vertex_data[component_index++] = position[0];
@@ -430,8 +430,8 @@ struct PRGLMesh *prgl_create_cube_sphere(int resolution)
                     vertex_data[component_index++] = position[2];
 
                     // Texture UV coordinates
-                    vertex_data[component_index++] = uvs[v][0];
-                    vertex_data[component_index++] = uvs[v][1];
+                    vertex_data[component_index++] = uvs[vert][0];
+                    vertex_data[component_index++] = uvs[vert][1];
                 }
             }
         }
