@@ -62,13 +62,20 @@ unsigned int prgl_init_shader_2d(void)
         "out vec4 FragColor;\n"
         "in vec2 texCoord;\n"
 
+        "uniform bool useTexture = true;\n"
+        "uniform vec2 tileFactor;\n"
+        "uniform vec3 fillColor = vec3(1.0, 1.0, 1.0);"
         "uniform float alpha;\n"
         "uniform sampler2D imageTexture;\n"
 
         "void main()\n"
         "{\n"
-        "   FragColor = texture(imageTexture, texCoord) * vec4(1.0, 1.0, 1.0, "
-        "alpha);\n"
+        "   vec4 textureColor = vec4(1.0, 1.0, 1.0, 1.0);\n"
+        "   if (useTexture)\n"
+        "   {\n"
+        "       textureColor = texture(imageTexture, texCoord * tileFactor);\n"
+        "   }\n"
+        "   FragColor = textureColor * vec4(fillColor, alpha);\n"
         "}\0";
 
     return prgl_create_shader(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE, NULL);
@@ -217,15 +224,22 @@ unsigned int prgl_init_shader_3d(void)
         "noperspective in vec2 affineUV;\n"
         "in vec3 geoColor;\n"
 
+        "uniform bool useTexture = true;\n"
         "uniform sampler2D imageTexture;\n"
         "uniform vec2 tileFactor;\n"
+        "uniform vec3 fillColor = vec3(1.0, 1.0, 1.0);"
         "uniform float alpha = 1.0;\n"
 
         "void main()\n"
         "{\n"
-            // Switch between UV sets based on the flag
-        "   vec2 finalUV = (useAffineFlag == 1) ? affineUV : perspectiveUV;\n"
-        "   FragColor = texture(imageTexture, finalUV * tileFactor) * vec4(geoColor, alpha);\n"
+        "   vec4 textureColor = vec4(1.0, 1.0, 1.0, 1.0);\n"
+        "   if (useTexture)\n"
+        "   {\n"
+                // Switch between UV sets based on the flag
+        "       vec2 finalUV = (useAffineFlag == 1) ? affineUV : perspectiveUV;\n"
+        "       textureColor = texture(imageTexture, finalUV * tileFactor);\n" 
+        "   }\n"
+        "   FragColor = textureColor * vec4(geoColor * fillColor, alpha);\n"
         "}\0";
     // clang-format on
 
@@ -254,11 +268,12 @@ unsigned int prgl_init_shader_unlit(void)
         "#version 330 core\n"
         "out vec4 FragColor;\n"
 
+        "uniform vec3 fillColor = vec3(1.0, 1.0, 1.0);"
         "uniform float alpha;\n"
 
         "void main()\n"
         "{\n"
-        "   FragColor = vec4(1.0, 1.0, 1.0, alpha);\n"
+        "   FragColor = vec4(fillColor, alpha);\n"
         "}\0";
 
     return prgl_create_shader(VERTEX_SHADER_SOURCE, FRAG_SHADER_SOURCE, NULL);

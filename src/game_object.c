@@ -10,6 +10,7 @@ void prgl_init_game_object(
     glm_quat_identity(game_obj->orientation);
     glm_vec3_copy(position, game_obj->position);
     glm_vec3_one(game_obj->scale);
+    glm_vec3_one(game_obj->color);
     game_obj->mesh = mesh;
 }
 

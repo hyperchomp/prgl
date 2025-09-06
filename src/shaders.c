@@ -14,6 +14,8 @@ const char *const PRGL_LIGHT_LINEAR_UNIFORM = "linear";
 const char *const PRGL_LIGHT_QUADRATIC_UNIFORM = "quadratic";
 const char *const PRGL_RENDER_RESOLUTION_UNIFORM = "renderResolution";
 const char *const PRGL_TILE_FACTOR_UNIFORM = "tileFactor";
+const char *const PRGL_FILL_COLOR_UNIFORM = "fillColor";
+const char *const PRGL_USE_TEXTURE_UNIFORM = "useTexture";
 
 static unsigned int prgl_shader_pool[PRGL_SHADER_COUNT];
 static unsigned int prgl_current_shader_id;

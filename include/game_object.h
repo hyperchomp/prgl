@@ -10,6 +10,7 @@ struct CGLM_ALIGN_MAT PRGLGameObject
     versor orientation; ///< Quaternion rotation.
     vec3 position;
     vec3 scale;
+    vec3 color;
     struct PRGLMesh *mesh;
 };
 

@@ -9,6 +9,7 @@
 #include "texture_internal.h"
 #include "screen_internal.h"
 #include "shaders_internal.h"
+#include "cglm/vec2.h"
 #include <GLFW/glfw3.h>
 
 static double last_update_start = 0;
@@ -44,7 +45,7 @@ void prgl_run_game(
         glEnable(GL_DEPTH_TEST);
         prgl_use_shader_3d();
         prgl_set_shader_uniform_vec2(
-            prgl_current_shader(), PRGL_TILE_FACTOR_UNIFORM, (vec2){1.0f, 1.0f}
+            prgl_current_shader(), PRGL_TILE_FACTOR_UNIFORM, GLM_VEC2_ONE
         );
         prgl_set_shader_uniform_vec2(
             prgl_current_shader(), PRGL_RENDER_RESOLUTION_UNIFORM, render_res
@@ -59,6 +60,9 @@ void prgl_run_game(
 
         glDisable(GL_DEPTH_TEST);
         prgl_use_shader_2d();
+        prgl_set_shader_uniform_vec2(
+            prgl_current_shader(), PRGL_TILE_FACTOR_UNIFORM, GLM_VEC2_ONE
+        );
         prgl_set_shader_uniform_vec2(
             prgl_current_shader(), PRGL_RENDER_RESOLUTION_UNIFORM, render_res
         );

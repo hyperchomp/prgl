@@ -27,8 +27,19 @@ void prgl_render_game_object_3d(struct PRGLGameObject *const game_obj)
 {
     glBindVertexArray(game_obj->mesh->vao);
 
-    // Don't skip this if ID is zero'd, otherwise it uses the last bound texture
-    glBindTexture(GL_TEXTURE_2D, game_obj->mesh->texture_id);
+    if (game_obj->mesh->texture_id == 0)
+    {
+        prgl_set_shader_uniform_bool(
+            prgl_current_shader(), PRGL_USE_TEXTURE_UNIFORM, false
+        );
+    }
+    else
+    {
+        prgl_set_shader_uniform_bool(
+            prgl_current_shader(), PRGL_USE_TEXTURE_UNIFORM, true
+        );
+        glBindTexture(GL_TEXTURE_2D, game_obj->mesh->texture_id);
+    }
 
     // Transform the mesh to the render position.
     mat4 model;
@@ -40,6 +51,9 @@ void prgl_render_game_object_3d(struct PRGLGameObject *const game_obj)
     );
     prgl_set_shader_uniform_mat3(
         prgl_current_shader(), PRGL_NORMAL_MATRIX_UNIFORM, normal_matrix
+    );
+    prgl_set_shader_uniform_vec3(
+        prgl_current_shader(), PRGL_FILL_COLOR_UNIFORM, game_obj->color
     );
 
     if (game_obj->mesh->ebo == 0)
@@ -58,7 +72,19 @@ void prgl_render_game_object_2d(struct PRGLGameObject *const game_obj)
 {
     glBindVertexArray(game_obj->mesh->vao);
 
-    glBindTexture(GL_TEXTURE_2D, game_obj->mesh->texture_id);
+    if (game_obj->mesh->texture_id == 0)
+    {
+        prgl_set_shader_uniform_bool(
+            prgl_current_shader(), PRGL_USE_TEXTURE_UNIFORM, false
+        );
+    }
+    else
+    {
+        prgl_set_shader_uniform_bool(
+            prgl_current_shader(), PRGL_USE_TEXTURE_UNIFORM, true
+        );
+        glBindTexture(GL_TEXTURE_2D, game_obj->mesh->texture_id);
+    }
 
     // Transform the mesh to the render position.
     mat4 trans;
@@ -80,7 +106,10 @@ void prgl_render_game_object_2d(struct PRGLGameObject *const game_obj)
     // up, but our 2D orthogonal projection has 0,0 at top left so -y is up
     glm_scale(trans, (vec3){scale[0], -scale[1], 1.0f});
     prgl_set_shader_uniform_mat4(
-        prgl_shader(PRGL_SHADER_2D), PRGL_MODEL_UNIFORM, trans
+        prgl_current_shader(), PRGL_MODEL_UNIFORM, trans
+    );
+    prgl_set_shader_uniform_vec3(
+        prgl_current_shader(), PRGL_FILL_COLOR_UNIFORM, game_obj->color
     );
 
     if (game_obj->mesh->ebo == 0)

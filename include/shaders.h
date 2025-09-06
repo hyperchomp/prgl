@@ -18,6 +18,8 @@ extern const char *const PRGL_LIGHT_QUADRATIC_UNIFORM;
 
 extern const char *const PRGL_RENDER_RESOLUTION_UNIFORM;
 extern const char *const PRGL_TILE_FACTOR_UNIFORM;
+extern const char *const PRGL_FILL_COLOR_UNIFORM;
+extern const char *const PRGL_USE_TEXTURE_UNIFORM;
 
 /**
  * Precompiled shader types. These can be used with prgl_shader() to get the ID
