@@ -37,12 +37,18 @@ struct PRGLMesh *prgl_create_triangle(void);
 struct PRGLMesh *prgl_create_quad(void);
 
 /**
+ * @brief Creates a pyramid mesh.
+ */
+struct PRGLMesh *prgl_create_pyramid(void);
+
+/**
  * @brief Creates a cube mesh.
  */
 struct PRGLMesh *prgl_create_cube(void);
 
 /**
  * @brief Creates a cube sphere.
+ *
  * Generates a sphere constructed from a cube by subdividing and expanding the
  * six faces.
  *

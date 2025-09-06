@@ -244,12 +244,73 @@ struct PRGLMesh *prgl_create_quad(void)
     if (mesh == NULL)
     {
         fprintf(
-            stderr, "prgl_create_rectangle: Error allocating mesh "
+            stderr, "prgl_create_quad: Error allocating mesh "
                     "pointer memory!"
         );
     }
 
     prgl_init_mesh(mesh, ARR_LEN(indices), vao, vbo, ebo);
+    return mesh;
+}
+
+struct PRGLMesh *prgl_create_pyramid(void)
+{
+    // clang-format off
+    
+    float vertex_data[144] = {
+        // Vertices           // Normals               // Texture coords
+        // Bottom
+        -0.5f, -0.5f,  0.5f,  0.0f, -1.0f, 0.0f,       0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f, 0.0f,       0.0f, 1.0f,
+         0.5f, -0.5f,  0.5f,  0.0f, -1.0f, 0.0f,       1.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,  0.0f, -1.0f, 0.0f,       1.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f, 0.0f,       0.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,  0.0f, -1.0f, 0.0f,       1.0f, 1.0f,
+
+        // Front face
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.4472f, 0.8944f,  0.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,  0.0f, 0.4472f, 0.8944f,  1.0f, 0.0f,
+         0.0f,  0.5f,  0.0f,  0.0f, 0.4472f, 0.8944f,  0.5f, 1.0f,
+
+        // Back face
+         0.5f, -0.5f, -0.5f,  0.0f, 0.4472f, -0.8944f, 0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 0.4472f, -0.8944f, 1.0f, 0.0f,
+         0.0f,  0.5f,  0.0f,  0.0f, 0.4472f, -0.8944f, 0.5f, 1.0f,
+
+        // Right face
+         0.5f, -0.5f,  0.5f,  0.8944f, 0.4472f, 0.0f,  0.0f, 0.0f,
+         0.5f, -0.5f, -0.5f,  0.8944f, 0.4472f, 0.0f,  1.0f, 0.0f,
+         0.0f,  0.5f,  0.0f,  0.8944f, 0.4472f, 0.0f,  0.5f, 1.0f,
+
+        // Left face
+        -0.5f, -0.5f, -0.5f, -0.8944f, 0.4472f, 0.0f,  0.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f, -0.8944f, 0.4472f, 0.0f,  1.0f, 0.0f,
+         0.0f,  0.5f,  0.0f, -0.8944f, 0.4472f, 0.0f,  0.5f, 1.0f 
+    };
+    // clang-format on
+
+    unsigned int vbo;
+    unsigned int vao;
+    glGenBuffers(1, &vbo);
+    glGenVertexArrays(1, &vao);
+
+    glBindVertexArray(vao);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(
+        GL_ARRAY_BUFFER, sizeof(vertex_data), vertex_data, GL_STATIC_DRAW
+    );
+
+    prgl_setup_vertex_attributes();
+
+    struct PRGLMesh *mesh = malloc(sizeof(struct PRGLMesh));
+    if (mesh == NULL)
+    {
+        fprintf(
+            stderr, "prgl_create_pyramid: Error allocating mesh pointer memory!"
+        );
+    }
+
+    prgl_init_mesh(mesh, 18, vao, vbo, 0);
     return mesh;
 }
 
