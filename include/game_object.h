@@ -2,8 +2,7 @@
 #define PRGL_GAME_OBJECT_H
 
 #include "cglm/types.h"
-
-struct PRGLMesh;
+#include "mesh.h"
 
 struct CGLM_ALIGN_MAT PRGLGameObject
 {
@@ -11,7 +10,7 @@ struct CGLM_ALIGN_MAT PRGLGameObject
     vec3 position;
     vec3 scale;
     vec3 color;
-    struct PRGLMesh *mesh;
+    PRGLMeshHandle mesh;
 };
 
 /**
@@ -22,7 +21,7 @@ struct CGLM_ALIGN_MAT PRGLGameObject
  * @param position
  */
 void prgl_init_game_object(
-    struct PRGLGameObject *const game_obj, struct PRGLMesh *const mesh,
+    struct PRGLGameObject *const game_obj, const PRGLMeshHandle mesh,
     vec3 position
 );
 

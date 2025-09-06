@@ -1,9 +1,10 @@
 #include "game_object.h"
 #include "cglm/quat.h"
 #include "cglm/vec3.h"
+#include "mesh.h"
 
 void prgl_init_game_object(
-    struct PRGLGameObject *const game_obj, struct PRGLMesh *const mesh,
+    struct PRGLGameObject *const game_obj, const PRGLMeshHandle mesh,
     vec3 position
 )
 {

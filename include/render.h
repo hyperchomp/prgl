@@ -27,19 +27,19 @@ struct CGLM_ALIGN(8) PRGLPointLight
 void prgl_clear_screen(float r, float g, float b, float a);
 
 /**
- * Renders a game object to the screen.
+ * Draws a game object to the screen.
  *
  * @param[in] game_obj
  */
-void prgl_render_game_object_3d(struct PRGLGameObject *const game_obj);
+void prgl_draw_game_object_3d(struct PRGLGameObject *const game_obj);
 
 /**
- * Renders a game object to the screen at a 2D position.
+ * Draws a game object to the screen at a 2D position.
  * Rotation will be about the Z axis.
  *
  * @param[in] game_obj
  */
-void prgl_render_game_object_2d(struct PRGLGameObject *const game_obj);
+void prgl_draw_game_object_2d(struct PRGLGameObject *const game_obj);
 
 /**
  * Passes lighting data from lights to the active shader.

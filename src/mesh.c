@@ -1,7 +1,6 @@
-#include "mesh.h"
-#include "cglm/mat3.h"
-#include "mesh_internal.h"
 #include "glad.h"
+#include "mesh.h"
+#include "mesh_internal.h"
 #include "common_macros.h"
 #include "cglm/types.h"
 #include "cglm/vec3.h"
@@ -11,10 +10,10 @@
 
 // Constants for meshes with vertices, normals, and texture coordinates. If not
 // all then these values will be different, only use in that scenario.
-static const int VERTEX_STRIDE_LENGTH = 8;
-static const GLint FLOAT_VERTEX_STRIDE = VERTEX_STRIDE_LENGTH * sizeof(float);
-static const GLint NORMALS_OFFSET = 3 * sizeof(float);
-static const GLint TEX_COORD_OFFSET = 6 * sizeof(float);
+static const GLint VERTEX_STRIDE_LENGTH = 8;
+static const GLint FLOAT_VERTEX_STRIDE = VERTEX_STRIDE_LENGTH * sizeof(GLfloat);
+static const GLint NORMALS_OFFSET = 3 * sizeof(GLfloat);
+static const GLint TEX_COORD_OFFSET = 6 * sizeof(GLfloat);
 
 // Normal for 2D shapes, assumes positioning on XY, thus +Z normal
 static const vec3 NORMAL_POS_Z = {0.0f, 0.0f, 1.0f};
@@ -26,8 +25,8 @@ static void prgl_generate_cube_sphere_point(
 );
 
 void prgl_init_mesh(
-    struct PRGLMesh *mesh, int num_vertices, unsigned int vao, unsigned int vbo,
-    unsigned int ebo
+    struct PRGLMesh *mesh, GLuint num_vertices, GLuint vao, GLuint vbo,
+    GLuint ebo, GLuint texture_id, GLenum primitive_type
 )
 {
     *mesh = (struct PRGLMesh){
@@ -35,11 +34,12 @@ void prgl_init_mesh(
         .vao = vao,
         .vbo = vbo,
         .ebo = ebo,
-        .texture_id = 0,
+        .texture_id = texture_id,
+        .primitive_type = primitive_type,
     };
 }
 
-struct PRGLMesh *prgl_create_screen_quad(void)
+struct PRGLMesh *prgl_create_screen_quad(GLuint texture_id)
 {
     // clang-format off
     mat4 vertices = {
@@ -55,7 +55,7 @@ struct PRGLMesh *prgl_create_screen_quad(void)
         {1.0f, 1.0f}  // Top-right (y=1)
     };
     
-    float vertex_data[20] = {
+    const GLfloat vertex_data[20] = {
               vertices[0][0],       vertices[0][1], vertices[0][2], 
         texture_coords[0][0], texture_coords[0][1],
               vertices[1][0],       vertices[1][1], vertices[1][2], 
@@ -70,16 +70,16 @@ struct PRGLMesh *prgl_create_screen_quad(void)
     // EBO stops us from needing overlapping vertices, but we need to tell
     // OpenGL the order to go over the existing ones again to create enough
     // triangles to create our mesh (in this case 2 triangles, 6 indices)
-    unsigned int indices[] = {
+    const GLuint indices[] = {
         0, 1, 2, // First triangle
         0, 2, 3  // Second triangle
     };
 
     // Create a vertex buffer object and vertex array object, the VBO is to
     // generate the initial data, the VAO is so we can re-use it later
-    unsigned int vbo;
-    unsigned int vao;
-    unsigned int ebo;
+    GLuint vbo;
+    GLuint vao;
+    GLuint ebo;
     glGenBuffers(1, &vbo);
     glGenBuffers(1, &ebo);
     glGenVertexArrays(1, &vao);
@@ -97,14 +97,14 @@ struct PRGLMesh *prgl_create_screen_quad(void)
 
     // Tell OpenGL how to interpret the vertex data
     glVertexAttribPointer(
-        0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0
+        0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (const GLvoid *)0
     );
     glEnableVertexAttribArray(0);
 
     // Tell OpenGL how to interpret the texture coordinate data
     glVertexAttribPointer(
-        2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
-        (const GLvoid *)(intptr_t)(3 * sizeof(float))
+        2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat),
+        (const GLvoid *)(intptr_t)(3 * sizeof(GLfloat))
     );
     glEnableVertexAttribArray(2);
 
@@ -117,11 +117,13 @@ struct PRGLMesh *prgl_create_screen_quad(void)
         );
     }
 
-    prgl_init_mesh(mesh, ARR_LEN(indices), vao, vbo, ebo);
+    prgl_init_mesh(
+        mesh, (GLuint)ARR_LEN(indices), vao, vbo, ebo, texture_id, GL_TRIANGLES
+    );
     return mesh;
 }
 
-struct PRGLMesh *prgl_create_triangle(void)
+PRGLMeshHandle prgl_create_triangle(unsigned int texture_id)
 {
     // clang-format off
     mat3 vertices = {
@@ -135,7 +137,7 @@ struct PRGLMesh *prgl_create_triangle(void)
         {0.5f, 1.0f}, 
     };
     // Combine vertex position and texture coordinate data
-    float vertex_data[24] = {
+    const GLfloat vertex_data[24] = {
               vertices[0][0],       vertices[0][1], vertices[0][2],
              NORMAL_POS_Z[0],      NORMAL_POS_Z[1], NORMAL_POS_Z[2],
         texture_coords[0][0], texture_coords[0][1],
@@ -150,8 +152,8 @@ struct PRGLMesh *prgl_create_triangle(void)
 
     // Create a vertex buffer object and vertex array object, the VBO is to
     // generate the initial data, the VAO is so we can re-use it later
-    unsigned int vbo;
-    unsigned int vao;
+    GLuint vbo;
+    GLuint vao;
     glGenBuffers(1, &vbo);
     glGenVertexArrays(1, &vao);
 
@@ -164,7 +166,7 @@ struct PRGLMesh *prgl_create_triangle(void)
 
     prgl_setup_vertex_attributes();
 
-    struct PRGLMesh *mesh = malloc(sizeof(struct PRGLMesh));
+    PRGLMeshHandle mesh = malloc(sizeof(struct PRGLMesh));
     if (mesh == NULL)
     {
         fprintf(
@@ -173,11 +175,13 @@ struct PRGLMesh *prgl_create_triangle(void)
         );
     }
 
-    prgl_init_mesh(mesh, 3, vao, vbo, 0);
+    prgl_init_mesh(
+        mesh, (GLuint)3, vao, vbo, 0, (GLuint)texture_id, GL_TRIANGLES
+    );
     return mesh;
 }
 
-struct PRGLMesh *prgl_create_quad(void)
+PRGLMeshHandle prgl_create_quad(unsigned int texture_id)
 {
     // clang-format off
     mat4 vertices = {
@@ -194,7 +198,7 @@ struct PRGLMesh *prgl_create_quad(void)
     };
 
     // Assumes quad is oriented on XY plane 
-    float vertex_data[32] = {
+    const GLfloat vertex_data[32] = {
               vertices[0][0],       vertices[0][1],  vertices[0][2], 
              NORMAL_POS_Z[0],      NORMAL_POS_Z[1], NORMAL_POS_Z[2],
         texture_coords[0][0], texture_coords[0][1],
@@ -213,16 +217,16 @@ struct PRGLMesh *prgl_create_quad(void)
     // EBO stops us from needing overlapping vertices, but we need to tell
     // OpenGL the order to go over the existing ones again to create enough
     // triangles to create our mesh (in this case 2 triangles, 6 indices)
-    unsigned int indices[] = {
+    GLuint indices[] = {
         0, 1, 2, // First triangle
         0, 2, 3  // Second triangle
     };
 
     // Create a vertex buffer object and vertex array object, the VBO is to
     // generate the initial data, the VAO is so we can re-use it later
-    unsigned int vbo;
-    unsigned int vao;
-    unsigned int ebo;
+    GLuint vbo;
+    GLuint vao;
+    GLuint ebo;
     glGenBuffers(1, &vbo);
     glGenBuffers(1, &ebo);
     glGenVertexArrays(1, &vao);
@@ -240,7 +244,7 @@ struct PRGLMesh *prgl_create_quad(void)
 
     prgl_setup_vertex_attributes();
 
-    struct PRGLMesh *mesh = malloc(sizeof(struct PRGLMesh));
+    PRGLMeshHandle mesh = malloc(sizeof(struct PRGLMesh));
     if (mesh == NULL)
     {
         fprintf(
@@ -249,15 +253,18 @@ struct PRGLMesh *prgl_create_quad(void)
         );
     }
 
-    prgl_init_mesh(mesh, ARR_LEN(indices), vao, vbo, ebo);
+    prgl_init_mesh(
+        mesh, (GLuint)ARR_LEN(indices), vao, vbo, ebo, (GLuint)texture_id,
+        GL_TRIANGLES
+    );
     return mesh;
 }
 
-struct PRGLMesh *prgl_create_pyramid(void)
+PRGLMeshHandle prgl_create_pyramid(unsigned int texture_id)
 {
     // clang-format off
     
-    float vertex_data[144] = {
+    const GLfloat vertex_data[144] = {
         // Vertices           // Normals               // Texture coords
         // Bottom
         -0.5f, -0.5f,  0.5f,  0.0f, -1.0f, 0.0f,       0.0f, 0.0f,
@@ -289,8 +296,8 @@ struct PRGLMesh *prgl_create_pyramid(void)
     };
     // clang-format on
 
-    unsigned int vbo;
-    unsigned int vao;
+    GLuint vbo;
+    GLuint vao;
     glGenBuffers(1, &vbo);
     glGenVertexArrays(1, &vao);
 
@@ -302,7 +309,7 @@ struct PRGLMesh *prgl_create_pyramid(void)
 
     prgl_setup_vertex_attributes();
 
-    struct PRGLMesh *mesh = malloc(sizeof(struct PRGLMesh));
+    PRGLMeshHandle mesh = malloc(sizeof(struct PRGLMesh));
     if (mesh == NULL)
     {
         fprintf(
@@ -310,14 +317,16 @@ struct PRGLMesh *prgl_create_pyramid(void)
         );
     }
 
-    prgl_init_mesh(mesh, 18, vao, vbo, 0);
+    prgl_init_mesh(
+        mesh, (GLuint)18, vao, vbo, 0, (GLuint)texture_id, GL_TRIANGLES
+    );
     return mesh;
 }
 
-struct PRGLMesh *prgl_create_cube(void)
+PRGLMeshHandle prgl_create_cube(unsigned int texture_id)
 {
     // clang-format off
-    const float vertices[] = {
+    const GLfloat vertices[] = {
         // vertices           // normals           // texture coords
         // Front Face 
         -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f, 0.0f,
@@ -369,7 +378,8 @@ struct PRGLMesh *prgl_create_cube(void)
     };
     // clang-format on
 
-    unsigned int vbo, vao;
+    GLuint vbo;
+    GLuint vao;
     glGenVertexArrays(1, &vao);
     glGenBuffers(1, &vbo);
 
@@ -380,7 +390,7 @@ struct PRGLMesh *prgl_create_cube(void)
 
     prgl_setup_vertex_attributes();
 
-    struct PRGLMesh *mesh = malloc(sizeof(struct PRGLMesh));
+    PRGLMeshHandle mesh = malloc(sizeof(struct PRGLMesh));
     if (mesh == NULL)
     {
         fprintf(
@@ -388,20 +398,22 @@ struct PRGLMesh *prgl_create_cube(void)
         );
     }
 
-    prgl_init_mesh(mesh, 36, vao, vbo, 0);
+    prgl_init_mesh(
+        mesh, (GLuint)36, vao, vbo, 0, (GLuint)texture_id, GL_TRIANGLES
+    );
     return mesh;
 }
 
-struct PRGLMesh *prgl_create_cube_sphere(int resolution)
+PRGLMeshHandle prgl_create_cube_sphere(int resolution, unsigned int texture_id)
 {
     resolution = resolution > 1 ? resolution : 1;
 
     // Six faces, resolution squared quads, six vertices per quad
     const int NUM_FACES = 6;
-    int num_vertices = NUM_FACES * (resolution * resolution) * NUM_FACES;
-    int vertex_data_length = num_vertices * VERTEX_STRIDE_LENGTH;
+    GLuint num_vertices = NUM_FACES * (resolution * resolution) * NUM_FACES;
+    GLuint vertex_data_length = num_vertices * VERTEX_STRIDE_LENGTH;
 
-    float *vertex_data = malloc(sizeof(float) * vertex_data_length);
+    GLfloat *vertex_data = malloc(sizeof(GLfloat) * vertex_data_length);
     if (vertex_data == NULL)
     {
         fprintf(
@@ -508,8 +520,8 @@ struct PRGLMesh *prgl_create_cube_sphere(int resolution)
         }
     }
 
-    unsigned int vbo;
-    unsigned int vao;
+    GLuint vbo;
+    GLuint vao;
     glGenBuffers(1, &vbo);
     glGenVertexArrays(1, &vao);
 
@@ -517,14 +529,14 @@ struct PRGLMesh *prgl_create_cube_sphere(int resolution)
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(
-        GL_ARRAY_BUFFER, sizeof(float) * vertex_data_length, vertex_data,
+        GL_ARRAY_BUFFER, sizeof(GLfloat) * vertex_data_length, vertex_data,
         GL_STATIC_DRAW
     );
 
     prgl_setup_vertex_attributes();
     free(vertex_data);
 
-    struct PRGLMesh *mesh = malloc(sizeof(struct PRGLMesh));
+    PRGLMeshHandle mesh = malloc(sizeof(struct PRGLMesh));
     if (mesh == NULL)
     {
         fprintf(
@@ -533,35 +545,38 @@ struct PRGLMesh *prgl_create_cube_sphere(int resolution)
         );
     }
 
-    prgl_init_mesh(mesh, num_vertices, vao, vbo, 0);
+    prgl_init_mesh(
+        mesh, num_vertices, vao, vbo, 0, (GLuint)texture_id, GL_TRIANGLES
+    );
     return mesh;
 }
 
-void prgl_delete_mesh(struct PRGLMesh *mesh)
+void prgl_delete_mesh(PRGLMeshHandle mesh)
 {
-    glDeleteVertexArrays(1, &mesh->vao);
-    glDeleteBuffers(1, &mesh->vbo);
+    struct PRGLMesh *internal_mesh = (struct PRGLMesh *)mesh;
+    glDeleteVertexArrays(1, &internal_mesh->vao);
+    glDeleteBuffers(1, &internal_mesh->vbo);
 
-    if (mesh->ebo != 0)
+    if (internal_mesh->ebo != 0)
     {
-        glDeleteBuffers(1, &mesh->ebo);
+        glDeleteBuffers(1, &internal_mesh->ebo);
     }
 
-    free(mesh);
+    free(internal_mesh);
 }
 
 static void prgl_setup_vertex_attributes(void)
 {
     // position attribute
     glVertexAttribPointer(
-        0, 3, GL_FLOAT, GL_FALSE, FLOAT_VERTEX_STRIDE, (void *)0
+        0, 3, GL_FLOAT, GL_FALSE, FLOAT_VERTEX_STRIDE, (const GLvoid *)0
     );
     glEnableVertexAttribArray(0);
 
     // normals attribute
     glVertexAttribPointer(
         1, 3, GL_FLOAT, GL_FALSE, FLOAT_VERTEX_STRIDE,
-        (const GLvoid *)(intptr_t)(NORMALS_OFFSET)
+        (const GLvoid *)(intptr_t)NORMALS_OFFSET
     );
     glEnableVertexAttribArray(1);
 
