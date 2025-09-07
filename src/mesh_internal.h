@@ -2,6 +2,7 @@
 #define PRGL_MESH_INTERNAL_H
 
 #include "glad.h"
+#include "types.h"
 
 /**
  * @brief Defines the geometry of a 3D object.
@@ -23,7 +24,7 @@ struct PRGLMesh
     GLuint ebo;
 
     /// @brief Optional - Stores the texture ID for the mesh.
-    GLuint texture_id;
+    PRGLTexture texture;
 
     /**
      * @brief The type of of primitive to render.
@@ -35,19 +36,18 @@ struct PRGLMesh
 
 /**
  * Initializes a mesh struct with the given values.
- * Zeroes texture_id, it must be set with an ID from a loaded texture after.
  *
  * @param mesh[in,out]
  * @param num_vertices
  * @param vao
  * @param vbo
  * @param ebo
- * @param texture_id
+ * @param texture
  * @param primitive_type
  */
 void prgl_init_mesh(
     struct PRGLMesh *mesh, GLuint num_vertices, GLuint vao, GLuint vbo,
-    GLuint ebo, GLuint texture_id, GLenum primitive_type
+    GLuint ebo, PRGLTexture texture, GLenum primitive_type
 );
 
 /**
@@ -55,6 +55,6 @@ void prgl_init_mesh(
  *
  * @param texture_id The ID of the texture to draw the screen quad to.
  */
-struct PRGLMesh *prgl_create_screen_quad(GLuint texture_id);
+struct PRGLMesh *prgl_create_screen_quad(PRGLTexture texture);
 
 #endif

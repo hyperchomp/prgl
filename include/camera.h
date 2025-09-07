@@ -3,6 +3,23 @@
 
 #include "cglm/types.h"
 
+enum PRGLCameraProjectionType
+{
+    PRGL_CAMERA_PROJECTION_PERSPECTIVE,
+    PRGL_CAMERA_PROJECTION_ORTHOGONAL
+};
+
+/**
+ * Camera movement directions to obfuscate movement from input.
+ */
+enum PRGLCameraMoveDirection
+{
+    PRGL_CAMERA_MOVE_DIR_FORWARD,
+    PRGL_CAMERA_MOVE_DIR_BACKWARD,
+    PRGL_CAMERA_MOVE_DIR_RIGHT,
+    PRGL_CAMERA_MOVE_DIR_LEFT
+};
+
 /**
  * A camera for viewing the scene.
  * The struct values should be initialized and updated with the framework's
@@ -24,23 +41,7 @@ struct CGLM_ALIGN_MAT PRGLCamera
     float fov; ///< Camera fov in degrees
     float move_speed;
     float look_sensitivity;
-};
-
-/**
- * Camera movement directions to obfuscate movement from input.
- */
-enum PRGLCameraMoveDirection
-{
-    PRGL_CAMERA_MOVE_DIR_FORWARD,
-    PRGL_CAMERA_MOVE_DIR_BACKWARD,
-    PRGL_CAMERA_MOVE_DIR_RIGHT,
-    PRGL_CAMERA_MOVE_DIR_LEFT
-};
-
-enum PRGLCameraProjectionType
-{
-    PRGL_CAMERA_PROJECTION_PERSPECTIVE,
-    PRGL_CAMERA_PROJECTION_ORTHOGONAL
+    enum PRGLCameraProjectionType projection_type;
 };
 
 /**

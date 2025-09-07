@@ -29,34 +29,36 @@ void prgl_draw_game_object_3d(struct PRGLGameObject *const game_obj)
 
     glBindVertexArray(mesh->vao);
 
-    if (mesh->texture_id == 0)
-    {
-        prgl_set_shader_uniform_bool(
-            prgl_current_shader(), PRGL_USE_TEXTURE_UNIFORM, false
-        );
-    }
-    else
-    {
-        prgl_set_shader_uniform_bool(
-            prgl_current_shader(), PRGL_USE_TEXTURE_UNIFORM, true
-        );
-        glBindTexture(GL_TEXTURE_2D, mesh->texture_id);
-    }
-
     // Transform the mesh to the render position.
     mat4 model;
     mat3 normal_matrix;
     prgl_create_model_matrix(model, game_obj);
-    prgl_create_normal_matrix(normal_matrix, model);
     prgl_set_shader_uniform_mat4(
         prgl_current_shader(), PRGL_MODEL_UNIFORM, model
-    );
-    prgl_set_shader_uniform_mat3(
-        prgl_current_shader(), PRGL_NORMAL_MATRIX_UNIFORM, normal_matrix
     );
     prgl_set_shader_uniform_vec3(
         prgl_current_shader(), PRGL_FILL_COLOR_UNIFORM, game_obj->color
     );
+    if (prgl_current_shader().id != prgl_shader(PRGL_SHADER_TYPE_UNLIT).id)
+    {
+        prgl_create_normal_matrix(normal_matrix, model);
+        prgl_set_shader_uniform_mat3(
+            prgl_current_shader(), PRGL_NORMAL_MATRIX_UNIFORM, normal_matrix
+        );
+        if (mesh->texture.id == 0)
+        {
+            prgl_set_shader_uniform_bool(
+                prgl_current_shader(), PRGL_USE_TEXTURE_UNIFORM, false
+            );
+        }
+        else
+        {
+            prgl_set_shader_uniform_bool(
+                prgl_current_shader(), PRGL_USE_TEXTURE_UNIFORM, true
+            );
+            glBindTexture(GL_TEXTURE_2D, (GLuint)mesh->texture.id);
+        }
+    }
 
     if (mesh->ebo == 0)
     {
@@ -76,7 +78,7 @@ void prgl_draw_game_object_2d(struct PRGLGameObject *const game_obj)
 
     glBindVertexArray(mesh->vao);
 
-    if (mesh->texture_id == 0)
+    if (mesh->texture.id == 0)
     {
         prgl_set_shader_uniform_bool(
             prgl_current_shader(), PRGL_USE_TEXTURE_UNIFORM, false
@@ -87,7 +89,7 @@ void prgl_draw_game_object_2d(struct PRGLGameObject *const game_obj)
         prgl_set_shader_uniform_bool(
             prgl_current_shader(), PRGL_USE_TEXTURE_UNIFORM, true
         );
-        glBindTexture(GL_TEXTURE_2D, mesh->texture_id);
+        glBindTexture(GL_TEXTURE_2D, (GLuint)mesh->texture.id);
     }
 
     // Transform the mesh to the render position.
@@ -197,16 +199,16 @@ void prgl_render_render_texture(struct PRGLMesh *const screen_quad)
     int windowWidth;
     int windowHeight;
     glfwGetFramebufferSize(prgl_screen()->window, &windowWidth, &windowHeight);
-    glViewport(0, 0, windowWidth, windowHeight);
+    glViewport(0, 0, (GLint)windowWidth, (GLint)windowHeight);
 
     // Clear just the color buffer
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
     // Render the screen quad to the window
-    prgl_use_shader(prgl_shader(PRGL_SHADER_SCREEN));
+    prgl_use_shader(prgl_shader(PRGL_SHADER_TYPE_SCREEN));
     glBindVertexArray(screen_quad->vao);
-    glBindTexture(GL_TEXTURE_2D, screen_quad->texture_id);
+    glBindTexture(GL_TEXTURE_2D, (GLuint)screen_quad->texture.id);
     glDrawElements(
         screen_quad->primitive_type, screen_quad->num_vertices, GL_UNSIGNED_INT,
         0

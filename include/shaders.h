@@ -1,9 +1,55 @@
+/**
+ * @file shaders.h
+ * @brief Functions for creation and usage of shader programs.
+ *
+ * Shader functions are exposed for advanced users. If you create a custom
+ * shader to override or enhance rendering, ensure your shader is compatible
+ * with the uniforms and vertex attributes set by prgl functions.
+ *
+ * Note that most of the uniforms are set automatically during the game loop. So
+ * if you want to override uniforms permanently or on a portion of each loop
+ * you'll need to set those uniforms on every loop as well.
+ *
+ * Values shown in the shader contract are copied from the shader code for
+ * clarity. If you would like more information on how these are used refer to
+ * the prgl source code on GitHub: github.com/hyperchomp/prgl/
+ *
+ * For 2D shaders the uniforms are the same except with the absence of the view
+ * and normalMatrix. Layout is the same as well except there is no aNormal, note
+ * that EVERYTHING else is the same including the layout location numbers.
+ *
+ * == Shader Contract ==
+ *
+ * Uniforms:
+ *
+ * VERTEX SHADER UNIFORMS:
+ * - uniform mat4 model;
+ * - uniform mat4 view;
+ * - uniform mat4 projection;
+ * - uniform mat3 normalMatrix;
+ * - uniform vec2 renderResolution;
+ *
+ * FRAGMENT SHADER UNIFORMS:
+ * - uniform bool useTexture = true;
+ * - uniform vec2 tileFactor = vec2(1.0, 1.0);
+ * - uniform vec3 fillColor = vec3(1.0, 1.0, 1.0);
+ * - uniform float alpha;
+ * - uniform sampler2D imageTexture;
+ *
+ * VERTEX ATTRIBUTES LAYOUT:
+ * - layout (location = 0) in vec3 aPos;
+ * - layout (location = 1) in vec3 aNormal;
+ * - layout (location = 2) in vec2 aTexCoord;
+ */
+
 #ifndef PRGL_SHADERS_H
 #define PRGL_SHADERS_H
 
-#include "cglm/types.h"
 #include <stddef.h>
 #include <stdbool.h>
+
+#include "types.h"
+#include "cglm/types.h"
 
 #define PRGL_MAX_POINT_LIGHTS 32
 
@@ -25,15 +71,15 @@ extern const char *const PRGL_USE_TEXTURE_UNIFORM;
  * Precompiled shader types. These can be used with prgl_shader() to get the ID
  * of a precompiled shader.
  *
- * The default is PRGL_SHADER_3D for 3D, and PRGL_SHADER_2D for 2D
+ * The default is PRGL_SHADER_TYPE_3D for 3D, and PRGL_SHADER_TYPE_2D for 2D
  */
-enum PRGLShader
+enum PRGLShaderType
 {
-    PRGL_SHADER_SCREEN,
-    PRGL_SHADER_2D,
-    PRGL_SHADER_3D,
-    PRGL_SHADER_UNLIT,
-    PRGL_SHADER_COUNT
+    PRGL_SHADER_TYPE_SCREEN,
+    PRGL_SHADER_TYPE_2D,
+    PRGL_SHADER_TYPE_3D,
+    PRGL_SHADER_TYPE_UNLIT,
+    PRGL_SHADER_TYPE_COUNT
 };
 
 /*
@@ -45,14 +91,14 @@ enum PRGLShader
  * @param type The type of precompiled shader.
  * @return The shader program ID for the shader type.
  */
-unsigned int prgl_shader(enum PRGLShader type);
+PRGLShader prgl_shader(enum PRGLShaderType type);
 
 /**
  * Gets the shader ID for the current shader in use.
  *
  * @return The shader program ID for the current shader.
  */
-unsigned int prgl_current_shader(void);
+PRGLShader prgl_current_shader(void);
 
 /**
  * Creates a shader from the given sources.
@@ -62,9 +108,10 @@ unsigned int prgl_current_shader(void);
  * @param[in] geometry_source GLSL code for the geometry shader. Can be NULL.
  * @return The shader program ID.
  */
-unsigned int prgl_create_shader(
-    const char *const vertex_source, const char *const frag_source,
-    const char *const geometry_source
+PRGLShader prgl_create_shader(
+    const char *const vertex_source[], int num_vertex_sources,
+    const char *const frag_source[], int num_frag_sources,
+    const char *const geometry_source[], int num_geometry_sources
 );
 
 /**
@@ -73,15 +120,26 @@ unsigned int prgl_create_shader(
  *
  * @param shader The ID of the shader to use.
  */
-void prgl_use_shader(unsigned int shader);
+void prgl_use_shader(PRGLShader shader);
 
 /**
- * Activates the 3D shader for use.
+ * @brief Activates the 3D shader for use.
+ *
+ * Activates the 3D shader and sets necessary uniforms needed for use.
  */
 void prgl_use_shader_3d(void);
 
 /**
+ * @brief Activates the unlit 3D shader for use.
+ *
+ * Activates the unlit 3D shader and sets necessary uniforms needed for use.
+ */
+void prgl_use_shader_unlit(void);
+
+/**
  * Activates the 2D shader for use.
+ *
+ * Activates the 2D shader and sets necessary uniforms needed for use.
  */
 void prgl_use_shader_2d(void);
 
@@ -90,7 +148,7 @@ void prgl_use_shader_2d(void);
  *
  * @param shader The ID of the shader to delete.
  */
-void prgl_delete_shader(unsigned int shader);
+void prgl_delete_shader(PRGLShader shader);
 
 /**
  * Sets the value of shader uniform variable which takes 4 floats.
@@ -103,7 +161,7 @@ void prgl_delete_shader(unsigned int shader);
  * @param d
  */
 void prgl_set_shader_uniform_4f(
-    unsigned int shader, const char *const name, float a, float b, float c,
+    PRGLShader shader, const char *const name, float a, float b, float c,
     float d
 );
 
@@ -115,7 +173,7 @@ void prgl_set_shader_uniform_4f(
  * @param vec3
  */
 void prgl_set_shader_uniform_vec3(
-    unsigned int shader, const char *const name, vec3 vec
+    PRGLShader shader, const char *const name, vec3 vec
 );
 
 /**
@@ -126,7 +184,7 @@ void prgl_set_shader_uniform_vec3(
  * @param vec2
  */
 void prgl_set_shader_uniform_vec2(
-    unsigned int shader, const char *const name, vec2 vec
+    PRGLShader shader, const char *const name, vec2 vec
 );
 
 /**
@@ -137,7 +195,7 @@ void prgl_set_shader_uniform_vec2(
  * @param matrix The cglm matrix to assign to the uniform.
  */
 void prgl_set_shader_uniform_mat4(
-    unsigned int shader, const char *const name, mat4 matrix
+    PRGLShader shader, const char *const name, mat4 matrix
 );
 
 /**
@@ -148,7 +206,7 @@ void prgl_set_shader_uniform_mat4(
  * @param matrix The cglm matrix to assign to the uniform.
  */
 void prgl_set_shader_uniform_mat3(
-    unsigned int shader, const char *const name, mat3 matrix
+    PRGLShader shader, const char *const name, mat3 matrix
 );
 
 /**
@@ -159,7 +217,7 @@ void prgl_set_shader_uniform_mat3(
  * @param value
  */
 void prgl_set_shader_uniform_float(
-    unsigned int shader, const char *const name, float value
+    PRGLShader shader, const char *const name, float value
 );
 
 /**
@@ -170,7 +228,7 @@ void prgl_set_shader_uniform_float(
  * @param value
  */
 void prgl_set_shader_uniform_int(
-    unsigned int shader, const char *const name, int value
+    PRGLShader shader, const char *const name, int value
 );
 
 /**
@@ -181,7 +239,18 @@ void prgl_set_shader_uniform_int(
  * @param value
  */
 void prgl_set_shader_uniform_bool(
-    unsigned int shader, const char *const name, bool value
+    PRGLShader shader, const char *const name, bool value
 );
+
+/**
+ * @brief Sets values for uniforms which are needed for default shaders.
+ *
+ * Should be called after switching to a shader if not using one of the built-in
+ * shader functions like prgl_use_shader_3d(), as those functions will also call
+ * this one.
+ *
+ * @param is_3d
+ */
+void prgl_set_default_shared_uniforms(bool is_3d);
 
 #endif

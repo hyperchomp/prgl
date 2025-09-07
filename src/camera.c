@@ -37,6 +37,7 @@ void prgl_init_camera(
     cam->pitch = 0.0f;
     cam->move_speed = move_speed;
     cam->look_sensitivity = 0.1f;
+    cam->projection_type = projection_type;
 
     prgl_set_camera_projection(cam, fov_degrees, projection_type);
 }
@@ -124,6 +125,8 @@ void prgl_set_camera_projection(
     struct PRGLScreen *const screen = prgl_screen();
     if (projection_type == PRGL_CAMERA_PROJECTION_PERSPECTIVE)
     {
+        cam->projection_type = PRGL_CAMERA_PROJECTION_PERSPECTIVE;
+
         // Perspective needs fov in radians, aspect, and near/far clip
         cam->fov = fov_degrees;
         const float fov = glm_rad(fov_degrees);
@@ -139,6 +142,8 @@ void prgl_set_camera_projection(
     }
     else if (projection_type == PRGL_CAMERA_PROJECTION_ORTHOGONAL)
     {
+        cam->projection_type = PRGL_CAMERA_PROJECTION_ORTHOGONAL;
+
         // Orthogonal is 2D so uses width/height, the clipping plane is the
         // OpenGL coordinate plane which goes from -1.0 to 1.0
         glm_ortho(

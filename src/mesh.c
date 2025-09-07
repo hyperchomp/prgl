@@ -1,7 +1,9 @@
 #include "glad.h"
+#include "common_macros.h"
 #include "mesh.h"
 #include "mesh_internal.h"
-#include "common_macros.h"
+#include "texture.h"
+#include "types.h"
 #include "cglm/types.h"
 #include "cglm/vec3.h"
 #include <stdint.h>
@@ -26,7 +28,7 @@ static void prgl_generate_cube_sphere_point(
 
 void prgl_init_mesh(
     struct PRGLMesh *mesh, GLuint num_vertices, GLuint vao, GLuint vbo,
-    GLuint ebo, GLuint texture_id, GLenum primitive_type
+    GLuint ebo, PRGLTexture texture, GLenum primitive_type
 )
 {
     *mesh = (struct PRGLMesh){
@@ -34,12 +36,12 @@ void prgl_init_mesh(
         .vao = vao,
         .vbo = vbo,
         .ebo = ebo,
-        .texture_id = texture_id,
+        .texture = {.id = texture.id},
         .primitive_type = primitive_type,
     };
 }
 
-struct PRGLMesh *prgl_create_screen_quad(GLuint texture_id)
+struct PRGLMesh *prgl_create_screen_quad(PRGLTexture texture)
 {
     // clang-format off
     mat4 vertices = {
@@ -118,12 +120,12 @@ struct PRGLMesh *prgl_create_screen_quad(GLuint texture_id)
     }
 
     prgl_init_mesh(
-        mesh, (GLuint)ARR_LEN(indices), vao, vbo, ebo, texture_id, GL_TRIANGLES
+        mesh, (GLuint)ARR_LEN(indices), vao, vbo, ebo, texture, GL_TRIANGLES
     );
     return mesh;
 }
 
-PRGLMeshHandle prgl_create_triangle(unsigned int texture_id)
+PRGLMeshHandle prgl_create_triangle(PRGLTexture texture)
 {
     // clang-format off
     mat3 vertices = {
@@ -175,13 +177,11 @@ PRGLMeshHandle prgl_create_triangle(unsigned int texture_id)
         );
     }
 
-    prgl_init_mesh(
-        mesh, (GLuint)3, vao, vbo, 0, (GLuint)texture_id, GL_TRIANGLES
-    );
+    prgl_init_mesh(mesh, (GLuint)3, vao, vbo, 0, texture, GL_TRIANGLES);
     return mesh;
 }
 
-PRGLMeshHandle prgl_create_quad(unsigned int texture_id)
+PRGLMeshHandle prgl_create_quad(PRGLTexture texture)
 {
     // clang-format off
     mat4 vertices = {
@@ -254,13 +254,12 @@ PRGLMeshHandle prgl_create_quad(unsigned int texture_id)
     }
 
     prgl_init_mesh(
-        mesh, (GLuint)ARR_LEN(indices), vao, vbo, ebo, (GLuint)texture_id,
-        GL_TRIANGLES
+        mesh, (GLuint)ARR_LEN(indices), vao, vbo, ebo, texture, GL_TRIANGLES
     );
     return mesh;
 }
 
-PRGLMeshHandle prgl_create_pyramid(unsigned int texture_id)
+PRGLMeshHandle prgl_create_pyramid(PRGLTexture texture)
 {
     // clang-format off
     
@@ -317,13 +316,11 @@ PRGLMeshHandle prgl_create_pyramid(unsigned int texture_id)
         );
     }
 
-    prgl_init_mesh(
-        mesh, (GLuint)18, vao, vbo, 0, (GLuint)texture_id, GL_TRIANGLES
-    );
+    prgl_init_mesh(mesh, (GLuint)18, vao, vbo, 0, texture, GL_TRIANGLES);
     return mesh;
 }
 
-PRGLMeshHandle prgl_create_cube(unsigned int texture_id)
+PRGLMeshHandle prgl_create_cube(PRGLTexture texture)
 {
     // clang-format off
     const GLfloat vertices[] = {
@@ -398,13 +395,11 @@ PRGLMeshHandle prgl_create_cube(unsigned int texture_id)
         );
     }
 
-    prgl_init_mesh(
-        mesh, (GLuint)36, vao, vbo, 0, (GLuint)texture_id, GL_TRIANGLES
-    );
+    prgl_init_mesh(mesh, (GLuint)36, vao, vbo, 0, texture, GL_TRIANGLES);
     return mesh;
 }
 
-PRGLMeshHandle prgl_create_cube_sphere(int resolution, unsigned int texture_id)
+PRGLMeshHandle prgl_create_cube_sphere(int resolution, PRGLTexture texture)
 {
     resolution = resolution > 1 ? resolution : 1;
 
@@ -545,8 +540,67 @@ PRGLMeshHandle prgl_create_cube_sphere(int resolution, unsigned int texture_id)
         );
     }
 
+    prgl_init_mesh(mesh, num_vertices, vao, vbo, 0, texture, GL_TRIANGLES);
+    return mesh;
+}
+
+PRGLMeshHandle prgl_create_line_strip(vec3 points[], int num_points)
+{
+    if (num_points < 2)
+    {
+        fprintf(
+            stderr,
+            "prgl_create_line_strip: Can't make a line with less than 2 points!"
+        );
+        return NULL;
+    }
+
+    GLfloat *const vertex_data = malloc(sizeof(GLfloat) * 3 * num_points);
+    if (vertex_data == NULL)
+    {
+        fprintf(
+            stderr,
+            "prgl_create_line_strip: Error allocating vertex_data memory!"
+        );
+    }
+
+    for (int p = 0; p < num_points; p++)
+    {
+        vertex_data[p * 3 + 0] = points[p][0];
+        vertex_data[p * 3 + 1] = points[p][1];
+        vertex_data[p * 3 + 2] = points[p][2];
+    }
+
+    GLuint vbo;
+    GLuint vao;
+    glGenBuffers(1, &vbo);
+    glGenVertexArrays(1, &vao);
+
+    glBindVertexArray(vao);
+
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(
+        GL_ARRAY_BUFFER, sizeof(GLfloat) * 3 * num_points, vertex_data,
+        GL_STATIC_DRAW
+    );
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)0);
+    glEnableVertexAttribArray(0);
+
+    free(vertex_data);
+
+    PRGLMeshHandle mesh = malloc(sizeof(struct PRGLMesh));
+    if (mesh == NULL)
+    {
+        fprintf(
+            stderr,
+            "prgl_create_line_strip: Error allocating mesh pointer memory!"
+        );
+    }
+
     prgl_init_mesh(
-        mesh, num_vertices, vao, vbo, 0, (GLuint)texture_id, GL_TRIANGLES
+        mesh, (GLuint)num_points, vao, vbo, 0, PRGL_NO_TEXTURE, GL_LINE_STRIP
     );
     return mesh;
 }

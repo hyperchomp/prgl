@@ -26,18 +26,18 @@ target_include_directories(${CMAKE_PROJECT_NAME}
 )
 
 set(PRGL_SOURCES
-    "${CMAKE_SOURCE_DIR}/src/screen.c"
+    "${CMAKE_SOURCE_DIR}/src/camera.c"
     "${CMAKE_SOURCE_DIR}/src/input.c"
     "${CMAKE_SOURCE_DIR}/src/game.c"
+    "${CMAKE_SOURCE_DIR}/src/game_object.c"
+    "${CMAKE_SOURCE_DIR}/src/mathx.c"
+    "${CMAKE_SOURCE_DIR}/src/mesh.c"
     "${CMAKE_SOURCE_DIR}/src/render.c"
+    "${CMAKE_SOURCE_DIR}/src/screen.c"
     "${CMAKE_SOURCE_DIR}/src/shaders.c"
     "${CMAKE_SOURCE_DIR}/src/shaders_init.c"
     "${CMAKE_SOURCE_DIR}/src/texture.c"
-    "${CMAKE_SOURCE_DIR}/src/camera.c"
-    "${CMAKE_SOURCE_DIR}/src/mathx.c"
-    "${CMAKE_SOURCE_DIR}/src/mesh.c"
     "${CMAKE_SOURCE_DIR}/src/transform.c"
-    "${CMAKE_SOURCE_DIR}/src/game_object.c"
 )
 
 set(PRGL_EXTERN_SOURCES
@@ -65,17 +65,18 @@ set_source_files_properties(
 
 include(GNUInstallDirs)
 set(
-    PRGL_PUBLIC_HEADERS "${CMAKE_SOURCE_DIR}/include/screen.h"
-                        "${CMAKE_SOURCE_DIR}/include/input.h"
+    PRGL_PUBLIC_HEADERS "${CMAKE_SOURCE_DIR}/include/camera.h"
+                        "${CMAKE_SOURCE_DIR}/include/common_macros.h"
                         "${CMAKE_SOURCE_DIR}/include/game.h"
-                        "${CMAKE_SOURCE_DIR}/include/render.h"
-                        "${CMAKE_SOURCE_DIR}/include/shaders.h"
-                        "${CMAKE_SOURCE_DIR}/include/texture.h"
-                        "${CMAKE_SOURCE_DIR}/include/camera.h"
+                        "${CMAKE_SOURCE_DIR}/include/game_object.h"
+                        "${CMAKE_SOURCE_DIR}/include/input.h"
                         "${CMAKE_SOURCE_DIR}/include/mathx.h"
                         "${CMAKE_SOURCE_DIR}/include/mesh.h"
-                        "${CMAKE_SOURCE_DIR}/include/game_object.h"
-                        "${CMAKE_SOURCE_DIR}/include/common_macros.h"
+                        "${CMAKE_SOURCE_DIR}/include/render.h"
+                        "${CMAKE_SOURCE_DIR}/include/screen.h"
+                        "${CMAKE_SOURCE_DIR}/include/shaders.h"
+                        "${CMAKE_SOURCE_DIR}/include/texture.h"
+                        "${CMAKE_SOURCE_DIR}/include/types.h"
 )
 set_target_properties(
     ${CMAKE_PROJECT_NAME} PROPERTIES

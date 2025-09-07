@@ -1,13 +1,19 @@
 #include "glad.h"
+
 #include "texture.h"
-#include "render.h"
 #include "texture_internal.h"
-#include "stb_image.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <GLFW/glfw3.h>
 
-unsigned int prgl_load_texture(const char *const filename)
+#include "render.h"
+#include "stb_image.h"
+#include "types.h"
+
+const PRGLTexture PRGL_NO_TEXTURE = {0};
+
+PRGLTexture prgl_load_texture(const char *const filename)
 {
     int width;
     int height;
@@ -24,7 +30,7 @@ unsigned int prgl_load_texture(const char *const filename)
         exit(EXIT_FAILURE);
     }
 
-    unsigned int texture;
+    GLuint texture;
     glGenTextures(1, &texture);
 
     // Bind texture so OpenGL knows we're configuring this one
@@ -45,18 +51,19 @@ unsigned int prgl_load_texture(const char *const filename)
 
     stbi_image_free(image);
 
-    return texture;
+    PRGLTexture final_texture = {.id = texture};
+    return final_texture;
 }
 
 struct PRGLRenderTexture prgl_create_render_texture(void)
 {
     // Create a framebuffer object
-    unsigned int fbo;
+    GLuint fbo;
     glGenFramebuffers(1, &fbo);
     glBindFramebuffer(GL_FRAMEBUFFER, fbo);
 
     // Create the texture for rendering to
-    unsigned int render_texture;
+    GLuint render_texture;
     glGenTextures(1, &render_texture);
     glBindTexture(GL_TEXTURE_2D, render_texture);
     glTexImage2D(
@@ -72,7 +79,7 @@ struct PRGLRenderTexture prgl_create_render_texture(void)
     );
 
     // Attach a combined depth and stencil render buffer object
-    unsigned int rbo;
+    GLuint rbo;
     glGenRenderbuffers(1, &rbo);
     glBindRenderbuffer(GL_RENDERBUFFER, rbo);
     glRenderbufferStorage(
@@ -93,7 +100,7 @@ struct PRGLRenderTexture prgl_create_render_texture(void)
     }
 
     struct PRGLRenderTexture render_tex = {
-        .fbo = fbo, .texture = render_texture
+        .fbo = fbo, .texture = {.id = render_texture}
     };
     return render_tex;
 }
