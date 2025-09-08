@@ -1,14 +1,17 @@
 #include "glad.h"
-#include "common_macros.h"
+
 #include "mesh.h"
 #include "mesh_internal.h"
-#include "texture.h"
-#include "types.h"
-#include "cglm/types.h"
-#include "cglm/vec3.h"
+
+#include <stdlib.h>
 #include <stdint.h>
 #include <stdio.h>
-#include <stdlib.h>
+
+#include "common_macros.h"
+#include "cglm/types.h"
+#include "cglm/vec3.h"
+#include "texture.h"
+#include "types.h"
 
 // Constants for meshes with vertices, normals, and texture coordinates. If not
 // all then these values will be different, only use in that scenario.
@@ -117,6 +120,7 @@ struct PRGLMesh *prgl_create_screen_quad(PRGLTexture texture)
             stderr, "prgl_create_screen_quad: Error allocating mesh "
                     "pointer memory!"
         );
+        return NULL;
     }
 
     prgl_init_mesh(
@@ -175,9 +179,105 @@ PRGLMeshHandle prgl_create_triangle(PRGLTexture texture)
             stderr,
             "prgl_create_triangle: Error allocating mesh pointer memory!"
         );
+        return NULL;
     }
 
     prgl_init_mesh(mesh, (GLuint)3, vao, vbo, 0, texture, GL_TRIANGLES);
+    return mesh;
+}
+
+PRGLMeshHandle prgl_create_circle(PRGLTexture texture, int num_edges)
+{
+    num_edges = (num_edges < 3) ? 3 : num_edges;
+
+    // Need one extra vertex for the center
+    GLuint num_vertices = num_edges + 1;
+    GLfloat *vertex_data =
+        malloc(sizeof(GLfloat) * num_vertices * VERTEX_STRIDE_LENGTH);
+    if (vertex_data == NULL)
+    {
+        fprintf(
+            stderr, "prgl_create_circle: Error allocating vertex data memory!"
+        );
+        return NULL;
+    }
+
+    // Allocate memory for indices
+    GLuint num_indices = num_edges * 3;
+    GLuint *indices = malloc(sizeof(GLuint) * num_indices);
+    if (indices == NULL)
+    {
+        fprintf(stderr, "prgl_create_circle: Error allocating indices memory!");
+        free(vertex_data);
+        return NULL;
+    }
+
+    // Center vertex
+    vertex_data[0] = 0.0f; // x
+    vertex_data[1] = 0.0f; // y
+    vertex_data[2] = 0.0f; // z
+    vertex_data[3] = NORMAL_POS_Z[0];
+    vertex_data[4] = NORMAL_POS_Z[1];
+    vertex_data[5] = NORMAL_POS_Z[2];
+    vertex_data[6] = 0.5f; // u
+    vertex_data[7] = 0.5f; // v
+
+    // Outer vertices
+    float angle_change = 2.0f * GLM_PI / num_edges;
+    for (int i = 0; i < num_edges; i++)
+    {
+        float angle = i * angle_change;
+        int attribute = (i + 1) * VERTEX_STRIDE_LENGTH;
+
+        vertex_data[attribute++] = cosf(angle) * 0.5f; // x
+        vertex_data[attribute++] = sinf(angle) * 0.5f; // y
+        vertex_data[attribute++] = 0.0f;               // z
+        vertex_data[attribute++] = NORMAL_POS_Z[0];
+        vertex_data[attribute++] = NORMAL_POS_Z[1];
+        vertex_data[attribute++] = NORMAL_POS_Z[2];
+        vertex_data[attribute++] = (cosf(angle) * 0.5f) + 0.5f; // u
+        vertex_data[attribute++] = (sinf(angle) * 0.5f) + 0.5f; // v
+
+        // Set up the indices for the triangle
+        indices[i * 3 + 0] = 0; // Center vertex
+        indices[i * 3 + 1] = i + 1;
+        indices[i * 3 + 2] = (i + 1) % num_edges + 1;
+    }
+
+    GLuint vbo;
+    GLuint vao;
+    GLuint ebo;
+    glGenBuffers(1, &vbo);
+    glGenBuffers(1, &ebo);
+    glGenVertexArrays(1, &vao);
+
+    glBindVertexArray(vao);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(
+        GL_ARRAY_BUFFER, sizeof(GLfloat) * num_vertices * VERTEX_STRIDE_LENGTH,
+        vertex_data, GL_STATIC_DRAW
+    );
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+    glBufferData(
+        GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * num_edges * 3, indices,
+        GL_STATIC_DRAW
+    );
+
+    prgl_setup_vertex_attributes();
+
+    free(vertex_data);
+
+    PRGLMeshHandle mesh = malloc(sizeof(struct PRGLMesh));
+    if (mesh == NULL)
+    {
+        fprintf(
+            stderr, "prgl_create_circle: Error allocating mesh pointer memory!"
+        );
+        return NULL;
+    }
+
+    prgl_init_mesh(mesh, num_indices, vao, vbo, ebo, texture, GL_TRIANGLES);
     return mesh;
 }
 
@@ -251,6 +351,7 @@ PRGLMeshHandle prgl_create_quad(PRGLTexture texture)
             stderr, "prgl_create_quad: Error allocating mesh "
                     "pointer memory!"
         );
+        return NULL;
     }
 
     prgl_init_mesh(
@@ -314,6 +415,7 @@ PRGLMeshHandle prgl_create_pyramid(PRGLTexture texture)
         fprintf(
             stderr, "prgl_create_pyramid: Error allocating mesh pointer memory!"
         );
+        return NULL;
     }
 
     prgl_init_mesh(mesh, (GLuint)18, vao, vbo, 0, texture, GL_TRIANGLES);
@@ -393,6 +495,7 @@ PRGLMeshHandle prgl_create_cube(PRGLTexture texture)
         fprintf(
             stderr, "prgl_create_cube: Error allocating mesh pointer memory!"
         );
+        return NULL;
     }
 
     prgl_init_mesh(mesh, (GLuint)36, vao, vbo, 0, texture, GL_TRIANGLES);
@@ -415,6 +518,7 @@ PRGLMeshHandle prgl_create_cube_sphere(int resolution, PRGLTexture texture)
             stderr,
             "prgl_create_cube_sphere: Error allocating vertex data memory!"
         );
+        return NULL;
     }
 
     // clang-format off
@@ -437,7 +541,7 @@ PRGLMeshHandle prgl_create_cube_sphere(int resolution, PRGLTexture texture)
     };
     // clang-format on
 
-    int component_index = 0;
+    int attribute = 0;
     for (int face = 0; face < NUM_FACES; face++)
     {
         vec3 normal;
@@ -498,18 +602,18 @@ PRGLMeshHandle prgl_create_cube_sphere(int resolution, PRGLTexture texture)
                     glm_vec3_normalize_to(triangle_points[vert], position);
 
                     // Position XYZ coordinates
-                    vertex_data[component_index++] = position[0];
-                    vertex_data[component_index++] = position[1];
-                    vertex_data[component_index++] = position[2];
+                    vertex_data[attribute++] = position[0];
+                    vertex_data[attribute++] = position[1];
+                    vertex_data[attribute++] = position[2];
 
                     // Normal XYZ coordinates
-                    vertex_data[component_index++] = position[0];
-                    vertex_data[component_index++] = position[1];
-                    vertex_data[component_index++] = position[2];
+                    vertex_data[attribute++] = position[0];
+                    vertex_data[attribute++] = position[1];
+                    vertex_data[attribute++] = position[2];
 
                     // Texture UV coordinates
-                    vertex_data[component_index++] = uvs[vert][0];
-                    vertex_data[component_index++] = uvs[vert][1];
+                    vertex_data[attribute++] = uvs[vert][0];
+                    vertex_data[attribute++] = uvs[vert][1];
                 }
             }
         }
@@ -538,6 +642,7 @@ PRGLMeshHandle prgl_create_cube_sphere(int resolution, PRGLTexture texture)
             stderr,
             "prgl_create_cube_sphere: Error allocating mesh pointer memory!"
         );
+        return NULL;
     }
 
     prgl_init_mesh(mesh, num_vertices, vao, vbo, 0, texture, GL_TRIANGLES);
@@ -562,6 +667,7 @@ PRGLMeshHandle prgl_create_line_strip(vec3 points[], int num_points)
             stderr,
             "prgl_create_line_strip: Error allocating vertex_data memory!"
         );
+        return NULL;
     }
 
     for (int p = 0; p < num_points; p++)
@@ -597,6 +703,7 @@ PRGLMeshHandle prgl_create_line_strip(vec3 points[], int num_points)
             stderr,
             "prgl_create_line_strip: Error allocating mesh pointer memory!"
         );
+        return NULL;
     }
 
     prgl_init_mesh(

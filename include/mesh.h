@@ -7,28 +7,38 @@
 /**
  * @brief Creates a triangle mesh.
  *
- * @param texture The ID of the texture to assign to the mesh, or zero.
+ * @param texture The texture to assign to the mesh, or PRGL_NO_TEXTURE.
  */
 PRGLMeshHandle prgl_create_triangle(PRGLTexture texture);
 
 /**
+ * @brief Creates a circle mesh.
+ *
+ * @param texture The texture to assign to the mesh, or PRGL_NO_TEXTURE.
+ * @param num_edges The number of edges to segment the circle with, must
+ * be at least three. Also note that although you CAN create a "circle" with
+ * 3 edges, it will not appear very circular without more edges.
+ */
+PRGLMeshHandle prgl_create_circle(PRGLTexture texture, int num_edges);
+
+/**
  * @brief Creates a quad mesh.
  *
- * @param texture The ID of the texture to assign to the mesh, or zero.
+ * @param texture The texture to assign to the mesh, or PRGL_NO_TEXTURE.
  */
 PRGLMeshHandle prgl_create_quad(PRGLTexture texture);
 
 /**
  * @brief Creates a pyramid mesh.
  *
- * @param texture The ID of the texture to assign to the mesh, or zero.
+ * @param texture The texture to assign to the mesh, or PRGL_NO_TEXTURE.
  */
 PRGLMeshHandle prgl_create_pyramid(PRGLTexture texture);
 
 /**
  * @brief Creates a cube mesh.
  *
- * @param texture The texture to assign to the mesh, or zero.
+ * @param texture The texture to assign to the mesh, or PRGL_NO_TEXTURE.
  */
 PRGLMeshHandle prgl_create_cube(PRGLTexture texture);
 
@@ -41,7 +51,7 @@ PRGLMeshHandle prgl_create_cube(PRGLTexture texture);
  * @param resolution The resolution for the subdivision of each face. The number
  * of quads per face will be this value squared, for example if resolution is 2
  * there will be 4 quads per face.
- * @param texture The texture to assign to the mesh, or zero.
+ * @param texture The texture to assign to the mesh, or PRGL_NO_TEXTURE.
  */
 PRGLMeshHandle prgl_create_cube_sphere(int resolution, PRGLTexture texture);
 

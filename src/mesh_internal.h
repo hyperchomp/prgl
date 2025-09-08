@@ -12,6 +12,7 @@
  */
 struct PRGLMesh
 {
+    /// @brief The number of vertices for an array draw, or indices for an EBO.
     GLuint num_vertices;
 
     /// @brief Vertex Buffer Object stores raw vertex data.
