@@ -39,6 +39,7 @@ Libraries used within prgl may have differing licenses that are useable alongsid
 * Box collisions
 
 ### Rendering
+* Support for 16:10 aspect ratio without stretching or black bars
 * glTF 3D model loading
 * Text rendering
 * Fog
