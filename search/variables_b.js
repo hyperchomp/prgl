@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['texture_0',['texture',['../structPRGLRenderTexture.html#a9b08d4c2ab8a02835f60165f65621131',1,'PRGLRenderTexture']]],
-  ['texture_5fid_1',['texture_id',['../structPRGLMesh.html#af608f2bc89b2fe3a692219514fe6c434',1,'PRGLMesh']]]
+  ['render_5ftexture_0',['render_texture',['../game_8c.html#a373f5884865a5eefc0ef2c33ffa8c6b8',1,'game.c']]],
+  ['right_1',['right',['../structPRGLCamera.html#a80975b382e2f3baa99f6f8d504bdd830',1,'PRGLCamera']]]
 ];

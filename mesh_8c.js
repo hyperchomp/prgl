@@ -1,10 +1,13 @@
 var mesh_8c =
 [
-    [ "prgl_create_cube", "mesh_8c.html#a9d0039abe86fe2e016e92f9ca072f15e", null ],
-    [ "prgl_create_cube_sphere", "mesh_8c.html#a1f4db13e0bf4e07c4adcf2c95c51351f", null ],
-    [ "prgl_create_quad", "mesh_8c.html#a7bbf3db8f48c215c15ee372d1bef0945", null ],
-    [ "prgl_create_screen_quad", "mesh_8c.html#abc7c5681e3be2ca05f23f120bbb1c685", null ],
-    [ "prgl_create_triangle", "mesh_8c.html#a98db937e7dd40e33b44c74991c8a7322", null ],
-    [ "prgl_delete_mesh", "mesh_8c.html#af8fe164c7026bfdce0aeb2f7621454d6", null ],
-    [ "prgl_init_mesh", "mesh_8c.html#a88c02fbd7fa229fdd9dd37cb3772bd15", null ]
+    [ "prgl_create_circle", "mesh_8c.html#a42f12448c59eb8022956aa2b40807aaa", null ],
+    [ "prgl_create_cube", "mesh_8c.html#a2a0a72573c56efa24f43fa8ec04dcf84", null ],
+    [ "prgl_create_cube_sphere", "mesh_8c.html#a52b8dacedcf16c26d6d6cfc345d06ed3", null ],
+    [ "prgl_create_line_strip", "mesh_8c.html#a19fc019bd80a6b482cdeafecbae2ed41", null ],
+    [ "prgl_create_pyramid", "mesh_8c.html#a3f197ddff33d17ff32b82806a69c1d80", null ],
+    [ "prgl_create_quad", "mesh_8c.html#a171ccf85c79d31ef7a67532624a09552", null ],
+    [ "prgl_create_screen_quad", "mesh_8c.html#ad9a2f38dc2799e6eae4820982172ad76", null ],
+    [ "prgl_create_triangle", "mesh_8c.html#a0bf74a631b2ee3e80556dea0890a0548", null ],
+    [ "prgl_delete_mesh", "mesh_8c.html#a305f0613e97864a85ec4aa1add716380", null ],
+    [ "prgl_init_mesh", "mesh_8c.html#a0c27289d8b2fb889362ae5249890dc66", null ]
 ];

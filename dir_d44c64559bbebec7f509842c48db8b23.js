@@ -10,5 +10,6 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "render.h", "render_8h.html", "render_8h" ],
     [ "screen.h", "screen_8h.html", "screen_8h" ],
     [ "shaders.h", "shaders_8h.html", "shaders_8h" ],
-    [ "texture.h", "texture_8h.html", "texture_8h" ]
+    [ "texture.h", "texture_8h.html", "texture_8h" ],
+    [ "types.h", "types_8h.html", "types_8h" ]
 ];

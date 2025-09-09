@@ -1,5 +1,5 @@
 var structPRGLRenderTexture =
 [
-    [ "fbo", "structPRGLRenderTexture.html#aa8e1efcdd90f7611579785f3135c09eb", null ],
-    [ "texture", "structPRGLRenderTexture.html#a9b08d4c2ab8a02835f60165f65621131", null ]
+    [ "fbo", "structPRGLRenderTexture.html#a85a82635c1e0c0d184050788cba2c656", null ],
+    [ "texture", "structPRGLRenderTexture.html#a8aa047507f22a44944052f5e4c18791c", null ]
 ];

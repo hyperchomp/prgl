@@ -4,5 +4,7 @@ var annotated_dup =
     [ "PRGLGameObject", "structPRGLGameObject.html", "structPRGLGameObject" ],
     [ "PRGLMesh", "structPRGLMesh.html", "structPRGLMesh" ],
     [ "PRGLRenderTexture", "structPRGLRenderTexture.html", "structPRGLRenderTexture" ],
-    [ "PRGLScreen", "structPRGLScreen.html", "structPRGLScreen" ]
+    [ "PRGLScreen", "structPRGLScreen.html", "structPRGLScreen" ],
+    [ "PRGLShader", "structPRGLShader.html", "structPRGLShader" ],
+    [ "PRGLTexture", "structPRGLTexture.html", "structPRGLTexture" ]
 ];

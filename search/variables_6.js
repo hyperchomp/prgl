@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['num_5fvertices_0',['num_vertices',['../structPRGLMesh.html#ab52c5c997b55ddee18e7a92287b4e347',1,'PRGLMesh']]]
+  ['look_5fsensitivity_0',['look_sensitivity',['../structPRGLCamera.html#a188549c889bc5f658dcc96d2ffa5a9c8',1,'PRGLCamera']]]
 ];

@@ -8,6 +8,7 @@ var structPRGLCamera =
     [ "position", "structPRGLCamera.html#a2807b9fb4b79e01dfde022b613d2575f", null ],
     [ "projection_orthogonal", "structPRGLCamera.html#af0823e2d0118a1cfed23b7aed42b8a96", null ],
     [ "projection_perspective", "structPRGLCamera.html#a0625b97cbf48d9c9624fa3f160cdd0e2", null ],
+    [ "projection_type", "structPRGLCamera.html#ae8b65c1f2bbb19af07d1782c3c616141", null ],
     [ "right", "structPRGLCamera.html#a80975b382e2f3baa99f6f8d504bdd830", null ],
     [ "up", "structPRGLCamera.html#af25e132b20481c5c82d8394e0beeea4a", null ],
     [ "view", "structPRGLCamera.html#a59b3ea36e27c909644e68fe5a17764d3", null ],

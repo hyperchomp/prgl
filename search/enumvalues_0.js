@@ -128,9 +128,9 @@ var searchData=
   ['prgl_5fkey_5fz_125',['PRGL_KEY_Z',['../input_8h.html#a173a7a96e85803a4a3e152e2f6ff94eba49ea815ad666615903e40ebcd4787c8c',1,'input.h']]],
   ['prgl_5fmouse_5fcaptured_126',['PRGL_MOUSE_CAPTURED',['../screen_8h.html#abf549066deedd97319a2045b8a8ef1e7ae8f9e9b357cc4a00a8c496d69a9ab284',1,'screen.h']]],
   ['prgl_5fmouse_5fdisabled_127',['PRGL_MOUSE_DISABLED',['../screen_8h.html#abf549066deedd97319a2045b8a8ef1e7aaa5b997bf6b9ea10cccc362f03d46ad6',1,'screen.h']]],
-  ['prgl_5fshader_5f2d_128',['PRGL_SHADER_2D',['../shaders_8h.html#a8d772e21c5960b33e87ad473f8248ea7ab42a4e1e899a19e0c48f807b7b3672b4',1,'shaders.h']]],
-  ['prgl_5fshader_5f3d_129',['PRGL_SHADER_3D',['../shaders_8h.html#a8d772e21c5960b33e87ad473f8248ea7a63cc8a654437857dee5fb9fb35335be9',1,'shaders.h']]],
-  ['prgl_5fshader_5fcount_130',['PRGL_SHADER_COUNT',['../shaders_8h.html#a8d772e21c5960b33e87ad473f8248ea7a9e7cd38ddee6b461441ffa09c88c8d75',1,'shaders.h']]],
-  ['prgl_5fshader_5fscreen_131',['PRGL_SHADER_SCREEN',['../shaders_8h.html#a8d772e21c5960b33e87ad473f8248ea7afe42fc175ca3d89da9ee83783f72cccd',1,'shaders.h']]],
-  ['prgl_5fshader_5funlit_132',['PRGL_SHADER_UNLIT',['../shaders_8h.html#a8d772e21c5960b33e87ad473f8248ea7afd1e243b1481bfde9a82641b64dffcb0',1,'shaders.h']]]
+  ['prgl_5fshader_5ftype_5f2d_128',['PRGL_SHADER_TYPE_2D',['../shaders_8h.html#a1bdcf117d86ab430322a7185517aa2f1a82983951d354c6118bf8de20da72045c',1,'shaders.h']]],
+  ['prgl_5fshader_5ftype_5f3d_129',['PRGL_SHADER_TYPE_3D',['../shaders_8h.html#a1bdcf117d86ab430322a7185517aa2f1af25ad31e2a228e0636c9e4550d63e8d3',1,'shaders.h']]],
+  ['prgl_5fshader_5ftype_5fcount_130',['PRGL_SHADER_TYPE_COUNT',['../shaders_8h.html#a1bdcf117d86ab430322a7185517aa2f1a0a13483e2dd7eca8143edf8e0f2fad0a',1,'shaders.h']]],
+  ['prgl_5fshader_5ftype_5fscreen_131',['PRGL_SHADER_TYPE_SCREEN',['../shaders_8h.html#a1bdcf117d86ab430322a7185517aa2f1aea964ebd131c487ac4903c8287fa7136',1,'shaders.h']]],
+  ['prgl_5fshader_5ftype_5funlit_132',['PRGL_SHADER_TYPE_UNLIT',['../shaders_8h.html#a1bdcf117d86ab430322a7185517aa2f1a7189cb95d550f5ea9ba16ccd142ca617',1,'shaders.h']]]
 ];

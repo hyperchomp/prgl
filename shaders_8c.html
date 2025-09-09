@@ -102,41 +102,53 @@ $(document).ready(function(){initNavTree('shaders_8c.html',''); initResizable();
 <code>#include &quot;<a class="el" href="shaders__init__internal_8h_source.html">shaders_init_internal.h</a>&quot;</code><br />
 <code>#include &lt;GLFW/glfw3.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="camera_8h_source.html">camera.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="render_8h_source.html">render.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="types_8h_source.html">types.h</a>&quot;</code><br />
+<code>#include &quot;cglm/vec2.h&quot;</code><br />
 </div>
 <p><a href="shaders_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4ec3b30bdf7cf20de39e218693db4837"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a4ec3b30bdf7cf20de39e218693db4837">prgl_shader</a> (enum <a class="el" href="shaders_8h.html#a8d772e21c5960b33e87ad473f8248ea7">PRGLShader</a> type)</td></tr>
-<tr class="separator:a4ec3b30bdf7cf20de39e218693db4837"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4546429db70e0a039d4de91f85beaa62"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a4546429db70e0a039d4de91f85beaa62">prgl_current_shader</a> (void)</td></tr>
-<tr class="separator:a4546429db70e0a039d4de91f85beaa62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6540068167cf4e68f416befed55237cb"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a6540068167cf4e68f416befed55237cb">prgl_create_shader</a> (const char *const vertex_source, const char *const frag_source, const char *const geometry_source)</td></tr>
-<tr class="separator:a6540068167cf4e68f416befed55237cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2ea2726502f1dcda95f5a8edb990fcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#aa2ea2726502f1dcda95f5a8edb990fcd">prgl_use_shader</a> (unsigned int shader)</td></tr>
-<tr class="separator:aa2ea2726502f1dcda95f5a8edb990fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48ba83f5ffdb4501c65d62e7d341018a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPRGLShader.html">PRGLShader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a48ba83f5ffdb4501c65d62e7d341018a">prgl_shader</a> (enum <a class="el" href="shaders_8h.html#a1bdcf117d86ab430322a7185517aa2f1">PRGLShaderType</a> type)</td></tr>
+<tr class="separator:a48ba83f5ffdb4501c65d62e7d341018a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e94ca650217717ee7f5372d3b8642c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPRGLShader.html">PRGLShader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a4e94ca650217717ee7f5372d3b8642c2">prgl_current_shader</a> (void)</td></tr>
+<tr class="separator:a4e94ca650217717ee7f5372d3b8642c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25ec7d36674af001833717d16f1cee36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPRGLShader.html">PRGLShader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a25ec7d36674af001833717d16f1cee36">prgl_create_shader</a> (const char *const vertex_source[], int num_vertex_sources, const char *const frag_source[], int num_frag_sources, const char *const geometry_source[], int num_geometry_sources)</td></tr>
+<tr class="separator:a25ec7d36674af001833717d16f1cee36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96c267b4344dcdcef15e7c6de934f57b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a96c267b4344dcdcef15e7c6de934f57b">prgl_use_shader</a> (<a class="el" href="structPRGLShader.html">PRGLShader</a> shader)</td></tr>
+<tr class="separator:a96c267b4344dcdcef15e7c6de934f57b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb07d18395cb94fd660905a2dd47089d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#afb07d18395cb94fd660905a2dd47089d">prgl_use_shader_3d</a> (void)</td></tr>
+<tr class="memdesc:afb07d18395cb94fd660905a2dd47089d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Activates the 3D shader for use.  <br /></td></tr>
 <tr class="separator:afb07d18395cb94fd660905a2dd47089d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6a356c1d22e3d261db79a813143e4d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#aa6a356c1d22e3d261db79a813143e4d9">prgl_use_shader_unlit</a> (void)</td></tr>
+<tr class="memdesc:aa6a356c1d22e3d261db79a813143e4d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Activates the unlit 3D shader for use.  <br /></td></tr>
+<tr class="separator:aa6a356c1d22e3d261db79a813143e4d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0af931c9f3850cc646d30f2e66ee98b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a0af931c9f3850cc646d30f2e66ee98b9">prgl_use_shader_2d</a> (void)</td></tr>
 <tr class="separator:a0af931c9f3850cc646d30f2e66ee98b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0ab9e8e85e75d20b24f9c2bc7ab8324"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#ac0ab9e8e85e75d20b24f9c2bc7ab8324">prgl_delete_shader</a> (unsigned int shader)</td></tr>
-<tr class="separator:ac0ab9e8e85e75d20b24f9c2bc7ab8324"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ea1ac02cd892631f642d8b5a7f35b6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a9ea1ac02cd892631f642d8b5a7f35b6f">prgl_set_shader_uniform_4f</a> (unsigned int shader, const char *const name, float a, float b, float c, float d)</td></tr>
-<tr class="separator:a9ea1ac02cd892631f642d8b5a7f35b6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57611dcfbc85bdafe1b65541953efd4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a57611dcfbc85bdafe1b65541953efd4e">prgl_set_shader_uniform_vec3</a> (unsigned int shader, const char *const name, vec3 vec)</td></tr>
-<tr class="separator:a57611dcfbc85bdafe1b65541953efd4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a4d01902c3c98184f4dfea4955d5967"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a4a4d01902c3c98184f4dfea4955d5967">prgl_set_shader_uniform_vec2</a> (unsigned int shader, const char *const name, vec2 vec)</td></tr>
-<tr class="separator:a4a4d01902c3c98184f4dfea4955d5967"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6081eeff3c21ea154c6ccd14be12c4ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a6081eeff3c21ea154c6ccd14be12c4ab">prgl_set_shader_uniform_mat4</a> (unsigned int shader, const char *const name, mat4 matrix)</td></tr>
-<tr class="separator:a6081eeff3c21ea154c6ccd14be12c4ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0cb4b04a3fa93678205383713b9ecd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#ac0cb4b04a3fa93678205383713b9ecd3">prgl_set_shader_uniform_mat3</a> (unsigned int shader, const char *const name, mat3 matrix)</td></tr>
-<tr class="separator:ac0cb4b04a3fa93678205383713b9ecd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f34a325216857d28bf2a6218b136bbc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a8f34a325216857d28bf2a6218b136bbc">prgl_set_shader_uniform_float</a> (unsigned int shader, const char *const name, float value)</td></tr>
-<tr class="separator:a8f34a325216857d28bf2a6218b136bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5ee2ff1301a1da88794f921572c6604"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#ac5ee2ff1301a1da88794f921572c6604">prgl_set_shader_uniform_int</a> (unsigned int shader, const char *const name, int value)</td></tr>
-<tr class="separator:ac5ee2ff1301a1da88794f921572c6604"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1127f6ce718f9e09ac4453e71c9f1da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#ae1127f6ce718f9e09ac4453e71c9f1da">prgl_set_shader_uniform_bool</a> (unsigned int shader, const char *const name, bool value)</td></tr>
-<tr class="separator:ae1127f6ce718f9e09ac4453e71c9f1da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac20e555fc7d149ffc992939242374c43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#ac20e555fc7d149ffc992939242374c43">prgl_delete_shader</a> (<a class="el" href="structPRGLShader.html">PRGLShader</a> shader)</td></tr>
+<tr class="separator:ac20e555fc7d149ffc992939242374c43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7e1dd4e5e3c2566af5683ff283826a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#af7e1dd4e5e3c2566af5683ff283826a1">prgl_set_shader_uniform_4f</a> (<a class="el" href="structPRGLShader.html">PRGLShader</a> shader, const char *const name, float a, float b, float c, float d)</td></tr>
+<tr class="separator:af7e1dd4e5e3c2566af5683ff283826a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6cbac5d4bc1b762f8109f6cbd7315bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#ab6cbac5d4bc1b762f8109f6cbd7315bb">prgl_set_shader_uniform_vec3</a> (<a class="el" href="structPRGLShader.html">PRGLShader</a> shader, const char *const name, vec3 vec)</td></tr>
+<tr class="separator:ab6cbac5d4bc1b762f8109f6cbd7315bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fba5dadee7d5f33c7d87dd586a09e95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a0fba5dadee7d5f33c7d87dd586a09e95">prgl_set_shader_uniform_vec2</a> (<a class="el" href="structPRGLShader.html">PRGLShader</a> shader, const char *const name, vec2 vec)</td></tr>
+<tr class="separator:a0fba5dadee7d5f33c7d87dd586a09e95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a8216b403e17f1a0c6ae04d643e2eb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a2a8216b403e17f1a0c6ae04d643e2eb3">prgl_set_shader_uniform_mat4</a> (<a class="el" href="structPRGLShader.html">PRGLShader</a> shader, const char *const name, mat4 matrix)</td></tr>
+<tr class="separator:a2a8216b403e17f1a0c6ae04d643e2eb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80c0c6cbab0c94a7b4f80af781af5fd0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a80c0c6cbab0c94a7b4f80af781af5fd0">prgl_set_shader_uniform_mat3</a> (<a class="el" href="structPRGLShader.html">PRGLShader</a> shader, const char *const name, mat3 matrix)</td></tr>
+<tr class="separator:a80c0c6cbab0c94a7b4f80af781af5fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1df0c0dded4ca45740c76a8b5389d5f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a1df0c0dded4ca45740c76a8b5389d5f2">prgl_set_shader_uniform_float</a> (<a class="el" href="structPRGLShader.html">PRGLShader</a> shader, const char *const name, float value)</td></tr>
+<tr class="separator:a1df0c0dded4ca45740c76a8b5389d5f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96fe94ce964e03e433ddccec34999ae2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a96fe94ce964e03e433ddccec34999ae2">prgl_set_shader_uniform_int</a> (<a class="el" href="structPRGLShader.html">PRGLShader</a> shader, const char *const name, int value)</td></tr>
+<tr class="separator:a96fe94ce964e03e433ddccec34999ae2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5b282e60a3f67a545befec8efe0fde4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#ab5b282e60a3f67a545befec8efe0fde4">prgl_set_shader_uniform_bool</a> (<a class="el" href="structPRGLShader.html">PRGLShader</a> shader, const char *const name, bool value)</td></tr>
+<tr class="separator:ab5b282e60a3f67a545befec8efe0fde4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36ea7693ac70a6a2a78ba1e97ffc2452"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a36ea7693ac70a6a2a78ba1e97ffc2452">prgl_set_default_shared_uniforms</a> (bool is_3d)</td></tr>
+<tr class="memdesc:a36ea7693ac70a6a2a78ba1e97ffc2452"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets values for uniforms which are needed for default shaders.  <br /></td></tr>
+<tr class="separator:a36ea7693ac70a6a2a78ba1e97ffc2452"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9c2f42b4bf4b615f3cccfd4f8ff2428"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#ac9c2f42b4bf4b615f3cccfd4f8ff2428">prgl_init_shader_pool</a> (void)</td></tr>
 <tr class="separator:ac9c2f42b4bf4b615f3cccfd4f8ff2428"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9edcceb3d59c2768774bab0701f848c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a9edcceb3d59c2768774bab0701f848c1">prgl_delete_shader_pool</a> (void)</td></tr>
@@ -162,31 +174,53 @@ Variables</h2></td></tr>
 <tr class="separator:a75be0cc9c48d751226533166b6f3f81c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd7a43a2ae0e33e75f25abe17db647ff"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#afd7a43a2ae0e33e75f25abe17db647ff">PRGL_TILE_FACTOR_UNIFORM</a> = &quot;tileFactor&quot;</td></tr>
 <tr class="separator:afd7a43a2ae0e33e75f25abe17db647ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff388b2750b89ec779f0f01b13be692d"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#aff388b2750b89ec779f0f01b13be692d">PRGL_FILL_COLOR_UNIFORM</a> = &quot;fillColor&quot;</td></tr>
+<tr class="separator:aff388b2750b89ec779f0f01b13be692d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7581746933181ea9bbb5952e139d4a54"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shaders_8c.html#a7581746933181ea9bbb5952e139d4a54">PRGL_USE_TEXTURE_UNIFORM</a> = &quot;useTexture&quot;</td></tr>
+<tr class="separator:a7581746933181ea9bbb5952e139d4a54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a6540068167cf4e68f416befed55237cb" name="a6540068167cf4e68f416befed55237cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6540068167cf4e68f416befed55237cb">&#9670;&#160;</a></span>prgl_create_shader()</h2>
+<a id="a25ec7d36674af001833717d16f1cee36" name="a25ec7d36674af001833717d16f1cee36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25ec7d36674af001833717d16f1cee36">&#9670;&#160;</a></span>prgl_create_shader()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int prgl_create_shader </td>
+          <td class="memname"><a class="el" href="structPRGLShader.html">PRGLShader</a> prgl_create_shader </td>
           <td>(</td>
           <td class="paramtype">const char *const&#160;</td>
-          <td class="paramname"><em>vertex_source</em>, </td>
+          <td class="paramname"><em>vertex_source</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_vertex_sources</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *const&#160;</td>
-          <td class="paramname"><em>frag_source</em>, </td>
+          <td class="paramname"><em>frag_source</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_frag_sources</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *const&#160;</td>
-          <td class="paramname"><em>geometry_source</em>&#160;</td>
+          <td class="paramname"><em>geometry_source</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_geometry_sources</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -206,18 +240,18 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The shader program ID. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00037">37</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00047">47</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
-<a id="a4546429db70e0a039d4de91f85beaa62" name="a4546429db70e0a039d4de91f85beaa62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4546429db70e0a039d4de91f85beaa62">&#9670;&#160;</a></span>prgl_current_shader()</h2>
+<a id="a4e94ca650217717ee7f5372d3b8642c2" name="a4e94ca650217717ee7f5372d3b8642c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e94ca650217717ee7f5372d3b8642c2">&#9670;&#160;</a></span>prgl_current_shader()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int prgl_current_shader </td>
+          <td class="memname"><a class="el" href="structPRGLShader.html">PRGLShader</a> prgl_current_shader </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -228,12 +262,12 @@ Variables</h2></td></tr>
 <p>Gets the shader ID for the current shader in use.</p>
 <dl class="section return"><dt>Returns</dt><dd>The shader program ID for the current shader. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00035">35</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00045">45</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
-<a id="ac0ab9e8e85e75d20b24f9c2bc7ab8324" name="ac0ab9e8e85e75d20b24f9c2bc7ab8324"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0ab9e8e85e75d20b24f9c2bc7ab8324">&#9670;&#160;</a></span>prgl_delete_shader()</h2>
+<a id="ac20e555fc7d149ffc992939242374c43" name="ac20e555fc7d149ffc992939242374c43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac20e555fc7d149ffc992939242374c43">&#9670;&#160;</a></span>prgl_delete_shader()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -241,7 +275,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void prgl_delete_shader </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype"><a class="el" href="structPRGLShader.html">PRGLShader</a>&#160;</td>
           <td class="paramname"><em>shader</em></td><td>)</td>
           <td></td>
         </tr>
@@ -255,7 +289,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00090">90</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00116">116</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -276,7 +310,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Deletes built in shaders from the shader pool. </p>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00169">169</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00229">229</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -297,12 +331,41 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Precompiles built in shaders and adds them to the shader pool. </p>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00153">153</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00215">215</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
-<a id="a9ea1ac02cd892631f642d8b5a7f35b6f" name="a9ea1ac02cd892631f642d8b5a7f35b6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ea1ac02cd892631f642d8b5a7f35b6f">&#9670;&#160;</a></span>prgl_set_shader_uniform_4f()</h2>
+<a id="a36ea7693ac70a6a2a78ba1e97ffc2452" name="a36ea7693ac70a6a2a78ba1e97ffc2452"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36ea7693ac70a6a2a78ba1e97ffc2452">&#9670;&#160;</a></span>prgl_set_default_shared_uniforms()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void prgl_set_default_shared_uniforms </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_3d</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets values for uniforms which are needed for default shaders. </p>
+<p>Should be called after switching to a shader if not using one of the built-in shader functions like <a class="el" href="shaders_8h.html#afb07d18395cb94fd660905a2dd47089d" title="Activates the 3D shader for use.">prgl_use_shader_3d()</a>, as those functions will also call this one.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">is_3d</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00179">179</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+
+</div>
+</div>
+<a id="af7e1dd4e5e3c2566af5683ff283826a1" name="af7e1dd4e5e3c2566af5683ff283826a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7e1dd4e5e3c2566af5683ff283826a1">&#9670;&#160;</a></span>prgl_set_shader_uniform_4f()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -310,7 +373,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void prgl_set_shader_uniform_4f </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype"><a class="el" href="structPRGLShader.html">PRGLShader</a>&#160;</td>
           <td class="paramname"><em>shader</em>, </td>
         </tr>
         <tr>
@@ -363,12 +426,12 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00092">92</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00118">118</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
-<a id="ae1127f6ce718f9e09ac4453e71c9f1da" name="ae1127f6ce718f9e09ac4453e71c9f1da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1127f6ce718f9e09ac4453e71c9f1da">&#9670;&#160;</a></span>prgl_set_shader_uniform_bool()</h2>
+<a id="ab5b282e60a3f67a545befec8efe0fde4" name="ab5b282e60a3f67a545befec8efe0fde4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5b282e60a3f67a545befec8efe0fde4">&#9670;&#160;</a></span>prgl_set_shader_uniform_bool()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -376,7 +439,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void prgl_set_shader_uniform_bool </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype"><a class="el" href="structPRGLShader.html">PRGLShader</a>&#160;</td>
           <td class="paramname"><em>shader</em>, </td>
         </tr>
         <tr>
@@ -408,12 +471,12 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00146">146</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00172">172</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
-<a id="a8f34a325216857d28bf2a6218b136bbc" name="a8f34a325216857d28bf2a6218b136bbc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f34a325216857d28bf2a6218b136bbc">&#9670;&#160;</a></span>prgl_set_shader_uniform_float()</h2>
+<a id="a1df0c0dded4ca45740c76a8b5389d5f2" name="a1df0c0dded4ca45740c76a8b5389d5f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1df0c0dded4ca45740c76a8b5389d5f2">&#9670;&#160;</a></span>prgl_set_shader_uniform_float()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -421,7 +484,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void prgl_set_shader_uniform_float </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype"><a class="el" href="structPRGLShader.html">PRGLShader</a>&#160;</td>
           <td class="paramname"><em>shader</em>, </td>
         </tr>
         <tr>
@@ -453,12 +516,12 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00132">132</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00158">158</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
-<a id="ac5ee2ff1301a1da88794f921572c6604" name="ac5ee2ff1301a1da88794f921572c6604"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5ee2ff1301a1da88794f921572c6604">&#9670;&#160;</a></span>prgl_set_shader_uniform_int()</h2>
+<a id="a96fe94ce964e03e433ddccec34999ae2" name="a96fe94ce964e03e433ddccec34999ae2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96fe94ce964e03e433ddccec34999ae2">&#9670;&#160;</a></span>prgl_set_shader_uniform_int()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -466,7 +529,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void prgl_set_shader_uniform_int </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype"><a class="el" href="structPRGLShader.html">PRGLShader</a>&#160;</td>
           <td class="paramname"><em>shader</em>, </td>
         </tr>
         <tr>
@@ -498,12 +561,12 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00139">139</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00165">165</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
-<a id="ac0cb4b04a3fa93678205383713b9ecd3" name="ac0cb4b04a3fa93678205383713b9ecd3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0cb4b04a3fa93678205383713b9ecd3">&#9670;&#160;</a></span>prgl_set_shader_uniform_mat3()</h2>
+<a id="a80c0c6cbab0c94a7b4f80af781af5fd0" name="a80c0c6cbab0c94a7b4f80af781af5fd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80c0c6cbab0c94a7b4f80af781af5fd0">&#9670;&#160;</a></span>prgl_set_shader_uniform_mat3()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -511,7 +574,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void prgl_set_shader_uniform_mat3 </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype"><a class="el" href="structPRGLShader.html">PRGLShader</a>&#160;</td>
           <td class="paramname"><em>shader</em>, </td>
         </tr>
         <tr>
@@ -543,12 +606,12 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00123">123</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00149">149</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
-<a id="a6081eeff3c21ea154c6ccd14be12c4ab" name="a6081eeff3c21ea154c6ccd14be12c4ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6081eeff3c21ea154c6ccd14be12c4ab">&#9670;&#160;</a></span>prgl_set_shader_uniform_mat4()</h2>
+<a id="a2a8216b403e17f1a0c6ae04d643e2eb3" name="a2a8216b403e17f1a0c6ae04d643e2eb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a8216b403e17f1a0c6ae04d643e2eb3">&#9670;&#160;</a></span>prgl_set_shader_uniform_mat4()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -556,7 +619,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void prgl_set_shader_uniform_mat4 </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype"><a class="el" href="structPRGLShader.html">PRGLShader</a>&#160;</td>
           <td class="paramname"><em>shader</em>, </td>
         </tr>
         <tr>
@@ -588,12 +651,12 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00114">114</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00140">140</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
-<a id="a4a4d01902c3c98184f4dfea4955d5967" name="a4a4d01902c3c98184f4dfea4955d5967"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a4d01902c3c98184f4dfea4955d5967">&#9670;&#160;</a></span>prgl_set_shader_uniform_vec2()</h2>
+<a id="a0fba5dadee7d5f33c7d87dd586a09e95" name="a0fba5dadee7d5f33c7d87dd586a09e95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fba5dadee7d5f33c7d87dd586a09e95">&#9670;&#160;</a></span>prgl_set_shader_uniform_vec2()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -601,7 +664,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void prgl_set_shader_uniform_vec2 </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype"><a class="el" href="structPRGLShader.html">PRGLShader</a>&#160;</td>
           <td class="paramname"><em>shader</em>, </td>
         </tr>
         <tr>
@@ -633,12 +696,12 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00107">107</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00133">133</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
-<a id="a57611dcfbc85bdafe1b65541953efd4e" name="a57611dcfbc85bdafe1b65541953efd4e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a57611dcfbc85bdafe1b65541953efd4e">&#9670;&#160;</a></span>prgl_set_shader_uniform_vec3()</h2>
+<a id="ab6cbac5d4bc1b762f8109f6cbd7315bb" name="ab6cbac5d4bc1b762f8109f6cbd7315bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6cbac5d4bc1b762f8109f6cbd7315bb">&#9670;&#160;</a></span>prgl_set_shader_uniform_vec3()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -646,7 +709,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void prgl_set_shader_uniform_vec3 </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype"><a class="el" href="structPRGLShader.html">PRGLShader</a>&#160;</td>
           <td class="paramname"><em>shader</em>, </td>
         </tr>
         <tr>
@@ -678,32 +741,32 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00100">100</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00126">126</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
-<a id="a4ec3b30bdf7cf20de39e218693db4837" name="a4ec3b30bdf7cf20de39e218693db4837"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ec3b30bdf7cf20de39e218693db4837">&#9670;&#160;</a></span>prgl_shader()</h2>
+<a id="a48ba83f5ffdb4501c65d62e7d341018a" name="a48ba83f5ffdb4501c65d62e7d341018a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48ba83f5ffdb4501c65d62e7d341018a">&#9670;&#160;</a></span>prgl_shader()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int prgl_shader </td>
+          <td class="memname"><a class="el" href="structPRGLShader.html">PRGLShader</a> prgl_shader </td>
           <td>(</td>
-          <td class="paramtype">enum <a class="el" href="shaders_8h.html#a8d772e21c5960b33e87ad473f8248ea7">PRGLShader</a>&#160;</td>
+          <td class="paramtype">enum <a class="el" href="shaders_8h.html#a1bdcf117d86ab430322a7185517aa2f1">PRGLShaderType</a>&#160;</td>
           <td class="paramname"><em>type</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00030">30</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00040">40</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
-<a id="aa2ea2726502f1dcda95f5a8edb990fcd" name="aa2ea2726502f1dcda95f5a8edb990fcd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2ea2726502f1dcda95f5a8edb990fcd">&#9670;&#160;</a></span>prgl_use_shader()</h2>
+<a id="a96c267b4344dcdcef15e7c6de934f57b" name="a96c267b4344dcdcef15e7c6de934f57b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96c267b4344dcdcef15e7c6de934f57b">&#9670;&#160;</a></span>prgl_use_shader()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -711,7 +774,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void prgl_use_shader </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype"><a class="el" href="structPRGLShader.html">PRGLShader</a>&#160;</td>
           <td class="paramname"><em>shader</em></td><td>)</td>
           <td></td>
         </tr>
@@ -725,7 +788,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00074">74</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00087">87</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -744,9 +807,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Activates the 2D shader for use. </p>
+<p>Activates the 2D shader for use.</p>
+<p>Activates the 2D shader and sets necessary uniforms needed for use. </p>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00085">85</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00110">110</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -765,13 +829,54 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Activates the 3D shader for use. </p>
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00080">80</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p>Activates the 3D shader for use. </p>
+<p>Activates the 3D shader and sets necessary uniforms needed for use. </p>
+
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00098">98</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+
+</div>
+</div>
+<a id="aa6a356c1d22e3d261db79a813143e4d9" name="aa6a356c1d22e3d261db79a813143e4d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6a356c1d22e3d261db79a813143e4d9">&#9670;&#160;</a></span>prgl_use_shader_unlit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void prgl_use_shader_unlit </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Activates the unlit 3D shader for use. </p>
+<p>Activates the unlit 3D shader and sets necessary uniforms needed for use. </p>
+
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00104">104</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="aff388b2750b89ec779f0f01b13be692d" name="aff388b2750b89ec779f0f01b13be692d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff388b2750b89ec779f0f01b13be692d">&#9670;&#160;</a></span>PRGL_FILL_COLOR_UNIFORM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* const PRGL_FILL_COLOR_UNIFORM = &quot;fillColor&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00025">25</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+
+</div>
+</div>
 <a id="ac0579b719f91df4b2cd80345caa6b19f" name="ac0579b719f91df4b2cd80345caa6b19f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac0579b719f91df4b2cd80345caa6b19f">&#9670;&#160;</a></span>PRGL_LIGHT_COLOR_UNIFORM</h2>
 
@@ -784,7 +889,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00011">11</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00019">19</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -800,7 +905,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00013">13</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00021">21</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -816,7 +921,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00012">12</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00020">20</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -832,7 +937,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00014">14</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00022">22</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -848,7 +953,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00008">8</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00016">16</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -864,7 +969,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00009">9</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00017">17</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -880,7 +985,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00010">10</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00018">18</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -896,7 +1001,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00015">15</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00023">23</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>
@@ -912,7 +1017,23 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00016">16</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00024">24</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
+
+</div>
+</div>
+<a id="a7581746933181ea9bbb5952e139d4a54" name="a7581746933181ea9bbb5952e139d4a54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7581746933181ea9bbb5952e139d4a54">&#9670;&#160;</a></span>PRGL_USE_TEXTURE_UNIFORM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* const PRGL_USE_TEXTURE_UNIFORM = &quot;useTexture&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="shaders_8c_source.html#l00026">26</a> of file <a class="el" href="shaders_8c_source.html">shaders.c</a>.</p>
 
 </div>
 </div>

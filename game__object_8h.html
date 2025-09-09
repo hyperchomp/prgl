@@ -97,6 +97,7 @@ $(document).ready(function(){initNavTree('game__object_8h.html',''); initResizab
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;cglm/types.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="types_8h_source.html">types.h</a>&quot;</code><br />
 </div>
 <p><a href="game__object_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -107,16 +108,22 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:acf1749e927c1497ae32c80dd2c12df65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__object_8h.html#acf1749e927c1497ae32c80dd2c12df65">prgl_init_game_object</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const game_obj, struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *const mesh, vec3 position)</td></tr>
-<tr class="separator:acf1749e927c1497ae32c80dd2c12df65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dee357636735cb385f8eaf16c9d74c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__object_8h.html#a0dee357636735cb385f8eaf16c9d74c4">prgl_init_game_object</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const game_obj, const <a class="el" href="types_8h.html#a98ad4ac9dfac88264278dbddc9d20805">PRGLMeshHandle</a> mesh, vec3 position)</td></tr>
+<tr class="memdesc:a0dee357636735cb385f8eaf16c9d74c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes game object values to defaults and assigns the given mesh.  <br /></td></tr>
+<tr class="separator:a0dee357636735cb385f8eaf16c9d74c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c94fffeb4df58d320b6988b5297e5ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__object_8h.html#a5c94fffeb4df58d320b6988b5297e5ea">prgl_rotate_game_object</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const game_obj, float yaw_d, float pitch_d, float roll_d)</td></tr>
+<tr class="memdesc:a5c94fffeb4df58d320b6988b5297e5ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotates a game object.  <br /></td></tr>
 <tr class="separator:a5c94fffeb4df58d320b6988b5297e5ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3e64c275dd17636d4c8be52f6b221a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__object_8h.html#ac3e64c275dd17636d4c8be52f6b221a0">prgl_set_orientation_axis_angle</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const game_obj, vec3 axis, float angle_d)</td></tr>
-<tr class="separator:ac3e64c275dd17636d4c8be52f6b221a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37cdc2630bce99c28feff91e598e6c19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__object_8h.html#a37cdc2630bce99c28feff91e598e6c19">prgl_set_game_object_axis_angle</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const game_obj, vec3 axis, float angle_d)</td></tr>
+<tr class="memdesc:a37cdc2630bce99c28feff91e598e6c19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the orientation of a game object using an axis-angle rotation.  <br /></td></tr>
+<tr class="separator:a37cdc2630bce99c28feff91e598e6c19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1ccfdfcb3cdc8e608a86ee3b19e9dd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__object_8h.html#af1ccfdfcb3cdc8e608a86ee3b19e9dd4">prgl_set_game_object_color</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const game_obj, float r, float g, float b)</td></tr>
+<tr class="memdesc:af1ccfdfcb3cdc8e608a86ee3b19e9dd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the RGB color of a game object.  <br /></td></tr>
+<tr class="separator:af1ccfdfcb3cdc8e608a86ee3b19e9dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="acf1749e927c1497ae32c80dd2c12df65" name="acf1749e927c1497ae32c80dd2c12df65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf1749e927c1497ae32c80dd2c12df65">&#9670;&#160;</a></span>prgl_init_game_object()</h2>
+<a id="a0dee357636735cb385f8eaf16c9d74c4" name="a0dee357636735cb385f8eaf16c9d74c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dee357636735cb385f8eaf16c9d74c4">&#9670;&#160;</a></span>prgl_init_game_object()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -130,7 +137,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *const&#160;</td>
+          <td class="paramtype">const <a class="el" href="types_8h.html#a98ad4ac9dfac88264278dbddc9d20805">PRGLMeshHandle</a>&#160;</td>
           <td class="paramname"><em>mesh</em>, </td>
         </tr>
         <tr>
@@ -146,7 +153,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initializes the game object values to defaults and assigns the given mesh.</p>
+
+<p>Initializes game object values to defaults and assigns the given mesh. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">game_obj[out]</td><td></td></tr>
@@ -156,7 +164,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8c_source.html#l00005">5</a> of file <a class="el" href="game__object_8c_source.html">game_object.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__object_8c_source.html#l00006">6</a> of file <a class="el" href="game__object_8c_source.html">game_object.c</a>.</p>
 
 </div>
 </div>
@@ -197,7 +205,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Rotates a game object.</p>
+
+<p>Rotates a game object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">game_obj[in,out]</td><td></td></tr>
@@ -208,18 +217,18 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8c_source.html#l00016">16</a> of file <a class="el" href="game__object_8c_source.html">game_object.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__object_8c_source.html#l00018">18</a> of file <a class="el" href="game__object_8c_source.html">game_object.c</a>.</p>
 
 </div>
 </div>
-<a id="ac3e64c275dd17636d4c8be52f6b221a0" name="ac3e64c275dd17636d4c8be52f6b221a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3e64c275dd17636d4c8be52f6b221a0">&#9670;&#160;</a></span>prgl_set_orientation_axis_angle()</h2>
+<a id="a37cdc2630bce99c28feff91e598e6c19" name="a37cdc2630bce99c28feff91e598e6c19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37cdc2630bce99c28feff91e598e6c19">&#9670;&#160;</a></span>prgl_set_game_object_axis_angle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void prgl_set_orientation_axis_angle </td>
+          <td class="memname">void prgl_set_game_object_axis_angle </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const&#160;</td>
           <td class="paramname"><em>game_obj</em>, </td>
@@ -243,7 +252,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Directly sets the orientation of a game object using an axis-angle rotation.</p>
+
+<p>Sets the orientation of a game object using an axis-angle rotation. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">game_obj[out]</td><td></td></tr>
@@ -253,7 +263,60 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8c_source.html#l00036">36</a> of file <a class="el" href="game__object_8c_source.html">game_object.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__object_8c_source.html#l00038">38</a> of file <a class="el" href="game__object_8c_source.html">game_object.c</a>.</p>
+
+</div>
+</div>
+<a id="af1ccfdfcb3cdc8e608a86ee3b19e9dd4" name="af1ccfdfcb3cdc8e608a86ee3b19e9dd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1ccfdfcb3cdc8e608a86ee3b19e9dd4">&#9670;&#160;</a></span>prgl_set_game_object_color()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void prgl_set_game_object_color </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const&#160;</td>
+          <td class="paramname"><em>game_obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the RGB color of a game object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game_obj[out]</td><td></td></tr>
+    <tr><td class="paramname">r</td><td></td></tr>
+    <tr><td class="paramname">g</td><td></td></tr>
+    <tr><td class="paramname">b</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="game__object_8c_source.html#l00045">45</a> of file <a class="el" href="game__object_8c_source.html">game_object.c</a>.</p>
 
 </div>
 </div>

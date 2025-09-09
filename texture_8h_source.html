@@ -96,10 +96,17 @@ $(document).ready(function(){initNavTree('texture_8h_source.html',''); initResiz
 <a href="texture_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef PRGL_TEXTURE_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define PRGL_TEXTURE_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="texture_8h.html#ac14afd6796af7138e3bb88749c832e99">prgl_load_texture</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> filename);</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="types_8h.html">types.h</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="atexture_8h_html_ac14afd6796af7138e3bb88749c832e99"><div class="ttname"><a href="texture_8h.html#ac14afd6796af7138e3bb88749c832e99">prgl_load_texture</a></div><div class="ttdeci">unsigned int prgl_load_texture(const char *const filename)</div><div class="ttdef"><b>Definition:</b> <a href="texture_8c_source.html#l00010">texture.c:10</a></div></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_struct" href="structPRGLTexture.html">PRGLTexture</a> <a class="code hl_variable" href="texture_8h.html#a765f3af74f18ef8636992e83df81ec3c">PRGL_NO_TEXTURE</a>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><a class="code hl_struct" href="structPRGLTexture.html">PRGLTexture</a> <a class="code hl_function" href="texture_8h.html#a2e9b0325e00053afd7e81ea80a41cb7b">prgl_load_texture</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> filename);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="astructPRGLTexture_html"><div class="ttname"><a href="structPRGLTexture.html">PRGLTexture</a></div><div class="ttdoc">Stores an ID for a texture.</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00028">types.h:29</a></div></div>
+<div class="ttc" id="atexture_8h_html_a2e9b0325e00053afd7e81ea80a41cb7b"><div class="ttname"><a href="texture_8h.html#a2e9b0325e00053afd7e81ea80a41cb7b">prgl_load_texture</a></div><div class="ttdeci">PRGLTexture prgl_load_texture(const char *const filename)</div><div class="ttdef"><b>Definition:</b> <a href="texture_8c_source.html#l00016">texture.c:16</a></div></div>
+<div class="ttc" id="atexture_8h_html_a765f3af74f18ef8636992e83df81ec3c"><div class="ttname"><a href="texture_8h.html#a765f3af74f18ef8636992e83df81ec3c">PRGL_NO_TEXTURE</a></div><div class="ttdeci">const PRGLTexture PRGL_NO_TEXTURE</div><div class="ttdoc">Empty texture for quick mesh initialization when no texture is wanted.</div><div class="ttdef"><b>Definition:</b> <a href="texture_8c_source.html#l00014">texture.c:14</a></div></div>
+<div class="ttc" id="atypes_8h_html"><div class="ttname"><a href="types_8h.html">types.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

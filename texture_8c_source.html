@@ -94,113 +94,124 @@ $(document).ready(function(){initNavTree('texture_8c_source.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 <a href="texture_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;glad.h&quot;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="texture_8h.html">texture.h</a>&quot;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="render_8h.html">render.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="texture_8h.html">texture.h</a>&quot;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="texture__internal_8h.html">texture_internal.h</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;stb_image.h&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;GLFW/glfw3.h&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="texture_8c.html#ac14afd6796af7138e3bb88749c832e99">   10</a></span><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="texture_8c.html#ac14afd6796af7138e3bb88749c832e99">prgl_load_texture</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> filename)</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keywordtype">int</span> width;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordtype">int</span> height;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordtype">int</span> num_color_channels;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="render_8h.html">render.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;stb_image.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="types_8h.html">types.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="texture_8c.html#a765f3af74f18ef8636992e83df81ec3c">   14</a></span><span class="keyword">const</span> <a class="code hl_struct" href="structPRGLTexture.html">PRGLTexture</a> <a class="code hl_variable" href="texture_8c.html#a765f3af74f18ef8636992e83df81ec3c">PRGL_NO_TEXTURE</a> = {0};</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *image =</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        stbi_load(filename, &amp;width, &amp;height, &amp;num_color_channels, 0);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordflow">if</span> (image == NULL)</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        fprintf(</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            stderr, <span class="stringliteral">&quot;prgl_load_texture: Failed to load image file \&quot;%s\&quot;: %s\n&quot;</span>,</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            filename, stbi_failure_reason()</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        );</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        exit(EXIT_FAILURE);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    }</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> texture;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    glGenTextures(1, &amp;texture);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="comment">// Bind texture so OpenGL knows we&#39;re configuring this one</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    glBindTexture(GL_TEXTURE_2D, texture);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="texture_8c.html#a2e9b0325e00053afd7e81ea80a41cb7b">   16</a></span><a class="code hl_struct" href="structPRGLTexture.html">PRGLTexture</a> <a class="code hl_function" href="texture_8c.html#a2e9b0325e00053afd7e81ea80a41cb7b">prgl_load_texture</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> filename)</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">int</span> width;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">int</span> height;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordtype">int</span> num_color_channels;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *image =</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        stbi_load(filename, &amp;width, &amp;height, &amp;num_color_channels, 0);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordflow">if</span> (image == NULL)</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        fprintf(</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            stderr, <span class="stringliteral">&quot;prgl_load_texture: Failed to load image file \&quot;%s\&quot;: %s\n&quot;</span>,</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            filename, stbi_failure_reason()</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        );</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        exit(EXIT_FAILURE);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    }</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">// Set texture wrapping and filtering options</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    GLuint texture;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    glGenTextures(1, &amp;texture);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">// Bind texture so OpenGL knows we&#39;re configuring this one</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    glBindTexture(GL_TEXTURE_2D, texture);</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// Generate texture using loaded image</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    GLenum format = (num_color_channels == 3) ? GL_RGB : GL_RGBA;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    glTexImage2D(</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE,</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        image</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    );</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    stbi_image_free(image);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">return</span> texture;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="texture_8c.html#a9e568bdfd26fbb50bd5ceaaf9b7de082">   51</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structPRGLRenderTexture.html">PRGLRenderTexture</a> <a class="code hl_function" href="texture_8c.html#a9e568bdfd26fbb50bd5ceaaf9b7de082">prgl_create_render_texture</a>(void)</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>{</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// Create a framebuffer object</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structPRGLRenderTexture.html#aa8e1efcdd90f7611579785f3135c09eb">fbo</a>;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    glGenFramebuffers(1, &amp;<a class="code hl_variable" href="structPRGLRenderTexture.html#aa8e1efcdd90f7611579785f3135c09eb">fbo</a>);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    glBindFramebuffer(GL_FRAMEBUFFER, <a class="code hl_variable" href="structPRGLRenderTexture.html#aa8e1efcdd90f7611579785f3135c09eb">fbo</a>);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// Set texture wrapping and filtering options</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">// Generate texture using loaded image</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    GLenum format = (num_color_channels == 3) ? GL_RGB : GL_RGBA;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    glTexImage2D(</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE,</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        image</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    );</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    stbi_image_free(image);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <a class="code hl_struct" href="structPRGLTexture.html">PRGLTexture</a> final_texture = {.<a class="code hl_variable" href="structPRGLTexture.html#ab7ce6f462afaf105224b0ca772a33c43">id</a> = texture};</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">return</span> final_texture;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">// Create the texture for rendering to</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="game_8c.html#a373f5884865a5eefc0ef2c33ffa8c6b8">render_texture</a>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    glGenTextures(1, &amp;<a class="code hl_variable" href="game_8c.html#a373f5884865a5eefc0ef2c33ffa8c6b8">render_texture</a>);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    glBindTexture(GL_TEXTURE_2D, <a class="code hl_variable" href="game_8c.html#a373f5884865a5eefc0ef2c33ffa8c6b8">render_texture</a>);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    glTexImage2D(</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        GL_TEXTURE_2D, 0, GL_RGB, <a class="code hl_variable" href="render_8c.html#a282e8651627ae92b28f86c43538cf695">PRGL_RENDER_RESOLUTION</a>[0],</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <a class="code hl_variable" href="render_8c.html#a282e8651627ae92b28f86c43538cf695">PRGL_RENDER_RESOLUTION</a>[1], 0, GL_RGB, GL_UNSIGNED_BYTE, NULL</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    );</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// Attach the texture to the FBO</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    glFramebufferTexture2D(</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, <a class="code hl_variable" href="game_8c.html#a373f5884865a5eefc0ef2c33ffa8c6b8">render_texture</a>, 0</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="texture_8c.html#a9e568bdfd26fbb50bd5ceaaf9b7de082">   58</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structPRGLRenderTexture.html">PRGLRenderTexture</a> <a class="code hl_function" href="texture_8c.html#a9e568bdfd26fbb50bd5ceaaf9b7de082">prgl_create_render_texture</a>(void)</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>{</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">// Create a framebuffer object</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    GLuint <a class="code hl_variable" href="structPRGLRenderTexture.html#a85a82635c1e0c0d184050788cba2c656">fbo</a>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    glGenFramebuffers(1, &amp;<a class="code hl_variable" href="structPRGLRenderTexture.html#a85a82635c1e0c0d184050788cba2c656">fbo</a>);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    glBindFramebuffer(GL_FRAMEBUFFER, <a class="code hl_variable" href="structPRGLRenderTexture.html#a85a82635c1e0c0d184050788cba2c656">fbo</a>);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment">// Create the texture for rendering to</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    GLuint <a class="code hl_variable" href="game_8c.html#a373f5884865a5eefc0ef2c33ffa8c6b8">render_texture</a>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    glGenTextures(1, &amp;<a class="code hl_variable" href="game_8c.html#a373f5884865a5eefc0ef2c33ffa8c6b8">render_texture</a>);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    glBindTexture(GL_TEXTURE_2D, <a class="code hl_variable" href="game_8c.html#a373f5884865a5eefc0ef2c33ffa8c6b8">render_texture</a>);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    glTexImage2D(</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        GL_TEXTURE_2D, 0, GL_RGB, <a class="code hl_variable" href="render_8c.html#a282e8651627ae92b28f86c43538cf695">PRGL_RENDER_RESOLUTION</a>[0],</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <a class="code hl_variable" href="render_8c.html#a282e8651627ae92b28f86c43538cf695">PRGL_RENDER_RESOLUTION</a>[1], 0, GL_RGB, GL_UNSIGNED_BYTE, NULL</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    );</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="comment">// Attach a combined depth and stencil render buffer object</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> rbo;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    glGenRenderbuffers(1, &amp;rbo);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    glBindRenderbuffer(GL_RENDERBUFFER, rbo);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    glRenderbufferStorage(</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, <a class="code hl_variable" href="render_8c.html#a282e8651627ae92b28f86c43538cf695">PRGL_RENDER_RESOLUTION</a>[0],</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <a class="code hl_variable" href="render_8c.html#a282e8651627ae92b28f86c43538cf695">PRGL_RENDER_RESOLUTION</a>[1]</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    );</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    glFramebufferRenderbuffer(</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    );</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">if</span> (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    {</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        fprintf(</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            stderr, <span class="stringliteral">&quot;prgl_create_render_texture: Tried to create framebuffer &quot;</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                    <span class="stringliteral">&quot;but framebuffer is not complete!\n&quot;</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        );</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        exit(EXIT_FAILURE);</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    }</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structPRGLRenderTexture.html">PRGLRenderTexture</a> render_tex = {</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        .<a class="code hl_variable" href="structPRGLRenderTexture.html#aa8e1efcdd90f7611579785f3135c09eb">fbo</a> = <a class="code hl_variable" href="structPRGLRenderTexture.html#aa8e1efcdd90f7611579785f3135c09eb">fbo</a>, .texture = <a class="code hl_variable" href="game_8c.html#a373f5884865a5eefc0ef2c33ffa8c6b8">render_texture</a></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    };</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordflow">return</span> render_tex;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>}</div>
-<div class="ttc" id="agame_8c_html_a373f5884865a5eefc0ef2c33ffa8c6b8"><div class="ttname"><a href="game_8c.html#a373f5884865a5eefc0ef2c33ffa8c6b8">render_texture</a></div><div class="ttdeci">struct PRGLRenderTexture render_texture</div><div class="ttdef"><b>Definition:</b> <a href="game_8c_source.html#l00016">game.c:16</a></div></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// Attach the texture to the FBO</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    glFramebufferTexture2D(</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, <a class="code hl_variable" href="game_8c.html#a373f5884865a5eefc0ef2c33ffa8c6b8">render_texture</a>, 0</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    );</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="comment">// Attach a combined depth and stencil render buffer object</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    GLuint rbo;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    glGenRenderbuffers(1, &amp;rbo);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    glBindRenderbuffer(GL_RENDERBUFFER, rbo);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    glRenderbufferStorage(</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, <a class="code hl_variable" href="render_8c.html#a282e8651627ae92b28f86c43538cf695">PRGL_RENDER_RESOLUTION</a>[0],</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <a class="code hl_variable" href="render_8c.html#a282e8651627ae92b28f86c43538cf695">PRGL_RENDER_RESOLUTION</a>[1]</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    );</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    glFramebufferRenderbuffer(</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    );</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordflow">if</span> (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        fprintf(</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            stderr, <span class="stringliteral">&quot;prgl_create_render_texture: Tried to create framebuffer &quot;</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                    <span class="stringliteral">&quot;but framebuffer is not complete!\n&quot;</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        );</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        exit(EXIT_FAILURE);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    }</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structPRGLRenderTexture.html">PRGLRenderTexture</a> render_tex = {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        .<a class="code hl_variable" href="structPRGLRenderTexture.html#a85a82635c1e0c0d184050788cba2c656">fbo</a> = <a class="code hl_variable" href="structPRGLRenderTexture.html#a85a82635c1e0c0d184050788cba2c656">fbo</a>, .texture = {.id = <a class="code hl_variable" href="game_8c.html#a373f5884865a5eefc0ef2c33ffa8c6b8">render_texture</a>}</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    };</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">return</span> render_tex;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}</div>
+<div class="ttc" id="agame_8c_html_a373f5884865a5eefc0ef2c33ffa8c6b8"><div class="ttname"><a href="game_8c.html#a373f5884865a5eefc0ef2c33ffa8c6b8">render_texture</a></div><div class="ttdeci">struct PRGLRenderTexture render_texture</div><div class="ttdef"><b>Definition:</b> <a href="game_8c_source.html#l00014">game.c:14</a></div></div>
 <div class="ttc" id="arender_8c_html_a282e8651627ae92b28f86c43538cf695"><div class="ttname"><a href="render_8c.html#a282e8651627ae92b28f86c43538cf695">PRGL_RENDER_RESOLUTION</a></div><div class="ttdeci">const vec2 PRGL_RENDER_RESOLUTION</div><div class="ttdef"><b>Definition:</b> <a href="render_8c_source.html#l00018">render.c:18</a></div></div>
 <div class="ttc" id="arender_8h_html"><div class="ttname"><a href="render_8h.html">render.h</a></div></div>
-<div class="ttc" id="astructPRGLRenderTexture_html"><div class="ttname"><a href="structPRGLRenderTexture.html">PRGLRenderTexture</a></div><div class="ttdef"><b>Definition:</b> <a href="texture__internal_8h_source.html#l00004">texture_internal.h:5</a></div></div>
-<div class="ttc" id="astructPRGLRenderTexture_html_aa8e1efcdd90f7611579785f3135c09eb"><div class="ttname"><a href="structPRGLRenderTexture.html#aa8e1efcdd90f7611579785f3135c09eb">PRGLRenderTexture::fbo</a></div><div class="ttdeci">unsigned int fbo</div><div class="ttdef"><b>Definition:</b> <a href="texture__internal_8h_source.html#l00006">texture_internal.h:6</a></div></div>
-<div class="ttc" id="atexture_8c_html_a9e568bdfd26fbb50bd5ceaaf9b7de082"><div class="ttname"><a href="texture_8c.html#a9e568bdfd26fbb50bd5ceaaf9b7de082">prgl_create_render_texture</a></div><div class="ttdeci">struct PRGLRenderTexture prgl_create_render_texture(void)</div><div class="ttdef"><b>Definition:</b> <a href="texture_8c_source.html#l00051">texture.c:51</a></div></div>
-<div class="ttc" id="atexture_8c_html_ac14afd6796af7138e3bb88749c832e99"><div class="ttname"><a href="texture_8c.html#ac14afd6796af7138e3bb88749c832e99">prgl_load_texture</a></div><div class="ttdeci">unsigned int prgl_load_texture(const char *const filename)</div><div class="ttdef"><b>Definition:</b> <a href="texture_8c_source.html#l00010">texture.c:10</a></div></div>
+<div class="ttc" id="astructPRGLRenderTexture_html"><div class="ttname"><a href="structPRGLRenderTexture.html">PRGLRenderTexture</a></div><div class="ttdef"><b>Definition:</b> <a href="texture__internal_8h_source.html#l00007">texture_internal.h:8</a></div></div>
+<div class="ttc" id="astructPRGLRenderTexture_html_a85a82635c1e0c0d184050788cba2c656"><div class="ttname"><a href="structPRGLRenderTexture.html#a85a82635c1e0c0d184050788cba2c656">PRGLRenderTexture::fbo</a></div><div class="ttdeci">GLuint fbo</div><div class="ttdef"><b>Definition:</b> <a href="texture__internal_8h_source.html#l00009">texture_internal.h:9</a></div></div>
+<div class="ttc" id="astructPRGLTexture_html"><div class="ttname"><a href="structPRGLTexture.html">PRGLTexture</a></div><div class="ttdoc">Stores an ID for a texture.</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00028">types.h:29</a></div></div>
+<div class="ttc" id="astructPRGLTexture_html_ab7ce6f462afaf105224b0ca772a33c43"><div class="ttname"><a href="structPRGLTexture.html#ab7ce6f462afaf105224b0ca772a33c43">PRGLTexture::id</a></div><div class="ttdeci">unsigned int id</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00030">types.h:30</a></div></div>
+<div class="ttc" id="atexture_8c_html_a2e9b0325e00053afd7e81ea80a41cb7b"><div class="ttname"><a href="texture_8c.html#a2e9b0325e00053afd7e81ea80a41cb7b">prgl_load_texture</a></div><div class="ttdeci">PRGLTexture prgl_load_texture(const char *const filename)</div><div class="ttdef"><b>Definition:</b> <a href="texture_8c_source.html#l00016">texture.c:16</a></div></div>
+<div class="ttc" id="atexture_8c_html_a765f3af74f18ef8636992e83df81ec3c"><div class="ttname"><a href="texture_8c.html#a765f3af74f18ef8636992e83df81ec3c">PRGL_NO_TEXTURE</a></div><div class="ttdeci">const PRGLTexture PRGL_NO_TEXTURE</div><div class="ttdoc">Empty texture for quick mesh initialization when no texture is wanted.</div><div class="ttdef"><b>Definition:</b> <a href="texture_8c_source.html#l00014">texture.c:14</a></div></div>
+<div class="ttc" id="atexture_8c_html_a9e568bdfd26fbb50bd5ceaaf9b7de082"><div class="ttname"><a href="texture_8c.html#a9e568bdfd26fbb50bd5ceaaf9b7de082">prgl_create_render_texture</a></div><div class="ttdeci">struct PRGLRenderTexture prgl_create_render_texture(void)</div><div class="ttdef"><b>Definition:</b> <a href="texture_8c_source.html#l00058">texture.c:58</a></div></div>
 <div class="ttc" id="atexture_8h_html"><div class="ttname"><a href="texture_8h.html">texture.h</a></div></div>
 <div class="ttc" id="atexture__internal_8h_html"><div class="ttname"><a href="texture__internal_8h.html">texture_internal.h</a></div></div>
+<div class="ttc" id="atypes_8h_html"><div class="ttname"><a href="types_8h.html">types.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -95,20 +95,21 @@ $(document).ready(function(){initNavTree('render__internal_8h.html',''); initRes
   <div class="headertitle"><div class="title">render_internal.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="mesh_8h_source.html">mesh.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;glad.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="mesh_8h_source.html">mesh.h</a>&quot;</code><br />
 </div>
 <p><a href="render__internal_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac62cc4254c291ed5ed40af78460f89fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render__internal_8h.html#ac62cc4254c291ed5ed40af78460f89fe">prgl_enable_render_texture</a> (unsigned int fbo)</td></tr>
-<tr class="separator:ac62cc4254c291ed5ed40af78460f89fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7e0425ef6e1a74a0950e79893e33213"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render__internal_8h.html#ab7e0425ef6e1a74a0950e79893e33213">prgl_render_render_texture</a> (unsigned int <a class="el" href="game_8c.html#a373f5884865a5eefc0ef2c33ffa8c6b8">render_texture</a>, struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *const screen_quad)</td></tr>
-<tr class="separator:ab7e0425ef6e1a74a0950e79893e33213"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0de145381311cbf3a3b9ef8c1e2a1bcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render__internal_8h.html#a0de145381311cbf3a3b9ef8c1e2a1bcd">prgl_enable_render_texture</a> (GLuint fbo)</td></tr>
+<tr class="separator:a0de145381311cbf3a3b9ef8c1e2a1bcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c9fd421d8cce826bd2b30c13e748dc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render__internal_8h.html#a4c9fd421d8cce826bd2b30c13e748dc5">prgl_render_render_texture</a> (struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *const screen_quad)</td></tr>
+<tr class="separator:a4c9fd421d8cce826bd2b30c13e748dc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ac62cc4254c291ed5ed40af78460f89fe" name="ac62cc4254c291ed5ed40af78460f89fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac62cc4254c291ed5ed40af78460f89fe">&#9670;&#160;</a></span>prgl_enable_render_texture()</h2>
+<a id="a0de145381311cbf3a3b9ef8c1e2a1bcd" name="a0de145381311cbf3a3b9ef8c1e2a1bcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0de145381311cbf3a3b9ef8c1e2a1bcd">&#9670;&#160;</a></span>prgl_enable_render_texture()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -116,7 +117,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void prgl_enable_render_texture </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype">GLuint&#160;</td>
           <td class="paramname"><em>fbo</em></td><td>)</td>
           <td></td>
         </tr>
@@ -125,12 +126,12 @@ Functions</h2></td></tr>
 <p>Enables the render texture fbo for rendering. This should be called before doing any rendering to ensure everything is drawn to the internal resolution.</p>
 <p>The screen should be cleared after calling this using <a class="el" href="render_8c.html#a6be9b8ca983e7efddcd062bf9410832e">prgl_clear_screen()</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00150">150</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00186">186</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
-<a id="ab7e0425ef6e1a74a0950e79893e33213" name="ab7e0425ef6e1a74a0950e79893e33213"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab7e0425ef6e1a74a0950e79893e33213">&#9670;&#160;</a></span>prgl_render_render_texture()</h2>
+<a id="a4c9fd421d8cce826bd2b30c13e748dc5" name="a4c9fd421d8cce826bd2b30c13e748dc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c9fd421d8cce826bd2b30c13e748dc5">&#9670;&#160;</a></span>prgl_render_render_texture()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -138,32 +139,21 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void prgl_render_render_texture </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>render_texture</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *const&#160;</td>
-          <td class="paramname"><em>screen_quad</em>&#160;</td>
-        </tr>
-        <tr>
+          <td class="paramname"><em>screen_quad</em></td><td>)</td>
           <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Disable the render texture fbo and render the render texture itself to the default framebuffer.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">render_texture</td><td>The ID of the texture to draw the screen quad to. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">screen_quad</td><td>The quad mesh to draw the render texture onto. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00157">157</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00193">193</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>

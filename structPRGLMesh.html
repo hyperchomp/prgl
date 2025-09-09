@@ -99,110 +99,146 @@ $(document).ready(function(){initNavTree('structPRGLMesh.html',''); initResizabl
 <p>Defines the geometry of a 3D object.  
  <a href="structPRGLMesh.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="mesh_8h_source.html">mesh.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="mesh__internal_8h_source.html">mesh_internal.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:ab52c5c997b55ddee18e7a92287b4e347"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPRGLMesh.html#ab52c5c997b55ddee18e7a92287b4e347">num_vertices</a></td></tr>
-<tr class="separator:ab52c5c997b55ddee18e7a92287b4e347"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8ad85e5ea665ec96050fb1c68a316ad"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPRGLMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad">vbo</a></td></tr>
-<tr class="separator:ad8ad85e5ea665ec96050fb1c68a316ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66af7003e38e6bc4336b96bbda1fe29a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPRGLMesh.html#a66af7003e38e6bc4336b96bbda1fe29a">vao</a></td></tr>
-<tr class="separator:a66af7003e38e6bc4336b96bbda1fe29a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ad670e5715f3451e595409673f29db6"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPRGLMesh.html#a7ad670e5715f3451e595409673f29db6">ebo</a></td></tr>
-<tr class="separator:a7ad670e5715f3451e595409673f29db6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af608f2bc89b2fe3a692219514fe6c434"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPRGLMesh.html#af608f2bc89b2fe3a692219514fe6c434">texture_id</a></td></tr>
-<tr class="separator:af608f2bc89b2fe3a692219514fe6c434"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff7796813328cdeb3101f3eeef9abc02"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPRGLMesh.html#aff7796813328cdeb3101f3eeef9abc02">num_vertices</a></td></tr>
+<tr class="memdesc:aff7796813328cdeb3101f3eeef9abc02"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of vertices for an array draw, or indices for an EBO.  <br /></td></tr>
+<tr class="separator:aff7796813328cdeb3101f3eeef9abc02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a0619687aceec0b23e453a8205e0218"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPRGLMesh.html#a8a0619687aceec0b23e453a8205e0218">vbo</a></td></tr>
+<tr class="memdesc:a8a0619687aceec0b23e453a8205e0218"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vertex Buffer Object stores raw vertex data.  <br /></td></tr>
+<tr class="separator:a8a0619687aceec0b23e453a8205e0218"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a330aacffef4c3babb936a32d97aae50f"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPRGLMesh.html#a330aacffef4c3babb936a32d97aae50f">vao</a></td></tr>
+<tr class="memdesc:a330aacffef4c3babb936a32d97aae50f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vertex Array Object stores vertex state for how to render.  <br /></td></tr>
+<tr class="separator:a330aacffef4c3babb936a32d97aae50f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a030a3c21928635682428466cb0ef6bac"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPRGLMesh.html#a030a3c21928635682428466cb0ef6bac">ebo</a></td></tr>
+<tr class="memdesc:a030a3c21928635682428466cb0ef6bac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional - Element Buffer Object to draw vertices with indices.  <br /></td></tr>
+<tr class="separator:a030a3c21928635682428466cb0ef6bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8aa047507f22a44944052f5e4c18791c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPRGLTexture.html">PRGLTexture</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPRGLMesh.html#a8aa047507f22a44944052f5e4c18791c">texture</a></td></tr>
+<tr class="memdesc:a8aa047507f22a44944052f5e4c18791c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional - Stores the texture ID for the mesh.  <br /></td></tr>
+<tr class="separator:a8aa047507f22a44944052f5e4c18791c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71a95e85728d1d25decebb2ac9a8ecac"><td class="memItemLeft" align="right" valign="top">GLenum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPRGLMesh.html#a71a95e85728d1d25decebb2ac9a8ecac">primitive_type</a></td></tr>
+<tr class="memdesc:a71a95e85728d1d25decebb2ac9a8ecac"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of of primitive to render.  <br /></td></tr>
+<tr class="separator:a71a95e85728d1d25decebb2ac9a8ecac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines the geometry of a 3D object. </p>
-<p>One mesh can be re-used to render many of the same object. Any IDs which are optional should be set to 0 if unused.</p>
-<p>The texture_id must be set manually after init to a loaded texture. </p>
+<p>One mesh can be re-used to render many of the same object. Any IDs which are optional should be set to 0 if unused. </p>
 
-<p class="definition">Definition at line <a class="el" href="mesh_8h_source.html#l00012">12</a> of file <a class="el" href="mesh_8h_source.html">mesh.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mesh__internal_8h_source.html#l00013">13</a> of file <a class="el" href="mesh__internal_8h_source.html">mesh_internal.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
-<a id="a7ad670e5715f3451e595409673f29db6" name="a7ad670e5715f3451e595409673f29db6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ad670e5715f3451e595409673f29db6">&#9670;&#160;</a></span>ebo</h2>
+<a id="a030a3c21928635682428466cb0ef6bac" name="a030a3c21928635682428466cb0ef6bac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a030a3c21928635682428466cb0ef6bac">&#9670;&#160;</a></span>ebo</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int ebo</td>
+          <td class="memname">GLuint ebo</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mesh_8h_source.html#l00023">23</a> of file <a class="el" href="mesh_8h_source.html">mesh.h</a>.</p>
+<p>Optional - Element Buffer Object to draw vertices with indices. </p>
+
+<p class="definition">Definition at line <a class="el" href="mesh__internal_8h_source.html#l00025">25</a> of file <a class="el" href="mesh__internal_8h_source.html">mesh_internal.h</a>.</p>
 
 </div>
 </div>
-<a id="ab52c5c997b55ddee18e7a92287b4e347" name="ab52c5c997b55ddee18e7a92287b4e347"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab52c5c997b55ddee18e7a92287b4e347">&#9670;&#160;</a></span>num_vertices</h2>
+<a id="aff7796813328cdeb3101f3eeef9abc02" name="aff7796813328cdeb3101f3eeef9abc02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff7796813328cdeb3101f3eeef9abc02">&#9670;&#160;</a></span>num_vertices</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int num_vertices</td>
+          <td class="memname">GLuint num_vertices</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mesh_8h_source.html#l00014">14</a> of file <a class="el" href="mesh_8h_source.html">mesh.h</a>.</p>
+<p>The number of vertices for an array draw, or indices for an EBO. </p>
+
+<p class="definition">Definition at line <a class="el" href="mesh__internal_8h_source.html#l00016">16</a> of file <a class="el" href="mesh__internal_8h_source.html">mesh_internal.h</a>.</p>
 
 </div>
 </div>
-<a id="af608f2bc89b2fe3a692219514fe6c434" name="af608f2bc89b2fe3a692219514fe6c434"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af608f2bc89b2fe3a692219514fe6c434">&#9670;&#160;</a></span>texture_id</h2>
+<a id="a71a95e85728d1d25decebb2ac9a8ecac" name="a71a95e85728d1d25decebb2ac9a8ecac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71a95e85728d1d25decebb2ac9a8ecac">&#9670;&#160;</a></span>primitive_type</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int texture_id</td>
+          <td class="memname">GLenum primitive_type</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mesh_8h_source.html#l00026">26</a> of file <a class="el" href="mesh_8h_source.html">mesh.h</a>.</p>
+<p>The type of of primitive to render. </p>
+<p>This is the OpenGL constant e.g. GL_TRIANGLES or GL_LINES. </p>
+
+<p class="definition">Definition at line <a class="el" href="mesh__internal_8h_source.html#l00035">35</a> of file <a class="el" href="mesh__internal_8h_source.html">mesh_internal.h</a>.</p>
 
 </div>
 </div>
-<a id="a66af7003e38e6bc4336b96bbda1fe29a" name="a66af7003e38e6bc4336b96bbda1fe29a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a66af7003e38e6bc4336b96bbda1fe29a">&#9670;&#160;</a></span>vao</h2>
+<a id="a8aa047507f22a44944052f5e4c18791c" name="a8aa047507f22a44944052f5e4c18791c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8aa047507f22a44944052f5e4c18791c">&#9670;&#160;</a></span>texture</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int vao</td>
+          <td class="memname"><a class="el" href="structPRGLTexture.html">PRGLTexture</a> texture</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mesh_8h_source.html#l00020">20</a> of file <a class="el" href="mesh_8h_source.html">mesh.h</a>.</p>
+<p>Optional - Stores the texture ID for the mesh. </p>
+
+<p class="definition">Definition at line <a class="el" href="mesh__internal_8h_source.html#l00028">28</a> of file <a class="el" href="mesh__internal_8h_source.html">mesh_internal.h</a>.</p>
 
 </div>
 </div>
-<a id="ad8ad85e5ea665ec96050fb1c68a316ad" name="ad8ad85e5ea665ec96050fb1c68a316ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad8ad85e5ea665ec96050fb1c68a316ad">&#9670;&#160;</a></span>vbo</h2>
+<a id="a330aacffef4c3babb936a32d97aae50f" name="a330aacffef4c3babb936a32d97aae50f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a330aacffef4c3babb936a32d97aae50f">&#9670;&#160;</a></span>vao</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int vbo</td>
+          <td class="memname">GLuint vao</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mesh_8h_source.html#l00017">17</a> of file <a class="el" href="mesh_8h_source.html">mesh.h</a>.</p>
+<p>Vertex Array Object stores vertex state for how to render. </p>
+
+<p class="definition">Definition at line <a class="el" href="mesh__internal_8h_source.html#l00022">22</a> of file <a class="el" href="mesh__internal_8h_source.html">mesh_internal.h</a>.</p>
+
+</div>
+</div>
+<a id="a8a0619687aceec0b23e453a8205e0218" name="a8a0619687aceec0b23e453a8205e0218"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a0619687aceec0b23e453a8205e0218">&#9670;&#160;</a></span>vbo</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLuint vbo</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vertex Buffer Object stores raw vertex data. </p>
+
+<p class="definition">Definition at line <a class="el" href="mesh__internal_8h_source.html#l00019">19</a> of file <a class="el" href="mesh__internal_8h_source.html">mesh_internal.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>include/<a class="el" href="mesh_8h_source.html">mesh.h</a></li>
+<li>src/<a class="el" href="mesh__internal_8h_source.html">mesh_internal.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

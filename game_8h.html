@@ -100,9 +100,9 @@ $(document).ready(function(){initNavTree('game_8h.html',''); initResizable(); })
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:acfe1b100151cd8c25aecf2f08a77f9f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8h.html#acfe1b100151cd8c25aecf2f08a77f9f0">prgl_run_game</a> (const char *const title, void(*prgl_init)(void), void(*prgl_update)(void), void(*prgl_render_3d)(void), void(*prgl_render_2d)(void), void(*prgl_cleanup)(void))</td></tr>
-<tr class="memdesc:acfe1b100151cd8c25aecf2f08a77f9f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the core loop of the game.  <br /></td></tr>
-<tr class="separator:acfe1b100151cd8c25aecf2f08a77f9f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86fea894e0f6c1e66c045f68c7b962b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8h.html#a86fea894e0f6c1e66c045f68c7b962b0">prgl_run_game</a> (const char *const title, void(*prgl_init)(void), void(*prgl_update)(void), void(*prgl_draw_3d)(void), void(*prgl_draw_2d)(void), void(*prgl_cleanup)(void))</td></tr>
+<tr class="memdesc:a86fea894e0f6c1e66c045f68c7b962b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the core loop of the game.  <br /></td></tr>
+<tr class="separator:a86fea894e0f6c1e66c045f68c7b962b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a157b31b69e21c0add3f3f9616ce7eeea"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8h.html#a157b31b69e21c0add3f3f9616ce7eeea">prgl_delta_time</a> (void)</td></tr>
 <tr class="separator:a157b31b69e21c0add3f3f9616ce7eeea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -125,12 +125,12 @@ Functions</h2></td></tr>
 <p>Gets the time elapsed in seconds from the start of the last update until the start of the current update.</p>
 <dl class="section return"><dt>Returns</dt><dd>The delta time of the previous frame. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00084">84</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00063">63</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
 
 </div>
 </div>
-<a id="acfe1b100151cd8c25aecf2f08a77f9f0" name="acfe1b100151cd8c25aecf2f08a77f9f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acfe1b100151cd8c25aecf2f08a77f9f0">&#9670;&#160;</a></span>prgl_run_game()</h2>
+<a id="a86fea894e0f6c1e66c045f68c7b962b0" name="a86fea894e0f6c1e66c045f68c7b962b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86fea894e0f6c1e66c045f68c7b962b0">&#9670;&#160;</a></span>prgl_run_game()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -157,13 +157,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">void(*)(void)&#160;</td>
-          <td class="paramname"><em>prgl_render_3d</em>, </td>
+          <td class="paramname"><em>prgl_draw_3d</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">void(*)(void)&#160;</td>
-          <td class="paramname"><em>prgl_render_2d</em>, </td>
+          <td class="paramname"><em>prgl_draw_2d</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -181,20 +181,20 @@ Functions</h2></td></tr>
 
 <p>Runs the core loop of the game. </p>
 <p>Handles the core game loop, and calls the given callback functions at the appropriate times. This should be the first function called in your game's main function to ensure prgl is initialized before using it.</p>
-<p><code>prgl_init</code> is called one time before the core game loop starts. All other callbacks are called once per frame in the following order: <code>prgl_update</code> -&gt; <code>prgl_render_3d</code> -&gt; <code>prgl_render_2d -&gt;</code>prgl_cleanup`</p>
+<p><code>prgl_init</code> is called one time before the core game loop starts. All other callbacks are called once per frame in the following order: <code>prgl_update</code> -&gt; <code>prgl_draw_3d</code> -&gt; <code>prgl_draw_2d -&gt;</code>prgl_cleanup`</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">title</td><td>Title of the game, this will be used as the window header </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">prgl_init</td><td>Initialize callback, runs one time before the game loop starts. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">prgl_update</td><td>Update callback. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">prgl_render_3d</td><td>Renders the 3D scene. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">prgl_render_2d</td><td>Renders a 2D scene on top of the 3D scene. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">prgl_draw_3d</td><td>Draws the 3D scene. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">prgl_draw_2d</td><td>Draws a 2D scene on top of the 3D scene. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">prgl_cleanup</td><td>Cleanup callback for handling memory at end of frame. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00019">19</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00017">17</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
 
 </div>
 </div>

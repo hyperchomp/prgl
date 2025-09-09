@@ -1,8 +1,9 @@
 var structPRGLMesh =
 [
-    [ "ebo", "structPRGLMesh.html#a7ad670e5715f3451e595409673f29db6", null ],
-    [ "num_vertices", "structPRGLMesh.html#ab52c5c997b55ddee18e7a92287b4e347", null ],
-    [ "texture_id", "structPRGLMesh.html#af608f2bc89b2fe3a692219514fe6c434", null ],
-    [ "vao", "structPRGLMesh.html#a66af7003e38e6bc4336b96bbda1fe29a", null ],
-    [ "vbo", "structPRGLMesh.html#ad8ad85e5ea665ec96050fb1c68a316ad", null ]
+    [ "ebo", "structPRGLMesh.html#a030a3c21928635682428466cb0ef6bac", null ],
+    [ "num_vertices", "structPRGLMesh.html#aff7796813328cdeb3101f3eeef9abc02", null ],
+    [ "primitive_type", "structPRGLMesh.html#a71a95e85728d1d25decebb2ac9a8ecac", null ],
+    [ "texture", "structPRGLMesh.html#a8aa047507f22a44944052f5e4c18791c", null ],
+    [ "vao", "structPRGLMesh.html#a330aacffef4c3babb936a32d97aae50f", null ],
+    [ "vbo", "structPRGLMesh.html#a8a0619687aceec0b23e453a8205e0218", null ]
 ];

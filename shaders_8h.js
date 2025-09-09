@@ -1,28 +1,31 @@
 var shaders_8h =
 [
     [ "PRGL_MAX_POINT_LIGHTS", "shaders_8h.html#a8f7edcdfc9cc3346cf40b66646ecf920", null ],
-    [ "PRGLShader", "shaders_8h.html#a8d772e21c5960b33e87ad473f8248ea7", [
-      [ "PRGL_SHADER_SCREEN", "shaders_8h.html#a8d772e21c5960b33e87ad473f8248ea7afe42fc175ca3d89da9ee83783f72cccd", null ],
-      [ "PRGL_SHADER_2D", "shaders_8h.html#a8d772e21c5960b33e87ad473f8248ea7ab42a4e1e899a19e0c48f807b7b3672b4", null ],
-      [ "PRGL_SHADER_3D", "shaders_8h.html#a8d772e21c5960b33e87ad473f8248ea7a63cc8a654437857dee5fb9fb35335be9", null ],
-      [ "PRGL_SHADER_UNLIT", "shaders_8h.html#a8d772e21c5960b33e87ad473f8248ea7afd1e243b1481bfde9a82641b64dffcb0", null ],
-      [ "PRGL_SHADER_COUNT", "shaders_8h.html#a8d772e21c5960b33e87ad473f8248ea7a9e7cd38ddee6b461441ffa09c88c8d75", null ]
+    [ "PRGLShaderType", "shaders_8h.html#a1bdcf117d86ab430322a7185517aa2f1", [
+      [ "PRGL_SHADER_TYPE_SCREEN", "shaders_8h.html#a1bdcf117d86ab430322a7185517aa2f1aea964ebd131c487ac4903c8287fa7136", null ],
+      [ "PRGL_SHADER_TYPE_2D", "shaders_8h.html#a1bdcf117d86ab430322a7185517aa2f1a82983951d354c6118bf8de20da72045c", null ],
+      [ "PRGL_SHADER_TYPE_3D", "shaders_8h.html#a1bdcf117d86ab430322a7185517aa2f1af25ad31e2a228e0636c9e4550d63e8d3", null ],
+      [ "PRGL_SHADER_TYPE_UNLIT", "shaders_8h.html#a1bdcf117d86ab430322a7185517aa2f1a7189cb95d550f5ea9ba16ccd142ca617", null ],
+      [ "PRGL_SHADER_TYPE_COUNT", "shaders_8h.html#a1bdcf117d86ab430322a7185517aa2f1a0a13483e2dd7eca8143edf8e0f2fad0a", null ]
     ] ],
-    [ "prgl_create_shader", "shaders_8h.html#a6540068167cf4e68f416befed55237cb", null ],
-    [ "prgl_current_shader", "shaders_8h.html#a4546429db70e0a039d4de91f85beaa62", null ],
-    [ "prgl_delete_shader", "shaders_8h.html#ac0ab9e8e85e75d20b24f9c2bc7ab8324", null ],
-    [ "prgl_set_shader_uniform_4f", "shaders_8h.html#a9ea1ac02cd892631f642d8b5a7f35b6f", null ],
-    [ "prgl_set_shader_uniform_bool", "shaders_8h.html#ae1127f6ce718f9e09ac4453e71c9f1da", null ],
-    [ "prgl_set_shader_uniform_float", "shaders_8h.html#a8f34a325216857d28bf2a6218b136bbc", null ],
-    [ "prgl_set_shader_uniform_int", "shaders_8h.html#ac5ee2ff1301a1da88794f921572c6604", null ],
-    [ "prgl_set_shader_uniform_mat3", "shaders_8h.html#ac0cb4b04a3fa93678205383713b9ecd3", null ],
-    [ "prgl_set_shader_uniform_mat4", "shaders_8h.html#a6081eeff3c21ea154c6ccd14be12c4ab", null ],
-    [ "prgl_set_shader_uniform_vec2", "shaders_8h.html#a4a4d01902c3c98184f4dfea4955d5967", null ],
-    [ "prgl_set_shader_uniform_vec3", "shaders_8h.html#a57611dcfbc85bdafe1b65541953efd4e", null ],
-    [ "prgl_shader", "shaders_8h.html#a4ec3b30bdf7cf20de39e218693db4837", null ],
-    [ "prgl_use_shader", "shaders_8h.html#aa2ea2726502f1dcda95f5a8edb990fcd", null ],
+    [ "prgl_create_shader", "shaders_8h.html#a25ec7d36674af001833717d16f1cee36", null ],
+    [ "prgl_current_shader", "shaders_8h.html#a4e94ca650217717ee7f5372d3b8642c2", null ],
+    [ "prgl_delete_shader", "shaders_8h.html#ac20e555fc7d149ffc992939242374c43", null ],
+    [ "prgl_set_default_shared_uniforms", "shaders_8h.html#a36ea7693ac70a6a2a78ba1e97ffc2452", null ],
+    [ "prgl_set_shader_uniform_4f", "shaders_8h.html#af7e1dd4e5e3c2566af5683ff283826a1", null ],
+    [ "prgl_set_shader_uniform_bool", "shaders_8h.html#ab5b282e60a3f67a545befec8efe0fde4", null ],
+    [ "prgl_set_shader_uniform_float", "shaders_8h.html#a1df0c0dded4ca45740c76a8b5389d5f2", null ],
+    [ "prgl_set_shader_uniform_int", "shaders_8h.html#a96fe94ce964e03e433ddccec34999ae2", null ],
+    [ "prgl_set_shader_uniform_mat3", "shaders_8h.html#a80c0c6cbab0c94a7b4f80af781af5fd0", null ],
+    [ "prgl_set_shader_uniform_mat4", "shaders_8h.html#a2a8216b403e17f1a0c6ae04d643e2eb3", null ],
+    [ "prgl_set_shader_uniform_vec2", "shaders_8h.html#a0fba5dadee7d5f33c7d87dd586a09e95", null ],
+    [ "prgl_set_shader_uniform_vec3", "shaders_8h.html#ab6cbac5d4bc1b762f8109f6cbd7315bb", null ],
+    [ "prgl_shader", "shaders_8h.html#a48ba83f5ffdb4501c65d62e7d341018a", null ],
+    [ "prgl_use_shader", "shaders_8h.html#a96c267b4344dcdcef15e7c6de934f57b", null ],
     [ "prgl_use_shader_2d", "shaders_8h.html#a0af931c9f3850cc646d30f2e66ee98b9", null ],
     [ "prgl_use_shader_3d", "shaders_8h.html#afb07d18395cb94fd660905a2dd47089d", null ],
+    [ "prgl_use_shader_unlit", "shaders_8h.html#aa6a356c1d22e3d261db79a813143e4d9", null ],
+    [ "PRGL_FILL_COLOR_UNIFORM", "shaders_8h.html#aff388b2750b89ec779f0f01b13be692d", null ],
     [ "PRGL_LIGHT_COLOR_UNIFORM", "shaders_8h.html#ac0579b719f91df4b2cd80345caa6b19f", null ],
     [ "PRGL_LIGHT_LINEAR_UNIFORM", "shaders_8h.html#a3ecc3823184a79ca62af392076efe171", null ],
     [ "PRGL_LIGHT_POSITION_UNIFORM", "shaders_8h.html#a9f37ead9b36d2c1c3881d8b67f83be05", null ],
@@ -31,5 +34,6 @@ var shaders_8h =
     [ "PRGL_NORMAL_MATRIX_UNIFORM", "shaders_8h.html#ab05c51cb546c0f5ab6824723dd01a08b", null ],
     [ "PRGL_NUM_POINT_LIGHTS_UNIFORM", "shaders_8h.html#a2164282fba66c92a60a51814fe263a92", null ],
     [ "PRGL_RENDER_RESOLUTION_UNIFORM", "shaders_8h.html#a75be0cc9c48d751226533166b6f3f81c", null ],
-    [ "PRGL_TILE_FACTOR_UNIFORM", "shaders_8h.html#afd7a43a2ae0e33e75f25abe17db647ff", null ]
+    [ "PRGL_TILE_FACTOR_UNIFORM", "shaders_8h.html#afd7a43a2ae0e33e75f25abe17db647ff", null ],
+    [ "PRGL_USE_TEXTURE_UNIFORM", "shaders_8h.html#a7581746933181ea9bbb5952e139d4a54", null ]
 ];

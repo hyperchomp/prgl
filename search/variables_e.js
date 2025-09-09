@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['window_0',['window',['../structPRGLScreen.html#a80de27bd7dc4e2b2ad3d5895b97a70f0',1,'PRGLScreen']]]
+  ['up_0',['up',['../structPRGLCamera.html#af25e132b20481c5c82d8394e0beeea4a',1,'PRGLCamera']]]
 ];
