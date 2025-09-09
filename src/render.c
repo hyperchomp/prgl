@@ -163,7 +163,7 @@ void prgl_update_lighting(
             prgl_current_shader(), uniform_name_buffer, point_lights[i].position
         );
 
-        float linear_constant = 0.045f;
+        float linear_constant = 0.027f;
         snprintf(
             uniform_name_buffer, sizeof(uniform_name_buffer),
             "pointLights[%d].%s", i, PRGL_LIGHT_LINEAR_UNIFORM
@@ -172,7 +172,7 @@ void prgl_update_lighting(
             prgl_current_shader(), uniform_name_buffer, linear_constant
         );
 
-        float quadratic_constant = 0.0075f;
+        float quadratic_constant = 0.0028f;
         snprintf(
             uniform_name_buffer, sizeof(uniform_name_buffer),
             "pointLights[%d].%s", i, PRGL_LIGHT_QUADRATIC_UNIFORM
@@ -200,10 +200,6 @@ void prgl_render_render_texture(struct PRGLMesh *const screen_quad)
     int windowHeight;
     glfwGetFramebufferSize(prgl_screen()->window, &windowWidth, &windowHeight);
     glViewport(0, 0, (GLint)windowWidth, (GLint)windowHeight);
-
-    // Clear just the color buffer
-    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
 
     // Render the screen quad to the window
     prgl_use_shader(prgl_shader(PRGL_SHADER_TYPE_SCREEN));

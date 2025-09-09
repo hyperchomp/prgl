@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.30)
-project(prgl VERSION 0.2.0
+project(prgl VERSION 0.2.1
         DESCRIPTION "Pixel Retro GL Framework"
         LANGUAGES C)
 set(CMAKE_C_STANDARD 99)

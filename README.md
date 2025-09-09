@@ -6,7 +6,7 @@
 
 https://github.com/user-attachments/assets/2dea8636-c0ae-4bc7-9748-15f0225971ee
 
-prgl is a code driven framework for making 3D games in a retro style similar to games made in the 80s and 90s, built from the ground up to natively render clean, chunky pixelated 3D graphics to modern displays.
+prgl is a code driven framework for making 3D games in a retro style similar to games made in the early 90s, built from the ground up to natively render clean, chunky pixelated 3D graphics to modern displays.
 
 ## Licensing
 
@@ -20,14 +20,14 @@ Libraries used within prgl may have differing licenses that are useable alongsid
 * Fly camera supporting directional movement and rotation in pitch/yaw 
 
 ### Rendering
-* Pixel perfect fullscreen scaling from base resolution similar to 90s retro games, but supporting modern 16:9 aspect ratios
-* Gouraud shading
+* Automatic, fullscreen scaling from 320x180 to support modern resolutions with a retro aesthetic
+* Gouraud shading/vertex lighting 
 * Pixel wobble/jitter
-* Simple 3D meshes such as triangles and cubes
-* Textured rectangles and cubes
+* Primitives - Line Strips, Triangles, Quads, Circles, Cubes, Spheres, Pyramids
+* Textured Meshes
 * Point lights
 * Custom shaders
-* 2D Rendering for basic shapes (GUI)
+* 2D Overlay Rendering
 
 ### Input
 * Keyboard/Mouse
