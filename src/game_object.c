@@ -1,15 +1,17 @@
 #include "game_object.h"
 #include "cglm/quat.h"
 #include "cglm/vec3.h"
+#include "types.h"
 
 void prgl_init_game_object(
-    struct PRGLGameObject *const game_obj, struct PRGLMesh *const mesh,
+    struct PRGLGameObject *const game_obj, const PRGLMeshHandle mesh,
     vec3 position
 )
 {
     glm_quat_identity(game_obj->orientation);
     glm_vec3_copy(position, game_obj->position);
     glm_vec3_one(game_obj->scale);
+    glm_vec3_one(game_obj->color);
     game_obj->mesh = mesh;
 }
 
@@ -33,9 +35,18 @@ void prgl_rotate_game_object(
     glm_quat_mul(yaw_quat, game_obj->orientation, game_obj->orientation);
 }
 
-void prgl_set_orientation_axis_angle(
+void prgl_set_game_object_axis_angle(
     struct PRGLGameObject *const game_obj, vec3 axis, float angle_d
 )
 {
     glm_quatv(game_obj->orientation, glm_rad(angle_d), axis);
+}
+
+void prgl_set_game_object_color(
+    struct PRGLGameObject *const game_obj, float r, float g, float b
+)
+{
+    game_obj->color[0] = r;
+    game_obj->color[1] = g;
+    game_obj->color[2] = b;
 }

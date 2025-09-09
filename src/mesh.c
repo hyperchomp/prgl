@@ -1,20 +1,24 @@
-#include "mesh.h"
-#include "cglm/mat3.h"
-#include "mesh_internal.h"
 #include "glad.h"
+
+#include "mesh.h"
+#include "mesh_internal.h"
+
+#include <stdlib.h>
+#include <stdint.h>
+#include <stdio.h>
+
 #include "common_macros.h"
 #include "cglm/types.h"
 #include "cglm/vec3.h"
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "texture.h"
+#include "types.h"
 
 // Constants for meshes with vertices, normals, and texture coordinates. If not
 // all then these values will be different, only use in that scenario.
-static const int VERTEX_STRIDE_LENGTH = 8;
-static const GLint FLOAT_VERTEX_STRIDE = VERTEX_STRIDE_LENGTH * sizeof(float);
-static const GLint NORMALS_OFFSET = 3 * sizeof(float);
-static const GLint TEX_COORD_OFFSET = 6 * sizeof(float);
+static const GLint VERTEX_STRIDE_LENGTH = 8;
+static const GLint FLOAT_VERTEX_STRIDE = VERTEX_STRIDE_LENGTH * sizeof(GLfloat);
+static const GLint NORMALS_OFFSET = 3 * sizeof(GLfloat);
+static const GLint TEX_COORD_OFFSET = 6 * sizeof(GLfloat);
 
 // Normal for 2D shapes, assumes positioning on XY, thus +Z normal
 static const vec3 NORMAL_POS_Z = {0.0f, 0.0f, 1.0f};
@@ -26,8 +30,8 @@ static void prgl_generate_cube_sphere_point(
 );
 
 void prgl_init_mesh(
-    struct PRGLMesh *mesh, int num_vertices, unsigned int vao, unsigned int vbo,
-    unsigned int ebo
+    struct PRGLMesh *mesh, GLuint num_vertices, GLuint vao, GLuint vbo,
+    GLuint ebo, PRGLTexture texture, GLenum primitive_type
 )
 {
     *mesh = (struct PRGLMesh){
@@ -35,11 +39,12 @@ void prgl_init_mesh(
         .vao = vao,
         .vbo = vbo,
         .ebo = ebo,
-        .texture_id = 0,
+        .texture = {.id = texture.id},
+        .primitive_type = primitive_type,
     };
 }
 
-struct PRGLMesh *prgl_create_screen_quad(void)
+struct PRGLMesh *prgl_create_screen_quad(PRGLTexture texture)
 {
     // clang-format off
     mat4 vertices = {
@@ -55,7 +60,7 @@ struct PRGLMesh *prgl_create_screen_quad(void)
         {1.0f, 1.0f}  // Top-right (y=1)
     };
     
-    float vertex_data[20] = {
+    const GLfloat vertex_data[20] = {
               vertices[0][0],       vertices[0][1], vertices[0][2], 
         texture_coords[0][0], texture_coords[0][1],
               vertices[1][0],       vertices[1][1], vertices[1][2], 
@@ -70,16 +75,16 @@ struct PRGLMesh *prgl_create_screen_quad(void)
     // EBO stops us from needing overlapping vertices, but we need to tell
     // OpenGL the order to go over the existing ones again to create enough
     // triangles to create our mesh (in this case 2 triangles, 6 indices)
-    unsigned int indices[] = {
+    const GLuint indices[] = {
         0, 1, 2, // First triangle
         0, 2, 3  // Second triangle
     };
 
     // Create a vertex buffer object and vertex array object, the VBO is to
     // generate the initial data, the VAO is so we can re-use it later
-    unsigned int vbo;
-    unsigned int vao;
-    unsigned int ebo;
+    GLuint vbo;
+    GLuint vao;
+    GLuint ebo;
     glGenBuffers(1, &vbo);
     glGenBuffers(1, &ebo);
     glGenVertexArrays(1, &vao);
@@ -97,14 +102,14 @@ struct PRGLMesh *prgl_create_screen_quad(void)
 
     // Tell OpenGL how to interpret the vertex data
     glVertexAttribPointer(
-        0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0
+        0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (const GLvoid *)0
     );
     glEnableVertexAttribArray(0);
 
     // Tell OpenGL how to interpret the texture coordinate data
     glVertexAttribPointer(
-        2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
-        (const GLvoid *)(intptr_t)(3 * sizeof(float))
+        2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat),
+        (const GLvoid *)(intptr_t)(3 * sizeof(GLfloat))
     );
     glEnableVertexAttribArray(2);
 
@@ -115,13 +120,16 @@ struct PRGLMesh *prgl_create_screen_quad(void)
             stderr, "prgl_create_screen_quad: Error allocating mesh "
                     "pointer memory!"
         );
+        return NULL;
     }
 
-    prgl_init_mesh(mesh, ARR_LEN(indices), vao, vbo, ebo);
+    prgl_init_mesh(
+        mesh, (GLuint)ARR_LEN(indices), vao, vbo, ebo, texture, GL_TRIANGLES
+    );
     return mesh;
 }
 
-struct PRGLMesh *prgl_create_triangle(void)
+PRGLMeshHandle prgl_create_triangle(PRGLTexture texture)
 {
     // clang-format off
     mat3 vertices = {
@@ -135,7 +143,7 @@ struct PRGLMesh *prgl_create_triangle(void)
         {0.5f, 1.0f}, 
     };
     // Combine vertex position and texture coordinate data
-    float vertex_data[24] = {
+    const GLfloat vertex_data[24] = {
               vertices[0][0],       vertices[0][1], vertices[0][2],
              NORMAL_POS_Z[0],      NORMAL_POS_Z[1], NORMAL_POS_Z[2],
         texture_coords[0][0], texture_coords[0][1],
@@ -150,8 +158,8 @@ struct PRGLMesh *prgl_create_triangle(void)
 
     // Create a vertex buffer object and vertex array object, the VBO is to
     // generate the initial data, the VAO is so we can re-use it later
-    unsigned int vbo;
-    unsigned int vao;
+    GLuint vbo;
+    GLuint vao;
     glGenBuffers(1, &vbo);
     glGenVertexArrays(1, &vao);
 
@@ -164,20 +172,116 @@ struct PRGLMesh *prgl_create_triangle(void)
 
     prgl_setup_vertex_attributes();
 
-    struct PRGLMesh *mesh = malloc(sizeof(struct PRGLMesh));
+    PRGLMeshHandle mesh = malloc(sizeof(struct PRGLMesh));
     if (mesh == NULL)
     {
         fprintf(
             stderr,
             "prgl_create_triangle: Error allocating mesh pointer memory!"
         );
+        return NULL;
     }
 
-    prgl_init_mesh(mesh, 3, vao, vbo, 0);
+    prgl_init_mesh(mesh, (GLuint)3, vao, vbo, 0, texture, GL_TRIANGLES);
     return mesh;
 }
 
-struct PRGLMesh *prgl_create_quad(void)
+PRGLMeshHandle prgl_create_circle(PRGLTexture texture, int num_edges)
+{
+    num_edges = (num_edges < 3) ? 3 : num_edges;
+
+    // Need one extra vertex for the center
+    GLuint num_vertices = num_edges + 1;
+    GLfloat *vertex_data =
+        malloc(sizeof(GLfloat) * num_vertices * VERTEX_STRIDE_LENGTH);
+    if (vertex_data == NULL)
+    {
+        fprintf(
+            stderr, "prgl_create_circle: Error allocating vertex data memory!"
+        );
+        return NULL;
+    }
+
+    // Allocate memory for indices
+    GLuint num_indices = num_edges * 3;
+    GLuint *indices = malloc(sizeof(GLuint) * num_indices);
+    if (indices == NULL)
+    {
+        fprintf(stderr, "prgl_create_circle: Error allocating indices memory!");
+        free(vertex_data);
+        return NULL;
+    }
+
+    // Center vertex
+    vertex_data[0] = 0.0f; // x
+    vertex_data[1] = 0.0f; // y
+    vertex_data[2] = 0.0f; // z
+    vertex_data[3] = NORMAL_POS_Z[0];
+    vertex_data[4] = NORMAL_POS_Z[1];
+    vertex_data[5] = NORMAL_POS_Z[2];
+    vertex_data[6] = 0.5f; // u
+    vertex_data[7] = 0.5f; // v
+
+    // Outer vertices
+    float angle_change = 2.0f * GLM_PI / num_edges;
+    for (int i = 0; i < num_edges; i++)
+    {
+        float angle = i * angle_change;
+        int attribute = (i + 1) * VERTEX_STRIDE_LENGTH;
+
+        vertex_data[attribute++] = cosf(angle) * 0.5f; // x
+        vertex_data[attribute++] = sinf(angle) * 0.5f; // y
+        vertex_data[attribute++] = 0.0f;               // z
+        vertex_data[attribute++] = NORMAL_POS_Z[0];
+        vertex_data[attribute++] = NORMAL_POS_Z[1];
+        vertex_data[attribute++] = NORMAL_POS_Z[2];
+        vertex_data[attribute++] = (cosf(angle) * 0.5f) + 0.5f; // u
+        vertex_data[attribute++] = (sinf(angle) * 0.5f) + 0.5f; // v
+
+        // Set up the indices for the triangle
+        indices[i * 3 + 0] = 0; // Center vertex
+        indices[i * 3 + 1] = i + 1;
+        indices[i * 3 + 2] = (i + 1) % num_edges + 1;
+    }
+
+    GLuint vbo;
+    GLuint vao;
+    GLuint ebo;
+    glGenBuffers(1, &vbo);
+    glGenBuffers(1, &ebo);
+    glGenVertexArrays(1, &vao);
+
+    glBindVertexArray(vao);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(
+        GL_ARRAY_BUFFER, sizeof(GLfloat) * num_vertices * VERTEX_STRIDE_LENGTH,
+        vertex_data, GL_STATIC_DRAW
+    );
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+    glBufferData(
+        GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * num_edges * 3, indices,
+        GL_STATIC_DRAW
+    );
+
+    prgl_setup_vertex_attributes();
+
+    free(vertex_data);
+
+    PRGLMeshHandle mesh = malloc(sizeof(struct PRGLMesh));
+    if (mesh == NULL)
+    {
+        fprintf(
+            stderr, "prgl_create_circle: Error allocating mesh pointer memory!"
+        );
+        return NULL;
+    }
+
+    prgl_init_mesh(mesh, num_indices, vao, vbo, ebo, texture, GL_TRIANGLES);
+    return mesh;
+}
+
+PRGLMeshHandle prgl_create_quad(PRGLTexture texture)
 {
     // clang-format off
     mat4 vertices = {
@@ -194,7 +298,7 @@ struct PRGLMesh *prgl_create_quad(void)
     };
 
     // Assumes quad is oriented on XY plane 
-    float vertex_data[32] = {
+    const GLfloat vertex_data[32] = {
               vertices[0][0],       vertices[0][1],  vertices[0][2], 
              NORMAL_POS_Z[0],      NORMAL_POS_Z[1], NORMAL_POS_Z[2],
         texture_coords[0][0], texture_coords[0][1],
@@ -213,16 +317,16 @@ struct PRGLMesh *prgl_create_quad(void)
     // EBO stops us from needing overlapping vertices, but we need to tell
     // OpenGL the order to go over the existing ones again to create enough
     // triangles to create our mesh (in this case 2 triangles, 6 indices)
-    unsigned int indices[] = {
+    GLuint indices[] = {
         0, 1, 2, // First triangle
         0, 2, 3  // Second triangle
     };
 
     // Create a vertex buffer object and vertex array object, the VBO is to
     // generate the initial data, the VAO is so we can re-use it later
-    unsigned int vbo;
-    unsigned int vao;
-    unsigned int ebo;
+    GLuint vbo;
+    GLuint vao;
+    GLuint ebo;
     glGenBuffers(1, &vbo);
     glGenBuffers(1, &ebo);
     glGenVertexArrays(1, &vao);
@@ -240,23 +344,88 @@ struct PRGLMesh *prgl_create_quad(void)
 
     prgl_setup_vertex_attributes();
 
-    struct PRGLMesh *mesh = malloc(sizeof(struct PRGLMesh));
+    PRGLMeshHandle mesh = malloc(sizeof(struct PRGLMesh));
     if (mesh == NULL)
     {
         fprintf(
-            stderr, "prgl_create_rectangle: Error allocating mesh "
+            stderr, "prgl_create_quad: Error allocating mesh "
                     "pointer memory!"
         );
+        return NULL;
     }
 
-    prgl_init_mesh(mesh, ARR_LEN(indices), vao, vbo, ebo);
+    prgl_init_mesh(
+        mesh, (GLuint)ARR_LEN(indices), vao, vbo, ebo, texture, GL_TRIANGLES
+    );
     return mesh;
 }
 
-struct PRGLMesh *prgl_create_cube(void)
+PRGLMeshHandle prgl_create_pyramid(PRGLTexture texture)
 {
     // clang-format off
-    const float vertices[] = {
+    
+    const GLfloat vertex_data[144] = {
+        // Vertices           // Normals               // Texture coords
+        // Bottom
+        -0.5f, -0.5f,  0.5f,  0.0f, -1.0f, 0.0f,       0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f, 0.0f,       0.0f, 1.0f,
+         0.5f, -0.5f,  0.5f,  0.0f, -1.0f, 0.0f,       1.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,  0.0f, -1.0f, 0.0f,       1.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f, 0.0f,       0.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,  0.0f, -1.0f, 0.0f,       1.0f, 1.0f,
+
+        // Front face
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.4472f, 0.8944f,  0.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,  0.0f, 0.4472f, 0.8944f,  1.0f, 0.0f,
+         0.0f,  0.5f,  0.0f,  0.0f, 0.4472f, 0.8944f,  0.5f, 1.0f,
+
+        // Back face
+         0.5f, -0.5f, -0.5f,  0.0f, 0.4472f, -0.8944f, 0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 0.4472f, -0.8944f, 1.0f, 0.0f,
+         0.0f,  0.5f,  0.0f,  0.0f, 0.4472f, -0.8944f, 0.5f, 1.0f,
+
+        // Right face
+         0.5f, -0.5f,  0.5f,  0.8944f, 0.4472f, 0.0f,  0.0f, 0.0f,
+         0.5f, -0.5f, -0.5f,  0.8944f, 0.4472f, 0.0f,  1.0f, 0.0f,
+         0.0f,  0.5f,  0.0f,  0.8944f, 0.4472f, 0.0f,  0.5f, 1.0f,
+
+        // Left face
+        -0.5f, -0.5f, -0.5f, -0.8944f, 0.4472f, 0.0f,  0.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f, -0.8944f, 0.4472f, 0.0f,  1.0f, 0.0f,
+         0.0f,  0.5f,  0.0f, -0.8944f, 0.4472f, 0.0f,  0.5f, 1.0f 
+    };
+    // clang-format on
+
+    GLuint vbo;
+    GLuint vao;
+    glGenBuffers(1, &vbo);
+    glGenVertexArrays(1, &vao);
+
+    glBindVertexArray(vao);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(
+        GL_ARRAY_BUFFER, sizeof(vertex_data), vertex_data, GL_STATIC_DRAW
+    );
+
+    prgl_setup_vertex_attributes();
+
+    PRGLMeshHandle mesh = malloc(sizeof(struct PRGLMesh));
+    if (mesh == NULL)
+    {
+        fprintf(
+            stderr, "prgl_create_pyramid: Error allocating mesh pointer memory!"
+        );
+        return NULL;
+    }
+
+    prgl_init_mesh(mesh, (GLuint)18, vao, vbo, 0, texture, GL_TRIANGLES);
+    return mesh;
+}
+
+PRGLMeshHandle prgl_create_cube(PRGLTexture texture)
+{
+    // clang-format off
+    const GLfloat vertices[] = {
         // vertices           // normals           // texture coords
         // Front Face 
         -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f, 0.0f,
@@ -308,7 +477,8 @@ struct PRGLMesh *prgl_create_cube(void)
     };
     // clang-format on
 
-    unsigned int vbo, vao;
+    GLuint vbo;
+    GLuint vao;
     glGenVertexArrays(1, &vao);
     glGenBuffers(1, &vbo);
 
@@ -319,34 +489,36 @@ struct PRGLMesh *prgl_create_cube(void)
 
     prgl_setup_vertex_attributes();
 
-    struct PRGLMesh *mesh = malloc(sizeof(struct PRGLMesh));
+    PRGLMeshHandle mesh = malloc(sizeof(struct PRGLMesh));
     if (mesh == NULL)
     {
         fprintf(
             stderr, "prgl_create_cube: Error allocating mesh pointer memory!"
         );
+        return NULL;
     }
 
-    prgl_init_mesh(mesh, 36, vao, vbo, 0);
+    prgl_init_mesh(mesh, (GLuint)36, vao, vbo, 0, texture, GL_TRIANGLES);
     return mesh;
 }
 
-struct PRGLMesh *prgl_create_cube_sphere(int resolution)
+PRGLMeshHandle prgl_create_cube_sphere(int resolution, PRGLTexture texture)
 {
     resolution = resolution > 1 ? resolution : 1;
 
     // Six faces, resolution squared quads, six vertices per quad
     const int NUM_FACES = 6;
-    int num_vertices = NUM_FACES * (resolution * resolution) * NUM_FACES;
-    int vertex_data_length = num_vertices * VERTEX_STRIDE_LENGTH;
+    GLuint num_vertices = NUM_FACES * (resolution * resolution) * NUM_FACES;
+    GLuint vertex_data_length = num_vertices * VERTEX_STRIDE_LENGTH;
 
-    float *vertex_data = malloc(sizeof(float) * vertex_data_length);
+    GLfloat *vertex_data = malloc(sizeof(GLfloat) * vertex_data_length);
     if (vertex_data == NULL)
     {
         fprintf(
             stderr,
             "prgl_create_cube_sphere: Error allocating vertex data memory!"
         );
+        return NULL;
     }
 
     // clang-format off
@@ -369,7 +541,7 @@ struct PRGLMesh *prgl_create_cube_sphere(int resolution)
     };
     // clang-format on
 
-    int component_index = 0;
+    int attribute = 0;
     for (int face = 0; face < NUM_FACES; face++)
     {
         vec3 normal;
@@ -430,25 +602,25 @@ struct PRGLMesh *prgl_create_cube_sphere(int resolution)
                     glm_vec3_normalize_to(triangle_points[vert], position);
 
                     // Position XYZ coordinates
-                    vertex_data[component_index++] = position[0];
-                    vertex_data[component_index++] = position[1];
-                    vertex_data[component_index++] = position[2];
+                    vertex_data[attribute++] = position[0];
+                    vertex_data[attribute++] = position[1];
+                    vertex_data[attribute++] = position[2];
 
                     // Normal XYZ coordinates
-                    vertex_data[component_index++] = position[0];
-                    vertex_data[component_index++] = position[1];
-                    vertex_data[component_index++] = position[2];
+                    vertex_data[attribute++] = position[0];
+                    vertex_data[attribute++] = position[1];
+                    vertex_data[attribute++] = position[2];
 
                     // Texture UV coordinates
-                    vertex_data[component_index++] = uvs[vert][0];
-                    vertex_data[component_index++] = uvs[vert][1];
+                    vertex_data[attribute++] = uvs[vert][0];
+                    vertex_data[attribute++] = uvs[vert][1];
                 }
             }
         }
     }
 
-    unsigned int vbo;
-    unsigned int vao;
+    GLuint vbo;
+    GLuint vao;
     glGenBuffers(1, &vbo);
     glGenVertexArrays(1, &vao);
 
@@ -456,51 +628,116 @@ struct PRGLMesh *prgl_create_cube_sphere(int resolution)
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(
-        GL_ARRAY_BUFFER, sizeof(float) * vertex_data_length, vertex_data,
+        GL_ARRAY_BUFFER, sizeof(GLfloat) * vertex_data_length, vertex_data,
         GL_STATIC_DRAW
     );
 
     prgl_setup_vertex_attributes();
     free(vertex_data);
 
-    struct PRGLMesh *mesh = malloc(sizeof(struct PRGLMesh));
+    PRGLMeshHandle mesh = malloc(sizeof(struct PRGLMesh));
     if (mesh == NULL)
     {
         fprintf(
             stderr,
             "prgl_create_cube_sphere: Error allocating mesh pointer memory!"
         );
+        return NULL;
     }
 
-    prgl_init_mesh(mesh, num_vertices, vao, vbo, 0);
+    prgl_init_mesh(mesh, num_vertices, vao, vbo, 0, texture, GL_TRIANGLES);
     return mesh;
 }
 
-void prgl_delete_mesh(struct PRGLMesh *mesh)
+PRGLMeshHandle prgl_create_line_strip(vec3 points[], int num_points)
 {
-    glDeleteVertexArrays(1, &mesh->vao);
-    glDeleteBuffers(1, &mesh->vbo);
-
-    if (mesh->ebo != 0)
+    if (num_points < 2)
     {
-        glDeleteBuffers(1, &mesh->ebo);
+        fprintf(
+            stderr,
+            "prgl_create_line_strip: Can't make a line with less than 2 points!"
+        );
+        return NULL;
     }
 
-    free(mesh);
+    GLfloat *const vertex_data = malloc(sizeof(GLfloat) * 3 * num_points);
+    if (vertex_data == NULL)
+    {
+        fprintf(
+            stderr,
+            "prgl_create_line_strip: Error allocating vertex_data memory!"
+        );
+        return NULL;
+    }
+
+    for (int p = 0; p < num_points; p++)
+    {
+        vertex_data[p * 3 + 0] = points[p][0];
+        vertex_data[p * 3 + 1] = points[p][1];
+        vertex_data[p * 3 + 2] = points[p][2];
+    }
+
+    GLuint vbo;
+    GLuint vao;
+    glGenBuffers(1, &vbo);
+    glGenVertexArrays(1, &vao);
+
+    glBindVertexArray(vao);
+
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(
+        GL_ARRAY_BUFFER, sizeof(GLfloat) * 3 * num_points, vertex_data,
+        GL_STATIC_DRAW
+    );
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)0);
+    glEnableVertexAttribArray(0);
+
+    free(vertex_data);
+
+    PRGLMeshHandle mesh = malloc(sizeof(struct PRGLMesh));
+    if (mesh == NULL)
+    {
+        fprintf(
+            stderr,
+            "prgl_create_line_strip: Error allocating mesh pointer memory!"
+        );
+        return NULL;
+    }
+
+    prgl_init_mesh(
+        mesh, (GLuint)num_points, vao, vbo, 0, PRGL_NO_TEXTURE, GL_LINE_STRIP
+    );
+    return mesh;
+}
+
+void prgl_delete_mesh(PRGLMeshHandle mesh)
+{
+    struct PRGLMesh *internal_mesh = (struct PRGLMesh *)mesh;
+    glDeleteVertexArrays(1, &internal_mesh->vao);
+    glDeleteBuffers(1, &internal_mesh->vbo);
+
+    if (internal_mesh->ebo != 0)
+    {
+        glDeleteBuffers(1, &internal_mesh->ebo);
+    }
+
+    free(internal_mesh);
 }
 
 static void prgl_setup_vertex_attributes(void)
 {
     // position attribute
     glVertexAttribPointer(
-        0, 3, GL_FLOAT, GL_FALSE, FLOAT_VERTEX_STRIDE, (void *)0
+        0, 3, GL_FLOAT, GL_FALSE, FLOAT_VERTEX_STRIDE, (const GLvoid *)0
     );
     glEnableVertexAttribArray(0);
 
     // normals attribute
     glVertexAttribPointer(
         1, 3, GL_FLOAT, GL_FALSE, FLOAT_VERTEX_STRIDE,
-        (const GLvoid *)(intptr_t)(NORMALS_OFFSET)
+        (const GLvoid *)(intptr_t)NORMALS_OFFSET
     );
     glEnableVertexAttribArray(1);
 

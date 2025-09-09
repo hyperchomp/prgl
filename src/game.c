@@ -1,9 +1,7 @@
 #include "glad.h"
 #include "game.h"
-#include "camera.h"
 #include "mesh.h"
 #include "mesh_internal.h"
-#include "render.h"
 #include "render_internal.h"
 #include "shaders.h"
 #include "texture_internal.h"
@@ -18,7 +16,7 @@ struct PRGLMesh *screen_render_quad;
 
 void prgl_run_game(
     const char *const title, void (*prgl_init)(void), void (*prgl_update)(void),
-    void (*prgl_render_3d)(void), void (*prgl_render_2d)(void),
+    void (*prgl_draw_3d)(void), void (*prgl_draw_2d)(void),
     void (*prgl_cleanup)(void)
 )
 {
@@ -26,48 +24,29 @@ void prgl_run_game(
     prgl_create_window(title);
 
     prgl_init_shader_pool();
+    prgl_use_shader(prgl_shader(PRGL_SHADER_TYPE_3D));
     render_texture = prgl_create_render_texture();
-    screen_render_quad = prgl_create_screen_quad();
+    screen_render_quad = prgl_create_screen_quad(render_texture.texture);
     prgl_init();
 
     struct PRGLScreen screen = *prgl_screen();
     while (!glfwWindowShouldClose(screen.window))
     {
-        vec2 render_res = {
-            PRGL_RENDER_RESOLUTION[0], PRGL_RENDER_RESOLUTION[1]
-        };
-
         dt = glfwGetTime() - last_update_start;
         last_update_start = glfwGetTime();
 
         prgl_enable_render_texture(render_texture.fbo);
         glEnable(GL_DEPTH_TEST);
         prgl_use_shader_3d();
-        prgl_set_shader_uniform_vec2(
-            prgl_current_shader(), PRGL_TILE_FACTOR_UNIFORM, (vec2){1.0f, 1.0f}
-        );
-        prgl_set_shader_uniform_vec2(
-            prgl_current_shader(), PRGL_RENDER_RESOLUTION_UNIFORM, render_res
-        );
-        prgl_set_camera_projection(
-            prgl_active_camera(), prgl_active_camera()->fov,
-            PRGL_CAMERA_PROJECTION_PERSPECTIVE
-        );
         prgl_update();
 
-        prgl_render_3d();
+        prgl_draw_3d();
 
         glDisable(GL_DEPTH_TEST);
         prgl_use_shader_2d();
-        prgl_set_shader_uniform_vec2(
-            prgl_current_shader(), PRGL_RENDER_RESOLUTION_UNIFORM, render_res
-        );
-        prgl_set_camera_projection(
-            prgl_active_camera(), 0.0f, PRGL_CAMERA_PROJECTION_ORTHOGONAL
-        );
-        prgl_render_2d();
+        prgl_draw_2d();
 
-        prgl_render_render_texture(render_texture.texture, screen_render_quad);
+        prgl_render_render_texture(screen_render_quad);
 
         prgl_cleanup();
 

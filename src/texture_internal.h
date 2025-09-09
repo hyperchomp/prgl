@@ -1,10 +1,13 @@
 #ifndef PRGL_TEXTURE_INTERNAL_H
 #define PRGL_TEXTURE_INTERNAL_H
 
+#include "glad.h"
+#include "types.h"
+
 struct PRGLRenderTexture
 {
-    unsigned int fbo;
-    unsigned int texture;
+    GLuint fbo;
+    PRGLTexture texture;
 };
 
 /**
