@@ -20,6 +20,7 @@ var shaders_8c =
     [ "prgl_use_shader_3d", "shaders_8c.html#afb07d18395cb94fd660905a2dd47089d", null ],
     [ "prgl_use_shader_unlit", "shaders_8c.html#aa6a356c1d22e3d261db79a813143e4d9", null ],
     [ "PRGL_FILL_COLOR_UNIFORM", "shaders_8c.html#aff388b2750b89ec779f0f01b13be692d", null ],
+    [ "PRGL_LIGHT_AMBIENT_UNIFORM", "shaders_8c.html#ad0f2502dc87b8d9e05dd281b11ea823c", null ],
     [ "PRGL_LIGHT_COLOR_UNIFORM", "shaders_8c.html#ac0579b719f91df4b2cd80345caa6b19f", null ],
     [ "PRGL_LIGHT_LINEAR_UNIFORM", "shaders_8c.html#a3ecc3823184a79ca62af392076efe171", null ],
     [ "PRGL_LIGHT_POSITION_UNIFORM", "shaders_8c.html#a9f37ead9b36d2c1c3881d8b67f83be05", null ],

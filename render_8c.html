@@ -99,19 +99,17 @@ $(document).ready(function(){initNavTree('render_8c.html',''); initResizable(); 
 <div class="textblock"><code>#include &quot;glad.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="render_8h_source.html">render.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="render__internal_8h_source.html">render_internal.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="game__object_8h_source.html">game_object.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="screen__internal_8h_source.html">screen_internal.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="shaders_8h_source.html">shaders.h</a>&quot;</code><br />
-<code>#include &quot;cglm/quat.h&quot;</code><br />
+<code>#include &lt;GLFW/glfw3.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &quot;cglm/affine.h&quot;</code><br />
 <code>#include &quot;cglm/mat4.h&quot;</code><br />
+<code>#include &quot;cglm/quat.h&quot;</code><br />
 <code>#include &quot;cglm/types.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="game__object_8h_source.html">game_object.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="mesh__internal_8h_source.html">mesh_internal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen__internal_8h_source.html">screen_internal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="shaders_8h_source.html">shaders.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="transform__internal_8h_source.html">transform_internal.h</a>&quot;</code><br />
-<code>#include &lt;complex.h&gt;</code><br />
-<code>#include &lt;stddef.h&gt;</code><br />
-<code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;GLFW/glfw3.h&gt;</code><br />
 </div>
 <p><a href="render_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -123,8 +121,6 @@ Functions</h2></td></tr>
 <tr class="separator:a0f076643eb875d111aece74ada89e812"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57dacbecc97bb7168d39e2721488c253"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a57dacbecc97bb7168d39e2721488c253">prgl_draw_game_object_2d</a> (struct <a class="el" href="structPRGLGameObject.html">PRGLGameObject</a> *const game_obj)</td></tr>
 <tr class="separator:a57dacbecc97bb7168d39e2721488c253"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1696d48ecf2079771d24d8639931c7d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a1696d48ecf2079771d24d8639931c7d7">prgl_update_lighting</a> (struct PRGLPointLight *const point_lights, int num_lights)</td></tr>
-<tr class="separator:a1696d48ecf2079771d24d8639931c7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0de145381311cbf3a3b9ef8c1e2a1bcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a0de145381311cbf3a3b9ef8c1e2a1bcd">prgl_enable_render_texture</a> (GLuint fbo)</td></tr>
 <tr class="separator:a0de145381311cbf3a3b9ef8c1e2a1bcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c9fd421d8cce826bd2b30c13e748dc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="render_8c.html#a4c9fd421d8cce826bd2b30c13e748dc5">prgl_render_render_texture</a> (struct <a class="el" href="structPRGLMesh.html">PRGLMesh</a> *const screen_quad)</td></tr>
@@ -184,7 +180,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00020">20</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00021">21</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -211,7 +207,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00075">75</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00076">76</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -238,7 +234,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00026">26</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00027">27</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -260,7 +256,7 @@ Variables</h2></td></tr>
 <p>Enables the render texture fbo for rendering. This should be called before doing any rendering to ensure everything is drawn to the internal resolution.</p>
 <p>The screen should be cleared after calling this using <a class="el" href="render_8c.html#a6be9b8ca983e7efddcd062bf9410832e">prgl_clear_screen()</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00186">186</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00134">134</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -287,44 +283,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00193">193</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
-
-</div>
-</div>
-<a id="a1696d48ecf2079771d24d8639931c7d7" name="a1696d48ecf2079771d24d8639931c7d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1696d48ecf2079771d24d8639931c7d7">&#9670;&#160;</a></span>prgl_update_lighting()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void prgl_update_lighting </td>
-          <td>(</td>
-          <td class="paramtype">struct PRGLPointLight *const&#160;</td>
-          <td class="paramname"><em>point_lights</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>num_lights</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Passes lighting data from lights to the active shader.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">struct[in]</td><td>PRGLPointLight The point lights for the scene. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00133">133</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00141">141</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>
@@ -341,7 +300,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00018">18</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="render_8c_source.html#l00019">19</a> of file <a class="el" href="render_8c_source.html">render.c</a>.</p>
 
 </div>
 </div>

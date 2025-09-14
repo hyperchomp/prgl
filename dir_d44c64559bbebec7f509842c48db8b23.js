@@ -5,6 +5,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "game.h", "game_8h.html", "game_8h" ],
     [ "game_object.h", "game__object_8h.html", "game__object_8h" ],
     [ "input.h", "input_8h.html", "input_8h" ],
+    [ "lighting.h", "lighting_8h.html", "lighting_8h" ],
     [ "mathx.h", "mathx_8h.html", "mathx_8h" ],
     [ "mesh.h", "mesh_8h.html", "mesh_8h" ],
     [ "render.h", "render_8h.html", "render_8h" ],

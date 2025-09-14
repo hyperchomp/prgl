@@ -1,6 +1,5 @@
 var shaders_8h =
 [
-    [ "PRGL_MAX_POINT_LIGHTS", "shaders_8h.html#a8f7edcdfc9cc3346cf40b66646ecf920", null ],
     [ "PRGLShaderType", "shaders_8h.html#a1bdcf117d86ab430322a7185517aa2f1", [
       [ "PRGL_SHADER_TYPE_SCREEN", "shaders_8h.html#a1bdcf117d86ab430322a7185517aa2f1aea964ebd131c487ac4903c8287fa7136", null ],
       [ "PRGL_SHADER_TYPE_2D", "shaders_8h.html#a1bdcf117d86ab430322a7185517aa2f1a82983951d354c6118bf8de20da72045c", null ],
@@ -26,6 +25,7 @@ var shaders_8h =
     [ "prgl_use_shader_3d", "shaders_8h.html#afb07d18395cb94fd660905a2dd47089d", null ],
     [ "prgl_use_shader_unlit", "shaders_8h.html#aa6a356c1d22e3d261db79a813143e4d9", null ],
     [ "PRGL_FILL_COLOR_UNIFORM", "shaders_8h.html#aff388b2750b89ec779f0f01b13be692d", null ],
+    [ "PRGL_LIGHT_AMBIENT_UNIFORM", "shaders_8h.html#ad0f2502dc87b8d9e05dd281b11ea823c", null ],
     [ "PRGL_LIGHT_COLOR_UNIFORM", "shaders_8h.html#ac0579b719f91df4b2cd80345caa6b19f", null ],
     [ "PRGL_LIGHT_LINEAR_UNIFORM", "shaders_8h.html#a3ecc3823184a79ca62af392076efe171", null ],
     [ "PRGL_LIGHT_POSITION_UNIFORM", "shaders_8h.html#a9f37ead9b36d2c1c3881d8b67f83be05", null ],
