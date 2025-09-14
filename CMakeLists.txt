@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.30)
-project(prgl VERSION 0.2.1
+project(prgl VERSION 0.2.2
         DESCRIPTION "Pixel Retro GL Framework"
         LANGUAGES C)
 set(CMAKE_C_STANDARD 99)
@@ -27,9 +27,10 @@ target_include_directories(${CMAKE_PROJECT_NAME}
 
 set(PRGL_SOURCES
     "${CMAKE_SOURCE_DIR}/src/camera.c"
-    "${CMAKE_SOURCE_DIR}/src/input.c"
     "${CMAKE_SOURCE_DIR}/src/game.c"
     "${CMAKE_SOURCE_DIR}/src/game_object.c"
+    "${CMAKE_SOURCE_DIR}/src/input.c"
+    "${CMAKE_SOURCE_DIR}/src/lighting.c"
     "${CMAKE_SOURCE_DIR}/src/mathx.c"
     "${CMAKE_SOURCE_DIR}/src/mesh.c"
     "${CMAKE_SOURCE_DIR}/src/render.c"
@@ -70,6 +71,7 @@ set(
                         "${CMAKE_SOURCE_DIR}/include/game.h"
                         "${CMAKE_SOURCE_DIR}/include/game_object.h"
                         "${CMAKE_SOURCE_DIR}/include/input.h"
+                        "${CMAKE_SOURCE_DIR}/include/lighting.h"
                         "${CMAKE_SOURCE_DIR}/include/mathx.h"
                         "${CMAKE_SOURCE_DIR}/include/mesh.h"
                         "${CMAKE_SOURCE_DIR}/include/render.h"

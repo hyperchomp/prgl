@@ -61,3 +61,5 @@ void prgl_run_game(
 }
 
 double prgl_delta_time(void) { return dt; }
+
+double prgl_time_elapsed(void) { return glfwGetTime(); }

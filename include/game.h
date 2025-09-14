@@ -34,4 +34,11 @@ void prgl_run_game(
  */
 double prgl_delta_time(void);
 
+/**
+ * @brief Gets the total time since the game was first initialized.
+ *
+ * @return The total time since the game was first initialized.
+ */
+double prgl_time_elapsed(void);
+
 #endif

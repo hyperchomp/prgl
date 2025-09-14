@@ -1,6 +1,8 @@
+build/
 build-debug/
 build-release/
 .cache/
 docs/
+.idea/
 compile_commands.json
 

@@ -51,8 +51,6 @@
 #include "types.h"
 #include "cglm/types.h"
 
-#define PRGL_MAX_POINT_LIGHTS 32
-
 extern const char *const PRGL_MODEL_UNIFORM;
 extern const char *const PRGL_NORMAL_MATRIX_UNIFORM;
 
@@ -61,6 +59,7 @@ extern const char *const PRGL_LIGHT_COLOR_UNIFORM;
 extern const char *const PRGL_LIGHT_POSITION_UNIFORM;
 extern const char *const PRGL_LIGHT_LINEAR_UNIFORM;
 extern const char *const PRGL_LIGHT_QUADRATIC_UNIFORM;
+extern const char *const PRGL_LIGHT_AMBIENT_UNIFORM;
 
 extern const char *const PRGL_RENDER_RESOLUTION_UNIFORM;
 extern const char *const PRGL_TILE_FACTOR_UNIFORM;

@@ -1,19 +1,20 @@
 #include "glad.h"
+
 #include "render.h"
 #include "render_internal.h"
-#include "game_object.h"
-#include "screen_internal.h"
-#include "shaders.h"
-#include "cglm/quat.h"
+
+#include <GLFW/glfw3.h>
+#include <stdio.h>
+
 #include "cglm/affine.h"
 #include "cglm/mat4.h"
+#include "cglm/quat.h"
 #include "cglm/types.h"
+#include "game_object.h"
 #include "mesh_internal.h"
+#include "screen_internal.h"
+#include "shaders.h"
 #include "transform_internal.h"
-#include <complex.h>
-#include <stddef.h>
-#include <stdio.h>
-#include <GLFW/glfw3.h>
 
 const vec2 PRGL_RENDER_RESOLUTION = {320.0f, 180.0f};
 
@@ -126,59 +127,6 @@ void prgl_draw_game_object_2d(struct PRGLGameObject *const game_obj)
     {
         glDrawElements(
             mesh->primitive_type, mesh->num_vertices, GL_UNSIGNED_INT, 0
-        );
-    }
-}
-
-void prgl_update_lighting(
-    struct PRGLPointLight *const point_lights, int num_lights
-)
-{
-    if (num_lights > PRGL_MAX_POINT_LIGHTS)
-    {
-        num_lights = PRGL_MAX_POINT_LIGHTS;
-    }
-
-    prgl_set_shader_uniform_int(
-        prgl_current_shader(), PRGL_NUM_POINT_LIGHTS_UNIFORM, num_lights
-    );
-
-    char uniform_name_buffer[64];
-    for (int i = 0; i < num_lights; i++)
-    {
-        snprintf(
-            uniform_name_buffer, sizeof(uniform_name_buffer),
-            "pointLights[%d].%s", i, PRGL_LIGHT_COLOR_UNIFORM
-        );
-        prgl_set_shader_uniform_vec3(
-            prgl_current_shader(), uniform_name_buffer,
-            point_lights[i].lightColor
-        );
-
-        snprintf(
-            uniform_name_buffer, sizeof(uniform_name_buffer),
-            "pointLights[%d].%s", i, PRGL_LIGHT_POSITION_UNIFORM
-        );
-        prgl_set_shader_uniform_vec3(
-            prgl_current_shader(), uniform_name_buffer, point_lights[i].position
-        );
-
-        float linear_constant = 0.027f;
-        snprintf(
-            uniform_name_buffer, sizeof(uniform_name_buffer),
-            "pointLights[%d].%s", i, PRGL_LIGHT_LINEAR_UNIFORM
-        );
-        prgl_set_shader_uniform_float(
-            prgl_current_shader(), uniform_name_buffer, linear_constant
-        );
-
-        float quadratic_constant = 0.0028f;
-        snprintf(
-            uniform_name_buffer, sizeof(uniform_name_buffer),
-            "pointLights[%d].%s", i, PRGL_LIGHT_QUADRATIC_UNIFORM
-        );
-        prgl_set_shader_uniform_float(
-            prgl_current_shader(), uniform_name_buffer, quadratic_constant
         );
     }
 }
