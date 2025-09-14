@@ -20,6 +20,7 @@ const char *const PRGL_LIGHT_COLOR_UNIFORM = "color";
 const char *const PRGL_LIGHT_POSITION_UNIFORM = "position";
 const char *const PRGL_LIGHT_LINEAR_UNIFORM = "linear";
 const char *const PRGL_LIGHT_QUADRATIC_UNIFORM = "quadratic";
+const char *const PRGL_LIGHT_AMBIENT_UNIFORM = "ambient";
 const char *const PRGL_RENDER_RESOLUTION_UNIFORM = "renderResolution";
 const char *const PRGL_TILE_FACTOR_UNIFORM = "tileFactor";
 const char *const PRGL_FILL_COLOR_UNIFORM = "fillColor";

@@ -2,6 +2,7 @@
 #include "shaders.h"
 
 #include "common_macros.h"
+#include "lighting.h"
 #include "types.h"
 
 // clang-format off
@@ -12,6 +13,7 @@ static const char *const SHARED_VERTEX_SHADER_SOURCE_3D =
     "struct PointLight {\n"
     "    vec3 position;\n"
     "    vec3 color;\n"
+    "    float ambient;\n"
 
     // Constants for calculating light attenuation (fade distance).
     "    float linear;\n"
@@ -67,11 +69,11 @@ static const char *const SHARED_VERTEX_SHADER_SOURCE_3D =
              // Calculate diffuse, darkens the greater the angle between vectors.
              // max() is used to prevent negatives when the angle is > 90 degrees.
     "        float diffuse = max(dot(worldNormal, lightDir), 0.0);\n"
-    "        float ambient = 0.1;\n"
     "        float distance = length(distanceVec);\n"
     "        float attenuation = 1.0 "
                 "/ (1.0 + (pointLights[i].linear * distance) "
                 "+ (pointLights[i].quadratic * (distance * distance)));\n"
+    "        float ambient = pointLights[i].ambient;\n"
     "        ambient *= attenuation;\n"
     "        diffuse *= attenuation;\n"
     "        lightColor += (ambient + diffuse) * pointLights[i].color;\n"
