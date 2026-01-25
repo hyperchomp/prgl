@@ -5,7 +5,9 @@ project(prgl VERSION 0.2.2
 set(CMAKE_C_STANDARD 99)
 
 # Search the local directory first for libs
-set(CMAKE_PREFIX_PATH "/usr/local" ${CMAKE_PREFIX_PATH})
+if (UNIX AND NOT APPLE)
+    set(CMAKE_PREFIX_PATH "/usr/local" ${CMAKE_PREFIX_PATH})
+endif()
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -88,9 +90,20 @@ set_target_properties(
 )
 
 # Link external libraries
-find_package(glfw3 REQUIRED) # Generates imported target glfw
+if (WIN32)
+    # Add necessary library sub-folders to search list
+    list(APPEND CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH}/GLFW")
 
-target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE glfw) 
+    # Find GLFW library and headers
+    find_path(GLFW_INCLUDE_DIR NAMES glfw3.h PATH_SUFFIXES include REQUIRED)
+    find_library(GLFW_LIBRARY NAMES glfw3 REQUIRED)
+
+    target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ${GLFW_INCLUDE_DIR})
+    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ${GLFW_LIBRARY} opengl32)
+else()
+    find_package(glfw3 REQUIRED)
+    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE glfw)
+endif()
 
 # Install the includes and lib files, export targets needed for find_package()
 install(

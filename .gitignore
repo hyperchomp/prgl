@@ -4,5 +4,7 @@ build-release/
 .cache/
 docs/
 .idea/
+.vs/
 compile_commands.json
+CMakeUserPresets.json
 
