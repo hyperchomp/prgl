@@ -36,22 +36,6 @@ struct PRGLMesh
 };
 
 /**
- * Initializes a mesh struct with the given values.
- *
- * @param mesh[in,out]
- * @param num_vertices
- * @param vao
- * @param vbo
- * @param ebo
- * @param texture
- * @param primitive_type
- */
-void prgl_init_mesh(
-    struct PRGLMesh *mesh, GLuint num_vertices, GLuint vao, GLuint vbo,
-    GLuint ebo, PRGLTexture texture, GLenum primitive_type
-);
-
-/**
  * Creates a quad for drawing the screen's render texture to.
  *
  * @param texture_id The ID of the texture to draw the screen quad to.

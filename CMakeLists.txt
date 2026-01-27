@@ -13,6 +13,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 option(PRGL_ENABLE_ASAN "Enable Address Sanitizer for memory issues" OFF)
 
+option(PRGL_BUILD_EXAMPLES "Build example projects" ON)
+
 add_library(${CMAKE_PROJECT_NAME})
 
 # BUILD_INTERFACE is for the files in the source tree
@@ -20,10 +22,16 @@ add_library(${CMAKE_PROJECT_NAME})
 target_include_directories(${CMAKE_PROJECT_NAME} 
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/extern/include>
-        $<INSTALL_INTERFACE:include/${CMAKE_PROJECT_NAME}>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/prgl>
+        $<INSTALL_INTERFACE:include>
     PRIVATE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+)
+
+target_include_directories(${CMAKE_PROJECT_NAME} SYSTEM
+    PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/extern/include>
+    PRIVATE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/extern>
 )
 
@@ -51,7 +59,24 @@ set(PRGL_EXTERN_SOURCES
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${PRGL_SOURCES} ${PRGL_EXTERN_SOURCES})
 
 # Compiler flags for extra warnings/errors
-set(PRGL_ERROR_FLAGS -pedantic -Wall -Wextra -Werror)
+set(PRGL_ERROR_FLAGS -Wpedantic -Wall -Wextra -Werror)
+
+# Disable Windows default error flags which conflict with common C99 coding practices
+list(APPEND PRGL_ERROR_FLAGS 
+    -Wno-documentation                   # Ignore Documentation comment syntax errors
+    -Wno-documentation-unknown-command   # Ignore unknown @commands in comments
+    -Wno-unsafe-buffer-usage             # Ignore C++ safe buffer suggestions
+    -Wno-declaration-after-statement     # Allow C99 same line variable declarations
+    -Wno-sign-conversion                 # Allow implicit conversions from signed to unsigned
+    -Wno-implicit-int-float-conversion   # Allow implicit conversions from int to float
+    -Wno-implicit-float-conversion       # Allow implicit conversions from double to float
+    -Wno-double-promotion                # Allow float to double implicit conversion
+    -Wno-covered-switch-default          # Allow 'default' in switches already covering enums
+    -Wno-switch-enum                     # Don't require every enum case in every switch
+    -Wno-nonportable-system-include-path # Ignore case-sensitivity in Windows file paths
+    -Wno-cast-function-type-strict       # Allow casts for function types, needed with GLAD/GLFW
+)
+
 if (CMAKE_BUILD_TYPE STREQUAL "Debug" AND PRGL_ENABLE_ASAN)
     message(STATUS "Enabling Debug build flags...")
     set(ASAN_FLAGS -fsanitize=address -g -fno-omit-frame-pointer)
@@ -62,25 +87,31 @@ else()
 endif()
 
 # Don't set extra flags for external libraries
-set_source_files_properties(
-    ${PRGL_EXTERN_SOURCES} PROPERTIES COMPILE_FLAGS ""
-)
+if (MSVC OR CMAKE_C_SIMULATE_ID STREQUAL "MSVC")
+    set_source_files_properties(
+        ${PRGL_EXTERN_SOURCES} PROPERTIES COMPILE_FLAGS "/W0"
+    )
+else()
+    set_source_files_properties(
+        ${PRGL_EXTERN_SOURCES} PROPERTIES COMPILE_FLAGS ""
+    )
+endif()
 
 include(GNUInstallDirs)
 set(
-    PRGL_PUBLIC_HEADERS "${CMAKE_SOURCE_DIR}/include/camera.h"
-                        "${CMAKE_SOURCE_DIR}/include/common_macros.h"
-                        "${CMAKE_SOURCE_DIR}/include/game.h"
-                        "${CMAKE_SOURCE_DIR}/include/game_object.h"
-                        "${CMAKE_SOURCE_DIR}/include/input.h"
-                        "${CMAKE_SOURCE_DIR}/include/lighting.h"
-                        "${CMAKE_SOURCE_DIR}/include/mathx.h"
-                        "${CMAKE_SOURCE_DIR}/include/mesh.h"
-                        "${CMAKE_SOURCE_DIR}/include/render.h"
-                        "${CMAKE_SOURCE_DIR}/include/screen.h"
-                        "${CMAKE_SOURCE_DIR}/include/shaders.h"
-                        "${CMAKE_SOURCE_DIR}/include/texture.h"
-                        "${CMAKE_SOURCE_DIR}/include/types.h"
+    PRGL_PUBLIC_HEADERS "${CMAKE_SOURCE_DIR}/include/prgl/camera.h"
+                        "${CMAKE_SOURCE_DIR}/include/prgl/common_macros.h"
+                        "${CMAKE_SOURCE_DIR}/include/prgl/game.h"
+                        "${CMAKE_SOURCE_DIR}/include/prgl/game_object.h"
+                        "${CMAKE_SOURCE_DIR}/include/prgl/input.h"
+                        "${CMAKE_SOURCE_DIR}/include/prgl/lighting.h"
+                        "${CMAKE_SOURCE_DIR}/include/prgl/mathx.h"
+                        "${CMAKE_SOURCE_DIR}/include/prgl/mesh.h"
+                        "${CMAKE_SOURCE_DIR}/include/prgl/render.h"
+                        "${CMAKE_SOURCE_DIR}/include/prgl/screen.h"
+                        "${CMAKE_SOURCE_DIR}/include/prgl/shaders.h"
+                        "${CMAKE_SOURCE_DIR}/include/prgl/texture.h"
+                        "${CMAKE_SOURCE_DIR}/include/prgl/types.h"
 )
 set_target_properties(
     ${CMAKE_PROJECT_NAME} PROPERTIES
@@ -91,12 +122,12 @@ set_target_properties(
 
 # Link external libraries
 if (WIN32)
-    # Add necessary library sub-folders to search list
-    list(APPEND CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH}/GLFW")
+    # Create necessary library sub-folders to search
+    set(GLFW_ROOT_DIR ${CMAKE_PREFIX_PATH}/GLFW)
 
     # Find GLFW library and headers
-    find_path(GLFW_INCLUDE_DIR NAMES glfw3.h PATH_SUFFIXES include REQUIRED)
-    find_library(GLFW_LIBRARY NAMES glfw3 REQUIRED)
+    find_path(GLFW_INCLUDE_DIR NAMES GLFW/glfw3.h PATHS ${GLFW_ROOT_DIR} PATH_SUFFIXES include REQUIRED)
+    find_library(GLFW_LIBRARY NAMES glfw3 PATHS ${GLFW_ROOT_DIR} REQUIRED)
 
     target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ${GLFW_INCLUDE_DIR})
     target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ${GLFW_LIBRARY} opengl32)
@@ -144,3 +175,7 @@ install(FILES
     "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}Config.cmake"
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${CMAKE_PROJECT_NAME}"
 )
+
+if (PRGL_BUILD_EXAMPLES)
+    add_subdirectory(examples EXCLUDE_FROM_ALL)
+endif()

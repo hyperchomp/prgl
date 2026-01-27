@@ -16,7 +16,7 @@
 // Constants for meshes with vertices, normals, and texture coordinates. If not
 // all then these values will be different, only use in that scenario.
 static const GLint VERTEX_STRIDE_LENGTH = 8;
-static const GLint FLOAT_VERTEX_STRIDE = VERTEX_STRIDE_LENGTH * sizeof(GLfloat);
+static const GLint FLOAT_VERTEX_STRIDE = 8 * sizeof(GLfloat);
 static const GLint NORMALS_OFFSET = 3 * sizeof(GLfloat);
 static const GLint TEX_COORD_OFFSET = 6 * sizeof(GLfloat);
 
@@ -29,8 +29,19 @@ static void prgl_generate_cube_sphere_point(
     vec3 face_normal, vec3 quad_right, vec3 quad_up
 );
 
-void prgl_init_mesh(
-    struct PRGLMesh *mesh, GLuint num_vertices, GLuint vao, GLuint vbo,
+/**
+ * Initializes a mesh struct with the given values.
+ *
+ * @param mesh[in,out]
+ * @param num_vertices
+ * @param vao
+ * @param vbo
+ * @param ebo
+ * @param texture
+ * @param primitive_type
+ */
+static void prgl_init_mesh(
+    struct PRGLMesh *mesh, GLsizei num_vertices, GLuint vao, GLuint vbo,
     GLuint ebo, PRGLTexture texture, GLenum primitive_type
 )
 {

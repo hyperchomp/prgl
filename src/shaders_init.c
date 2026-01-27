@@ -81,7 +81,7 @@ static const char *const SHARED_VERTEX_SHADER_SOURCE_3D =
     "    return lightColor;\n"
     "}\n";
 
-const char *const SHARED_FRAG_SHADER_SOURCE_3D =
+static const char *const SHARED_FRAG_SHADER_SOURCE_3D =
     "#version 330 core\n"
     "out vec4 FragColor;\n"
 

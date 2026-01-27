@@ -11,8 +11,8 @@
 
 static double last_update_start = 0;
 static double dt = 0;
-struct PRGLRenderTexture render_texture;
-struct PRGLMesh *screen_render_quad;
+static struct PRGLRenderTexture render_texture;
+static struct PRGLMesh *screen_render_quad;
 
 void prgl_run_game(
     const char *const title, void (*prgl_init)(void), void (*prgl_update)(void),

@@ -138,10 +138,10 @@ For installing with Windows using Visual Studio follow these steps. This outline
     * Create a folder somewhere on your PC for libraries, for example `C:/dev/libraries`.
     * In the above folder create a `GLFW` subfolder.
     * From the GLFW binaries zip `lib-vc20XX` folder copy the `glfw3.lib` file into the above GLFW subfolder.
-    * From the GLFW binaries zip `include/GLFW` folder copy the header files and paste them into an include subfolder in your GLFW subfolder.
+    * From the GLFW binaries zip `include/GLFW` folder copy the header files and paste them into an `include/GLFW` subfolder in your top `GLFW` subfolder. This may seem redundant but this structure allows for easy, cross OS compatibility as some operating systems package managers install GLFW in this way.
        * The directory structure must be:
            `libraries/GLFW/glfw3.lib`
-           `libraries/GLFW/include/glfw3.h`
+           `libraries/GLFW/include/GLFW/glfw3.h`
     * Update your project's `CMAKE_PREFIX_PATH` in `CMakeUserPresets.json` to point to the parent libraries folder. This is a local configuration file and it is not advised to commit this to any source control, it should look something like this:
 ```json
 {
