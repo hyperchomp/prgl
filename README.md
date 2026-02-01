@@ -63,33 +63,19 @@ On Windows the recommended workflow is to use [Microsoft Visual Studio Community
 
 You can install prgl on Linux systems very simply with the below steps:
 
-#### Method 1: System level install (requires sudo)
-
-Use this method if you want to install prgl to the default system path, usually something like `/usr/local/`
-
-```sh
-git clone git@github.com:hyperchomp/prgl.git
-cd prgl
-mkdir build-debug
-CC=clang cmake -DCMAKE_BUILD_TYPE=Debug ..
-make
-sudo make install
-```
-
-Note: I use clang for development so I include that in the commands, but I'd expect it should work with other well known compilers like gcc.
-
-#### Method 2: User local installation (no sudo)
+#### Method 1: User local installation (Recommended)
 
 If you'd rather install somewhere like the home directory where root is not required you can use this method.
 
+Note: I use clang for development so I include that in the commands, but I'd expect it should work with other well known compilers like gcc.
 ```sh
 git clone git@github.com:hyperchomp/prgl.git
 cd prgl
 mkdir build-debug
 cd build-debug
-CC=clang cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$HOME/.local ..
-make
-make install
+CC=clang cmake -DCMAKE_BUILD_TYPE=Debug ..
+cmake --build .
+cmake --install . --prefix $HOME/.local
 ```
 
 ##### Finding a local installation with CMake
@@ -102,17 +88,33 @@ For your own project's CMakeLists.txt to find prgl, simply set CMAKE_PREFIX_PATH
 cmake -DCMAKE_PREFIX_PATH=$HOME/.local ..
 ```
 
+#### Method 2: System level install (requires sudo)
+
+Use this method if you want to install prgl to the default system path, usually something like `/usr/local/`
+
+```sh
+git clone git@github.com:hyperchomp/prgl.git
+cd prgl
+mkdir build-debug
+cd build-debug
+CC=clang cmake -DCMAKE_BUILD_TYPE=Debug ..
+cmake --build .
+sudo cmake --install .
+```
+
 #### Rebuilding
 
 To rebuild and reinstall you can go back into your build directory and run:
 
 ```sh
 cmake ..
-make
-# System install
-sudo make install
+cmake --build .
+
 # User install
-make install
+cmake --install . --prefix $HOME/.local
+
+# System install
+sudo cmake --install .
 ```
 
 #### Usage
