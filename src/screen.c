@@ -90,7 +90,7 @@ void prgl_toggle_fullscreen(void)
     // receives NULL for monitor it will change to window mode
     GLFWwindow *window = prgl_screen_data.window;
     GLFWmonitor *monitor = glfwGetWindowMonitor(window);
-    const GLFWvidmode *mode = glfwGetVideoMode(monitor);
+    const GLFWvidmode *mode = glfwGetVideoMode(monitor ? monitor : glfwGetPrimaryMonitor());
     glfwSetWindowMonitor(
         window, monitor, 0, 0, prgl_screen_data.desktop_width,
         prgl_screen_data.desktop_height, mode->refreshRate

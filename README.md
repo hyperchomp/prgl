@@ -184,3 +184,10 @@ find_package(prgl REQUIRED)
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE prgl)
 ```
+
+## Example Projects
+Example projects are excluded from the build by default. You can build them with the below command and they will be output to `build-debug/bin`. The below would build the example called `primitives`.
+
+```sh
+cmake --build . --target primitives
+```

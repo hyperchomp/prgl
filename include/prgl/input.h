@@ -2,155 +2,139 @@
 #define PRGL_INPUT_H
 
 #include <stdbool.h>
-#include <GLFW/glfw3.h>
 
-bool prgl_key_pressed(int key);
-
-/**
- * Gets the mouse cursor x,y positions and stores them in x_pos and y_pos.
- *
- * Will return a screen position with 0,0 in the upper left if mouse capture
- * mode is PRGL_MOUSE_CAPTURED, or an unbounded double if capture mode is
- * PRGL_MOUSE_DISABLED.
- *
- * @param x_pos
- * @param y_pos
- */
-void prgl_mouse_position(double *x_pos, double *y_pos);
-
-/**
- * KEYCODE MAPPINGS
- * These are solely for the purpose of mapping to GLFW keycodes to abstract
- * out GLFW so it does not need to be included in a project.
- *
- * This also means the printable keys map to 7-bit ASCII, and the mappings
- * follow a US keyboard layout
- */
 enum PRGLKeyboardKey
 {
-    /* Printable keys */
-    PRGL_KEY_SPACE = GLFW_KEY_SPACE,
-    PRGL_KEY_APOSTROPHE = GLFW_KEY_APOSTROPHE, /* ' */
-    PRGL_KEY_COMMA = GLFW_KEY_COMMA,           /* , */
-    PRGL_KEY_MINUS = GLFW_KEY_MINUS,           /* - */
-    PRGL_KEY_PERIOD = GLFW_KEY_PERIOD,         /* . */
-    PRGL_KEY_SLASH = GLFW_KEY_SLASH,           /* / */
-    PRGL_KEY_0 = GLFW_KEY_0,
-    PRGL_KEY_1 = GLFW_KEY_1,
-    PRGL_KEY_2 = GLFW_KEY_2,
-    PRGL_KEY_3 = GLFW_KEY_3,
-    PRGL_KEY_4 = GLFW_KEY_4,
-    PRGL_KEY_5 = GLFW_KEY_5,
-    PRGL_KEY_6 = GLFW_KEY_6,
-    PRGL_KEY_7 = GLFW_KEY_7,
-    PRGL_KEY_8 = GLFW_KEY_8,
-    PRGL_KEY_9 = GLFW_KEY_9,
-    PRGL_KEY_SEMICOLON = GLFW_KEY_SEMICOLON, /* ; */
-    PRGL_KEY_EQUAL = GLFW_KEY_EQUAL,         /* = */
-    PRGL_KEY_A = GLFW_KEY_A,
-    PRGL_KEY_B = GLFW_KEY_B,
-    PRGL_KEY_C = GLFW_KEY_C,
-    PRGL_KEY_D = GLFW_KEY_D,
-    PRGL_KEY_E = GLFW_KEY_E,
-    PRGL_KEY_F = GLFW_KEY_F,
-    PRGL_KEY_G = GLFW_KEY_G,
-    PRGL_KEY_H = GLFW_KEY_H,
-    PRGL_KEY_I = GLFW_KEY_I,
-    PRGL_KEY_J = GLFW_KEY_J,
-    PRGL_KEY_K = GLFW_KEY_K,
-    PRGL_KEY_L = GLFW_KEY_L,
-    PRGL_KEY_M = GLFW_KEY_M,
-    PRGL_KEY_N = GLFW_KEY_N,
-    PRGL_KEY_O = GLFW_KEY_O,
-    PRGL_KEY_P = GLFW_KEY_P,
-    PRGL_KEY_Q = GLFW_KEY_Q,
-    PRGL_KEY_R = GLFW_KEY_R,
-    PRGL_KEY_S = GLFW_KEY_S,
-    PRGL_KEY_T = GLFW_KEY_T,
-    PRGL_KEY_U = GLFW_KEY_U,
-    PRGL_KEY_V = GLFW_KEY_V,
-    PRGL_KEY_W = GLFW_KEY_W,
-    PRGL_KEY_X = GLFW_KEY_X,
-    PRGL_KEY_Y = GLFW_KEY_Y,
-    PRGL_KEY_Z = GLFW_KEY_Z,
-    PRGL_KEY_LEFT_BRACKET = GLFW_KEY_LEFT_BRACKET,   /* [ */
-    PRGL_KEY_BACKSLASH = GLFW_KEY_BACKSLASH,         /* \ */
-    PRGL_KEY_RIGHT_BRACKET = GLFW_KEY_RIGHT_BRACKET, /* ] */
-    PRGL_KEY_GRAVE_ACCENT = GLFW_KEY_GRAVE_ACCENT,   /* ` */
-    PRGL_KEY_WORLD_1 = GLFW_KEY_WORLD_1,             /* non-US #1 */
-    PRGL_KEY_WORLD_2 = GLFW_KEY_WORLD_2,             /* non-US #2 */
+    /* Printable keys (Standard 7-bit ASCII Values) */
+    PRGL_KEY_SPACE             = 32,
+    PRGL_KEY_APOSTROPHE        = 39,  /* ' */
+    PRGL_KEY_COMMA             = 44,  /* , */
+    PRGL_KEY_MINUS             = 45,  /* - */
+    PRGL_KEY_PERIOD            = 46,  /* . */
+    PRGL_KEY_SLASH             = 47,  /* / */
+    PRGL_KEY_0                 = 48,
+    PRGL_KEY_1                 = 49,
+    PRGL_KEY_2                 = 50,
+    PRGL_KEY_3                 = 51,
+    PRGL_KEY_4                 = 52,
+    PRGL_KEY_5                 = 53,
+    PRGL_KEY_6                 = 54,
+    PRGL_KEY_7                 = 55,
+    PRGL_KEY_8                 = 56,
+    PRGL_KEY_9                 = 57,
+    PRGL_KEY_SEMICOLON         = 59,  /* ; */
+    PRGL_KEY_EQUAL             = 61,  /* = */
+    PRGL_KEY_A                 = 65,
+    PRGL_KEY_B                 = 66,
+    PRGL_KEY_C                 = 67,
+    PRGL_KEY_D                 = 68,
+    PRGL_KEY_E                 = 69,
+    PRGL_KEY_F                 = 70,
+    PRGL_KEY_G                 = 71,
+    PRGL_KEY_H                 = 72,
+    PRGL_KEY_I                 = 73,
+    PRGL_KEY_J                 = 74,
+    PRGL_KEY_K                 = 75,
+    PRGL_KEY_L                 = 76,
+    PRGL_KEY_M                 = 77,
+    PRGL_KEY_N                 = 78,
+    PRGL_KEY_O                 = 79,
+    PRGL_KEY_P                 = 80,
+    PRGL_KEY_Q                 = 81,
+    PRGL_KEY_R                 = 82,
+    PRGL_KEY_S                 = 83,
+    PRGL_KEY_T                 = 84,
+    PRGL_KEY_U                 = 85,
+    PRGL_KEY_V                 = 86,
+    PRGL_KEY_W                 = 87,
+    PRGL_KEY_X                 = 88,
+    PRGL_KEY_Y                 = 89,
+    PRGL_KEY_Z                 = 90,
+    PRGL_KEY_LEFT_BRACKET      = 91,  /* [ */
+    PRGL_KEY_BACKSLASH         = 92,  /* \ */
+    PRGL_KEY_RIGHT_BRACKET     = 93,  /* ] */
+    PRGL_KEY_GRAVE_ACCENT      = 96,  /* ` */
+    PRGL_KEY_WORLD_1           = 161, /* non-US #1 */
+    PRGL_KEY_WORLD_2           = 162, /* non-US #2 */
 
     /* Function keys */
-    PRGL_KEY_ESCAPE = GLFW_KEY_ESCAPE,
-    PRGL_KEY_ENTER = GLFW_KEY_ENTER,
-    PRGL_KEY_TAB = GLFW_KEY_TAB,
-    PRGL_KEY_BACKSPACE = GLFW_KEY_BACKSPACE,
-    PRGL_KEY_INSERT = GLFW_KEY_INSERT,
-    PRGL_KEY_DELETE = GLFW_KEY_DELETE,
-    PRGL_KEY_RIGHT = GLFW_KEY_RIGHT,
-    PRGL_KEY_LEFT = GLFW_KEY_LEFT,
-    PRGL_KEY_DOWN = GLFW_KEY_DOWN,
-    PRGL_KEY_UP = GLFW_KEY_UP,
-    PRGL_KEY_PAGE_UP = GLFW_KEY_PAGE_UP,
-    PRGL_KEY_PAGE_DOWN = GLFW_KEY_PAGE_DOWN,
-    PRGL_KEY_HOME = GLFW_KEY_HOME,
-    PRGL_KEY_END = GLFW_KEY_END,
-    PRGL_KEY_CAPS_LOCK = GLFW_KEY_CAPS_LOCK,
-    PRGL_KEY_SCROLL_LOCK = GLFW_KEY_SCROLL_LOCK,
-    PRGL_KEY_NUM_LOCK = GLFW_KEY_NUM_LOCK,
-    PRGL_KEY_PRINT_SCREEN = GLFW_KEY_PRINT_SCREEN,
-    PRGL_KEY_PAUSE = GLFW_KEY_PAUSE,
-    PRGL_KEY_F1 = GLFW_KEY_F1,
-    PRGL_KEY_F2 = GLFW_KEY_F2,
-    PRGL_KEY_F3 = GLFW_KEY_F3,
-    PRGL_KEY_F4 = GLFW_KEY_F4,
-    PRGL_KEY_F5 = GLFW_KEY_F5,
-    PRGL_KEY_F6 = GLFW_KEY_F6,
-    PRGL_KEY_F7 = GLFW_KEY_F7,
-    PRGL_KEY_F8 = GLFW_KEY_F8,
-    PRGL_KEY_F9 = GLFW_KEY_F9,
-    PRGL_KEY_F10 = GLFW_KEY_F10,
-    PRGL_KEY_F11 = GLFW_KEY_F11,
-    PRGL_KEY_F12 = GLFW_KEY_F12,
-    PRGL_KEY_F13 = GLFW_KEY_F13,
-    PRGL_KEY_F14 = GLFW_KEY_F14,
-    PRGL_KEY_F15 = GLFW_KEY_F15,
-    PRGL_KEY_F16 = GLFW_KEY_F16,
-    PRGL_KEY_F17 = GLFW_KEY_F17,
-    PRGL_KEY_F18 = GLFW_KEY_F18,
-    PRGL_KEY_F19 = GLFW_KEY_F19,
-    PRGL_KEY_F20 = GLFW_KEY_F20,
-    PRGL_KEY_F21 = GLFW_KEY_F21,
-    PRGL_KEY_F22 = GLFW_KEY_F22,
-    PRGL_KEY_F23 = GLFW_KEY_F23,
-    PRGL_KEY_F24 = GLFW_KEY_F24,
-    PRGL_KEY_F25 = GLFW_KEY_F25,
-    PRGL_KEY_KP_0 = GLFW_KEY_KP_0,
-    PRGL_KEY_KP_1 = GLFW_KEY_KP_1,
-    PRGL_KEY_KP_2 = GLFW_KEY_KP_2,
-    PRGL_KEY_KP_3 = GLFW_KEY_KP_3,
-    PRGL_KEY_KP_4 = GLFW_KEY_KP_4,
-    PRGL_KEY_KP_5 = GLFW_KEY_KP_5,
-    PRGL_KEY_KP_6 = GLFW_KEY_KP_6,
-    PRGL_KEY_KP_7 = GLFW_KEY_KP_7,
-    PRGL_KEY_KP_8 = GLFW_KEY_KP_8,
-    PRGL_KEY_KP_9 = GLFW_KEY_KP_9,
-    PRGL_KEY_KP_DECIMAL = GLFW_KEY_KP_DECIMAL,
-    PRGL_KEY_KP_DIVIDE = GLFW_KEY_KP_DIVIDE,
-    PRGL_KEY_KP_MULTIPLY = GLFW_KEY_KP_MULTIPLY,
-    PRGL_KEY_KP_SUBTRACT = GLFW_KEY_KP_SUBTRACT,
-    PRGL_KEY_KP_ADD = GLFW_KEY_KP_ADD,
-    PRGL_KEY_KP_ENTER = GLFW_KEY_KP_ENTER,
-    PRGL_KEY_KP_EQUAL = GLFW_KEY_KP_EQUAL,
-    PRGL_KEY_LEFT_SHIFT = GLFW_KEY_LEFT_SHIFT,
-    PRGL_KEY_LEFT_CONTROL = GLFW_KEY_LEFT_CONTROL,
-    PRGL_KEY_LEFT_ALT = GLFW_KEY_LEFT_ALT,
-    PRGL_KEY_LEFT_SUPER = GLFW_KEY_LEFT_SUPER,
-    PRGL_KEY_RIGHT_SHIFT = GLFW_KEY_RIGHT_SHIFT,
-    PRGL_KEY_RIGHT_CONTROL = GLFW_KEY_RIGHT_CONTROL,
-    PRGL_KEY_RIGHT_ALT = GLFW_KEY_RIGHT_ALT,
-    PRGL_KEY_RIGHT_SUPER = GLFW_KEY_RIGHT_SUPER,
-    PRGL_KEY_MENU = GLFW_KEY_MENU
+    PRGL_KEY_ESCAPE            = 256,
+    PRGL_KEY_ENTER             = 257,
+    PRGL_KEY_TAB               = 258,
+    PRGL_KEY_BACKSPACE         = 259,
+    PRGL_KEY_INSERT            = 260,
+    PRGL_KEY_DELETE            = 261,
+    PRGL_KEY_RIGHT             = 262,
+    PRGL_KEY_LEFT              = 263,
+    PRGL_KEY_DOWN              = 264,
+    PRGL_KEY_UP                = 265,
+    PRGL_KEY_PAGE_UP           = 266,
+    PRGL_KEY_PAGE_DOWN         = 267,
+    PRGL_KEY_HOME              = 268,
+    PRGL_KEY_END               = 269,
+    PRGL_KEY_CAPS_LOCK         = 280,
+    PRGL_KEY_SCROLL_LOCK       = 281,
+    PRGL_KEY_NUM_LOCK          = 282,
+    PRGL_KEY_PRINT_SCREEN      = 283,
+    PRGL_KEY_PAUSE             = 284,
+    PRGL_KEY_F1                = 290,
+    PRGL_KEY_F2                = 291,
+    PRGL_KEY_F3                = 292,
+    PRGL_KEY_F4                = 293,
+    PRGL_KEY_F5                = 294,
+    PRGL_KEY_F6                = 295,
+    PRGL_KEY_F7                = 296,
+    PRGL_KEY_F8                = 297,
+    PRGL_KEY_F9                = 298,
+    PRGL_KEY_F10               = 299,
+    PRGL_KEY_F11               = 300,
+    PRGL_KEY_F12               = 301,
+    PRGL_KEY_F13               = 302,
+    PRGL_KEY_F14               = 303,
+    PRGL_KEY_F15               = 304,
+    PRGL_KEY_F16               = 305,
+    PRGL_KEY_F17               = 306,
+    PRGL_KEY_F18               = 307,
+    PRGL_KEY_F19               = 308,
+    PRGL_KEY_F20               = 309,
+    PRGL_KEY_F21               = 310,
+    PRGL_KEY_F22               = 311,
+    PRGL_KEY_F23               = 312,
+    PRGL_KEY_F24               = 313,
+    PRGL_KEY_F25               = 314,
+    
+    /* Keypad keys */
+    PRGL_KEY_KP_0              = 320,
+    PRGL_KEY_KP_1              = 321,
+    PRGL_KEY_KP_2              = 322,
+    PRGL_KEY_KP_3              = 323,
+    PRGL_KEY_KP_4              = 324,
+    PRGL_KEY_KP_5              = 325,
+    PRGL_KEY_KP_6              = 326,
+    PRGL_KEY_KP_7              = 327,
+    PRGL_KEY_KP_8              = 328,
+    PRGL_KEY_KP_9              = 329,
+    PRGL_KEY_KP_DECIMAL        = 330,
+    PRGL_KEY_KP_DIVIDE         = 331,
+    PRGL_KEY_KP_MULTIPLY       = 332,
+    PRGL_KEY_KP_SUBTRACT       = 333,
+    PRGL_KEY_KP_ADD            = 334,
+    PRGL_KEY_KP_ENTER          = 335,
+    PRGL_KEY_KP_EQUAL          = 336,
+    
+    /* Modifier keys */
+    PRGL_KEY_LEFT_SHIFT        = 340,
+    PRGL_KEY_LEFT_CONTROL      = 341,
+    PRGL_KEY_LEFT_ALT          = 342,
+    PRGL_KEY_LEFT_SUPER        = 343,
+    PRGL_KEY_RIGHT_SHIFT       = 344,
+    PRGL_KEY_RIGHT_CONTROL     = 345,
+    PRGL_KEY_RIGHT_ALT         = 346,
+    PRGL_KEY_RIGHT_SUPER       = 347,
+    PRGL_KEY_MENU              = 348
 };
+
+bool prgl_key_pressed(int key);
+void prgl_mouse_position(double *x_pos, double *y_pos);
 
 #endif

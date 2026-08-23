@@ -2,7 +2,6 @@
 #define PRGL_SCREEN_H
 
 #include <stdbool.h>
-#include <GLFW/glfw3.h>
 
 enum PRGLMouseCaptureMode
 {
